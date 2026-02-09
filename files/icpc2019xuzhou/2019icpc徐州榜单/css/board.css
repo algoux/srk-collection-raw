@@ -1,0 +1,185 @@
+@charset "utf-8";
+
+table { border-width: 1px 1px 0px; border-top-style: solid; border-right-style: solid; border-left-style: solid; border-top-color: rgb(204, 204, 204); border-right-color: rgb(204, 204, 204); border-left-color: rgb(204, 204, 204); border-image: initial; border-bottom-style: initial; border-bottom-color: initial; width: 52.7em; margin-bottom: 2em; }
+
+body { font-family: MSYahei, verdana, arial, tahoma, sans-serif; }
+
+table th { text-align: center; background: rgb(36, 126, 202); color: white; padding: 0em; border: 2px outset rgb(238, 232, 170); }
+
+table td { padding: 0em 0em 0em 0.5em; }
+
+table tr td.rank { background: transparent; border: 2px outset rgb(255, 255, 255); }
+
+table tr.gold td.rank { background: rgb(249, 217, 35); border: 2px outset rgb(255, 215, 0); }
+
+table tr.silver td.rank { background: silver; border: 2px outset silver; }
+
+table tr.bronze td.rank { background: rgb(192, 142, 85); border: 2px outset rgb(201, 150, 12); }
+
+table td.name { padding-left: 2em; }
+
+table th.name { padding-left: 3em; }
+
+table tr.even td { background: rgb(247, 247, 247); }
+
+table tr td.r10 { background: rgb(233, 217, 35); border: 2px outset rgb(220, 220, 220); }
+
+table tr td.r9 { background: rgb(225, 217, 99); border: 2px outset rgb(220, 220, 220); }
+
+table tr td.r8 { background: rgb(221, 215, 170); border: 2px outset rgb(220, 220, 220); }
+
+table tr td.r7 { background: rgb(210, 210, 210); border: 2px outset rgb(220, 220, 220); }
+
+table tr td.r6 { background: rgb(221, 205, 189); border: 2px outset rgb(220, 220, 220); }
+
+table tr td.r5 { background: rgb(230, 230, 230); border: 2px outset rgb(220, 220, 220); }
+
+table tr td.r4 { background: rgb(238, 238, 238); border: 2px outset rgb(243, 243, 243); }
+
+table tr td.r3 { background: rgb(247, 247, 247); border: 2px outset rgb(247, 247, 247); }
+
+div.tail { font-size: 0.8em; color: rgb(136, 136, 136); width: 80%; border: 1px solid rgb(204, 204, 204); margin-left: auto; margin-right: auto; }
+
+span.right { float: right; }
+
+table tr.odd { background-color: rgb(204, 204, 204); color: black; }
+
+table tr.even { background-color: rgb(238, 238, 255); color: black; }
+
+table tr td.yes { background-color: rgb(0, 255, 0); color: black; text-align: center; }
+
+table tr td.pending { background-color: rgb(255, 255, 0); color: black; text-align: center; }
+
+table tr td.no { background-color: rgb(255, 0, 0); color: black; text-align: center; }
+
+table tr td.center { text-align: center; }
+
+table tr td.right { text-align: right; }
+
+body { padding-top: 2rem; }
+
+main { padding: 1rem 3rem; }
+
+.nav-item { padding-left: 1em; }
+
+h1, h2, h3, h4, h5, h6 { text-align: center; }
+
+h1 { font-size: 2em; padding-top: 3rem; }
+
+h2 { font-size: 1.5em; }
+
+h3 { font-size: 1.17em; }
+
+h4 { font-size: 1.12em; }
+
+h5 { font-size: 0.83em; }
+
+h6 { font-size: 0.75em; }
+
+.submitform { max-width: 450px; }
+
+.clarificationform { max-width: 800px; }
+
+#submitbut { margin-right: 2rem; }
+
+.teamName { white-space: nowrap; overflow: visible; display: inline-block; color: rgb(34, 34, 50); }
+
+.teamEName { font-weight: normal; color: rgb(17, 17, 17); white-space: nowrap; overflow: visible; display: inline-block; }
+
+.teamFemale { color: rgb(231, 117, 127); }
+
+.starTeam { color: rgb(75, 0, 130); }
+
+.loading-container { width: calc(100% - 40px); height: auto; }
+
+button { position: absolute; top: 20px; left: 20px; }
+
+.loading-overlay { position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0); transition: background-color 0.2s ease-out 0s; }
+
+.loading-anim { position: relative; width: 200px; height: 200px; margin: auto; perspective: 800px; transform-style: preserve-3d; transform: translateZ(-100px) rotateY(-90deg) rotateX(90deg) rotateZ(90deg) scale(0.5); opacity: 0; transition: all 0.2s ease-out 0s; }
+
+.loading-anim .loading-circle { width: 100%; height: 100%; animation: spin 5s linear 0s infinite normal none running; }
+
+.loading-anim .loading-border { position: absolute; border-radius: 50%; border: 3px solid rgb(73, 97, 227); }
+
+.loading-anim .out { top: 15%; left: 15%; width: 70%; height: 70%; border-left-color: transparent; border-right-color: transparent; animation: spin 2s linear 0s infinite reverse none running; }
+
+.loading-anim .in { top: 18%; left: 18%; width: 64%; height: 64%; border-top-color: transparent; border-bottom-color: transparent; animation: spin 2s linear 0s infinite normal none running; }
+
+.loading-anim .mid { top: 40%; left: 40%; width: 20%; height: 20%; border-left-color: transparent; border-right-color: transparent; animation: spin 1s linear 0s infinite normal none running; }
+
+.loading .loading-anim { transform: translateZ(0px) rotateY(0deg) rotateX(0deg) rotateZ(0deg) scale(1); opacity: 1; }
+
+.loading .loading-overlay { background: rgba(255, 255, 255, 0.5); }
+
+.dot { position: absolute; display: block; width: 20px; height: 20px; border-radius: 50%; background-color: rgb(73, 147, 227); animation: jitter 5s ease-in-out 0s infinite normal none running, fade-in-out 5s linear 0s infinite normal none running; }
+
+.dot:nth-child(1) { top: 90px; left: 180px; animation-delay: 0s; }
+
+.dot:nth-child(2) { top: 135px; left: 168px; animation-delay: 0.41667s; }
+
+.dot:nth-child(3) { top: 168px; left: 135px; animation-delay: 0.83333s; }
+
+.dot:nth-child(4) { top: 180px; left: 90px; animation-delay: 1.25s; }
+
+.dot:nth-child(5) { top: 168px; left: 45px; animation-delay: 1.66667s; }
+
+.dot:nth-child(6) { top: 135px; left: 12px; animation-delay: 2.08333s; }
+
+.dot:nth-child(7) { top: 90px; left: 0px; animation-delay: 2.5s; }
+
+.dot:nth-child(8) { top: 45px; left: 12px; animation-delay: 2.91667s; }
+
+.dot:nth-child(9) { top: 12px; left: 45px; animation-delay: 3.33333s; }
+
+.dot:nth-child(10) { top: 0px; left: 90px; animation-delay: 3.75s; }
+
+.dot:nth-child(11) { top: 12px; left: 135px; animation-delay: 4.16667s; }
+
+.dot:nth-child(12) { top: 45px; left: 168px; animation-delay: 4.58333s; }
+
+@keyframes spin { 
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes jitter { 
+  0% { transform: scale(1, 1); }
+  25% { transform: scale(0.7, 0.7); }
+  50% { transform: scale(1, 1); }
+  75% { transform: scale(1.3, 1.3); }
+  100% { transform: scale(1, 1); }
+}
+
+@keyframes fade-in-out { 
+  0% { opacity: 0.8; }
+  25% { opacity: 0.2; }
+  75% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+.msg-green::before { background-image: linear-gradient(rgb(0, 128, 0), rgb(0, 100, 0)); }
+
+.msg-blue::before { background-image: linear-gradient(rgb(255, 0, 0), rgb(139, 0, 0)); }
+
+.msg-blue::before { background-image: linear-gradient(rgb(0, 0, 255), rgb(0, 0, 139)); }
+
+.msg-lightgreen::before { background-image: linear-gradient(rgb(255, 0, 0), rgb(173, 255, 47)); }
+
+.msg-black::before { background-image: linear-gradient(rgb(51, 51, 51), rgb(0, 0, 0)); }
+
+.msg-pink::before { background-image: linear-gradient(rgb(245, 67, 131), rgb(231, 27, 100)); }
+
+.msg-white::before { background-image: linear-gradient(rgb(255, 255, 255), rgb(238, 238, 238)); }
+
+.msg-lightyellow::before { background-image: linear-gradient(rgb(255, 215, 0), rgb(0, 100, 0)); }
+
+.msg-purple::before { background-image: linear-gradient(rgb(255, 192, 203), rgb(255, 105, 180)); }
+
+.msg-brown::before { background-image: linear-gradient(rgb(184, 134, 11), rgb(165, 42, 42)); }
+
+.msg-lightblue::before { background-image: linear-gradient(rgb(173, 216, 230), rgb(135, 206, 250)); }
+
+.msg-orange::before { background-image: linear-gradient(rgb(255, 165, 0), rgb(255, 140, 0)); }
+
+.msg-rose::before { background-image: linear-gradient(rgb(245, 67, 131), rgb(231, 27, 100)); }
