@@ -1,0 +1,5355 @@
+/* Rank模块样式隔离 - 确保完全独立 */
+.rank-container {
+    /* 重置可能的外部影响 */
+    font-size: 16px !important; /* 固定基准字体大小 */
+    line-height: 1.5 !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+    
+    /* 防止外部样式干扰 */
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    
+    /* 确保所有子元素继承 */
+    * {
+        box-sizing: border-box !important;
+    }
+}
+
+/* SVG 图标常量定义 */
+:root {
+    /* 教练选手图标 */
+    --icon-coach: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z'/%3E%3C/svg%3E");
+    --icon-player: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z'/%3E%3C/svg%3E");
+    
+    /* 队伍类型图标 */
+    --icon-team-regular: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z'/%3E%3C/svg%3E");
+    --icon-team-girl: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z'/%3E%3C/svg%3E");
+    --icon-team-star: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z'/%3E%3C/svg%3E");
+    
+    /* 控制按钮图标 */
+    --icon-refresh: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z'/%3E%3Cpath d='M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z'/%3E%3C/svg%3E");
+    --icon-fullscreen: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z'/%3E%3C/svg%3E");
+    --icon-exit-fullscreen: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10 4.5v-4a.5.5 0 0 1 .5-.5zM0 10.5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 6 11.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zm15 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 1 0v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 .5-.5v-4a.5.5 0 0 1-.5-.5z'/%3E%3C/svg%3E");
+    --icon-roll: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/%3E%3Cpath d='M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z'/%3E%3C/svg%3E");
+    --icon-pause: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z'/%3E%3C/svg%3E");
+    --icon-stop: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5A1.5 1.5 0 0 1 5 3.5z'/%3E%3C/svg%3E");
+    --icon-settings: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z'/%3E%3Cpath d='M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.434-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.292-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.292c.415.764-.42 1.6-1.185 1.184l-.292-.159a1.873 1.873 0 0 0-2.692 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.693-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.292A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z'/%3E%3C/svg%3E");
+    --icon-filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z'/%3E%3C/svg%3E");
+    --icon-export: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z'/%3E%3Cpath d='M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z'/%3E%3C/svg%3E");
+    --icon-print: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z'/%3E%3Cpath d='M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5zm-1 1h8v6H4V7z'/%3E%3C/svg%3E");
+    --icon-help: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/%3E%3Cpath d='M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z'/%3E%3C/svg%3E");
+    --icon-close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z'/%3E%3C/svg%3E");
+    --icon-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z'/%3E%3C/svg%3E");
+    --icon-warning: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z'/%3E%3C/svg%3E");
+    --icon-info: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/%3E%3Cpath d='m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z'/%3E%3C/svg%3E");
+}
+
+/* 全局样式变量定义 - 必须在最前面 */
+:root {
+    /* 布局尺寸 - 使用px确保独立性 */
+    --rank-col-width: 64px;
+    --rank-solve-col-width: 72px;
+    --rank-penalty-col-width: 72px;
+    --rank-problem-col-width: 80px;
+    --rank-header-height: 60px;
+    --rank-stats-height: 32px;
+    --rank-col-gap: 5px;
+    --rank-row-gap: 8px;
+    /* 圆角：全页仅两档 + 药丸，避免半径堆砌 */
+    --rank-radius-block: 6px;
+    --rank-radius-inner: 4px;
+    --rank-radius-pill: 9999px;
+    --rank-border-radius: var(--rank-radius-block);
+    --rank-border-radius-small: var(--rank-radius-inner);
+
+    /* 内边距 - 使用px确保独立性 */
+    --rank-padding-xs: 4px;
+    --rank-padding-sm: 8px;
+    --rank-padding-md: 12px;
+    --rank-padding-lg: 16px;
+    --rank-padding-xl: 24px;
+
+    /* 字体大小 - 使用px确保独立性 */
+    --rank-font-size-xs: 11px;
+    --rank-font-size-sm: 13px;
+    --rank-font-size-md: 14px;
+    --rank-font-size-lg: 16px;
+    --rank-font-size-xl: 18px;
+    --rank-font-size-2xl: 19px;
+    --rank-font-size-3xl: 22px;
+    --rank-font-size-4xl: 32px;
+    --rank-font-size-5xl: 40px;
+    
+    /* 字体粗细 */
+    --rank-font-weight-normal: 400;
+    --rank-font-weight-medium: 500;
+    --rank-font-weight-semibold: 600;
+    --rank-font-weight-bold: 700;
+    --rank-font-weight-extrabold: 800;
+    --rank-font-weight-black: 900;
+    
+    /* 颜色系统 */
+    --rank-color-primary: #007bff;
+    --rank-color-success: #28a745;
+    --rank-color-warning: #ffc107;
+    --rank-color-danger: #dc3545;
+    --rank-color-info: #17a2b8;
+    --rank-color-light: #f8f9fa;
+    --rank-color-dark: #343a40;
+    
+    /* 背景色 */
+    --rank-bg-primary: #ffffff;
+    --rank-bg-secondary: #f8f9fa;
+    --rank-bg-tertiary: #e9ecef;
+    --rank-bg-header: #1e293b;
+    
+    /* 文字颜色 */
+    --rank-text-primary: #333333;
+    --rank-text-secondary: #6c757d;
+    --rank-text-muted: #999999;
+    --rank-text-light: #cbd5e1;
+    --rank-text-white: #ffffff;
+    
+    /* 边框颜色 */
+    --rank-border-light: #dee2e6;
+    --rank-border-medium: #adb5bd;
+    --rank-border-dark: #6c757d;
+    --rank-border-white: rgba(255,255,255,0.3);
+    
+    /* 阴影：单层语义，避免多段叠加 */
+    --rank-shadow-surface: 0 1px 2px rgba(15, 23, 42, 0.06);
+    --rank-shadow-float: 0 2px 10px rgba(15, 23, 42, 0.08);
+    --rank-shadow-overlay: 0 4px 18px rgba(15, 23, 42, 0.12);
+    --rank-shadow-sm: var(--rank-shadow-surface);
+    --rank-shadow-md: var(--rank-shadow-float);
+    --rank-shadow-lg: var(--rank-shadow-float);
+    --rank-shadow-xl: 0 6px 22px rgba(15, 23, 42, 0.14);
+    --rank-line-faint: rgba(15, 23, 42, 0.08);
+    
+    /* 过渡动画 */
+    --rank-transition-fast: 0.15s ease;
+    --rank-transition-normal: 0.3s ease;
+    --rank-transition-slow: 0.5s ease;
+    
+    /* z-index 基准值 */
+    --rank-z-index-base: 500;
+}
+
+/* 基础样式 */
+.rank-system {
+    position: relative; /* 让子元素可以根据容器进行相对定位 */
+    /* 拉丁与数字：Plus Jakarta；中文：Noto Sans SC（见 rank_font_faces.css，须先于 rank.css） */
+    font-family:
+        'CsgRank Latin',
+        'CsgRank SC',
+        'Noto Sans SC',
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        Roboto,
+        'Helvetica Neue',
+        Arial,
+        'Microsoft YaHei',
+        '微软雅黑',
+        'SimSun',
+        '宋体',
+        sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    width: max-content;
+    min-width: 100%;
+    max-width: none;
+    overflow: visible;
+    margin: 0 auto; /* 在父容器中居中 */
+    /*
+     * 与半透明校徽叠压：题数/罚时/教练名/选手名用极细描边 + 八向光晕（与 roll_award_overlay 思路一致）。
+     * 排名数字在 .rank-item 有色底内不叠校徽，不使用本组变量。各皮肤在 rank_skin_*.css 覆写两变量。
+     */
+    --rank-legibility-stroke: 0.42px rgba(255, 255, 255, 0.92);
+    --rank-legibility-shadow:
+        -1px 0 0 rgba(255, 255, 255, 0.9),
+        1px 0 0 rgba(255, 255, 255, 0.9),
+        0 -1px 0 rgba(255, 255, 255, 0.9),
+        0 1px 0 rgba(255, 255, 255, 0.9),
+        -1px -1px 0 rgba(255, 255, 255, 0.76),
+        1px -1px 0 rgba(255, 255, 255, 0.76),
+        -1px 1px 0 rgba(255, 255, 255, 0.76),
+        1px 1px 0 rgba(255, 255, 255, 0.76),
+        0 0 10px rgba(255, 255, 255, 0.38),
+        0 0 3px rgba(15, 23, 42, 0.12);
+    /* 滚榜当前焦点队：实色底 + 左条立即可辨；脉冲动画只动 filter，避免底色被动画「冲淡」 */
+    --roll-judging-row-base-bg: #c7dbf7;
+    --roll-judging-row-inset-marker: rgba(29, 78, 216, 0.62);
+    --roll-judging-shine-edge: rgba(255, 255, 255, 0.28);
+    --roll-judging-shine-mid: rgba(255, 255, 255, 0.48);
+}
+
+.rank-system * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 排名、解题、罚时、题号等以数字为主：等宽数字列对齐（拉丁走 CsgRank Latin） */
+.rank-system .rank-item,
+.rank-system .solve-item,
+.rank-system .penalty-item,
+.rank-system .penalty-content,
+.rank-system .penalty-time-brief,
+.rank-system .penalty-time-full,
+.rank-system .problem-item {
+    font-variant-numeric: tabular-nums;
+}
+
+/* 校徽列半透明叠压时：题数 / 罚时 / 教练名 / 选手名 可读描边 + 光晕（排名数字在 .rank-item 有色底内，不叠校徽，不描边） */
+.rank-system .solve-item .problem-label,
+.rank-system .penalty-time-brief,
+.rank-system .penalty-time-full,
+.rank-system .coach-name,
+.rank-system .player-name {
+    paint-order: stroke fill;
+    -webkit-text-stroke: var(--rank-legibility-stroke);
+    text-shadow: var(--rank-legibility-shadow);
+}
+
+/* 榜单容器 */
+.rank-container {
+    margin: 0 auto;
+    width: max-content;
+    min-width: 100%;
+    max-width: none;
+    overflow: visible;
+    max-height: none;
+    user-select: text; /* 允许文字选择 */
+    scroll-behavior: smooth;
+    position: relative;
+}
+
+/* 允许校名和队名文字选择 */
+.rank-row .team-name,
+.rank-row .school-name,
+.rank-row .team-name-cn,
+.rank-row .team-name-en,
+.rank-row .school-name-text,
+.team-name-cn,
+.team-name-en,
+.school-name {
+    user-select: text !important;
+    cursor: text;
+}
+
+/* 保持按钮和交互元素不可选择 */
+.control-btn,
+.custom-select-btn,
+.rank-item,
+.solve-item,
+.penalty-item,
+.problem-item {
+    user-select: none;
+}
+
+
+/* 页面头部：统一减少内外边距，避免与 controls-time-section 叠加后空白过大 */
+.rank-header {
+    color: #333;
+    padding-bottom: var(--rank-padding-sm);
+    margin: 0 auto;
+}
+
+.header-content {
+    margin-bottom: 0;
+}
+
+.header-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--rank-padding-sm);
+}
+
+.title-section {
+    container-type: inline-size;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: var(--rank-padding-sm);
+}
+
+/* 旧的controls-section已整合到controls-time-section，保留此样式以防万一 */
+.controls-section {
+    display: none; /* 已整合到controls-time-section */
+}
+
+.header-left {
+    flex: 1;
+    min-width: 0;
+}
+
+.rank-header-row {
+    display: flex;
+    gap: var(--rank-col-gap);
+    padding: 12px 16px 0 16px;
+    background: #f8f9fa;
+    color: var(--rank-text-secondary);
+    font-weight: 600;
+    font-size: var(--rank-font-size-md);
+    border-bottom: 1px solid #dee2e6;
+    position: sticky;
+    top: 0;
+    z-index: var(--rank-z-index-base);
+    width: 100%;
+    flex-wrap: nowrap;
+    /*
+     * 不能写 overflow-x: auto / hidden / scroll：
+     * CSS Overflow 3 规定任一轴为非 visible/clip 时，另一轴的 visible 会被强制提升为 auto，
+     * 进而把 .problem-header-color-bg(top:-19px ~ -24px) 凸出 padding box 顶部那 ~12px 的气球 clip 掉
+     * （与是否 sticky 无关；非固顶状态下也会被截）。
+     * 整表宽度由 .rank-container(width:max-content) 统一管理，这里不需要也不应该单独横滚。
+     */
+    overflow: visible;
+}
+
+.rank-header-row .rank-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--rank-radius-inner);
+    background: var(--rank-bg-header);
+    box-shadow: var(--rank-shadow-surface);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    position: relative;
+    overflow: visible;
+    flex-shrink: 0;
+    height: var(--rank-header-height);
+}
+
+/* 表头基础样式 - 复用 */
+.rank-header-row .rank-col .header-cell,
+.problem-header-content {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    line-height: 1.2;
+    white-space: nowrap;
+    font-size: var(--rank-font-size-2xl);
+    font-weight: 900;
+    color: var(--rank-text-white);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* 表头子元素样式 - 复用 */
+.rank-header-row .rank-col .header-cell en-text,
+.problem-header-stats {
+    font-size: var(--rank-font-size-md);
+    font-weight: 600;
+    color: var(--rank-text-light);
+    margin-top: 2px;
+    white-space: nowrap;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* 题目列特殊样式 */
+.rank-header-row .rank-col.rank-col-problem {
+    width: var(--rank-problem-col-width);
+}
+
+/* 题目表头容器特殊样式 */
+.problem-header-content {
+
+    position: relative;
+    z-index: 2;
+}
+
+/* 题目表头标题特殊样式 */
+.problem-header-title {
+    font-size: var(--rank-font-size-2xl);
+    font-weight: 900;
+    color: var(--rank-text-white);
+    line-height: 1.2;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* 题目表头统计特殊样式 */
+.problem-header-stats {
+    font-variant-numeric: tabular-nums;
+}
+
+.problem-header-color-bg {
+    position: absolute;
+    top: -24px;
+    left: 70%;
+    transform: translateX(-50%);
+    z-index: 3;
+    color: var(--rank-problem-color);
+    font-size: var(--rank-font-size-5xl);
+    -webkit-text-stroke: 0.5px var(--rank-text-white);
+}
+
+/* 题目表头悬停效果 */
+.rank-header-row .rank-col.rank-col-problem:hover {
+    box-shadow: var(--rank-shadow-float);
+}
+
+/* 图标样式 - 使用Bootstrap Icons */
+
+
+#rank-page-title {
+    font-size: var(--rank-font-size-4xl);
+    font-weight: 600;
+    margin: 0;
+    text-align: left;
+    word-wrap: break-word;
+    word-break: break-all;
+    line-height: 1.3;
+    max-width: 100%;
+    white-space: normal;
+}
+
+.controls-toolbar {
+    display: flex;
+    gap: var(--rank-padding-lg);
+    align-items: center;
+    background: var(--rank-bg-primary);
+    padding: var(--rank-padding-sm);
+    border-radius: var(--rank-radius-block);
+    border: 1px solid var(--rank-line-faint);
+    box-shadow: var(--rank-shadow-surface);
+    z-index: calc(var(--rank-z-index-base) + 1);
+}
+
+.toolbar-group {
+    display: flex;
+    gap: var(--rank-padding-sm);
+    align-items: center;
+}
+
+.toolbar-item {
+    display: flex;
+    align-items: center;
+    gap: var(--rank-padding-xs);
+}
+
+.header-controls.collapsed {
+    display: none;
+}
+
+.controls-dropdown.show {
+    display: flex;
+}
+
+.custom-select-container {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-select-btn {
+    padding: var(--rank-padding-sm);
+    border: 1px solid #dee2e6;
+    border-radius: var(--rank-border-radius-small);
+    background: white;
+    color: var(--rank-text-secondary);
+    cursor: pointer;
+    font-size: var(--rank-font-size-md);
+    font-weight: 500;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 40px;
+    height: 40px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    outline: none;
+}
+
+.custom-select-btn.icon-only {
+    width: 40px;
+    height: 40px;
+    padding: var(--rank-padding-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* icon-only 时文案仍在 DOM（无障碍/下拉内展示），常规工具栏里隐藏 */
+.custom-select-btn.icon-only .option-text {
+    display: none;
+}
+
+.custom-select-btn:hover {
+    background: #e9ecef;
+    border-color: #adb5bd;
+}
+
+.custom-select-btn:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+.custom-select-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.custom-select-btn i {
+    font-size: var(--rank-font-size-2xl);
+    margin: 0;
+}
+
+.custom-select-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: var(--rank-border-radius);
+    box-shadow: var(--rank-shadow-overlay);
+    z-index: 105;
+    display: none;
+    flex-direction: column;
+    min-width: 200px;
+    width: auto;
+    white-space: nowrap;
+}
+
+.custom-select-dropdown.show {
+    display: flex;
+    animation: dropdownFadeIn 0.2s ease-out;
+}
+
+@keyframes dropdownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.custom-select-option {
+    padding: var(--rank-padding-md) var(--rank-padding-lg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: var(--rank-padding-md);
+    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: #4a5568;
+    font-size: var(--rank-font-size-md);
+    min-width: 180px;
+}
+
+.custom-select-option:last-child {
+    border-bottom: none;
+    border-radius: 0 0 var(--rank-radius-inner) var(--rank-radius-inner);
+}
+
+.custom-select-option:first-child {
+    border-radius: var(--rank-radius-inner) var(--rank-radius-inner) 0 0;
+}
+
+.custom-select-option:hover {
+    background: #f3f4f6;
+    color: #111827;
+}
+
+.custom-select-option.selected {
+    background: #eff6ff;
+    color: #1d4ed8;
+    font-weight: 600;
+    border-left: 3px solid #3b82f6;
+}
+
+.custom-select-option i {
+    font-size: var(--rank-font-size-lg);
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.option-text {
+    flex: 1;
+    font-size: var(--rank-font-size-md);
+    line-height: 1.2;
+}
+
+.option-text en-text {
+    display: block;
+    font-size: var(--rank-font-size-sm);
+    color: #6c757d;
+    margin-top: 2px;
+    white-space: nowrap;
+}
+
+.control-group {
+    display: flex;
+    gap: var(--rank-padding-sm);
+    align-items: center;
+    flex-shrink: 0;
+    min-width: 0;
+}
+
+.control-select {
+    padding: var(--rank-padding-xs) var(--rank-padding-sm);
+    border: 1px solid #dee2e6;
+    border-radius: var(--rank-border-radius-small);
+    background: white;
+    color: #333;
+    font-size: var(--rank-font-size-md);
+    min-width: 120px;
+    max-width: 150px;
+    flex-shrink: 0;
+    height: 24px;
+    line-height: 1;
+}
+
+.control-btn {
+    padding: var(--rank-padding-sm) var(--rank-padding-md);
+    border: 1px solid #dee2e6;
+    border-radius: var(--rank-border-radius-small);
+    background: white;
+    color: var(--rank-text-secondary);
+    cursor: pointer;
+    font-size: var(--rank-font-size-md);
+    font-weight: 500;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 40px;
+    height: 40px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    outline: none;
+}
+
+.control-btn:hover {
+    background: #e9ecef;
+    border-color: #adb5bd;
+}
+
+.control-btn.active {
+    background: #ced4da;
+    font-weight: 700;
+    border-color: #495057;
+    border-width: 2px;
+    color: var(--rank-text-secondary);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.control-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.control-btn:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+.control-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.summary-btn {
+    background: #fff3cd;
+    color: #856404;
+    border-color: #ffeaa7;
+}
+
+.summary-btn:hover {
+    background: #ffeaa7;
+    border-color: #f39c12;
+}
+
+.roll-btn {
+    background: #d1ecf1;
+    color: #0c5460;
+    border-color: #bee5eb;
+}
+
+.roll-btn:hover {
+    background: #bee5eb;
+    border-color: #17a2b8;
+}
+
+.fullscreen-btn {
+    background: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.fullscreen-btn:hover {
+    background: #c3e6cb;
+    border-color: #28a745;
+}
+
+.refresh-btn {
+    background: #e3f2fd;
+    color: #1976d2;
+    border-color: #bbdefb;
+}
+
+.refresh-btn:hover {
+    background: #bbdefb;
+    border-color: #1976d2;
+}
+
+/* 刷新按钮加载状态 */
+.refresh-btn.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.refresh-btn.loading i {
+    animation: spin 1s linear infinite;
+}
+
+/* 刷新激发：实体按钮轻按回弹 + 描边环向外消散（随 currentColor 适配皮肤，不用 filter/糊光） */
+@keyframes rank-refresh-nudge {
+    0% {
+        transform: scale(1);
+    }
+    12% {
+        transform: scale(0.9);
+    }
+    28% {
+        transform: scale(1.08);
+    }
+    44% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes rank-refresh-ring-out {
+    0% {
+        transform: translate(-50%, -50%) scale(0.82);
+        opacity: 0.55;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.55);
+        opacity: 0;
+    }
+}
+
+.rank-header .control-btn.refresh-btn.rank-refresh-heartbeat {
+    position: relative;
+    z-index: calc(var(--rank-z-index-base) + 6);
+    transform-origin: center center;
+    transition: none;
+    animation: rank-refresh-nudge 0.58s cubic-bezier(0.34, 1.2, 0.55, 1) forwards;
+}
+
+.rank-header .control-btn.refresh-btn.rank-refresh-heartbeat::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: inherit;
+    border: 2px solid currentColor;
+    transform: translate(-50%, -50%) scale(0.82);
+    opacity: 0;
+    pointer-events: none;
+    animation: rank-refresh-ring-out 0.64s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* 激发瞬间略提亮（!important：皮肤里 .loading 的透明度） */
+.rank-header .refresh-btn.loading.rank-refresh-heartbeat {
+    opacity: 1 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rank-header .control-btn.refresh-btn.rank-refresh-heartbeat {
+        animation: none;
+    }
+
+    .rank-header .control-btn.refresh-btn.rank-refresh-heartbeat::after {
+        animation: none;
+        opacity: 0;
+    }
+}
+
+/* 榜单容器 */
+.rank-container {
+    margin: 0 auto;
+}
+
+
+.rank-grid {
+    background: var(--rank-bg-primary);
+    border-radius: 0 0 var(--rank-radius-block) var(--rank-radius-block);
+    box-shadow: var(--rank-shadow-surface);
+    overflow: visible; /* 允许内容溢出 */
+    border: 1px solid var(--rank-line-faint);
+    border-top: 1px solid var(--rank-line-faint);
+    margin-top: 4px;
+    padding-top: 4px;
+    width: max-content; /* 宽度由内容决定 */
+    min-width: 100%; /* 最小宽度为父容器宽度 */
+}
+
+/* 榜单行 */
+.rank-row {
+    display: flex;
+    gap: var(--rank-row-gap);
+    padding: 0 var(--rank-padding-lg);
+    border-bottom: 1px solid var(--rank-line-faint);
+    background: var(--rank-bg-primary);
+    transition: background-color var(--rank-transition-fast), box-shadow var(--rank-transition-fast);
+    position: relative;
+    contain: content;
+    width: 100%;
+    align-items: stretch;
+    margin-bottom: 6px;
+    box-shadow: var(--rank-shadow-surface);
+    border-radius: var(--rank-radius-block);
+}
+
+/* 排名行分界：由行自身 border-bottom 承担，避免重复描边 */
+.rank-row:not(:last-child) {
+    margin-bottom: 6px;
+}
+
+.rank-row:last-child {
+    border-bottom: none;
+}
+
+/* 交替背景色 */
+.rank-row:nth-child(even) {
+    background: var(--rank-bg-secondary);
+}
+
+.rank-row:nth-child(odd) {
+    background: var(--rank-bg-primary);
+}
+
+/* 悬停：轻微提亮 + 统一浮起阴影，无位移避免「动效装饰感」 */
+.rank-row:hover {
+    background: var(--rank-bg-secondary) !important;
+    box-shadow: var(--rank-shadow-float);
+}
+
+
+/* 基础列样式 */
+.rank-col-rank,
+.rank-col-solve,
+.rank-col-penalty,
+.rank-col-problem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* 排名列 */
+.rank-col-rank {
+    width: var(--rank-col-width);
+}
+
+/* 题数列 */
+.rank-col-solve {
+    width: var(--rank-solve-col-width);
+}
+
+/* 罚时列 */
+.rank-col-penalty {
+    width: var(--rank-penalty-col-width);
+}
+
+/* 题目列 */
+.rank-col-problem {
+    width: var(--rank-problem-col-width);
+    overflow: visible; /* 允许一血星星超出列范围 */
+}
+
+/* 主体内容区 */
+.rank-main-content {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    flex: 1; /* 占满剩余空间 */
+    overflow-x: visible; /* 允许内容溢出 */
+    position: relative; /* 为绝对定位的背景提供定位上下文 */
+    padding-top: 0; /* 初始无padding */
+}
+
+/* 上半部分：教练选手 + 校名队名 - 绝对定位，不影响父容器宽度 */
+.top-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: flex-start;
+    z-index: 3; /* 确保在背景之上 */
+    pointer-events: none;
+    gap: var(--rank-col-gap);
+}
+
+/* 为top-section内容恢复交互 */
+.top-section > * {
+    pointer-events: auto;
+}
+
+/* 教练选手信息区（横跨前三列） - 透明背景不遮挡校徽 */
+.coach-player-section {
+    flex: 0 0 calc(var(--rank-col-width) + var(--rank-solve-col-width) + var(--rank-penalty-col-width) + 2 * var(--rank-col-gap)); /* 精确计算三列宽度 */
+    display: flex;
+    flex-direction: column;
+    gap: 2px; /* 减少行间距 - 特殊值保持 */
+    border-radius: var(--rank-radius-inner);
+    background: transparent; /* 透明背景，不遮挡校徽 */
+    box-shadow: none;
+    overflow: hidden; /* 超出部分隐藏 */
+    position: relative; /* 为渐隐效果提供定位上下文 */
+    z-index: 4; /* 确保内容在背景之上 */
+    border: none;
+    --rank-text-fade-width: 20px;
+    min-height: 42px;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+/* 教练信息 */
+.coach-info, .player-info {
+    display: flex;
+    align-items: center;
+    gap: var(--rank-col-gap); /* 减少标签和姓名间距 */
+    height: 20px; /* 固定行高，与主副队名对齐 */
+}
+
+/* 基于 mask 的文字渐隐，不依赖背景色 */
+.coach-name, .player-name {
+    -webkit-mask-image: linear-gradient(
+        90deg,
+        #000 0,
+        #000 calc(100% - var(--rank-text-fade-width)),
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        90deg,
+        #000 0,
+        #000 calc(100% - var(--rank-text-fade-width)),
+        transparent 100%
+    );
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+}
+
+/* 教练选手图标 */
+.coach-icon, .player-icon {
+    font-size: var(--rank-font-size-2xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+    color: #6b7280;
+}
+
+.coach-icon:hover, .player-icon:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #374151;
+}
+
+/* 教练选手图标样式 */
+.coach-icon .rank-icon, .player-icon .rank-icon {
+    font-size: var(--rank-font-size-lg);
+}
+
+/* 控制按钮图标样式 */
+.control-btn .rank-icon, .fold-btn .rank-icon {
+    font-size: var(--rank-font-size-2xl);
+    margin: 0;
+}
+
+
+/* 下拉选择图标样式 */
+
+.team-type-icon {
+    font-size: var(--rank-font-size-3xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: #6b7280;
+}
+
+.team-type-icon.regular {
+    color: #3b82f6; /* 蓝色 - 常规队 */
+}
+
+.team-type-icon.girl {
+    color: #ec4899; /* 粉色 - 女队 */
+}
+
+.team-type-icon.star {
+    color: var(--csg-marker-yellow-star-color, #f59e0b); /* 与全站小黄星色板一致；无变量时回退琥珀色 */
+}
+
+/* 教练、选手 姓名 - 与副队名样式一致 */
+.coach-name, .player-name {
+    font-size: var(--rank-font-size-md); /* 与副队名相同字号 */
+    font-weight: 500;
+    color: var(--rank-text-secondary); /* 与副队名相同颜色 */
+    line-height: 1; /* 与副队名相同行高 */
+    white-space: nowrap;
+    flex: 1;
+    min-width: 0;
+}
+
+/* 处理教练或选手信息缺失的情况 */
+.coach-info:empty,
+.player-info:empty {
+    display: none;
+}
+
+/* 当只有教练或只有选手时，调整布局 */
+.coach-player-section.coach-player-single {
+    justify-content: center;
+}
+
+.coach-player-section.coach-player-double {
+    justify-content: flex-start;
+}
+
+.coach-player-section.coach-player-single .coach-info,
+.coach-player-section.coach-player-single .player-info {
+    min-height: 100%;
+}
+
+/* 公开/私有/加密赛：用 user_id 占位 coach-player 区，大字号左对齐标签 */
+.coach-player-section.coach-player-account {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+}
+
+.coach-player-section .account-display {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 100%;
+    padding: 4px 12px;
+    border-radius: 8px; /* 比 --rank-radius-inner(4px) 略大，与右上 pill 拉开层级 */
+    background: rgba(248, 250, 252, 0.78);
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    box-shadow: var(--rank-shadow-surface);
+    color: #1e293b;
+    font-size: var(--rank-font-size-xl);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-variant-numeric: tabular-nums;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.coach-player-section .account-display .account-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: #64748b;
+    font-size: var(--rank-font-size-lg);
+    line-height: 1;
+}
+
+.coach-player-section .account-display .account-id {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+}
+
+.coach-player-section a.account-display {
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.coach-player-section a.account-display:hover {
+    border-color: rgba(59, 130, 246, 0.55);
+    color: #1d4ed8;
+    box-shadow: var(--rank-shadow-float, 0 6px 18px rgba(15, 23, 42, 0.12));
+    text-decoration: none;
+}
+
+.coach-player-section a.account-display:hover .account-icon {
+    color: #1d4ed8;
+}
+
+/* 队伍信息区（右侧） - Panel风格 */
+.team-info-section {
+    flex: 1;
+    display: block;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: var(--rank-radius-inner);
+    background: transparent;
+    box-shadow: none;
+    position: relative; /* 为渐隐效果提供定位上下文 */
+    border: none;
+    --rank-text-fade-width: 40px;
+}
+
+/* 登录账号（team_id）：右上胶囊标签（flg_show_team_id；队伍榜/滚榜） */
+.rank-team-id-tag {
+    position: absolute;
+    top: 8px;
+    right: 6px;
+    z-index: 6;
+    max-width: min(38vw, 11rem);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    font-variant-numeric: tabular-nums;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    line-height: 1.3;
+    color: #334155;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.45);
+    border-radius: var(--rank-radius-pill);
+    box-shadow: var(--rank-shadow-surface);
+    pointer-events: auto;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+a.rank-team-id-tag {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+a.rank-team-id-tag:hover {
+    text-decoration: none;
+}
+
+.rank-row:hover .rank-team-id-tag {
+    border-color: rgba(59, 130, 246, 0.45);
+    color: #1d4ed8;
+    box-shadow: var(--rank-shadow-float);
+}
+
+#rank-container[data-rank-skin="dark_stage"] .rank-team-id-tag {
+    color: #e2e8f0;
+    background: rgba(15, 23, 42, 0.72);
+    border-color: rgba(148, 163, 184, 0.4);
+    box-shadow: var(--rank-shadow-surface);
+}
+
+#rank-container[data-rank-skin="dark_stage"] .rank-row:hover .rank-team-id-tag {
+    border-color: rgba(56, 189, 248, 0.55);
+    color: #f0f9ff;
+}
+
+#rank-container[data-rank-skin="light_macaron"] .rank-team-id-tag {
+    color: #475569;
+    background: rgba(255, 255, 255, 0.94);
+    border-color: rgba(100, 116, 139, 0.35);
+}
+
+.rank-system[data-rank-mode="roll"] .rank-row-roll .team-info-section .rank-team-id-tag {
+    top: 4px;
+    right: 2px;
+    max-width: min(32vw, 9.5rem);
+    font-size: 10px;
+    padding: 2px 8px;
+}
+
+/* 队伍信息容器 - 使用表格布局模拟Excel合并单元格 */
+.team-info {
+    display: grid !important; /* 强制使用grid布局 */
+    grid-template-columns: auto auto auto 1fr; /* 队伍类型、旗帜、学校、队名 */
+    grid-template-rows: 1fr 1fr; /* 两行 */
+    gap: var(--rank-padding-sm);
+    width: 100%;
+    min-width: 0; /* 允许收缩 */
+    align-items: center;
+    flex-shrink: 1; /* 允许收缩 */
+    position: relative; /* 为渐隐效果提供定位上下文 */
+    max-width: 100%; /* 限制最大宽度，防止超出 */
+    box-sizing: border-box; /* 确保宽度计算正确 */
+    -webkit-mask-image: linear-gradient(
+        90deg,
+        #000 0,
+        #000 calc(100% - var(--rank-text-fade-width)),
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        90deg,
+        #000 0,
+        #000 calc(100% - var(--rank-text-fade-width)),
+        transparent 100%
+    );
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+}
+
+/* 队伍类型 - 跨两行 */
+.team-type-icon {
+    grid-row: 1 / 3; /* 跨两行 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--rank-font-size-3xl); /* 增大字号 */
+    flex-shrink: 0;
+    width: 32px; /* 增大尺寸 */
+    height: 32px;
+}
+
+/* 旗帜 - 跨两行 */
+.flag-icon {
+    grid-row: 1 / 3; /* 跨两行 */
+    width: 24px; /* 增大尺寸 */
+    height: 18px;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.15);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* 学校名 - 跨两行 */
+.school-name {
+    grid-row: 1 / 3; /* 跨两行 */
+    font-size: 22px; 
+    font-weight: 800;
+    color: #111827;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-shrink: 0;
+    min-width: 0;
+}
+
+/* team_id显示样式 - 与校名样式一致 */
+.team-id-display {
+    font-weight: inherit;
+    font-size: inherit;
+    color: inherit;
+}
+
+.team-id-separator {
+    margin: 0 4px;
+    color: var(--rank-color-primary);
+    opacity: 1;
+    font-weight: var(--rank-font-weight-semibold);
+}
+
+.team-names {
+    border-left: 2px solid var(--rank-color-primary); /* 降低边框粗细，减少割裂感 */
+    padding-left: var(--rank-padding-sm);
+    /* #3498db; */
+}
+
+/* 队伍名称容器 - 占两行 */
+.team-names {
+    grid-row: 1 / 3; /* 跨两行 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
+}
+
+.team-names:empty {
+    border-left: none;
+    padding-left: 0;
+}
+
+.team-names.team-names-single {
+    min-height: 42px;
+    justify-content: center;
+}
+
+.team-names.team-names-empty {
+    border-left: none;
+    padding-left: 0;
+}
+
+/* 主队名样式 */
+.team-name-cn {
+    font-size: 18px;
+    font-weight: 800;
+    color: #111827;
+    white-space: nowrap;
+    position: relative;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    min-height: 21px;
+    flex-shrink: 0;
+}
+
+/* 主队名：超长单行横向跑马（csg_marquee_plain · enableMarqueeIfNeeded；与 cpc_team_cards 同源） */
+.team-name-cn.rank-team-name-mq {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+    min-width: 0;
+}
+
+.team-name-cn.rank-team-name-mq.needs-marquee > .marquee-wrapper {
+    display: inline-block;
+    white-space: nowrap;
+    animation: rank-team-name-marquee linear infinite;
+    animation-duration: var(--marquee-duration, 15s);
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.team-name-cn.rank-team-name-mq.needs-marquee:hover > .marquee-wrapper {
+    animation-play-state: paused;
+}
+
+@keyframes rank-team-name-marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(var(--marquee-translate, -100px));
+    }
+}
+
+/* 副队名样式 */
+.team-name-en {
+    font-size: var(--rank-font-size-md);
+    font-weight: 500;
+    color: #6b7280;
+    font-style: italic;
+    line-height: 1;
+    white-space: nowrap;
+    position: relative;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    min-height: 0;
+    flex-shrink: 0;
+}
+
+/* 校名 / 主队名缺失占位：用 currentColor + 低 opacity 画一条短细线，
+ * 跨皮肤自适应（继承 .school-name / .team-name-cn 的 color），鼠标悬停 tooltip 仍说明「缺失」。
+ * 不写文字、最低视觉噪声；ICPC 类比赛常态有数据，不会触发。 */
+.school-name.tinfo-placeholder::before,
+.team-name-cn.tinfo-placeholder::before {
+    content: "";
+    display: block;
+    width: 28px;
+    height: 2px;
+    border-radius: 1px;
+    background: currentColor;
+    opacity: 0.28;
+}
+
+/* 主队名细线略短一档，与上方校名细线形成主次 */
+.team-name-cn.tinfo-placeholder::before {
+    width: 22px;
+}
+
+/* 统计区域 - 决定父容器宽度 */
+.stats-section {
+    display: flex;
+    align-items: center;
+    gap: var(--rank-col-gap);
+    padding: var(--rank-padding-xs) 0;
+    min-width: max-content;
+    flex-shrink: 0;
+    /* 为top-section让出空间 */
+    margin-top: 45px; /* 根据top-section的实际高度调整 */
+}
+
+/* 前三列背景区域 - 横跨三列纵跨两行 */
+.school-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(var(--rank-col-width) + var(--rank-solve-col-width) + var(--rank-penalty-col-width) + 2 * var(--rank-col-gap));
+    height: 100%; /* 覆盖top-section的高度 */
+    background-size: 128px auto; /* 宽度100%，高度等比缩放 */
+    background-position: right top;
+    background-repeat: no-repeat;
+    opacity: 0.15; /* 半透明背景 */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+    pointer-events: none;
+    overflow: visible; /* 允许超出范围 */
+    image-rendering: -webkit-optimize-contrast; /* WebKit优化 */
+    image-rendering: crisp-edges; /* 保持边缘清晰 */
+    image-rendering: pixelated; /* 像素化渲染，适合小图标 */
+}
+
+/* 当有背景图片时，使用CSS变量；尺寸沿用 .school-logo 的固定 background-size（勿写 --rank-badge-bg-size，避免改变展示区域） */
+.school-logo.has-background {
+    background-image: var(--rank-school-logo-bg);
+}
+
+/* 统计行 - 包含题数、罚时、题目组 */
+/* 排名、题数、罚时列 - 数据部分，透明背景不遮挡校徽 */
+.rank-col-rank, .rank-col-solve, .rank-col-penalty {
+    flex: 0 0 var(--rank-col-width);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--rank-radius-inner);
+    font-weight: bold;
+    color: #333;
+    position: relative;
+    z-index: 4; /* 确保内容在背景和top-section之上 */
+    background: transparent; /* 透明背景，不遮挡校徽 */
+    box-shadow: none;
+    border: none;
+}
+
+.rank-col-solve {
+    flex: 0 0 var(--rank-solve-col-width);
+}
+
+.rank-col-penalty {
+    flex: 0 0 var(--rank-penalty-col-width);
+}
+
+.stats-row {
+    display: flex;
+    gap: var(--rank-padding-xs);
+    align-items: center;
+    width: 100%;
+    min-width: max-content; /* 防止内容被压缩 */
+    flex-wrap: nowrap; /* 禁止换行 */
+    justify-content: flex-start; /* 左对齐，不对齐表头 */
+}
+
+/* 基础项目样式 */
+.rank-item, .solve-item, .penalty-item, .problem-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--rank-border-radius-small);
+    font-weight: var(--rank-font-weight-extrabold);
+    position: relative;
+    transition: var(--rank-transition-fast);
+    user-select: none;
+    flex-shrink: 0;
+    overflow: hidden;
+    height: var(--rank-stats-height);
+}
+
+/* 排名方框样式 */
+.rank-item {
+    background: var(--rank-bg-secondary);
+    color: var(--rank-text-secondary);
+    border: 1px solid var(--rank-border-light);
+    width: var(--rank-col-width);
+    font-size: var(--rank-font-size-2xl);
+    font-weight: var(--rank-font-weight-black);
+}
+
+/* 解题数方框样式 */
+.solve-item {
+    background: rgba(14, 165, 233, 0.06);
+    color: #0c4a6e;
+    border: 1px solid rgba(14, 165, 233, 0.35);
+    width: var(--rank-solve-col-width);
+    font-size: var(--rank-font-size-2xl);
+    font-weight: var(--rank-font-weight-black);
+}
+
+/* 罚时方框样式 */
+.penalty-item {
+    background: rgba(234, 88, 12, 0.06);
+    color: #9a3412;
+    border: 1px solid rgba(234, 88, 12, 0.35);
+    width: var(--rank-penalty-col-width);
+    font-size: var(--rank-font-size-2xl);
+    font-weight: var(--rank-font-weight-black);
+}
+
+/* 题目方框样式 */
+.problem-item {
+    width: var(--rank-problem-col-width);
+    font-size: var(--rank-font-size-2xl);
+    font-weight: var(--rank-font-weight-black);
+}
+
+
+/* 罚时内容样式 */
+.penalty-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: var(--rank-font-size-2xl);
+    font-weight: var(--rank-font-weight-black);
+    font-variant-numeric: tabular-nums;
+    position: relative;
+}
+
+/* 罚时时间显示 */
+.penalty-time-brief {
+    font-size: var(--rank-font-size-2xl);
+    font-weight: var(--rank-font-weight-black);
+    color: #055160;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    transition: var(--rank-transition-normal);
+}
+
+.penalty-time-full {
+    display: none;
+    font-size: var(--rank-font-size-2xl);
+    font-weight: var(--rank-font-weight-black);
+    color: #055160;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    letter-spacing: 0.02em;
+    transition: var(--rank-transition-normal);
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 题目组容器、题目表头容器 */
+.problem-group, .pro-header-group {
+    display: flex;
+    gap: var(--rank-col-gap);
+    flex-wrap: nowrap;
+    min-width: 0;
+    overflow: visible; /* 允许一血星星超出题目组范围 */
+}
+/* 校名统计列 - 包含校名、地区名、题数、罚时，带校徽背景 */
+.school-stats-column {
+    width: calc(var(--rank-solve-col-width) + var(--rank-penalty-col-width) + var(--rank-col-gap));
+    min-width: 0;
+    flex-shrink: 0; /* 防止被压缩 */
+    position: relative;
+    overflow: display;
+    height: 100%;
+}
+
+
+
+/* 队名题目列 - 包含队名、副队名、题目组 */
+.team-problems-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-width: 0;
+    overflow: hidden; /* 防止内容超出 */
+    width: 0; /* 强制flex收缩，确保宽度计算正确 */
+}
+
+/* 旧的样式已移除，使用新的grid布局 */
+
+/* 地区名区域 - 在新布局中占满父容器宽度 */
+.region-info {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 旗帜和地区名一起居中 */
+    gap: 6px;
+    height: 10px; /* 固定小高度，即使为空也保持一致 */
+}
+
+/* 旗帜显示状态 - 通过JavaScript添加show类控制 */
+.flag-icon.show {
+    display: inline-block;
+}
+
+.rank-row.judging {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    /* border-left: 4px solid #f39c12; */
+    box-shadow: inset 0 0 10px rgba(243, 156, 18, 0.2);
+}
+
+.rank-row.judging-last {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    /* border-left: 4px solid #27ae60; */
+    box-shadow: inset 0 0 10px rgba(39, 174, 96, 0.2);
+}
+
+/* 排名数字样式 */
+.rank-number {
+    width: var(--rank-col-width);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: var(--rank-radius-inner);
+    font-size: var(--rank-font-size-2xl); /* 调整以适配四位数 */
+    font-weight: 800;
+    line-height: 1;
+}
+
+/* 排名方框样式 - 使用Bootstrap 5色系 */
+.rank-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--rank-col-width);
+    height: var(--rank-stats-height);
+    border-radius: var(--rank-border-radius-small);
+    font-weight: var(--rank-font-weight-extrabold);
+    position: relative;
+    transition: var(--rank-transition-fast);
+    user-select: none;
+    flex-shrink: 0;
+    overflow: visible;
+}
+
+.rank-item.gold {
+    background: linear-gradient(135deg, #ffd700 0%, #ffb300 100%); /* 明亮的金色渐变，更易区分 */
+    color: #1a1a1a; /* 深色文字，在明亮金色上更清晰 */
+    border: 2px solid #ff8f00; /* 金色边框 */
+    box-shadow: 0 2px 8px rgba(255, 179, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.rank-item.silver {
+    background: linear-gradient(135deg, #c0c0c0 0%, #a8a8a8 100%); /* 银灰色渐变，更接近真实银色 */
+    color: #1a1a1a; /* 深色文字，在银色上更清晰 */
+    border: 2px solid #909090; /* 银灰色边框 */
+    box-shadow: 0 2px 8px rgba(144, 144, 144, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.rank-item.bronze {
+    background: linear-gradient(135deg, #cd7f32 0%, #b87333 100%); /* 经典铜色渐变，与金色明显区分 */
+    color: #ffffff; /* 白色文字，在深铜色上更清晰 */
+    border: 2px solid #9d5f1f; /* 深铜色边框 */
+    box-shadow: 0 2px 8px rgba(157, 95, 31, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.rank-item.star {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); /* Bootstrap 5 gray-100 */
+    color: #6c757d; /* Bootstrap 5 gray-600 */
+    border: 2px solid #adb5bd; /* Bootstrap 5 gray-400 */
+    box-shadow: 0 2px 8px rgba(173, 181, 189, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* 无奖排名特化样式 - 与题目列区分 */
+.rank-item:not(.gold):not(.silver):not(.bronze):not(.star) {
+    background: var(--rank-bg-tertiary); /* 纯色浅灰背景 */
+    color: #495057; /* 深灰色文字，增强对比度 */
+    border: 2px solid #dee2e6; /* 浅灰色边框 */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* 排名emoji样式 - 精美水印效果 */
+.rank-emoji {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, -100%) scale(3);
+    font-size: 24px;
+    opacity: 0.1;
+    z-index: 1;
+    pointer-events: none;
+    text-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* 奖牌水印配色差异 */
+.rank-item.gold .rank-emoji {
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.25);
+}
+
+.rank-item.silver .rank-emoji {
+    text-shadow: 0 0 12px rgba(192, 192, 192, 0.2);
+}
+
+.rank-item.bronze .rank-emoji {
+    text-shadow: 0 0 13px rgba(205, 127, 50, 0.22);
+}
+
+.rank-item.star .rank-emoji {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
+    transform: translate(-50%, -50%) scale(2);
+}
+
+/* 排名数字样式 - 水平居中，可覆盖emoji */
+.rank-number {
+    position: relative;
+    z-index: 2;
+    font-size: var(--rank-font-size-2xl);
+    font-weight: var(--rank-font-weight-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.problem-item:hover {
+    box-shadow: var(--rank-shadow-float);
+    z-index: 10;
+}
+
+/* status with pro- prefix to avoid global collisions */
+
+/* 题目状态样式 - 深色系 */
+.problem-item.pro-ac {
+    background: #198754; /* Bootstrap5 success-600 深绿色 */
+    color: var(--rank-text-white); /* 白色文字 */
+    border: 1px solid #146c43; /* 更深的绿色边框 */
+}
+
+.problem-item.pro-wa {
+    background: #dc3545; /* Bootstrap5 danger-600 深红色 */
+    color: var(--rank-text-white); /* 白色文字 */
+    border: 1px solid #b02a37; /* 更深的红色边框 */
+}
+
+.problem-item.pro-pending {
+    background: #ffb300; /* Amber-600 偏黄的橙色，比 #ffc107 稍深 */
+    color: var(--rank-text-white); /* 白色文字 */
+    border: 1px solid #ffa000; /* Amber-700 深一点的偏黄橙色边框 */
+}
+
+.problem-item.pro-none {
+    background: #adb5bd; /* Bootstrap5 gray-600 深灰色 */
+    color: var(--rank-text-primary) !important; 
+    border: 1px solid var(--rank-bg-tertiary); 
+}
+.problem-item.pro-none .pro-submit-cnt {
+    color: black;
+    text-shadow: none;
+}
+
+.problem-item.pro-first-blood {
+    box-shadow: 0 0 0 2px #facc15, var(--rank-shadow-md);
+    border-color: #f59e0b;
+}
+
+/* Regular 一血样式 - 蓝色背景，覆盖AC绿色 */
+.problem-item.pro-first-blood-regular {
+    background: #007bff !important; /* 蓝色背景 */
+    color: var(--rank-text-white) !important; /* 白色文字 */
+    border: 1px solid #0056b3 !important; /* 深蓝色边框 */
+    box-shadow: var(--rank-shadow-md);
+}
+
+/* Global 一血样式 - 右上角小黄星 */
+.problem-item.pro-first-blood-global {
+    position: relative;
+    overflow: visible; /* 允许内容超出容器 */
+}
+
+.problem-item.pro-first-blood-global::after {
+    content: '★';
+    position: absolute;
+    top: -16px; /* 更大幅度超出方框范围 */
+    right: -10px; /* 更大幅度超出方框范围 */
+    font-size: 20px;
+    color: #ffc107;
+    background: none; /* 无背景色 */
+    width: auto;
+    height: auto;
+    display: block;
+    z-index: 9999; /* 更高的z-index确保在最上层 */
+    font-weight: bold;
+    pointer-events: none; /* 不响应鼠标事件 */
+    /* 不占据空间，可以与其他元素重叠 */
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none; /* 移除发光效果 */
+    text-shadow: none; /* 移除文字阴影 */
+}
+
+/* 题目内容样式 */
+.problem-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 var(--rank-padding-sm);
+    position: relative;
+}
+/* 提交次数 */
+.pro-submit-cnt {
+    font-size: var(--rank-font-size-2xl);
+    font-weight: var(--rank-font-weight-black);
+    color: var(--rank-text-white);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    transition: var(--rank-transition-normal);
+    flex-shrink: 0;
+    text-shadow: 0 1px 2px rgba(0,0,255,0.45), 0 0px 4px rgba(0,0,255,0.45);
+}
+
+/* 分隔符 */
+.problem-separator {
+    font-size: var(--rank-font-size-2xl);
+    color: var(--rank-text-white);
+    margin: 0 5px;
+    font-weight: var(--rank-font-weight-normal);
+    opacity: 0.8;
+    transition: var(--rank-transition-normal);
+}
+
+/* 时间显示 */
+.time-brief {
+    font-size: var(--rank-font-size-2xl);
+    font-weight: var(--rank-font-weight-black);
+    color: var(--rank-text-white);
+    font-variant-numeric: tabular-nums;
+    text-align: left;
+    transition: var(--rank-transition-normal);
+    flex-shrink: 0;
+    text-shadow: 0 1px 2px rgba(255,0,0,0.7), 0 0px 4px rgba(255,0,0,0.45);
+}
+
+/* 当 time-brief 长度超过4位时，自动缩小字号 */
+.time-brief.time-brief-long {
+    font-size: var(--rank-font-size-xl);
+}
+
+/* 悬停时显示完整时间 */
+.problem-item .time-brief,
+.problem-item .time-full {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.problem-item .time-brief {
+    opacity: 1;
+    visibility: visible;
+}
+
+.problem-item .time-full {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    font-size: var(--rank-font-size-sm);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    letter-spacing: 0.02em;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* penalty-item的time-brief和time-full默认状态 */
+.penalty-item .penalty-time-brief {
+    opacity: 1;
+    visibility: visible;
+}
+
+.penalty-item .penalty-time-full {
+    display: none; /* 默认隐藏完整时间 */
+    opacity: 0;
+    visibility: hidden;
+}
+
+.problem-item .pro-submit-cnt {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 榜单内容区：局部遮罩的定位上下文（.rank-header 在容器外，不被盖住） */
+.rank-system .rank-content-wrapper {
+    position: relative;
+}
+
+/* 加载覆盖层：仅盖住 .rank-content-wrapper（与全局 overlay.js / csgoj-overlay 视觉对齐） */
+.rank-system .loading-overlay.loading-overlay-stack {
+    position: absolute;
+    inset: 0;
+    width: auto;
+    height: auto;
+    box-sizing: border-box;
+    display: block;
+    overflow: visible;
+    padding: 0;
+    z-index: calc(var(--rank-z-index-base) + 10);
+    background: transparent;
+    /* 仅由 dim 接收点击，避免透明层挡榜单外区域（侧栏等） */
+    pointer-events: none;
+}
+
+.rank-system .loading-overlay-stack .loading-overlay-dim {
+    position: absolute;
+    inset: 0;
+    width: auto;
+    height: auto;
+    box-sizing: border-box;
+    background-color: rgba(15, 23, 42, 0.48);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    pointer-events: auto;
+}
+
+/*
+ * 提示卡片：视口正中；**不要用 inset:0 铺全屏**，否则部分环境下整屏仍会挡点击（侧栏 / contest header）。
+ * 锚点盒收缩为卡片宽度，pointer-events:none + 子级 auto，仅卡片接收事件。
+ */
+.rank-system .rank-loading-viewport-anchor {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: calc(var(--rank-z-index-base) + 15);
+    width: max-content;
+    max-width: calc(100vw - 32px);
+    box-sizing: border-box;
+    display: block;
+    pointer-events: none;
+}
+
+.rank-system .rank-loading-viewport-anchor .rank-loading-card {
+    pointer-events: auto;
+}
+
+/* 换肤专用：叠在初始 loading 之上，换肤时 dim 去掉 blur 减轻合成开销，便于先出一帧遮罩 */
+.rank-system .rank-skin-busy-overlay.loading-overlay-stack {
+    z-index: calc(var(--rank-z-index-base) + 14);
+}
+
+.rank-system .rank-skin-busy-overlay .loading-overlay-dim {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+/*
+ * 换肤/松紧遮罩挂在 .contest-rank-page-shell__body：dim 的 inset:0 只盖「#rank-container 榜单块」，
+ * 不把 .rank-header / .roll-controls-section 压在下面（否则会挡住工具栏与皮肤下拉——纯 UI 命中问题，非主线程阻塞）。
+ * 提示卡仍 **视口正中**；锚点与卡片 pointer-events:none；__body 内 dim 承接点击以挡榜单误触。
+ */
+.contest-rank-page-shell {
+    position: relative;
+    /* 管理端等 flex 布局下，子项默认 min-width:auto 会按 max-content 撑开，壳窄于主栏时
+     * .rank-content-wrapper 的 margin:auto 只能相对该窄宽度居中，全屏 mock / 片尾 intro 会像「启动后不居中」。 */
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* 仅包裹 #rank-container：换肤/松紧遮罩 dim 的 inset:0 只作用于本块，不把 .rank-header / 滚榜工具条压在下面 */
+.contest-rank-page-shell__body {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/*
+ * 站内比赛榜 / 滚榜管理：壳与 #rank-container 同皮肤底色，顶栏与榜单之间不露页面白缝；
+ * 宽表横向溢出时壳背景铺满视口，工具区与表体读作同一块。全屏榜单时不铺壳底（保持既有全屏行为）。
+ */
+.contest-rank-page-shell:not(:has(.rank-system.fullscreen)):has(#rank-container[data-rank-skin="default"]) {
+    background-color: #f8f9fa;
+}
+
+.contest-rank-page-shell:not(:has(.rank-system.fullscreen)):has(#rank-container[data-rank-skin="dark_stage"]) {
+    background-color: #050a12;
+}
+
+.contest-rank-page-shell:not(:has(.rank-system.fullscreen)):has(#rank-container[data-rank-skin="light_macaron"]) {
+    background-color: #eef2f6;
+}
+
+.contest-rank-page-shell > .rank-header {
+    padding-bottom: 0;
+}
+
+/* 壳内：控制条底边不再画一条与 rank-system 之间的「夹层线」，由壳底色贯通 */
+.contest-rank-page-shell > .rank-header[data-rank-skin="default"] .controls-time-section,
+.contest-rank-page-shell > .rank-header[data-rank-skin="dark_stage"] .controls-time-section,
+.contest-rank-page-shell > .rank-header[data-rank-skin="light_macaron"] .controls-time-section {
+    background: transparent;
+    border-bottom-color: transparent;
+}
+
+.contest-rank-page-shell > .rank-header[data-rank-skin="dark_stage"] .controls-time-section {
+    border-top-color: rgba(148, 163, 184, 0.2);
+}
+
+/* 滚榜工具条：去掉壳内底缘外推，与下方榜单无缝底色 */
+.contest-rank-page-shell > .roll-controls-section.roll-controls-section-aligned {
+    margin-bottom: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.contest-rank-page-shell > .roll-controls-section:is(
+    [data-rank-skin="default"],
+    [data-rank-skin="dark_stage"],
+    [data-rank-skin="light_macaron"]
+) {
+    background: transparent;
+}
+
+/* 深色壳内：工具条略压对比，与 rank-system 渐变底更同一语境 */
+.contest-rank-page-shell > .rank-header[data-rank-skin="dark_stage"] .controls-toolbar,
+.contest-rank-page-shell > .rank-header[data-rank-skin="dark_stage"] .controls-toggle-btn {
+    background: rgba(15, 23, 42, 0.78);
+    border-color: rgba(148, 163, 184, 0.28);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.28);
+}
+
+.contest-rank-page-shell > .roll-controls-section[data-rank-skin="dark_stage"] .roll-controls-toolbar {
+    background: rgba(15, 23, 42, 0.78);
+    border-color: rgba(148, 163, 184, 0.28);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.28);
+}
+
+/* 滚榜：榜顶线与当前皮肤一致（仅壳内，覆盖通用 #dee2e6） */
+.contest-rank-page-shell > .roll-controls-section + .contest-rank-page-shell__body > #rank-container[data-rank-skin="dark_stage"] {
+    border-top: 1px solid rgba(148, 163, 184, 0.22);
+}
+
+.contest-rank-page-shell > .roll-controls-section + .contest-rank-page-shell__body > #rank-container[data-rank-skin="light_macaron"] {
+    border-top: 1px solid #c5ced8;
+}
+
+.contest-rank-page-shell > .roll-controls-section + .contest-rank-page-shell__body > #rank-container[data-rank-skin="default"] {
+    border-top: 1px solid #dee2e6;
+}
+
+.contest-rank-page-shell__body > #rank-skin-busy.rank-skin-busy-overlay--shell-host {
+    position: absolute;
+    inset: 0;
+    z-index: calc(var(--rank-z-index-base) + 40);
+    width: auto;
+    height: auto;
+    box-sizing: border-box;
+    display: block;
+    overflow: visible;
+    padding: 0;
+    background: transparent;
+    pointer-events: none;
+}
+
+.contest-rank-page-shell__body > #rank-skin-busy.rank-skin-busy-overlay--shell-host .loading-overlay-dim {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: auto;
+    height: auto;
+    box-sizing: border-box;
+    background-color: rgba(15, 23, 42, 0.48);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    pointer-events: auto;
+}
+
+.contest-rank-page-shell__body > #rank-skin-busy.rank-skin-busy-overlay--shell-host .rank-loading-viewport-anchor {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: calc(var(--rank-z-index-base) + 15);
+    width: max-content;
+    max-width: calc(100vw - 32px);
+    box-sizing: border-box;
+    display: block;
+    pointer-events: none;
+}
+
+.contest-rank-page-shell__body > #rank-skin-busy.rank-skin-busy-overlay--shell-host .rank-loading-viewport-anchor .rank-loading-card {
+    pointer-events: none;
+}
+
+/* 以下与 .rank-system .rank-loading-card / .rank-loading-msg 对齐（选择器前缀改为壳内 #rank-skin-busy） */
+.contest-rank-page-shell__body > #rank-skin-busy.rank-skin-busy-overlay--shell-host .rank-loading-card {
+    width: min(420px, calc(100vw - 32px));
+    max-width: 100%;
+    min-width: 0;
+    flex-shrink: 0;
+    border-radius: 0.75rem !important;
+    box-shadow: 0 12px 36px rgba(2, 6, 23, 0.14) !important;
+    animation: fadeIn 0.25s ease;
+}
+
+.contest-rank-page-shell__body > #rank-skin-busy.rank-skin-busy-overlay--shell-host .rank-loading-card.rank-loading-card--neutral {
+    background: #fff !important;
+    color: #212529 !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    box-shadow: 0 12px 36px rgba(2, 6, 23, 0.14) !important;
+}
+
+.contest-rank-page-shell__body > #rank-skin-busy.rank-skin-busy-overlay--shell-host .rank-loading-card.rank-loading-card--neutral .rank-loading-msg {
+    color: #212529 !important;
+}
+
+.contest-rank-page-shell__body > #rank-skin-busy.rank-skin-busy-overlay--shell-host .rank-loading-card.rank-loading-card--neutral .rank-loading-msg en-text {
+    color: #6c757d !important;
+    opacity: 0.95 !important;
+}
+
+.contest-rank-page-shell__body > #rank-skin-busy.rank-skin-busy-overlay--shell-host .rank-loading-card.rank-loading-card--neutral .rank-loading-bs-spinner {
+    color: #0d6efd !important;
+    border-color: #e5e7eb !important;
+    border-right-color: #0d6efd !important;
+}
+
+.contest-rank-page-shell__body > #rank-skin-busy.rank-skin-busy-overlay--shell-host .rank-loading-card .rank-loading-bs-spinner {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contest-rank-page-shell__body > #rank-skin-busy.rank-skin-busy-overlay--shell-host .rank-loading-msg {
+    margin-top: 0.25rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.14rem;
+    letter-spacing: 0.01em;
+    color: var(--bs-emphasis-color, #212529);
+    line-height: 1.42;
+    word-break: break-word;
+}
+
+.contest-rank-page-shell__body > #rank-skin-busy.rank-skin-busy-overlay--shell-host .rank-loading-msg en-text {
+    display: block;
+    margin-top: 3px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 400;
+    opacity: 0.88;
+    color: var(--bs-secondary-color, #6c757d);
+    line-height: 1.42;
+    word-break: break-word;
+}
+
+/* 与 static/js/overlay.js 中 csgoj-overlay-card 浅色卡片一致（不依赖该脚本是否加载） */
+.rank-system .rank-loading-card {
+    width: min(420px, calc(100vw - 32px));
+    max-width: 100%;
+    min-width: 0;
+    flex-shrink: 0;
+    border-radius: 0.75rem !important;
+    box-shadow: 0 12px 36px rgba(2, 6, 23, 0.14) !important;
+    animation: fadeIn 0.25s ease;
+}
+
+/* 初始化 / 换肤 loading：统一浅色卡片，不受 dark_stage 榜单配色影响 */
+.rank-system .rank-loading-card.rank-loading-card--neutral {
+    background: #fff !important;
+    color: #212529 !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    box-shadow: 0 12px 36px rgba(2, 6, 23, 0.14) !important;
+}
+
+.rank-system .rank-loading-card.rank-loading-card--neutral .rank-loading-msg {
+    color: #212529 !important;
+}
+
+.rank-system .rank-loading-card.rank-loading-card--neutral .rank-loading-msg en-text {
+    color: #6c757d !important;
+    opacity: 0.95 !important;
+}
+
+.rank-system .rank-loading-card.rank-loading-card--neutral .rank-loading-bs-spinner {
+    color: #0d6efd !important;
+    border-color: #e5e7eb !important;
+    border-right-color: #0d6efd !important;
+}
+
+.rank-system .rank-loading-card .rank-loading-bs-spinner {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rank-system .rank-loading-msg {
+    margin-top: 0.25rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.14rem;
+    letter-spacing: 0.01em;
+    color: var(--bs-emphasis-color, #212529);
+    line-height: 1.42;
+    word-break: break-word;
+}
+
+/* CreateBilingualText：中文为文本节点 + <en-text>…</en-text> */
+.rank-system .rank-loading-msg en-text {
+    display: block;
+    margin-top: 3px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 400;
+    opacity: 0.88;
+    color: var(--bs-secondary-color, #6c757d);
+    line-height: 1.42;
+    word-break: break-word;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 模态框 - 覆盖整个窗口，类似Bootstrap 5 modal */
+.modal-overlay {
+    position: fixed; /* 改为fixed，覆盖整个视窗 */
+    top: 0;
+    left: 0;
+    width: 100vw; /* 视窗宽度 */
+    height: 100vh; /* 视窗高度 */
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1030; /* 低于 Bootstrap 5 modal (backdrop: 1040, dialog: 1050)，避免干扰 */
+}
+
+.modal-content {
+    background: white;
+    border-radius: var(--rank-border-radius); /* 使用系统圆角 */
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow: auto;
+    box-shadow: var(--rank-shadow-overlay);
+    animation: modalSlideIn 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: auto; /* 改为auto，让modal根据内容自适应宽度 */
+    min-width: 300px; /* 最小宽度 */
+    pointer-events: auto;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* 微妙边框 */
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    padding: var(--rank-padding-lg);
+    border-bottom: 1px solid var(--rank-line-faint);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--rank-bg-secondary);
+    border-radius: var(--rank-border-radius) var(--rank-border-radius) 0 0;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #374151;
+    font-weight: 600;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #6b7280;
+    padding: 4px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    color: #374151;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.modal-body {
+    padding: var(--rank-padding-lg);
+}
+
+.rank-filter-modal-content {
+    width: min(760px, 92vw);
+    max-height: none;
+    overflow: visible;
+}
+
+.rank-filter-modal-body {
+    padding: 10px 12px;
+    overflow: visible;
+}
+
+.filter-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    grid-template-areas:
+        "star star"
+        "school team"
+        "group group";
+}
+
+.filter-card {
+    border: 1px solid #dfe4ea;
+    border-radius: var(--rank-radius-block);
+    padding: 8px 10px;
+    background: #f9fbfd;
+}
+
+.filter-card-title {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #2d3643;
+}
+
+.filter-actions {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+#filter-group-card {
+    grid-column: 1 / -1;
+}
+
+.filter-card-star {
+    grid-area: star;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-card-star .filter-card-title {
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+
+.filter-card-school {
+    grid-area: school;
+}
+
+.filter-card-team {
+    grid-area: team;
+}
+
+.filter-card-group {
+    grid-area: group;
+}
+
+.filter-search-wrapper {
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.filter-candidates-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 240px;
+    overflow-y: auto;
+    border: 1px solid #d6dbe3;
+    border-radius: 0 0 8px 8px;
+    margin-top: -1px;
+    background: #fff;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.10);
+    z-index: 1070;
+    display: none;
+}
+
+.filter-candidates-dropdown.show {
+    display: block;
+}
+
+.filter-candidate-item {
+    padding: 7px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    color: #1f2937;
+}
+
+.filter-candidate-item:last-child {
+    border-bottom: none;
+}
+
+.filter-candidate-item:hover {
+    background: #eef8ff;
+}
+
+.filter-candidate-item.filter-candidate-team {
+    white-space: normal;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.filter-candidate-team-primary {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.filter-candidate-team-meta {
+    font-size: 11px;
+    line-height: 1.35;
+    color: #6b7280;
+    word-break: break-word;
+}
+
+.filter-candidate-empty {
+    padding: 10px;
+    text-align: center;
+    color: #6b7280;
+    font-size: 12px;
+}
+
+.filter-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    min-height: 28px;
+    align-content: flex-start;
+}
+
+.filter-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px 3px 9px;
+    border: 1px solid #9eeaf9;
+    border-radius: 6px;
+    font-size: 12px;
+    line-height: 1.35;
+    max-width: 100%;
+}
+
+.filter-tag-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.filter-tag.filter-tag-team {
+    align-items: flex-start;
+}
+
+.filter-tag-text-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.filter-tag-primary {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.35;
+    word-break: break-word;
+}
+
+.filter-tag-meta {
+    font-size: 11px;
+    line-height: 1.35;
+    color: #6b7280;
+    word-break: break-word;
+}
+
+.filter-tag-remove {
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 1;
+    background: none;
+    border: none;
+    color: var(--filter-tag-x, #0dcaf0);
+    opacity: 0.8;
+    padding: 0 2px;
+}
+
+.filter-tag-remove:hover {
+    opacity: 1;
+    color: #dc3545;
+}
+
+#filter-group-select {
+    min-height: 120px;
+    max-height: 170px;
+}
+
+.rank-filter-footer {
+    border-top: 1px solid #e5e7eb;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.control-btn.filter-info-btn {
+    min-width: 186px;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 0 10px;
+}
+
+.control-btn.filter-info-btn .filter-quick-info {
+    font-size: 12px;
+    font-weight: 700;
+    color: #334155;
+    letter-spacing: .2px;
+    white-space: nowrap;
+}
+
+.controls-dropdown .control-btn.filter-info-btn {
+    min-width: auto;
+}
+
+/* 滚榜帮助模态框专用样式 - 紧凑布局，分类并排 */
+#roll-help-modal .modal-header {
+    padding: 8px 16px 6px 16px; /* 进一步减少内边距 */
+    margin: 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+#roll-help-modal .modal-header h3 {
+    margin: 0;
+    font-size: 18px; /* 减小标题字体 */
+    font-weight: 600;
+}
+
+#roll-help-modal .modal-body {
+    padding: 12px 20px 16px 20px; /* 减少内边距 */
+    max-height: 85vh; /* 限制最大高度，避免modal过高 */
+    overflow-y: auto; /* 仅在必要时显示滚动条 */
+}
+
+#roll-help-modal .modal-content {
+    max-width: 95vw; /* 增加最大宽度，更好地利用屏幕空间 */
+    width: auto;
+    min-width: 800px; /* 设置最小宽度，确保有足够的横向空间 */
+}
+
+.roll-help-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px 24px; /* 减少列间距 */
+    padding: 0;
+}
+
+.roll-help-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* 减少section内部间距 */
+}
+
+.roll-help-section-title {
+    font-size: 14px; /* 减小标题字体 */
+    font-weight: 700;
+    color: #333;
+    padding-bottom: 4px; /* 减少底部内边距 */
+    border-bottom: 2px solid #0d6efd;
+    margin-bottom: 2px; /* 减少底部外边距 */
+}
+
+.roll-help-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 6px 12px; /* 减少行间距和列间距 */
+}
+
+.roll-help-item {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* 减少gap */
+    font-size: 14px; /* 减小字体 */
+    font-weight: 500;
+    padding: 4px 0; /* 减少上下内边距 */
+    color: #333;
+    line-height: 1.3; /* 减小行高 */
+}
+
+.roll-help-item code {
+    font-size: 15px; /* 减小快捷键字母字体 */
+    font-weight: 800; /* 字母加粗 */
+    background-color: #f1f3f5;
+    padding: 2px 8px; /* 减少内边距 */
+    border-radius: 3px; /* 减小圆角 */
+    color: #0d6efd;
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+    min-width: 45px; /* 减小最小宽度 */
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.roll-help-item span {
+    line-height: 1.3; /* 减小行高 */
+    flex: 1;
+}
+
+/* 统计表格modal的特殊样式 */
+.modal-body:has(.summary-table) {
+    padding: 16px; /* 减少内边距，让表格更紧凑 */
+}
+
+.modal-header:has(+ .modal-body .summary-table) {
+    padding: 12px 16px; /* 减少header内边距 */
+}
+
+/* 统计表格 - 美化样式 */
+.summary-table {
+    width: auto; /* 改为auto，让表格根据内容自适应 */
+    min-width: 200px; /* 最小宽度 */
+    max-width: 90vw; /* 最大宽度不超过视窗 */
+    border-collapse: collapse;
+    font-size: var(--rank-font-size-md);
+    border-radius: var(--rank-border-radius);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background: white;
+    table-layout: fixed; /* 固定表格布局，确保列宽控制生效 */
+}
+
+.summary-table th,
+.summary-table td {
+    padding: 12px 8px;
+    text-align: center;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 控制各列宽度 */
+.summary-table th:first-child,
+.summary-table td:first-child {
+    width: 80px; /* 结果列 */
+    min-width: 80px;
+    max-width: 80px;
+}
+
+.summary-table th:last-child,
+.summary-table td:last-child {
+    width: 80px; /* 合计列 */
+    min-width: 80px;
+    max-width: 80px;
+}
+
+.summary-table th:not(:first-child):not(:last-child),
+.summary-table td:not(:first-child):not(:last-child) {
+    width: 60px; /* 题目列 */
+    min-width: 60px;
+    max-width: 60px;
+}
+
+.summary-table th {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    font-weight: 600;
+    color: #374151;
+    border-bottom: 2px solid #d1d5db;
+}
+
+.summary-table tr:nth-child(even) {
+    background: #f9fafb;
+}
+
+.summary-table tr:hover {
+    background: #f3f4f6;
+    transition: background-color 0.2s ease;
+}
+
+/* 统计表格双语标题样式 */
+.summary-table th .bilingual-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.summary-table th .bilingual-header .header-cn {
+    font-size: var(--rank-font-size-md);
+    font-weight: 600;
+    color: #374151;
+}
+
+.summary-table th .bilingual-header .header-en {
+    font-size: var(--rank-font-size-sm);
+    font-weight: 500;
+    color: #6b7280;
+}
+
+/* 全屏计时遮罩：与投屏「比赛计时独立页」live_timer 对齐（拟合宽、大号数字、标题/状态 H·S、【−=\\】字号档）*/
+.time-overlay.rank-timer-overlay-host {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(7, 7, 12, 0.92);
+    color: #e8e8f0;
+    z-index: 1060;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+.time-overlay.rank-timer-overlay-host .rank-timer-overlay-root.contestlive-timer-page {
+    --csg-live-fit-w: min(100vw, calc(100vh * 16 / 9));
+    --csg-live-remain-fs-clamp: clamp(
+        3.75rem,
+        calc(0.178 * min(100vw, calc(100vh * 16 / 9))),
+        min(26rem, 42vw)
+    );
+    box-sizing: border-box;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: clamp(0.85rem, 3vmin, 2.25rem) clamp(1rem, 4vmin, 2.75rem);
+}
+
+.time-overlay.rank-timer-overlay-host .rank-timer-overlay-root.contestlive-timer-page--size-custom .contestlive-timer-page__stage {
+    max-width: none;
+}
+
+.time-overlay.rank-timer-overlay-host .contestlive-timer-page__stage {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: min(100%, var(--csg-live-fit-w, 100vw));
+    gap: clamp(0.85rem, 2.4vmin, 2rem);
+    overflow: visible;
+}
+
+.time-overlay.rank-timer-overlay-host .contestlive-timer-page__title {
+    display: none;
+    margin: 0;
+    padding: 0 clamp(0.65rem, 4vmin, 2rem);
+    font-family: 'CsgLiveOutfit', system-ui, sans-serif;
+    font-size: clamp(1rem, calc(0.058 * min(100vw, calc(100vh * 16 / 9))), 2.6rem);
+    font-weight: 600;
+    line-height: 1.25;
+    opacity: 0.96;
+    letter-spacing: 0.02em;
+    color: #f8fafc;
+}
+
+.time-overlay.rank-timer-overlay-host .rank-timer-overlay-root.contestlive-timer-ui-title .contestlive-timer-page__title {
+    display: block;
+}
+
+.time-overlay.rank-timer-overlay-host .contestlive-timer-page__title .cn-text {
+    display: block;
+}
+
+.time-overlay.rank-timer-overlay-host .contestlive-timer-page__title .en-text {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.82em;
+    opacity: 0.85;
+    font-weight: 500;
+}
+
+.time-overlay.rank-timer-overlay-host .contestlive-timer-page__state {
+    display: none;
+    margin: 0;
+    padding: 0 1rem;
+    font-family: 'CsgLiveOutfit', system-ui, sans-serif;
+    font-size: clamp(1rem, calc(0.065 * min(100vw, calc(100vh * 16 / 9))), 2.05rem);
+    font-weight: 600;
+    line-height: 1.35;
+    color: #f8fafc;
+}
+
+.time-overlay.rank-timer-overlay-host .rank-timer-overlay-root.contestlive-timer-ui-state .contestlive-timer-page__state {
+    display: block;
+}
+
+.time-overlay.rank-timer-overlay-host .contestlive-timer-page__remain {
+    margin: 0;
+    font-family: 'CsgLiveBebasNeue', 'CsgRank Latin', system-ui, sans-serif;
+    font-variant-numeric: tabular-nums lining-nums;
+    font-weight: 400;
+    line-height: 0.92;
+    letter-spacing: 0.08em;
+    font-size: var(--csg-live-remain-fs-clamp);
+    text-shadow: 0 0 clamp(1.25rem, 6vmin, 5rem) rgba(147, 197, 253, 0.26), 0 4px 22px rgba(0, 0, 0, 0.48);
+    color: #f8fafc;
+    text-align: center;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.time-overlay.rank-timer-overlay-host .rank-timer-overlay-root.contestlive-timer-page--size-custom .contestlive-timer-page__remain {
+    font-size: calc(var(--csg-live-remain-fs-clamp) * var(--csg-live-remain-mul, 1)) !important;
+}
+
+/* 赛段状态：中英同行（与 contestlive-display--timer 一致）*/
+.time-overlay.rank-timer-overlay-host .contestlive-timer-page__state .contestlive-contest-timer-state__bi {
+    display: inline-flex;
+    align-items: baseline;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.55rem;
+}
+
+.time-overlay.rank-timer-overlay-host .contestlive-timer-page__state .contestlive-contest-timer-state__bi .cn-text {
+    font-weight: inherit;
+}
+
+.time-overlay.rank-timer-overlay-host .contestlive-timer-page__state .contestlive-contest-timer-state__bi .en-text {
+    display: inline;
+    margin-left: 0;
+    margin-top: 0;
+    font-size: 0.82em;
+    opacity: 0.82;
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* 套装切换吐司（结构与 contestlive.css 一致）*/
+.contestlive-timer-pack-toast {
+    position: fixed;
+    z-index: 12060;
+    pointer-events: none;
+    box-sizing: border-box;
+    max-width: min(92vw, 28rem);
+    padding: 0.4rem 0.95rem;
+    margin: 0;
+    border-radius: 0.4rem;
+    text-align: center;
+    font-family: 'CsgLiveOutfit', system-ui, sans-serif;
+    font-size: clamp(0.78rem, 1.65vmin, 1.05rem);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    color: #f8fafc;
+    background: rgba(15, 18, 28, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0.35rem 1.25rem rgba(0, 0, 0, 0.45);
+    opacity: 1;
+    transition: opacity 0.28s ease;
+}
+
+.contestlive-timer-pack-toast--out {
+    opacity: 0;
+}
+
+.contestlive-timer-pack-toast__sep {
+    opacity: 0.72;
+}
+
+/* 榜单快捷键帮助：无滚动条 · 固定两栏 + 底栏；键与说明分列避免重叠 */
+#rank-help-modal .modal-content.rank-help-modal-content {
+    display: flex;
+    flex-direction: column;
+    width: min(880px, 96vw);
+    max-width: min(880px, 96vw);
+    min-width: min(560px, 96vw);
+    max-height: 90vh;
+    overflow: hidden;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    box-sizing: border-box;
+}
+
+#rank-help-modal .modal-content.rank-help-modal-content::-webkit-scrollbar {
+    display: none;
+}
+
+#rank-help-modal .rank-help-modal-header {
+    padding: 10px 16px;
+    flex-shrink: 0;
+}
+
+#rank-help-modal .rank-help-modal-header h3 {
+    font-size: 1.05rem;
+}
+
+#rank-help-modal .rank-help-modal-body {
+    padding: 10px 16px 14px;
+    overflow: hidden;
+    overflow-x: hidden;
+    flex: 1 1 auto;
+    min-height: 0;
+    scrollbar-width: none;
+}
+
+#rank-help-modal .rank-help-modal-body::-webkit-scrollbar {
+    display: none;
+}
+
+#rank-help-modal .rank-help-columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px 20px;
+    align-content: start;
+}
+
+#rank-help-modal .rank-help-panel {
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+}
+
+#rank-help-modal .rank-help-panel--span {
+    grid-column: 1 / -1;
+}
+
+#rank-help-modal .rank-help-panel-title {
+    margin: 0 0 6px 0;
+    padding: 0 0 4px;
+    border-bottom: 2px solid #0d6efd;
+    font-size: 13px;
+    font-weight: 700;
+    color: #374151;
+    line-height: 1.3;
+}
+
+#rank-help-modal .rank-help-lead {
+    margin: 0 0 8px 0;
+    font-size: 12px;
+    line-height: 1.42;
+    color: #6b7280;
+}
+
+#rank-help-modal .rank-help-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+#rank-help-modal .rank-help-rows--inline {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px 10px;
+}
+
+/* 全屏计时器：四种方式 2×2（键 + 短说明） */
+#rank-help-modal .rank-help-timer-modes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 16px;
+    margin: 0;
+    padding: 0;
+}
+
+#rank-help-modal .rank-help-mode-cell {
+    display: grid;
+    grid-template-columns: minmax(2.25rem, auto) minmax(0, 1fr);
+    gap: 6px 10px;
+    align-items: start;
+    min-width: 0;
+}
+
+#rank-help-modal .rank-help-row {
+    display: grid;
+    grid-template-columns: minmax(4.75rem, auto) minmax(0, 1fr);
+    gap: 8px 10px;
+    align-items: start;
+    min-width: 0;
+}
+
+#rank-help-modal .rank-help-row--narrow {
+    grid-template-columns: minmax(2.75rem, auto) minmax(0, 1fr);
+}
+
+#rank-help-modal .rank-help-keys {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: flex-start;
+}
+
+#rank-help-modal .rank-help-keys code {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 3px;
+    background: #f1f5f9;
+    color: #0d6efd;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.35;
+    white-space: nowrap;
+}
+
+#rank-help-modal .rank-help-desc {
+    font-size: 13px;
+    line-height: 1.42;
+    color: #374151;
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+#rank-help-modal .rank-help-desc .cn-text,
+#rank-help-modal .rank-help-desc .en-text {
+    display: block;
+}
+
+#rank-help-modal .rank-help-desc .en-text {
+    margin-top: 2px;
+    font-size: 12px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+@media (max-width: 620px) {
+    #rank-help-modal .modal-content.rank-help-modal-content {
+        width: min(100vw - 24px, 96vw);
+        min-width: 0;
+    }
+
+    #rank-help-modal .rank-help-columns {
+        grid-template-columns: 1fr;
+    }
+
+    #rank-help-modal .rank-help-rows--inline {
+        grid-template-columns: 1fr;
+    }
+}
+
+.countdown-overlay {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: var(--rank-padding-lg);
+    border-radius: var(--rank-border-radius);
+    font-size: var(--rank-font-size-2xl);
+    font-weight: 400;
+    font-variant-numeric: tabular-nums lining-nums;
+    letter-spacing: 0.06em;
+    font-family: 'CsgLiveBebasNeue', 'CsgRank Latin', system-ui, sans-serif;
+    z-index: 101;
+    min-width: 120px;
+    text-align: center;
+}
+
+/* 现代浏览器超高性能动画系统 */
+.rank-row.rank-animating {
+    /* 移除transition，由JavaScript控制动画 */
+    will-change: transform;
+    z-index: 10;
+    /* 确保硬件加速 */
+    transform: translate3d(0, 0, 0);
+    /* 优化渲染性能 */
+    backface-visibility: hidden;
+    perspective: 1000px;
+    /* 减少重绘 */
+    contain: layout style paint;
+    
+    /* 现代浏览器优化 */
+    transform-style: preserve-3d;
+    isolation: isolate;
+    
+    /* GPU加速优化 */
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    
+    /* 减少重绘 */
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+}
+
+.rank-row.rank-moving-up {
+    transform: translateY(-100%);
+    opacity: 0.8;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    z-index: 20;
+}
+
+.rank-row.rank-moving-down {
+    transform: translateY(100%);
+    opacity: 0.8;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    z-index: 20;
+}
+
+/* 排名变化时的视觉反馈 */
+.rank-row.rank-animating .rank-number {
+    transition: all 0.3s ease;
+    transform: scale(1.1);
+    color: #3b82f6;
+    font-weight: 900;
+}
+
+.rank-row.rank-animating .team-name {
+    transition: all 0.3s ease;
+    color: #1f2937;
+    font-weight: 600;
+}
+
+/* 排名上升的绿色高亮 */
+.rank-row.rank-moving-up {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    /* border-left: 4px solid #10b981; */
+}
+
+.rank-row.rank-moving-up .rank-number {
+    color: #059669;
+}
+
+/* 排名下降的橙色高亮 */
+.rank-row.rank-moving-down {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    /* border-left: 4px solid #f59e0b; */
+}
+
+.rank-row.rank-moving-down .rank-number {
+    color: #d97706;
+}
+
+/* 动画完成后的清理效果 */
+.rank-row.rank-animating:not(.rank-moving-up):not(.rank-moving-down) {
+    transition: all 0.3s ease;
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 数据更新时的动画效果 */
+/* rank-updating 类已移除transform和scale效果，只用于标记状态 */
+
+/* 排名变化时的特殊效果 */
+.rank-row.rank-changed {
+    animation: rankChangePulse 0.5s ease-in-out;
+}
+
+.rank-row.rank-improved {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    /* border-left: 4px solid #10b981; */
+    animation: rankImproveGlow 0.5s ease-in-out;
+}
+
+.rank-row.rank-declined {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    /* border-left: 4px solid #f59e0b; */
+    animation: rankDeclineGlow 0.5s ease-in-out;
+}
+
+/* 排名数字变化动画 */
+.rank-row.rank-changed .rank-number {
+    transition: all 0.3s ease;
+    animation: rankNumberBounce 0.5s ease-in-out;
+}
+
+/* 关键帧动画 */
+@keyframes rankChangePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes rankImproveGlow {
+    0% { box-shadow: 0 0 0 rgba(16, 185, 129, 0.4); }
+    50% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.6); }
+    100% { box-shadow: 0 0 0 rgba(16, 185, 129, 0.4); }
+}
+
+@keyframes rankDeclineGlow {
+    0% { box-shadow: 0 0 0 rgba(245, 158, 11, 0.4); }
+    50% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.6); }
+    100% { box-shadow: 0 0 0 rgba(245, 158, 11, 0.4); }
+}
+
+@keyframes rankNumberBounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+/* 中英双语样式 */
+.rank-system en-text {
+    display: block;
+    font-size: 0.8em;
+    color: #666;
+    margin-top: 2px;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+/* 确保所有包含双语文本的元素不换行 */
+.rank-system h2, 
+.rank-system h3, 
+.rank-system h4, 
+.rank-system h5, 
+.rank-system h6,
+.rank-system .modal-header h3,
+.rank-system .award-label,
+.rank-system .rank-col,
+.rank-system .control-btn,
+.rank-system .custom-select-btn {
+    white-space: nowrap;
+}
+
+/* 标题特殊处理，允许折行 */
+#rank-page-title {
+    white-space: normal !important;
+    word-break: break-all !important;
+}
+
+/* 容器查询：当容器宽度较小时，保持左对齐 */
+@container (max-width: 400px) {
+    .title-section {
+        justify-content: flex-start;
+    }
+    
+    #rank-page-title {
+        text-align: left;
+    }
+}
+
+
+
+/* 自定义Tooltip样式 */
+.rank-tooltip-container {
+    position: relative;
+    display: inline-block;
+}
+
+.rank-tooltip {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.95);
+    color: white;
+    padding: 10px 14px;
+    border-radius: var(--rank-border-radius);
+    font-size: var(--rank-font-size-md);
+    line-height: 1.5;
+    white-space: pre-line;
+    z-index: calc(var(--rank-z-index-base) + 9); /* 确保在全屏模式下显示 */
+    max-width: 320px;
+    word-wrap: break-word;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.rank-tooltip-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.rank-tooltip-cn {
+    font-size: var(--rank-font-size-md);
+    font-weight: 600;
+    color: var(--rank-text-white);
+    line-height: 1.4;
+    white-space: pre-line;
+}
+
+.rank-tooltip-en {
+    font-size: 13px;
+    font-weight: 400;
+    color: #e0e0e0;
+    line-height: 1.3;
+    font-style: italic;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 5px;
+    white-space: pre-line;
+}
+
+.rank-tooltip.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Tooltip箭头 */
+.rank-tooltip::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+}
+
+.rank-tooltip.rank-tooltip-top::before {
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top-color: rgba(0, 0, 0, 0.9);
+}
+
+.rank-tooltip.rank-tooltip-bottom::before {
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom-color: rgba(0, 0, 0, 0.9);
+}
+
+.rank-tooltip.rank-tooltip-left::before {
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left-color: rgba(0, 0, 0, 0.9);
+}
+
+.rank-tooltip.rank-tooltip-right::before {
+    left: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-right-color: rgba(0, 0, 0, 0.9);
+}
+
+.rank-system.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: var(--rank-z-index-base);
+    overflow: auto;
+    background: white; /* 确保背景色 */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/**
+ * 调试模式（rdbg_nofs=1 / RankRollDebug.skipFullscreen=true）下，rank_roll.js 不会真的
+ * 进浏览器全屏，但仍会给 #rank-container 加 .fullscreen，让全屏视觉/事件路径生效。
+ * 此时 .rank-system 默认 position:fixed 会把整张榜单"飞"到视口左上角覆盖整页，
+ * 导致 normal-flow 的 .roll-controls-section（z-index 抬高用于让下拉浮在表格上面）
+ * 漂浮在视口中部遮挡 rank 数据。
+ *
+ * 退化策略：保留 .fullscreen 的字号 / 内边距 / 滚动条等子选择器样式，
+ * 但取消 .rank-system 自身的 fixed 定位，回到 normal flow，让它继续排在
+ * .roll-controls-section 之下、按页面正常宽度展示，便于在普通浏览器里调试。
+ */
+.rank-system.fullscreen.fullscreen-mock {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: auto;
+    height: auto;
+    z-index: auto;
+}
+
+/* 滚榜全屏字号：不由站点 CSS 对内容区做自动 zoom；投屏字号由用户用浏览器整页缩放自行控制。 */
+
+.rank-system.fullscreen .rank-content-wrapper {
+    width: max-content;
+    /* 居中 */
+    margin: 0 auto;
+}
+
+.rank-system.fullscreen .rank-container {
+    margin-top: 0; /* 移除margin-top，让容器紧贴header */
+    height: auto; /* 必须设置，否则内容无法纵向滚动 */
+    overflow: visible;
+    background: white; /* 确保容器有背景色 */
+}
+
+/* 全屏模式下的tooltip样式 */
+.rank-system.fullscreen .rank-tooltip {
+    z-index: calc(var(--rank-z-index-base) + 10); /* 确保在全屏模式下显示 */
+    position: fixed; /* 使用fixed定位，相对于视口 */
+}
+
+/* 全屏模式下的modal样式 */
+.rank-system.fullscreen .modal-overlay {
+    z-index: 1070; /* 高于 Bootstrap 5 modal (1050)，确保在全屏模式下显示 */
+    position: fixed; /* 使用fixed定位，相对于视口 */
+}
+
+/* 全屏模式下增大校名和队名字号 */
+.rank-system.fullscreen .school-name {
+    font-size: 32px; /* 从 22px 增大到 29px */
+}
+
+.rank-system.fullscreen .team-name-cn {
+    font-size: 24px; /* 从 18px 增大到 24px */
+}
+
+/* 全屏时校名/队名字号变大，左右两栏高度差更明显；与 flex-start 组合会使左侧教练/选手单行视觉上贴顶 */
+.rank-system.fullscreen .top-section {
+    align-items: center;
+}
+
+.rank-system ::-webkit-scrollbar {
+    width: 8px;
+}
+
+.rank-system ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.rank-system ::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: var(--rank-border-radius-small);
+}
+
+.rank-system ::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+.rank-system.fullscreen ::-webkit-scrollbar {
+    display: none;
+}
+
+/* 时间进度条样式 */
+/* ============================================
+   集成控制区和时间轴的样式
+   ============================================ */
+
+/* 合并的控制区和时间轴容器 */
+.controls-time-section {
+    width: 100%;
+    padding: var(--rank-padding-sm) var(--rank-padding-lg);
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    border-top: 1px solid #e9ecef;
+}
+
+.controls-time-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 100%;
+    position: relative;
+    /* 确保「更多选项」按钮及下拉菜单显示在 sticky 的 rank-header-row 之上，避免被遮挡 */
+    z-index: calc(var(--rank-z-index-base) + 10);
+}
+
+/* 当前排名模式指示：与工具栏同一行，中英上下结构 */
+.rank-mode-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #495057;
+    flex-shrink: 0;
+    padding: 4px 0;
+    line-height: 1.25;
+}
+.rank-mode-indicator .rank-mode-cn {
+    display: block;
+    white-space: nowrap;
+}
+.rank-mode-indicator en-text {
+    display: block;
+    font-size: 0.7em;
+    font-weight: 500;
+    color: #6c757d;
+    margin-top: 2px;
+    white-space: nowrap;
+}
+.bilingual-en .rank-mode-indicator .rank-mode-cn {
+    display: none;
+}
+.bilingual-en .rank-mode-indicator en-text {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #495057;
+    margin-top: 0;
+}
+
+/* ============================================
+   时间轴区域样式（左侧，集成设计）
+   ============================================ */
+
+.time-progress-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+    padding: 8px 12px;
+    background: var(--rank-bg-primary);
+    border: 1px solid var(--rank-line-faint);
+    border-radius: var(--rank-radius-block);
+    box-shadow: var(--rank-shadow-surface);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.time-progress-wrapper:hover {
+    box-shadow: var(--rank-shadow-float);
+    border-color: #adb5bd;
+}
+
+/* 时间显示组（垂直布局） */
+.time-display-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1px;
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 0 6px;
+    width: 90px; /* 固定宽度，防止因时间文本长度变化导致进度条位置抖动 */
+}
+
+.time-current {
+    color: #007bff; /* Bootstrap 5 primary - 正常模式 */
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.3;
+    text-shadow: 0 1px 2px rgba(0, 123, 255, 0.1);
+    letter-spacing: 0.3px;
+    transition: color 0.2s ease-in-out; /* 平滑过渡 */
+}
+
+/* 回放模式时间显示样式 */
+.time-current.time-replay-mode {
+    color: #ffc107; /* Bootstrap 5 warning - 回放模式，明显区分 */
+    text-shadow: 0 1px 2px rgba(255, 193, 7, 0.2);
+}
+
+.time-total {
+    color: #6c757d;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 1.3;
+    opacity: 0.75;
+    letter-spacing: 0.2px;
+}
+
+/* 进度条容器 */
+.time-progress-bar-container {
+    flex: 1;
+    position: relative;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    min-width: 120px;
+    background: #e9ecef; /* Bootstrap 5 gray-200 */
+    border-radius: 0.375rem; /* 6px */
+    padding: 0.25rem; /* 4px */
+}
+
+.time-progress-slider {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border-radius: 0.375rem;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+    z-index: 3;
+    margin: 0;
+}
+
+/* 滑块 - 圆角方形，Bootstrap 5 风格 */
+/* 进度条容器高度24px，滑块高度32px，需要垂直居中 */
+/* 容器24px - 滑块32px = -8px，所以需要向上偏移4px来居中 */
+.time-progress-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 40px;
+    background: #0d6efd; /* Bootstrap 5 primary */
+    border: 2px solid white;
+    border-radius: 0.375rem; /* 圆角方形 */
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* 简单阴影 */
+    transition: background-color 0.15s ease-in-out;
+    margin-top: -12px; /* 垂直居中：容器24px - 滑块32px = -8px，除以2 = -4px */
+}
+
+.time-progress-slider::-webkit-slider-thumb:hover {
+    background: #0b5ed7; /* Bootstrap 5 primary hover */
+}
+
+.time-progress-slider::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border-radius: 0.375rem;
+}
+
+.time-progress-slider::-moz-range-thumb {
+    width: 18px;
+    height: 32px; /* 与 webkit 版本保持一致 */
+    background: #0d6efd; /* Bootstrap 5 primary */
+    border: 2px solid white;
+    border-radius: 0.375rem; /* 圆角方形 */
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.15s ease-in-out;
+    /* Firefox 的滑块垂直居中通过 track 高度自动处理，但如果有问题可以添加 margin-top */
+}
+
+.time-progress-slider::-moz-range-thumb:hover {
+    background: #0b5ed7; /* Bootstrap 5 primary hover */
+}
+
+.time-progress-slider::-moz-range-track {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border-radius: 0.375rem;
+}
+
+/* 进度条背景（已过时间区域）- 纯色 */
+.time-progress-track {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 100%;
+    background: #0d6efd; /* Bootstrap 5 primary - 纯色 */
+    border-radius: 0.375rem;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 1;
+    transition: width 0.3s ease-out;
+}
+
+/* 进度条轮廓（未来时间区域） */
+.time-progress-track-outline {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #dee2e6; /* Bootstrap 5 border color */
+    border-radius: 0.375rem;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 0;
+    background: transparent;
+}
+
+/* 重置按钮（图标样式，集成设计） */
+.time-reset-btn {
+    padding: 8px;
+    background: transparent;
+    color: #6c757d;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.time-reset-btn i {
+    font-size: 16px;
+}
+
+.time-reset-btn:hover {
+    background: #e9ecef;
+    color: #007bff;
+    border-color: #007bff;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
+}
+
+.time-reset-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 1px 2px rgba(0, 123, 255, 0.2);
+}
+
+/* ============================================
+   控制按钮区域样式（右侧）
+   ============================================ */
+
+.controls-toolbar {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background: white;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    flex-shrink: 0;
+}
+
+.toolbar-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.toolbar-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+#group-filter {
+    min-width: 170px;
+    height: 34px;
+    padding: 4px 8px;
+}
+
+/* 折叠按钮（默认隐藏，窄屏时显示） */
+.controls-toggle-btn {
+    display: none;
+    padding: 10px;
+    background: white;
+    color: #495057;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.controls-toggle-btn:hover {
+    background: #e9ecef;
+    border-color: #adb5bd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.controls-toggle-btn i {
+    font-size: 20px;
+}
+
+/* 下拉菜单（窄屏时使用） */
+.controls-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 12px;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 280px;
+    /* 高于 rank-header-row，避免被 sticky 表头遮挡 */
+    z-index: calc(var(--rank-z-index-base) + 10);
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.controls-dropdown.show {
+    display: flex;
+}
+
+.controls-dropdown .toolbar-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+}
+
+.controls-dropdown .toolbar-item {
+    width: 100%;
+}
+
+.controls-dropdown .control-btn,
+.controls-dropdown .custom-select-btn {
+    width: 100%;
+    justify-content: flex-start;
+}
+
+/* 下拉菜单中带文字的按钮样式 */
+.controls-dropdown .control-btn.with-text {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    min-height: 44px;
+}
+
+.controls-dropdown .control-btn.with-text i,
+.controls-dropdown .control-btn.with-text .rank-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    width: 20px;
+    text-align: center;
+}
+
+.controls-dropdown .control-btn.with-text .button-text {
+    flex: 1;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #495057;
+    line-height: 1.4;
+}
+
+.controls-dropdown .control-btn.with-text .button-text en-text {
+    display: block;
+    font-size: 12px;
+    color: #6c757d;
+    font-weight: 400;
+    margin-top: 2px;
+    opacity: 0.8;
+}
+
+/* 滚榜按钮专用双语文本样式（上下结构，英文字号调小） */
+.roll-button-bilingual-stacked {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.2;
+    gap: 2px;
+}
+
+.roll-button-text-cn {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.roll-button-text-en {
+    font-size: 0.75em;
+    font-weight: 400;
+    opacity: 0.8;
+    color: inherit;
+}
+
+/* 工具栏按钮的双语文本（仅在hover或active时显示为tooltip） */
+.control-btn {
+    position: relative;
+}
+
+.control-btn .button-text-bilingual {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    padding: 4px 8px;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    border-radius: 4px;
+    font-size: 12px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: var(--rank-z-index-base);
+    display: none; /* 默认隐藏，hover时显示 */
+}
+
+.control-btn:hover .button-text-bilingual,
+.control-btn:focus .button-text-bilingual {
+    opacity: 1;
+    display: block;
+}
+
+.control-btn .button-text-bilingual .roll-button-bilingual-stacked {
+    align-items: center;
+    gap: 1px;
+}
+
+.control-btn .button-text-bilingual .roll-button-text-cn {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.control-btn .button-text-bilingual .roll-button-text-en {
+    font-size: 9px;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+/* 下拉菜单中的滚榜按钮直接显示双语文本上下结构 */
+.controls-dropdown .control-btn.with-text .button-text .roll-button-bilingual-stacked {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.3;
+    gap: 2px;
+}
+
+.controls-dropdown .control-btn.with-text .button-text .roll-button-text-cn {
+    font-size: 14px;
+    font-weight: 500;
+    color: #495057;
+}
+
+.controls-dropdown .control-btn.with-text .button-text .roll-button-text-en {
+    font-size: 11px;
+    font-weight: 400;
+    color: #6c757d;
+    opacity: 0.8;
+}
+
+/* 下拉菜单中自定义选择按钮也显示文字 */
+.controls-dropdown .custom-select-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    min-height: 44px;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.controls-dropdown .custom-select-btn.icon-only {
+    width: 100%;
+    min-width: auto;
+}
+
+.controls-dropdown .custom-select-btn i,
+.controls-dropdown .custom-select-btn .rank-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    width: 20px;
+    text-align: center;
+}
+
+.controls-dropdown .custom-select-btn .option-text {
+    flex: 1;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #495057;
+    line-height: 1.4;
+}
+
+/* 与 .control-btn.with-text 并列时，icon-only 皮肤/模式切换也显示双语文案 */
+.controls-dropdown .custom-select-btn.icon-only .option-text {
+    display: inline-block;
+}
+
+.controls-dropdown .custom-select-btn .option-text en-text {
+    display: block;
+    font-size: 12px;
+    color: #6c757d;
+    font-weight: 400;
+    margin-top: 2px;
+    opacity: 0.8;
+}
+
+/* ============================================
+   响应式设计
+   ============================================ */
+
+/* 窄屏：折叠所有按钮 */
+@media (max-width: 1024px) {
+    .controls-toolbar {
+        display: none;
+    }
+    
+    .controls-toggle-btn {
+        display: flex;
+    }
+    
+    .time-progress-wrapper {
+        flex: 1;
+    }
+}
+
+/* 超窄屏：时间轴也调整 */
+@media (max-width: 768px) {
+    .controls-time-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+    
+    .time-progress-wrapper {
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px;
+    }
+    
+    .time-display-group {
+        width: 80px; /* 保持固定宽度，即使在移动端 */
+        align-items: center;
+    }
+    
+    .time-progress-bar-container {
+        width: 100%;
+        min-width: 100px;
+    }
+    
+    .time-reset-btn {
+        align-self: center;
+    }
+    
+    .controls-toggle-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .controls-dropdown {
+        left: 0;
+        right: 0;
+        min-width: auto;
+        position: fixed;
+        top: auto;
+        bottom: 20px;
+        max-height: 60vh;
+    }
+}
+
+/* 保留旧的类名以兼容（如果需要） */
+.time-progress-section {
+    display: none;
+}
+
+/* time-progress-container 已移除，兼容旧代码 */
+
+/* 学校排名模式 - 队伍信息合计样式 */
+.school-summary .team-summary-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    padding: 3px 10px;
+}
+
+/* 中文信息合计样式 - 比队名稍小但依然醒目 */
+.school-summary .summary-text-cn {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+    white-space: nowrap;
+    position: relative;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    min-height: 20px;
+    line-height: 1.2;
+}
+
+/* 英文信息合计样式 - 与英文队名保持一致 */
+.school-summary .summary-text-en {
+    font-size: var(--rank-font-size-md);
+    font-weight: 500;
+    color: #6b7280;
+    font-style: italic;
+    line-height: 1;
+    white-space: nowrap;
+    position: relative;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    min-height: 16px;
+}
+
+/* 学校榜印章：挂在 .team-info-section 内（与 .team-info 同级），仅覆盖校名+队名区右缘；
+ * 垂直以该区为参照略上移，避免相对整条 top-section 居中显得偏下；父级 overflow:hidden 裁切旋转溢出，不压题格。 */
+.team-info-section > .team-watermark {
+    position: absolute;
+    left: auto;
+    right: 0;
+    top: 50%;
+    transform: translateY(calc(-50% - 4px)) rotate(-15deg);
+    transform-origin: right center;
+    text-align: center;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 4;
+    /* 确保水印不被渐隐遮挡 */
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.8) 20%, rgba(255,255,255,0.9) 100%);
+    padding: 3px 8px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    /* 印章边框 */
+    border: 2px solid #dc2626;
+    border-style: solid;
+    /* 固定宽度，不受父容器影响 */
+    width: 60px;
+    min-width: 60px;
+    max-width: 60px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.watermark-text-cn {
+    font-size: 9px;
+    font-weight: 700;
+    color: #dc2626;
+    line-height: 1;
+    margin-bottom: 1px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    font-family: 'Microsoft YaHei', 'SimHei', sans-serif;
+}
+
+/* 滚榜控制按钮区
+ * 须高于紧随的 .rank-system（见下条 base+1），否则皮肤等下拉会被 rank-grid 行（z-index 5/99）盖住。
+ * 分界线勿画在本块的 border-bottom：本块 z-index 更高时，底边会叠在表头气球 .problem-header-color-bg
+ *（top:-24px 上凸）之上；分隔线改画在 .roll-controls-section + .rank-system 的 border-top。 */
+.roll-controls-section {
+    padding: 12px 0;
+    position: relative;
+    overflow: visible;
+    /* 整个工具条区域必须高于兄弟节点 .rank-system（z-index base+1）所在的 stacking
+     * context，否则工具条里的"打星视图 / 赛事归属 / 皮肤"下拉会被下方的 .rank-grid
+     * 表格行（.rank-row.roll-judging 自带 z-index:5；动画中的行还会被 inline 设
+     * z-index:99）盖住。
+     * 取 base+13 让本区域整体浮在表格上面，区内各下拉的 z-index 在它的 stacking
+     * context 里继续生效。 */
+    z-index: calc(var(--rank-z-index-base) + 13);
+}
+
+/* 滚榜页 DOM：… → .roll-controls-section → .contest-rank-page-shell__body → #rank-container.rank-system
+ * （无 __body 时仍为 .roll-controls-section + .rank-system）
+ * 榜单根 z-index 低于工具条，便于下拉浮在表格上；表头气球叠在「分界线」之上靠 border-top 画在
+ * 本层（见上条注释），而非画在高 z-index 的工具条底边。 */
+.roll-controls-section + .rank-system,
+.roll-controls-section + .contest-rank-page-shell__body > .rank-system {
+    border-top: 1px solid #dee2e6;
+    z-index: calc(var(--rank-z-index-base) + 1);
+}
+
+/*
+ * 滚榜工具条为 #rank-container 的前序兄弟且 z-index 更高时，挂在容器内的 .modal-overlay
+ *（z-index 1030）仍会被压在下面——子树无法越过兄弟 stacking。
+ * rank_roll.js 在筛选/帮助/视口缩放提示 modal 打开时加 .rank-modal-stacks-above-toolbar，把整个 .rank-system
+ * 抬到 .roll-controls-section（base+13）之上。
+ */
+.rank-system.rank-modal-stacks-above-toolbar {
+    z-index: calc(var(--rank-z-index-base) + 30);
+}
+
+/* 调试全屏 mock 对 .rank-system 使用 z-index:auto，须一并覆盖，否则 modal 仍可能被工具条挡住 */
+.rank-system.fullscreen.fullscreen-mock.rank-modal-stacks-above-toolbar {
+    z-index: calc(var(--rank-z-index-base) + 30);
+}
+
+/* dark_stage 皮肤：见 static/csgoj/contest/rank_skin_dark_stage.css（由页面模板在 rank.css 之后引入） */
+
+.roll-controls-toolbar {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+
+.roll-group-filter-label-stack {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    line-height: 1.15;
+    gap: 1px;
+}
+
+.roll-group-filter-label-stack .roll-button-text-cn {
+    font-size: 12px;
+    font-weight: 600;
+    color: #334155;
+}
+
+.roll-group-filter-label-stack .roll-button-text-en {
+    font-size: 10px;
+    font-weight: 500;
+    color: #64748b;
+}
+
+.roll-toolbar-skin-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+    z-index: calc(var(--rank-z-index-base) + 11);
+}
+
+/* 「筛选 Filter」按钮：比普通工具栏按钮更宽，能放下"摘要文字"（如"校内 · 不含打星"） */
+.roll-filter-btn {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    min-height: 38px;
+    padding: 6px 12px;
+    border-radius: var(--rank-radius-block);
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.roll-filter-btn:hover {
+    background: #eef5ff;
+    border-color: #94a3b8;
+    color: #1d4f86;
+}
+
+.roll-filter-btn .roll-filter-btn-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.15;
+}
+
+.roll-filter-btn .roll-filter-btn-summary {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: #e2e8f0;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 600;
+    max-width: 240px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.roll-filter-btn .roll-filter-btn-summary:empty {
+    display: none;
+}
+
+/* 滚榜专用筛选 modal：单列布局（只有打星视图 + 赛事归属，没有学校/队伍筛选） */
+.roll-filter-top-controls-single {
+    grid-template-columns: 1fr !important;
+}
+
+.roll-controls-section .custom-select-dropdown {
+    z-index: calc(var(--rank-z-index-base) + 12);
+}
+
+.roll-toolbar-skin-item .custom-select-btn {
+    min-height: 34px;
+    padding: 4px 10px;
+    border-radius: var(--rank-radius-block);
+    border: 1px solid #ced4da;
+    background: #fff;
+    color: #334155;
+}
+
+.roll-toolbar-skin-item .custom-select-btn:hover {
+    border-color: #94a3b8;
+    background: #f8fafc;
+}
+
+/* 滚榜工具条：皮肤与榜单页 #rank-skin-btn 一致，icon-only（.option-text 由全局 .custom-select-btn.icon-only 隐藏） */
+.roll-toolbar-skin-item .custom-select-btn.icon-only {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    min-height: 40px;
+    padding: var(--rank-padding-sm);
+    justify-content: center;
+    gap: 0;
+}
+
+#roll-group-filter {
+    min-width: 180px;
+    height: 34px;
+}
+
+/* 滚榜控制按钮基础样式（不依赖 Bootstrap） */
+.roll-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    transition: all 0.15s ease-in-out;
+    background-color: #fff;
+    color: #333;
+}
+
+.roll-btn:not(:disabled):hover {
+    opacity: 0.9;
+}
+
+.roll-btn:not(:disabled):active {
+    opacity: 0.8;
+}
+
+.roll-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* 主按钮（启动滚榜） */
+.roll-btn-primary {
+    background-color: #0d6efd;
+    color: #fff;
+    border-color: #0d6efd;
+}
+
+.roll-btn-primary:not(:disabled):hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+.roll-btn-primary:not(:disabled):active {
+    background-color: #0a58ca;
+    border-color: #0a53be;
+}
+
+/* 次要按钮（重置滚榜） */
+.roll-btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+    border-color: #6c757d;
+}
+
+.roll-btn-secondary:not(:disabled):hover {
+    background-color: #5c636a;
+    border-color: #565e64;
+}
+
+.roll-btn-secondary:not(:disabled):active {
+    background-color: #565e64;
+    border-color: #51585e;
+}
+
+/* 轮廓信息按钮（帮助） */
+.roll-btn-outline-info {
+    background-color: transparent;
+    color: #0dcaf0;
+    border-color: #0dcaf0;
+}
+
+.roll-btn-outline-info:not(:disabled):hover {
+    background-color: #0dcaf0;
+    color: #000;
+}
+
+.roll-btn-outline-info:not(:disabled):active {
+    background-color: #0aa2c0;
+    border-color: #0aa2c0;
+    color: #000;
+}
+
+/* 轮廓次要按钮（导出离线滚榜） */
+.roll-btn-outline-secondary {
+    background-color: transparent;
+    color: #6c757d;
+    border-color: #6c757d;
+}
+
+.roll-btn-outline-secondary:not(:disabled):hover {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.roll-btn-outline-secondary:not(:disabled):active {
+    background-color: #5c636a;
+    border-color: #565e64;
+    color: #fff;
+}
+
+/* 滚榜控制按钮中的图标样式 */
+.roll-btn i {
+    font-size: 1em;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 滚榜控制按钮中的双语文本样式 */
+.roll-btn .roll-button-bilingual-stacked {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.2;
+    gap: 2px;
+}
+
+.roll-btn .roll-button-text-cn {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.roll-btn .roll-button-text-en {
+    font-size: 0.75em;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+/* 滚榜控制区与榜单工具栏风格对齐（优先复用 control-btn / controls-toolbar） */
+.roll-controls-section-aligned {
+    padding: 10px 0 12px;
+    margin-bottom: 2px;
+    position: relative;
+    overflow: visible;
+}
+
+.roll-controls-section-aligned .roll-controls-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.roll-group-filter-item {
+    min-width: 320px;
+    max-width: 520px;
+    flex: 1 1 360px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 10px;
+    border: 1px solid #dbe1e8;
+    border-radius: var(--rank-radius-block);
+    background: var(--rank-bg-primary);
+    box-shadow: var(--rank-shadow-surface);
+}
+
+.roll-group-filter-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #475569;
+    line-height: 1.2;
+    white-space: nowrap;
+    flex: 0 0 auto;
+}
+
+.roll-group-filter-label en-text {
+    display: inline;
+    font-size: 10px;
+    color: #64748b;
+    margin-left: 4px;
+    font-weight: 500;
+}
+
+#roll-group-multiselect {
+    flex: 1 1 auto;
+    min-width: 180px;
+}
+
+#roll-group-multiselect .csg-ms-toggle {
+    min-height: 36px;
+    border-radius: var(--rank-radius-block);
+    border-color: #cfd8e3;
+    padding: 6px 9px;
+    box-shadow: none;
+}
+
+#roll-group-multiselect .csg-ms-toggle:hover {
+    border-color: #94a3b8;
+}
+
+#roll-group-multiselect .csg-ms-summary {
+    gap: 5px;
+}
+
+#roll-group-multiselect .csg-ms-chip {
+    max-width: 160px;
+    background: #eef6ff;
+    border-color: #d6e8ff;
+    color: #1e3a8a;
+}
+
+#roll-group-multiselect .csg-ms-count {
+    color: #334155;
+}
+
+#roll-group-multiselect .csg-ms-placeholder {
+    color: #64748b;
+    font-size: 12px;
+}
+
+#roll-group-multiselect .csg-ms-dropdown {
+    z-index: calc(var(--rank-z-index-base) + 12);
+}
+
+.roll-control-btn.with-text {
+    min-height: 38px;
+    padding: 6px 12px;
+    border-radius: var(--rank-radius-block);
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+}
+
+.roll-control-btn.with-text .button-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    line-height: 1.15;
+}
+
+.roll-control-btn.with-text .button-text .roll-button-bilingual-stacked {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1px;
+}
+
+.roll-control-btn.with-text .roll-button-text-cn {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.roll-control-btn.with-text .roll-button-text-en {
+    font-size: 10px;
+    font-weight: 500;
+    color: #6c757d;
+    opacity: 0.95;
+}
+
+.roll-control-btn-primary .roll-button-text-en {
+    color: inherit;
+    opacity: 0.88;
+}
+
+.roll-control-btn.with-text i {
+    font-size: 16px;
+    flex-shrink: 0;
+    align-self: center;
+}
+
+.roll-control-btn-primary {
+    color: #0d6efd;
+    border-color: rgba(13, 110, 253, 0.35);
+    background: rgba(13, 110, 253, 0.09);
+}
+
+.roll-control-btn-secondary {
+    color: #6c757d;
+    border-color: #ced4da;
+    background: #fff;
+}
+
+.roll-control-btn-outline-info {
+    color: #0f766e;
+    border-color: rgba(15, 118, 110, 0.35);
+    background: rgba(15, 118, 110, 0.06);
+}
+
+.roll-control-btn-outline-secondary {
+    color: #495057;
+    border-color: #ced4da;
+    background: #fff;
+}
+
+.roll-control-btn:not(:disabled):hover {
+    box-shadow: var(--rank-shadow-float);
+}
+
+.roll-control-btn:disabled {
+    opacity: 0.55;
+}
+
+/* 滚榜大屏行布局：左侧信息列 + 独立校徽列 + 队伍信息 + 题目列 */
+/* ========================================================================
+ * 滚榜（roll）模式 — 表头 / 数据行 严格对齐方案
+ * ----------------------------------------------------------------------
+ * 关键约束：
+ *  1. 表头 .rank-header-row 与数据行 .rank-row-roll 共用同一份 grid 模板
+ *     (--rank-roll-grid-columns) 与水平 padding (--rank-roll-pad-x)，
+ *     由变量统一管理，杜绝两侧偏移。
+ *  2. .rank-row 父容器在普通模式下有 padding: 0 16px，会让数据行整体右移；
+ *     滚榜模式下显式置 0，让 .rank-main-content 完全决定水平 padding。
+ *  3. 成绩列：名次>题数>罚时 主次明确；
+ *      - 名次跨左右两子列（顶部最显眼，大字号）
+ *      - 题数 / 罚时 横排，子列宽度按内容峰值预算
+ *        （罚时最多 5 位数 + 标点，子列加宽以保证完整显示）
+ *  4. 表头文字（排名/题数/罚时/标志）全部直接由 rank.js CreateHeaderRowBase 输出
+ *     真实 DOM，双语字号天然复用 .header-cell / en-text 基础规则，无伪元素 hack。
+ * ======================================================================== */
+.rank-system[data-rank-mode="roll"] {
+    /* meta 列拆为左右两个子格：上方 rank 跨两子格，下方 solve|penalty 各一格
+     * 题数最多 2 位（13 题），罚时最多约 5 位（理论上限）；
+     * 子格宽度按峰值预算，左右差距尽量小以保证视觉对称。 */
+    --rank-roll-meta-solve: 42px;
+    --rank-roll-meta-penalty: 54px;
+    --rank-roll-logo-size: 72px;
+    --rank-roll-col-gap: 6px;
+    --rank-roll-row-gap: 4px;
+    --rank-roll-row-h: 34px;
+    --rank-roll-pad-x: 16px;
+    --rank-roll-pad-y: 6px;
+    /* 4 列：meta-left(solve) | meta-right(penalty) | logo | content(队伍信息+题目) */
+    --rank-roll-grid-columns:
+        var(--rank-roll-meta-solve)
+        var(--rank-roll-meta-penalty)
+        var(--rank-roll-logo-size)
+        max-content;
+    --rank-roll-grid-rows: var(--rank-roll-row-h) var(--rank-roll-row-h);
+}
+
+.rank-system[data-rank-mode="roll"] .rank-content-wrapper {
+    width: max-content;
+    /* 与 .rank-system 一致：至少铺满父级，避免 width:max-content 在表未撑开时过窄导致 loading 遮罩只盖住左侧一条 */
+    min-width: 100%;
+    margin: 0 auto;
+}
+
+/*
+ * 滚榜 + 浏览器全屏：须覆盖上一段的 min-width:100%。
+ * 否则 wrapper 恒等于视口宽，.rank-system.fullscreen .rank-content-wrapper 的 margin:auto 无法把 max-content 宽的表水平居中。
+ */
+.rank-system.fullscreen[data-rank-mode="roll"] .rank-content-wrapper {
+    min-width: 0;
+}
+
+/* 取消外层 .rank-row 的水平 16px padding（避免与表头错位 16px） */
+.rank-system[data-rank-mode="roll"] .rank-row-roll {
+    min-height: 0;
+    padding-left: 0;
+    padding-right: 0;
+    gap: 0;
+}
+
+.rank-system[data-rank-mode="roll"] .rank-row-roll .rank-main-content {
+    display: grid;
+    grid-template-columns: var(--rank-roll-grid-columns);
+    grid-template-rows: var(--rank-roll-grid-rows);
+    column-gap: var(--rank-roll-col-gap);
+    row-gap: var(--rank-roll-row-gap);
+    align-items: stretch;
+    min-width: max-content;
+    padding: var(--rank-roll-pad-y) var(--rank-roll-pad-x);
+}
+
+.rank-system[data-rank-mode="roll"] .rank-row-roll .top-section,
+.rank-system[data-rank-mode="roll"] .rank-row-roll .stats-section {
+    display: contents;
+    position: static;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+}
+
+.rank-system[data-rank-mode="roll"] .rank-row-roll .coach-player-section {
+    display: none;
+}
+
+.rank-system[data-rank-mode="roll"] .rank-row-roll .school-logo {
+    position: relative;
+    grid-column: 3;
+    grid-row: 1 / 3;
+    width: var(--rank-roll-logo-size);
+    height: var(--rank-roll-logo-size);
+    align-self: center;
+    justify-self: center;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('/static/image/logos/ccpc.webp');
+    background-color: #ffffff;
+    opacity: 1;
+    border: 1px solid var(--rank-line-faint);
+    border-radius: var(--rank-radius-block);
+    box-shadow: var(--rank-shadow-surface);
+    z-index: 3;
+    image-rendering: auto;
+}
+
+.rank-system[data-rank-mode="roll"] .rank-row-roll .school-logo.has-background {
+    background-image: var(--rank-school-logo-bg);
+}
+
+.rank-system[data-rank-mode="roll"] .rank-row-roll .team-info-section {
+    grid-column: 4;
+    grid-row: 1;
+    align-self: center;
+    width: 100%;
+    min-width: 0;
+    padding: 0 0 0 4px;
+    overflow: hidden;
+    z-index: 4;
+}
+
+.rank-system[data-rank-mode="roll"] .rank-row-roll .team-info {
+    align-items: center;
+    min-width: 0;
+    width: 100%;
+    -webkit-mask-image: none;
+    mask-image: none;
+}
+
+/* meta 三列的统一外观（名次/题数/罚时方框背景透明，由内部 *-item 着色） */
+.rank-system[data-rank-mode="roll"] .rank-row-roll .rank-col-rank,
+.rank-system[data-rank-mode="roll"] .rank-row-roll .rank-col-solve,
+.rank-system[data-rank-mode="roll"] .rank-row-roll .rank-col-penalty {
+    width: auto;
+    flex: none;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    z-index: 5;
+}
+
+/* 名次：占第 1 行、跨左右两个子格（视觉最大、最显眼） */
+.rank-system[data-rank-mode="roll"] .rank-row-roll .rank-col-rank {
+    grid-column: 1 / 3;
+    grid-row: 1;
+}
+
+/* 题数 / 罚时：第 2 行，左右各占一格 */
+.rank-system[data-rank-mode="roll"] .rank-row-roll .rank-col-solve {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.rank-system[data-rank-mode="roll"] .rank-row-roll .rank-col-penalty {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.rank-system[data-rank-mode="roll"] .rank-row-roll .rank-item,
+.rank-system[data-rank-mode="roll"] .rank-row-roll .solve-item,
+.rank-system[data-rank-mode="roll"] .rank-row-roll .penalty-item {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    border-radius: var(--rank-radius-inner);
+    box-shadow: var(--rank-shadow-surface);
+}
+
+/* 名次大字：大屏可读，主视觉 */
+.rank-system[data-rank-mode="roll"] .rank-row-roll .rank-item {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+}
+
+/* 题数 / 罚时：次级字号，仍需大屏可读且能容纳峰值长度 */
+.rank-system[data-rank-mode="roll"] .rank-row-roll .solve-item {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.rank-system[data-rank-mode="roll"] .rank-row-roll .penalty-item {
+    font-size: 14px;
+    font-weight: 700;
+    /* 5 位数下保持紧凑可读 */
+    letter-spacing: 0;
+    padding: 0 4px;
+}
+
+.rank-system[data-rank-mode="roll"] .rank-row-roll .penalty-content,
+.rank-system[data-rank-mode="roll"] .rank-row-roll .penalty-time-brief,
+.rank-system[data-rank-mode="roll"] .rank-row-roll .penalty-time-full {
+    font-size: 14px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.rank-system[data-rank-mode="roll"] .rank-row-roll .problem-group {
+    grid-column: 4;
+    grid-row: 2;
+    align-self: center;
+}
+
+/* ---- 表头：与数据行严格同列模板（保持列对齐），但行高独立 ----
+ * 表头只渲染 1 行，每个表头格高度 = var(--rank-header-height)，
+ * 与榜单（普通模式）.rank-col 的 60px 完全一致，做到全局视觉统一。 */
+.rank-system[data-rank-mode="roll"] .rank-header-row {
+    display: grid;
+    grid-template-columns: var(--rank-roll-grid-columns);
+    grid-template-rows: var(--rank-header-height);
+    column-gap: var(--rank-roll-col-gap);
+    row-gap: 0;
+    align-items: stretch;
+    width: max-content;
+    min-width: 100%;
+    overflow: visible;
+    padding: var(--rank-roll-pad-y) var(--rank-roll-pad-x);
+}
+
+/* 「排名/Rank」表头：跨 meta 两子列（位置与下方"名次+题数/罚时"区块对齐），
+ *  高度由 grid 模板 60px 单行决定；
+ *  双语字号直接复用 .header-cell / en-text 基础规则。 */
+.rank-system[data-rank-mode="roll"] .rank-header-row > .rank-col-rank {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    width: auto;
+    height: auto;
+    min-height: 0;
+}
+
+.rank-system[data-rank-mode="roll"] .rank-header-row > .rank-col-solve,
+.rank-system[data-rank-mode="roll"] .rank-header-row > .rank-col-penalty {
+    display: none;
+}
+
+/* 「标志/Logo」表头列：由 rank.js 在 roll 模式下输出真实 DOM
+ *  → 完美复用 .rank-col / .header-cell / en-text 的基础双语字号规则
+ *  → 不再使用 ::before / ::after 伪元素，避免中间出现拼接缝隙 */
+.rank-system[data-rank-mode="roll"] .rank-header-row > .rank-col-roll-logo {
+    grid-column: 3;
+    grid-row: 1;
+    width: var(--rank-roll-logo-size);
+    height: auto;
+    min-height: 0;
+}
+
+/* 题目表头：第 4 列，垂直居中 */
+.rank-system[data-rank-mode="roll"] .rank-header-row > .pro-header-group {
+    grid-column: 4;
+    grid-row: 1;
+    align-self: center;
+}
+
+.watermark-text-en {
+    font-size: 7px;
+    font-weight: 600;
+    color: #dc2626;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+/* 滚榜锁定特效：实色底 + 左条一眼可辨；渐变与扫光叠在实色之上，脉冲仅调 filter */
+.rank-row.roll-judging {
+    background-color: var(--roll-judging-row-base-bg) !important;
+    background-image: linear-gradient(135deg,
+        rgba(59, 130, 246, 0.22) 0%,
+        rgba(59, 130, 246, 0.14) 50%,
+        rgba(96, 165, 250, 0.22) 100%) !important;
+    background-repeat: no-repeat;
+    box-shadow:
+        inset 4px 0 0 var(--roll-judging-row-inset-marker),
+        var(--rank-shadow-float);
+    animation: rollJudgingPulse 1.2s ease-in-out infinite;
+    position: relative;
+    z-index: 5;
+    filter: brightness(1.03) saturate(1.12);
+}
+
+/* 使用伪元素添加装饰性光效，绝对定位不影响布局 */
+.rank-row.roll-judging::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        var(--roll-judging-shine-edge) 20%,
+        var(--roll-judging-shine-mid) 50%,
+        var(--roll-judging-shine-edge) 80%,
+        transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+    animation: rollJudgingShine 2s ease-in-out infinite;
+    opacity: 0;
+}
+
+.problem-item.roll-judging-problem {
+    /* 黄色系背景，与pending状态保持一致 */
+    background: #ffb300 !important; /* Amber-600 黄色背景 */
+    color: var(--rank-text-white) !important;
+    /* 使用 outline 添加粗边框，不占据DOM空间 */
+    outline: 4px solid #ff6f00; /* Amber-800 深黄色粗边框 */
+    outline-offset: -2px; /* 内嵌边框，更紧凑 */
+    animation: rollJudgingProblemPulse 0.8s ease-in-out infinite;
+    filter: brightness(1.1) saturate(1.2);
+    z-index: 10;
+    position: relative;
+}
+
+/**
+ * 「刚揭晓」题目的余韵高亮：仅保留 outline 边框，不再覆盖背景色（背景由
+ * .pro-ac / .pro-wa 决定）。语义：观众已经看到揭晓结果（绿/红），但当前
+ * 的"焦点队伍"还没切换到下一题/下一队，边框继续指示"目光锁定在这一格"。
+ *
+ * 触发：JudgeDo 揭晓后立即把当前题从 .roll-judging-problem 转为本类。
+ * 清除：JudgeConfirm 锁定下一队/下一题时统一清掉。
+ */
+.problem-item.roll-judged-problem {
+    outline: 4px solid #ff6f00;
+    outline-offset: -2px;
+    z-index: 10;
+    position: relative;
+}
+
+.rank-row.roll-result-revealed {
+    animation: rollResultReveal 0.5s ease-out;
+}
+
+@keyframes rollJudgingPulse {
+    0%, 100% {
+        filter: brightness(1.03) saturate(1.12);
+    }
+    50% {
+        filter: brightness(1.1) saturate(1.28);
+    }
+}
+
+@keyframes rollJudgingShine {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+@keyframes rollJudgingProblemPulse {
+    0%, 100% {
+        background: #ffb300 !important; /* Amber-600 黄色背景 */
+        outline-color: #ff6f00; /* Amber-800 深黄色边框 */
+        filter: brightness(1.1) saturate(1.2);
+    }
+    50% {
+        background: #ffc107 !important; /* Amber-500 更亮的黄色 */
+        outline-color: #ff8f00; /* Amber-700 稍亮的边框 */
+        filter: brightness(1.25) saturate(1.4);
+    }
+}
+
+@keyframes rollResultReveal {
+    0% {
+        background: rgba(34, 197, 94, 0.3);
+    }
+    100% {
+        background: transparent;
+    }
+}
+
+/* 跳过过程中被处理的队伍特效 */
+.rank-row.roll-skip-revealed {
+    animation: rollSkipReveal 1s ease-out;
+    box-shadow: 
+        0 0 20px rgba(16, 185, 129, 0.4),
+        inset 0 0 15px rgba(16, 185, 129, 0.2);
+    z-index: 15;
+    position: relative;
+    background: linear-gradient(135deg, rgba(209, 250, 229, 0.6) 0%, rgba(167, 243, 208, 0.4) 100%);
+}
+
+@keyframes rollSkipReveal {
+    0% {
+        background: rgba(16, 185, 129, 0.4);
+        transform: scale(1);
+        box-shadow: 
+            0 0 30px rgba(16, 185, 129, 0.6),
+            inset 0 0 20px rgba(16, 185, 129, 0.3);
+    }
+    30% {
+        background: rgba(16, 185, 129, 0.6);
+        transform: scale(1.02);
+        box-shadow: 
+            0 0 40px rgba(16, 185, 129, 0.8),
+            inset 0 0 25px rgba(16, 185, 129, 0.4);
+    }
+    60% {
+        background: rgba(16, 185, 129, 0.4);
+        transform: scale(1.01);
+        box-shadow: 
+            0 0 25px rgba(16, 185, 129, 0.5),
+            inset 0 0 15px rgba(16, 185, 129, 0.25);
+    }
+    100% {
+        background: linear-gradient(135deg, rgba(209, 250, 229, 0.6) 0%, rgba(167, 243, 208, 0.4) 100%);
+        transform: scale(1);
+        box-shadow: 
+            0 0 20px rgba(16, 185, 129, 0.4),
+            inset 0 0 15px rgba(16, 185, 129, 0.2);
+    }
+}
+
+/* 队伍落下动画 - 优雅美观 */
+.rank-row.rank-falling-down {
+    will-change: transform, opacity;
+    position: relative;
+    z-index: 50;
+}
+
+.rank-row.rank-falling-down::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(148, 163, 184, 0.1) 0%,
+        rgba(148, 163, 184, 0.05) 50%,
+        transparent 100%
+    );
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* 优化落下动画的性能 */
+@supports (will-change: transform) {
+    .rank-row.rank-falling-down {
+        backface-visibility: hidden;
+        perspective: 1000px;
+        transform: translateZ(0);
+    }
+}
+
+/* 皮肤切换：当前为「默认主题」——纯色底 + 边框 + 调色板图标色（无渐变） */
+.rank-header[data-rank-skin="default"] #rank-skin-btn,
+.rank-header[data-rank-skin="default"] #rank-skin-btn-dd {
+    background: #ffffff;
+    border-color: #64748b;
+    color: #334155;
+}
+
+.rank-header[data-rank-skin="default"] #rank-skin-btn i,
+.rank-header[data-rank-skin="default"] #rank-skin-btn-dd i {
+    color: #475569;
+}
+
+.rank-header[data-rank-skin="default"] #rank-skin-btn:hover,
+.rank-header[data-rank-skin="default"] #rank-skin-btn-dd:hover {
+    background: #f1f5f9;
+    border-color: #475569;
+    color: #0f172a;
+}
+
+.rank-header[data-rank-skin="default"] #rank-skin-btn:hover i,
+.rank-header[data-rank-skin="default"] #rank-skin-btn-dd:hover i {
+    color: #334155;
+}
+
+.roll-controls-section[data-rank-skin="default"] #rank-skin-btn {
+    background: #ffffff;
+    border-color: #64748b;
+    color: #334155;
+}
+
+.roll-controls-section[data-rank-skin="default"] #rank-skin-btn i {
+    color: #475569;
+}
+
+.roll-controls-section[data-rank-skin="default"] #rank-skin-btn:hover {
+    background: #f1f5f9;
+    border-color: #475569;
+    color: #0f172a;
+}
+
+.roll-controls-section[data-rank-skin="default"] #rank-skin-btn:hover i {
+    color: #334155;
+}
+
+/* ── 多赛事归属：行顶奖区指示楣条（与 data-rank-skin 换肤一致）── */
+.rank-award-lintel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 6;
+    height: 14px;
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+.rank-award-lintel-track {
+    display: flex;
+    height: 3px;
+    margin-top: 0;
+    pointer-events: auto;
+}
+
+.rank-award-lintel-seg {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 100%;
+    box-shadow: 1px 0 0 var(--ral-divider, rgba(15, 23, 42, 0.12));
+}
+
+.rank-award-lintel-seg:last-child {
+    box-shadow: none;
+}
+
+#rank-container[data-rank-skin="default"],
+.rank-header[data-rank-skin="default"],
+.roll-controls-section[data-rank-skin="default"] {
+    --ral-divider: rgba(15, 23, 42, 0.12);
+    /* 金偏亮琥珀、铜偏玫瑰铜，避免与橙黄段重叠 */
+    --ral-gold: linear-gradient(90deg, #fffef8 0%, #fde68a 40%, #b45309 100%);
+    --ral-silver: linear-gradient(90deg, #ffffff 0%, #e2e8f0 50%, #94a3b8 100%);
+    --ral-bronze: linear-gradient(90deg, #faf5f2 0%, #c4917a 42%, #5c2e20 100%);
+    --ral-none: linear-gradient(180deg, #eef2f6, #e2e8f0);
+    --ral-none-ring: inset 0 0 0 1px rgba(15, 23, 42, 0.07);
+    --ral-na-base: #f1f5f9;
+    --ral-na-stripe: rgba(100, 116, 139, 0.38);
+}
+
+#rank-container[data-rank-skin="dark_stage"],
+.rank-header[data-rank-skin="dark_stage"],
+.roll-controls-section[data-rank-skin="dark_stage"] {
+    --ral-divider: rgba(148, 163, 184, 0.35);
+    --ral-gold: linear-gradient(90deg, rgba(255, 251, 235, 0.98) 0%, #fbbf24 36%, #a16207 100%);
+    --ral-silver: linear-gradient(90deg, #f8fafc 0%, #cbd5e1 48%, #64748b 100%);
+    --ral-bronze: linear-gradient(90deg, #fff1f2 0%, #d97757 40%, #4c0519 100%);
+    --ral-none: linear-gradient(180deg, rgba(51, 65, 85, 0.65), rgba(30, 41, 59, 0.85));
+    --ral-none-ring: inset 0 0 0 1px rgba(148, 163, 184, 0.22);
+    --ral-na-base: rgba(15, 23, 42, 0.55);
+    --ral-na-stripe: rgba(56, 189, 248, 0.22);
+}
+
+#rank-container[data-rank-skin="light_macaron"],
+.rank-header[data-rank-skin="light_macaron"],
+.roll-controls-section[data-rank-skin="light_macaron"] {
+    --ral-divider: rgba(100, 116, 139, 0.22);
+    --ral-gold: linear-gradient(90deg, #fffef8 0%, #fde68a 45%, #b45309 100%);
+    --ral-silver: linear-gradient(90deg, #ffffff 0%, #e2e8f0 55%, #94a3b8 100%);
+    --ral-bronze: linear-gradient(90deg, #faf6f3 0%, #c9a08e 48%, #6b3418 100%);
+    --ral-none: linear-gradient(180deg, #f1f5f9, #e2e8f0);
+    --ral-none-ring: inset 0 0 0 1px rgba(100, 116, 139, 0.18);
+    --ral-na-base: #eef2f6;
+    --ral-na-stripe: rgba(71, 85, 105, 0.22);
+}
+
+.rank-row .rank-award-lintel-seg[data-award-state="gold"] {
+    background: var(--ral-gold, linear-gradient(90deg, #fffef8 0%, #fde68a 40%, #b45309 100%));
+}
+
+.rank-row .rank-award-lintel-seg[data-award-state="silver"] {
+    background: var(--ral-silver, linear-gradient(90deg, #ffffff 0%, #e2e8f0 50%, #94a3b8 100%));
+}
+
+.rank-row .rank-award-lintel-seg[data-award-state="bronze"] {
+    background: var(--ral-bronze, linear-gradient(90deg, #faf5f2 0%, #c4917a 42%, #5c2e20 100%));
+}
+
+.rank-row .rank-award-lintel-seg[data-award-state="none"] {
+    background: var(--ral-none, linear-gradient(180deg, #eef2f6, #e2e8f0));
+    box-shadow: var(--ral-none-ring, inset 0 0 0 1px rgba(15, 23, 42, 0.07)), 1px 0 0 var(--ral-divider, rgba(15, 23, 42, 0.12));
+}
+
+.rank-row .rank-award-lintel-seg[data-award-state="none"]:last-child {
+    box-shadow: var(--ral-none-ring, inset 0 0 0 1px rgba(15, 23, 42, 0.07));
+}
+
+.rank-row .rank-award-lintel-seg[data-award-state="na"] {
+    background: repeating-linear-gradient(
+            -45deg,
+            var(--ral-na-stripe, rgba(100, 116, 139, 0.38)) 0,
+            var(--ral-na-stripe, rgba(100, 116, 139, 0.38)) 1px,
+            transparent 1px,
+            transparent 3px
+        ),
+        var(--ral-na-base, #f1f5f9);
+    box-shadow: 1px 0 0 var(--ral-divider, rgba(15, 23, 42, 0.12));
+}
+
+/* 滚榜视口缩放温馨提示（#csg-roll-viewport-zoom-hint-modal 内 body，与 rank.js modal-overlay 配套） */
+.csg-roll-viewport-zoom-hint-modal__content {
+    width: min(520px, calc(100vw - 2rem));
+}
+
+.csg-roll-viewport-hint__lead {
+    margin-bottom: 0.65rem;
+    line-height: 1.55;
+}
+
+.csg-roll-viewport-hint__methods {
+    margin: 0 0 0.75rem;
+    padding-left: 1.1rem;
+    line-height: 1.55;
+}
+
+.csg-roll-viewport-hint__methods li + li {
+    margin-top: 0.35rem;
+}
+
+.csg-roll-viewport-hint__method-label {
+    display: inline-block;
+    min-width: 3.25em;
+    font-weight: 600;
+    color: var(--bs-body-color, #212529);
+}
+
+.csg-roll-viewport-hint__kbd {
+    display: inline-block;
+    padding: 0.12em 0.42em;
+    margin: 0 0.06em;
+    border-radius: 0.28rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.88em;
+    font-weight: 600;
+    color: #f8fafc;
+    background: linear-gradient(180deg, #475569 0%, #1e293b 100%);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.22);
+    vertical-align: baseline;
+}
+
+.csg-roll-viewport-hint__plus {
+    margin: 0 0.12em;
+    font-weight: 700;
+    color: var(--bs-secondary-color, #6c757d);
+}
+
+.csg-roll-viewport-hint__en-block {
+    padding-top: 0.5rem;
+    margin-top: 0.35rem;
+    border-top: 1px solid rgba(15, 23, 42, 0.1);
+}
+
+/* 视口缩放提示：底栏与主按钮（与正文「键帽」圆角风格协调，避免贴边） */
+/* 弹窗内用到的 Bootstrap 工具类别名（离线滚榜无 bootstrap.css） */
+#csg-roll-viewport-zoom-hint-modal .text-muted {
+    color: #6c757d;
+}
+#csg-roll-viewport-zoom-hint-modal .small {
+    font-size: 0.875em;
+}
+#csg-roll-viewport-zoom-hint-modal .mb-2 {
+    margin-bottom: 0.5rem;
+}
+#csg-roll-viewport-zoom-hint-modal .mb-0 {
+    margin-bottom: 0;
+}
+
+.csg-roll-viewport-zoom-hint-modal__content.modal-content {
+    overflow: hidden;
+}
+
+.csg-roll-viewport-zoom-hint-modal__footer.modal-footer {
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0.85rem 1.15rem 1.05rem;
+    border-top: 1px solid var(--rank-line-faint, #e5e7eb);
+    background: linear-gradient(180deg, #fafbfc 0%, #f1f5f9 100%);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0 0 var(--rank-border-radius) var(--rank-border-radius);
+}
+
+/* 主色写在本文件：离线滚榜包不加载 Bootstrap，勿依赖 .btn-primary 变量 */
+.csg-roll-viewport-zoom-hint-modal__footer .csg-roll-viewport-zoom-hint-modal__ok.btn {
+    min-width: 7.75rem;
+    padding: 0.55rem 1.25rem 0.58rem;
+    border-radius: 0.5rem;
+    font-size: 0.9375rem;
+    line-height: 1.2;
+    font-weight: 600;
+    cursor: pointer;
+    color: #fff;
+    background-color: #0d6efd;
+    border: 1px solid #0d6efd;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+}
+
+.csg-roll-viewport-zoom-hint-modal__footer .csg-roll-viewport-zoom-hint-modal__ok.btn:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    transform: translateY(-1px);
+}
+
+.csg-roll-viewport-zoom-hint-modal__footer .csg-roll-viewport-zoom-hint-modal__ok.btn:active {
+    background-color: #0a58ca;
+    border-color: #0a53be;
+    color: #fff;
+    transform: translateY(0);
+    box-shadow: 0 1px 1px rgba(15, 23, 42, 0.12);
+}
+
+.csg-roll-viewport-zoom-hint-modal__footer .csg-roll-viewport-zoom-hint-modal__ok .roll-button-bilingual-stacked {
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+}
+
+.csg-roll-viewport-zoom-hint-modal__footer .csg-roll-viewport-zoom-hint-modal__ok .roll-button-text-cn {
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
+.csg-roll-viewport-zoom-hint-modal__footer .csg-roll-viewport-zoom-hint-modal__ok .roll-button-text-en {
+    font-size: 0.72rem;
+    font-weight: 500;
+    opacity: 0.9;
+    color: rgba(255, 255, 255, 0.92);
+}

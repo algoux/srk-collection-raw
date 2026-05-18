@@ -1,0 +1,233 @@
+/**
+ * 外榜模块使用独立 layout：无全站 body>header 侧栏与顶栏，
+ * sidebarlayout.css 仍按视口对 main 施加侧栏占位与移动端顶栏留白，在此收回。
+ * 主内容区与全站一致：定宽 max-width + 水平居中，不铺满整屏。
+ */
+/* 观众榜 / 滚榜顶：页眉横幅 — 全视口宽出血 + flex 居中；内层 max 2560px，无描边以免压赞助商画面 */
+body.csg-layout-outrank .outrank-sponsor-banner-outer {
+    --outrank-sponsor-banner-max-w: 2560px;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    width: 100vw;
+    box-sizing: border-box;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    margin-bottom: 0.5rem;
+    padding-inline: clamp(0.5rem, 2vw, 1.25rem);
+}
+
+body.csg-layout-outrank .outrank-sponsor-banner {
+    flex: 0 1 auto;
+    width: 100%;
+    max-width: var(--outrank-sponsor-banner-max-w);
+    border-radius: 0;
+    background: transparent;
+    overflow: hidden;
+}
+
+/* 高度随素材宽高比自然伸缩，不设 max-height / aspect-ratio，避免 cover 裁切横幅文案与角标 */
+body.csg-layout-outrank .outrank-sponsor-banner__frame {
+    position: relative;
+    width: 100%;
+    background: transparent;
+}
+
+body.csg-layout-outrank .outrank-sponsor-banner__media {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+body.csg-layout-outrank > main {
+    box-sizing: border-box;
+    max-width: 1280px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem 1.25rem;
+}
+
+/* 与全站 @media (max-width: 768px) 中 main{margin-top:3.5rem} 对齐覆盖：外榜无 fixed 顶栏 */
+@media (max-width: 768px) {
+    body.csg-layout-outrank > main {
+        margin-top: 0;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.75rem;
+    }
+}
+
+/* 无侧栏时不应保留 main 左侧 200px 占位（常见于手机横屏 ≥768px）；仍保持定宽居中 */
+@media (min-width: 768px) {
+    body.csg-layout-outrank > main {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1280px;
+        width: 100%;
+        padding: 1rem 1.25rem;
+    }
+}
+
+@media (min-width: 1700px) {
+    body.csg-layout-outrank > main {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1280px;
+    }
+}
+
+/* 外榜榜单页顶栏容器：窄屏减少水平 padding */
+@media (max-width: 767.98px) {
+    body.csg-layout-outrank .container-fluid.px-4 {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+}
+
+/* 外榜 rank：宽屏筛选在 controls-time 行；窄屏筛选与皮肤均收入「更多」下拉 */
+body.csg-layout-outrank .controls-time-container {
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+}
+
+body.csg-layout-outrank .toolbar-group-filter-standalone {
+    flex-shrink: 0;
+}
+
+body.csg-layout-outrank .toolbar-group-filter-standalone .filter-btn {
+    min-height: 40px;
+}
+
+body.csg-layout-outrank .toolbar-group-filter-standalone .filter-btn.filter-info-btn {
+    justify-content: flex-start;
+}
+
+body.csg-layout-outrank .toolbar-group-filter-standalone .filter-btn.filter-info-btn .button-text {
+    text-align: left;
+}
+
+body.csg-layout-outrank .controls-dropdown .toolbar-group.toolbar-group-filter {
+    width: 100%;
+}
+
+body.csg-layout-outrank .controls-dropdown .toolbar-group.toolbar-group-filter .toolbar-item,
+body.csg-layout-outrank .controls-dropdown .toolbar-group.toolbar-group-filter .filter-btn {
+    width: 100%;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+body.csg-layout-outrank .controls-dropdown .toolbar-group.toolbar-group-filter .filter-btn .button-text {
+    flex: 1;
+    text-align: left;
+}
+
+body.csg-layout-outrank .controls-dropdown .toolbar-group.toolbar-group-filter .filter-btn.filter-info-btn {
+    min-width: 0;
+}
+
+body.csg-layout-outrank .controls-dropdown .toolbar-group-skin-outrank {
+    width: 100%;
+}
+
+body.csg-layout-outrank .controls-dropdown .toolbar-group-skin-outrank .toolbar-item,
+body.csg-layout-outrank .controls-dropdown .toolbar-group-skin-outrank .custom-select-btn {
+    width: 100%;
+    justify-content: flex-start;
+}
+
+/**
+ * 外榜独立页 csg-page-header：列表 / 观众榜 / 滚榜共用，扁平无框、与全站卡片式页头区分
+ * 模板：包裹层 .outrank-standalone-page-header 内含 csg_page_header（不用子选择器，避免模板空白文本节点）
+ */
+body.csg-layout-outrank .outrank-standalone-page-header .csg-page-header {
+	margin-bottom: 1.125rem;
+}
+
+body.csg-layout-outrank .outrank-standalone-page-header .csg-page-header .csg-page-header__sheet {
+	border: none;
+	background: transparent;
+	box-shadow: none;
+}
+
+body.csg-layout-outrank .outrank-standalone-page-header .csg-page-header .csg-page-header__grid {
+	padding: 0.35rem 0 0.85rem;
+	align-items: center;
+	gap: 1rem 1.25rem;
+}
+
+body.csg-layout-outrank .outrank-standalone-page-header .csg-page-header .csg-page-header__identity {
+	align-items: flex-start;
+	gap: 1rem 1.125rem;
+}
+
+body.csg-layout-outrank .outrank-standalone-page-header .csg-page-header .csg-page-header__icon {
+	width: 3rem;
+	height: 3rem;
+	font-size: 1.35rem;
+	border: none;
+	border-radius: 0;
+	background: #2563eb;
+	color: #fff;
+	box-shadow: none;
+}
+
+body.csg-layout-outrank .outrank-standalone-page-header .csg-page-header .csg-page-header__wording {
+	position: relative;
+	padding-bottom: 0.55rem;
+}
+
+body.csg-layout-outrank .outrank-standalone-page-header .csg-page-header .csg-page-header__wording::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: min(4.5rem, 28vw);
+	height: 2px;
+	background: #2563eb;
+	border-radius: 0;
+	opacity: 1;
+}
+
+body.csg-layout-outrank .outrank-standalone-page-header .csg-page-header .csg-page-header__heading {
+	flex-direction: column;
+	align-items: flex-start;
+	align-content: flex-start;
+	gap: 0.2rem 0;
+	font-size: clamp(1.45rem, 2.8vw, 1.9rem);
+	font-weight: 700;
+	letter-spacing: -0.035em;
+	line-height: 1.2;
+}
+
+body.csg-layout-outrank .outrank-standalone-page-header .csg-page-header .csg-page-header__title {
+	letter-spacing: -0.03em;
+}
+
+body.csg-layout-outrank .outrank-standalone-page-header .csg-page-header .csg-page-header__heading > .csg-page-header__en,
+body.csg-layout-outrank .outrank-standalone-page-header .csg-page-header .csg-page-header__heading > .en-text.csg-page-header__en {
+	display: block !important;
+	margin-top: 0.35rem !important;
+	margin-left: 0 !important;
+	white-space: normal;
+	font-size: 0.65rem;
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	color: #64748b !important;
+	opacity: 0.92 !important;
+}
+
+@media (max-width: 576px) {
+	body.csg-layout-outrank .outrank-standalone-page-header .csg-page-header .csg-page-header__icon {
+		width: 2.65rem;
+		height: 2.65rem;
+		font-size: 1.15rem;
+	}
+	body.csg-layout-outrank .outrank-standalone-page-header .csg-page-header .csg-page-header__heading {
+		font-size: clamp(1.25rem, 5.2vw, 1.55rem);
+	}
+}

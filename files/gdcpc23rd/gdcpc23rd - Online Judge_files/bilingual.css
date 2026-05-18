@@ -1,0 +1,877 @@
+/* ========================================
+   双语显示效果样式 - 重构版
+   ======================================== */
+
+/*
+使用说明（全站约定）：
+1. 默认：中文 + <span class="en-text">English</span> 为上下结构（.en-text 块级换行）
+2. 左右结构：仅在需要并排展示时，给包含中文与 .en-text 的同一父元素加 .bilingual-inline
+   例：<div class="bilingual-inline">中文<span class="en-text">English</span></div>
+3. 按钮：默认纵向；仅当按钮本身带 .btn.bilingual-inline 时为横向（与上条一致）
+4. 勿在仅需上下结构的说明/按钮内层套 .bilingual-inline，否则英文会被强制 inline；需要额外纵向约束可用 basecss 的 .csg-bilingual-stack
+5. 在 .d-flex 容器内尤其禁止给「中文 + .en-text」父节点加 .bilingual-inline：会命中 .d-flex .bilingual-inline .en-text { display: inline !important }（见文末「布局兼容性」），导致英文挤成同行小字。alerty.confirm 的 switches 标签/说明已用 .csg-bilingual-stack，新增类似 UI 请对齐
+*/
+
+/* ========================================
+   基础样式定义
+   ======================================== */
+
+/* 英文辅助文本基础样式 - 默认上下模式 */
+.en-text {
+    display: block;
+    font-size: 0.7em;
+    color: inherit;
+    margin-left: 0;
+    margin-top: 1px;
+    line-height: 1.0em;
+    font-weight: normal;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* 通用左右模式 - 通过添加 .bilingual-inline 类启用 */
+.bilingual-inline .en-text {
+    display: inline;
+    font-size: 0.6em;
+    margin-left: 6px;
+    margin-top: 0;
+    line-height: 1.0em;
+    font-weight: normal;
+    font-style: normal;
+    color: inherit;
+    opacity: 0.7;
+}
+/* .label-text 可与 .bilingual-inline 组合用于需要左右排列的说明；默认仅需上下结构时不要给 .label-text 加 .bilingual-inline */
+.label-text.bilingual-inline .en-text {
+    font-size: 0.8em;
+}
+
+/* ========================================
+   按钮样式系统
+   ======================================== */
+
+/* 按钮双语样式基础规则 */
+/* 按钮中的中文部分不换行 */
+.btn {
+    white-space: nowrap;
+}
+
+/* 按钮中的图标和中文文本在同一行 */
+.btn > span:has(i) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem; /* 增加图标和文本间距，更清晰 */
+    white-space: nowrap;
+}
+
+.btn > span:has(i) > i {
+    margin: 0;
+    flex-shrink: 0;
+    font-size: 1em; /* 确保图标大小一致 */
+    line-height: 1; /* 图标垂直居中 */
+}
+
+.btn > span:has(i) > .cn-text {
+    display: inline;
+}
+
+/* 按钮中的英文文本基础样式 */
+.btn .en-text {
+    display: block;
+    font-size: 0.7em; /* 稍微增大，提高可读性 */
+    margin-left: 0;
+    margin-top: 2px; /* 增加间距，让布局更舒适 */
+    line-height: 1.2em; /* 增加行高，提高可读性 */
+    color: inherit;
+    opacity: 0.9; /* 稍微降低透明度，更柔和 */
+    white-space: nowrap;
+    font-weight: 400; /* 正常字重 */
+    letter-spacing: 0.3px; /* 轻微字间距，提高可读性 */
+}
+
+/* 左右模式按钮 - 覆盖默认的 block 显示 */
+.btn.bilingual-inline .en-text,
+.bilingual-inline.btn .en-text {
+    display: inline !important;
+    font-size: 0.6em;
+    margin-left: 6px;
+    margin-top: 0;
+    line-height: 1.0em;
+    font-weight: normal;
+    font-style: normal;
+    color: inherit;
+    opacity: 0.7;
+}
+
+/* 按钮交互效果 */
+.btn:hover .en-text,
+.btn.active .en-text,
+.btn:active .en-text {
+    opacity: 0.95; /* hover时稍微提高透明度，但不过于突出 */
+    transition: opacity 0.2s ease-in-out; /* 添加平滑过渡 */
+}
+
+.bilingual-inline:hover .en-text,
+.btn.bilingual-inline:hover .en-text {
+    opacity: 0.95; /* 统一hover效果 */
+    transition: opacity 0.2s ease-in-out; /* 添加平滑过渡 */
+}
+
+/* 按钮整体交互效果优化 */
+.btn:has(.en-text):hover {
+    transform: translateY(-1px); /* 轻微上移，提升交互感 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+    transition: all 0.2s ease-in-out; /* 平滑过渡 */
+}
+
+.btn:has(.en-text):active {
+    transform: translateY(0); /* 按下时恢复位置 */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* 减少阴影 */
+}
+
+/* 不同尺寸按钮的优化 */
+.btn-sm:has(.en-text) {
+    min-height: 36px; /* 减小最小高度 */
+    padding: 0.25rem 0.625rem; /* 减小上下padding，从0.375rem改为0.25rem */
+}
+
+.btn-sm:has(.en-text) .en-text {
+    font-size: 0.65em;
+    margin-top: 1px;
+}
+
+.btn-sm:has(.en-text) > span:has(i) {
+    gap: 0.3rem;
+}
+
+.btn-lg:has(.en-text) {
+    min-height: 52px; /* 减小最小高度 */
+    padding: 0.5rem 1.125rem; /* 减小上下padding，从0.625rem改为0.5rem */
+}
+
+.btn-lg:has(.en-text) .en-text {
+    font-size: 0.75em;
+    margin-top: 2px; /* 减小上边距 */
+}
+
+.btn-lg:has(.en-text) > span:has(i) {
+    gap: 0.5rem;
+}
+
+/* ========================================
+   特殊场景样式
+   ======================================== */
+
+/* 导航菜单 */
+.nav-link i {
+    display: inline;
+    margin-right: 0.25rem;
+    font-size: 0.8em;
+    margin-bottom: 0;
+}
+
+.nav-link .en-text {
+    display: block;
+    font-size: 0.6em;
+    margin-left: 0;
+    margin-top: 1px;
+    line-height: 1;
+}
+
+.bilingual-inline .nav-link .en-text,
+.bilingual-inline .card-title .en-text,
+.bilingual-inline .navbar .en-text {
+    color: inherit;
+    opacity: 0.7;
+}
+
+/* 侧边栏菜单 */
+#sidebar_div .en-text {
+    font-size: 0.7em;
+    line-height: 0.8em;
+}
+
+#sidebar_div .nav-link.active .en-text {
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 0.9;
+}
+
+/* 标题元素 - 默认上下模式，但允许 .bilingual-inline 覆盖 */
+h1 .en-text,
+h2 .en-text,
+h3 .en-text,
+h4 .en-text,
+h5 .en-text,
+h6 .en-text {
+    display: block;
+    margin-left: 0;
+    margin-top: 1px;
+    font-size: 0.7em;
+    color: inherit;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+
+/* 页面标题的左右模式 - 优先级更高 */
+.page-title.bilingual-inline .en-text {
+    display: inline;
+    margin-left: 8px;
+    margin-top: 0;
+    font-size: 0.6em;
+    color: inherit;
+    font-style: normal;
+    opacity: 0.7;
+}
+
+/* 标题元素的左右模式 - 最高优先级，覆盖默认的上下模式 */
+h1.bilingual-inline .en-text,
+h2.bilingual-inline .en-text,
+h3.bilingual-inline .en-text,
+h4.bilingual-inline .en-text,
+h5.bilingual-inline .en-text,
+h6.bilingual-inline .en-text {
+    display: inline;
+    margin-left: 6px;
+    margin-top: 0;
+    font-size: 0.7em;
+    color: inherit;
+    font-style: normal;
+    opacity: 0.7;
+}
+
+/* 卡片和面板标题 */
+.card-title .en-text,
+.panel-title .en-text {
+    font-size: 0.65em;
+}
+
+/* 导航栏 */
+.navbar .en-text {
+    font-size: 0.65em;
+}
+
+/* 表单元素 */
+.form-group .bilingual-label .en-text {
+    font-weight: normal;
+}
+
+/* form-check-label 中的英文文本样式 */
+.form-check-label .en-text {
+    display: block;
+    font-size: 0.7em;
+    margin-left: 0;
+    margin-top: 1px;
+    line-height: 1.0em;
+    color: inherit;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* ========================================
+   双语标签样式 - 用于表单标签
+   ======================================== */
+
+.bilingual-label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #495057;
+}
+
+.bilingual-label .en-text {
+    font-size: 0.7em;
+    font-weight: 400;
+    color: #6c757d;
+    opacity: 0.8;
+}
+
+/* 比赛/考试编辑：起止时间主标题与右侧本机时区（UTC±…）同一行 */
+.bilingual-label.csg-contest-edit-time-label {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+}
+.bilingual-label.csg-contest-edit-time-label .csg-contest-edit-time-label__main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 0;
+}
+.bilingual-label.csg-contest-edit-time-label .csg-local-tz-mark {
+    flex-shrink: 0;
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.03em;
+    color: #0f172a;
+    background-color: #e8eef5;
+    border: 1px solid #94a3b8;
+    border-radius: 0.25rem;
+    padding: 0.28em 0.65em;
+    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.06);
+}
+
+.input-group-text .en-text {
+    font-size: 0.6em;
+    color: #6c757d;
+}
+
+/* ========================================
+   布局兼容性处理
+   ======================================== */
+
+/* Flex布局中的英文文本强制上下模式 */
+[style*="display: flex"] .en-text,
+[style*="display:flex"] .en-text,
+.d-flex .en-text,
+.flex .en-text {
+    display: block;
+    margin-left: 0;
+    margin-top: 1px;
+    font-size: 0.7em;
+    color: inherit;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* 重要：显式使用 bilingual-inline 时，英文必须保持 inline（即使外层是 flex） */
+.bilingual-inline .en-text,
+.d-flex .bilingual-inline .en-text,
+.flex .bilingual-inline .en-text,
+[style*="display:flex"] .bilingual-inline .en-text,
+[style*="display: flex"] .bilingual-inline .en-text {
+    display: inline !important;
+    font-size: 0.6em;
+    margin-left: 6px;
+    margin-top: 0;
+    line-height: 1.0em;
+    font-weight: normal;
+    font-style: normal;
+    color: inherit;
+    opacity: 0.7;
+}
+
+/* Flex布局中的按钮英文文本统一继承颜色 */
+.d-flex .btn .en-text {
+    color: inherit;
+    opacity: 1;
+}
+
+/* Flex布局中左右模式按钮的英文文本统一继承颜色 */
+.d-flex .bilingual-inline .btn .en-text {
+    color: inherit;
+    opacity: 1;
+}
+
+/* ========================================
+   Bootstrap 5 高度统一解决方案
+   ======================================== */
+
+/* 解决Bootstrap 5中双语文本导致的高度不一致问题 */
+.btn:has(.en-text),
+.input-group:has(.en-text),
+.input-group-text:has(.en-text),
+.input-group .form-control:has(.en-text) {
+    min-height: 38px; /* 进一步减小最小高度 */
+    height: auto; /* 允许高度自适应 */
+}
+
+/* 让按钮内容垂直居中 */
+.btn:has(.en-text) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2rem 0.75rem; /* 进一步减小上下padding */
+}
+
+/* 有图标的按钮：图标和中文在同一行，英文在下一行 */
+/* 默认使用单列布局以居中内容（仅当没有 cn-text 时） */
+.btn:has(i):has(.en-text):not(:has(.cn-text)) {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    gap: 0.15rem 0.5rem; /* 进一步优化行间距，更紧凑 */
+    padding: 0.2rem 0.75rem; /* 进一步减小padding */
+}
+
+/* 有图标和 cn-text 的按钮：使用两列布局，图标在左，中文在右，英文在下方 */
+/* 全宽按钮（.w-100）内容居中，其他按钮左对齐 */
+.btn:has(i):has(.en-text):has(.cn-text):not(.w-100) {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    align-items: center;
+    align-content: center; /* 整块内容在增高按钮（如 btn-lg）内纵向居中 */
+    justify-items: start;
+    gap: 0.2rem 0.5rem; /* 优化行间距，更紧凑 */
+    padding: 0.5rem 0.875rem; /* 优化padding */
+}
+
+/* 全宽按钮（.w-100）内容居中 */
+.btn:has(i):has(.en-text):has(.cn-text).w-100,
+.btn.w-100:has(i):has(.en-text):has(.cn-text) {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto !important;
+    align-items: center !important;
+    align-content: center !important;
+    justify-items: center !important;
+    gap: 0.2rem 0.5rem;
+    padding: 0.5rem 0.875rem;
+}
+
+/* 如果有 badge，使用三列布局 */
+.btn:has(i):has(.en-text):has(.badge) {
+    grid-template-columns: auto 1fr auto;
+    justify-items: start;
+}
+
+/* 只有图标和英文文本的按钮（没有中文文本、没有cn-text包装）：图标居中 */
+.btn:has(i):has(.en-text):not(:has(.cn-text)):not(:has(span:not(.en-text):not(.badge):not(.d-none))) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
+/* 只有图标和英文文本的按钮：图标在第一行居中 */
+.btn:has(i):has(.en-text):not(:has(.cn-text)):not(:has(span:not(.en-text):not(.badge):not(.d-none))) > i {
+    grid-row: 1;
+    grid-column: 1;
+    justify-self: center;
+    align-self: center;
+    margin: 0;
+}
+
+/* 图标在第一行第一列（有中文文本但没有cn-text包装的情况） */
+.btn:has(i):has(.en-text):has(span:not(.en-text):not(.badge):not(.d-none):not(.cn-text)) > i {
+    /* 如果图标在 span 内，不单独定位，由 span 控制 */
+    display: none;
+}
+
+/* 当使用 .cn-text 包装时，只有直接子元素的图标才单独定位（.cn-text 内的图标不会被匹配） */
+/* 全宽按钮（.w-100）的图标居中，其他按钮左对齐 */
+.btn:has(i):has(.en-text):has(.cn-text):not(.w-100) > i:not(span i) {
+    grid-row: 1;
+    grid-column: 1;
+    align-self: center;
+    justify-self: start;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+/* 全宽按钮（.w-100）的图标居中（但图标在 cn-text 内，所以这个规则通常不会生效） */
+.btn:has(i):has(.en-text):has(.cn-text).w-100 > i:not(span i) {
+    grid-row: 1;
+    grid-column: 1;
+    align-self: center;
+    justify-self: center;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+/* 默认情况：图标在第一行第一列（仅当图标是直接子元素时，且没有 cn-text） */
+.btn:has(i):has(.en-text):not(:has(.cn-text)) > i:not(span i) {
+    grid-row: 1;
+    grid-column: 1;
+    align-self: center;
+    justify-self: center;
+    margin: 0;
+}
+
+/* cn-text 包装的文本：在第一行第二列（图标右侧） */
+/* 全宽按钮（.w-100）的 cn-text 居中，其他按钮左对齐 */
+.btn:has(i):has(.en-text):has(.cn-text):not(.w-100) > .cn-text {
+    grid-row: 1;
+    grid-column: 2;
+    align-self: center;
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem; /* 增加图标和文本间距 */
+    font-size: 0.95em; /* 稍微减小中文，与英文更协调 */
+    font-weight: 500; /* 中等字重，更清晰 */
+    line-height: 1.3; /* 优化行高 */
+}
+
+/* 图标在 .cn-text 内（而非按钮的直接子节点 i）时，两列表格不再有「单列图标」占位，
+ * 否则会第一行贴在第二列左侧、英文行整行居中，产生明显错轴。 */
+.btn:has(i):has(.en-text):has(.cn-text):not(.w-100) > .cn-text:has(> i) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    justify-content: center;
+    width: auto;
+    max-width: 100%;
+}
+
+/* 全宽按钮（.w-100）的 cn-text 居中 */
+.btn:has(i):has(.en-text):has(.cn-text).w-100 > .cn-text,
+.btn.w-100:has(i):has(.en-text):has(.cn-text) > .cn-text {
+    grid-row: 1 !important;
+    grid-column: 1 !important;
+    align-self: center !important;
+    justify-self: center !important;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.95em;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+/* 没有图标但有 cn-text 的情况（不应该发生，但为了兼容性保留） */
+.btn:not(:has(i)):has(.en-text):has(.cn-text) > .cn-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* cn-text 中的图标 */
+.btn:has(i):has(.en-text) > .cn-text > i {
+    margin: 0;
+}
+
+/* 当图标和 cn-text 都在同一个 span 内时，确保它们在同一行 */
+/* 这种情况：图标和 cn-text 已经在同一个容器内，使用 flex 布局 */
+/* 全宽按钮（.w-100）的 span 居中，其他按钮也居中（但受父元素 grid 布局影响） */
+.btn:has(i):has(.en-text) > span:has(i):has(.cn-text) {
+    grid-row: 1;
+    grid-column: 1 / -1; /* 跨所有列 */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /* 居中显示，与英文文本对齐 */
+    gap: 0.4rem; /* 增加图标和文本间距 */
+    width: auto;
+    white-space: nowrap;
+    font-size: 0.95em; /* 稍微减小，与英文更协调 */
+    font-weight: 500; /* 中等字重 */
+    line-height: 1.3; /* 优化行高 */
+}
+
+/* 全宽按钮（.w-100）的 span 强制居中 */
+.btn.w-100:has(i):has(.en-text) > span:has(i):has(.cn-text),
+.btn:has(i):has(.en-text):has(.cn-text).w-100 > span:has(i):has(.cn-text) {
+    grid-column: 1 !important; /* 单列布局，不跨列 */
+    justify-content: center !important;
+    width: 100%;
+}
+
+.btn:has(i):has(.en-text) > span:has(i):has(.cn-text) > i {
+    margin: 0;
+    flex-shrink: 0;
+    font-size: 1em; /* 确保图标大小一致 */
+    line-height: 1; /* 图标垂直居中 */
+}
+
+.btn:has(i):has(.en-text) > span:has(i):has(.cn-text) > .cn-text {
+    display: inline;
+    white-space: nowrap;
+    font-size: inherit; /* 继承父元素字体大小 */
+}
+
+/* 中文文本在第一行（如果有图标，且没有 cn-text 包装，且不包含图标） */
+.btn:has(i):has(.en-text) > span:not(.en-text):not(.badge):not(.d-none):not(.cn-text):not(:has(i)),
+.btn:has(i):has(.en-text) > :not(i):not(.en-text):not(.badge):not(.d-none):not(.cn-text):not(span):not(:has(i)) {
+    grid-row: 1;
+    grid-column: 1;
+    align-self: center;
+    justify-self: center;
+}
+
+/* 英文文本在第二行 */
+/* 有 cn-text 时，跨两列显示在下方 */
+/* 默认情况下，英文文本居中（当图标在 .cn-text 内时） */
+/* 全宽按钮（.w-100）的英文文本居中，其他按钮根据图标位置决定 */
+.btn:has(i):has(.en-text):has(.cn-text):not(.w-100) > .en-text {
+    grid-row: 2;
+    grid-column: 1 / -1; /* 跨所有列 */
+    justify-self: center; /* 默认居中 */
+    align-self: center;
+    margin-top: 0;
+    margin-left: 0;
+    display: block;
+    text-align: center; /* 文本内容居中 */
+    padding-left: 0;
+    font-size: 0.7em; /* 统一字体大小 */
+    line-height: 1.2em; /* 优化行高 */
+    opacity: 0.85; /* 稍微降低透明度，更柔和 */
+    letter-spacing: 0.3px; /* 轻微字间距 */
+}
+
+/* 全宽按钮（.w-100）的英文文本居中 */
+.btn:has(i):has(.en-text):has(.cn-text).w-100 > .en-text,
+.btn.w-100:has(i):has(.en-text):has(.cn-text) > .en-text {
+    grid-row: 2 !important;
+    grid-column: 1 !important;
+    justify-self: center !important;
+    align-self: center !important;
+    margin-top: 0;
+    margin-left: 0;
+    display: block !important;
+    text-align: center !important;
+    padding-left: 0;
+    font-size: 0.7em;
+    line-height: 1.2em;
+    opacity: 0.85;
+    letter-spacing: 0.3px;
+}
+
+/* 当图标是直接子元素（和 .cn-text 是兄弟）时，英文文本需要左对齐并缩进对齐 */
+.btn:has(i):has(.en-text):has(.cn-text):not(.w-100) > i:not(span i) ~ .en-text {
+    justify-self: start; /* 左对齐 */
+    text-align: left; /* 文本内容左对齐 */
+    padding-left: calc(1em + 0.5rem); /* 与图标对齐 */
+}
+
+/* 没有 cn-text 时，居中显示 */
+.btn:has(i):has(.en-text):not(:has(.cn-text)) > .en-text {
+    grid-row: 2;
+    grid-column: 1;
+    justify-self: center;
+    align-self: center;
+    margin-top: 0;
+    margin-left: 0;
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 0.7em; /* 统一字体大小 */
+    line-height: 1.2em; /* 优化行高 */
+    opacity: 0.85; /* 稍微降低透明度，更柔和 */
+    letter-spacing: 0.3px; /* 轻微字间距 */
+}
+
+/* 徽章（badge）保持在第一行，在内容右侧 */
+.btn:has(i):has(.en-text):has(.badge) {
+    grid-template-columns: auto 1fr auto;
+}
+
+.btn:has(i):has(.en-text) > .badge {
+    grid-row: 1;
+    grid-column: 3;
+    align-self: center;
+    justify-self: end;
+    margin-left: 0.25rem;
+}
+
+/* 如果没有 badge，根据是否有 cn-text 决定布局 */
+/* 有 cn-text：两列布局（图标在左，中文在右） */
+.btn:has(i):has(.en-text):has(.cn-text):not(:has(.badge)) {
+    grid-template-columns: auto 1fr;
+    justify-items: start;
+}
+
+/* 没有 cn-text：单列布局居中 */
+.btn:has(i):has(.en-text):not(:has(.cn-text)):not(:has(.badge)) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
+/* 如果按钮内容被包装在 span 中（如 <span><i>...</i><span class="cn-text">中文</span></span><span class="en-text">...</span>） */
+.btn:has(i):has(.en-text) > span:has(i):not(.en-text):not(.badge):not(.cn-text) {
+    grid-row: 1;
+    grid-column: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    width: 100%;
+}
+
+.btn:has(i):has(.en-text) > span:has(i):not(.en-text):not(.badge):not(.cn-text) > i {
+    margin: 0;
+    flex-shrink: 0;
+}
+
+/* 确保 span 内的 cn-text 也使用 inline，让图标和中文在同一行 */
+.btn:has(i):has(.en-text) > span:has(i):not(.en-text):not(.badge):not(.cn-text) > .cn-text {
+    display: inline;
+    white-space: nowrap;
+}
+
+/* 没有图标但有 .en-text 的按钮：保持原有的 column 布局 */
+.btn:not(:has(i)):has(.en-text) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 有 bilingual-inline 的按钮使用水平布局（左右结构），英文对齐到中文底部 */
+/* justify-content: center — 全宽（如 d-grid）时整组文案水平居中，避免默认 flex-start 贴左 */
+.btn.bilingual-inline:has(.en-text),
+.bilingual-inline.btn:has(.en-text) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.375rem 0.75rem;
+}
+
+/* 有 bilingual-inline 且有图标的按钮：图标、中文、英文都在同一行 */
+.btn.bilingual-inline:has(i):has(.en-text),
+.bilingual-inline.btn:has(i):has(.en-text) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.375rem 0.75rem;
+}
+
+/* bilingual-inline 按钮中的图标 */
+.btn.bilingual-inline:has(i):has(.en-text) > i,
+.bilingual-inline.btn:has(i):has(.en-text) > i {
+    margin: 0;
+    align-self: center;
+}
+
+/* bilingual-inline 按钮中的 cn-text 包装 */
+.btn.bilingual-inline:has(i):has(.en-text) > .cn-text,
+.bilingual-inline.btn:has(i):has(.en-text) > .cn-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+/* bilingual-inline 按钮中的中文文本（没有 cn-text 包装） */
+.btn.bilingual-inline:has(i):has(.en-text) > span:not(.en-text):not(.badge):not(.d-none):not(.cn-text),
+.bilingual-inline.btn:has(i):has(.en-text) > span:not(.en-text):not(.badge):not(.d-none):not(.cn-text) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+/* bilingual-inline 按钮中的英文文本 - 保持 inline 显示，与中文在同一行 */
+.btn.bilingual-inline:has(i):has(.en-text) > .en-text,
+.bilingual-inline.btn:has(i):has(.en-text) > .en-text {
+    display: inline !important;
+    margin-top: 0;
+    margin-left: 0;
+}
+
+/* 确保input-group-text中的双语文本纵向显示 */
+.input-group-text:has(.en-text) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 兼容性处理：不支持 :has() 选择器的浏览器 */
+@supports not selector(:has(*)) {
+    .btn .en-text,
+    .input-group-text .en-text {
+        display: block;
+        font-size: 0.6em;
+        margin-left: 0;
+        margin-top: 1px;
+        line-height: 1.0em;
+    }
+}
+
+/* ========================================
+   只有图标的按钮居中处理
+   ======================================== */
+
+/* 只有图标没有文本的按钮：确保图标居中 */
+/* 匹配：按钮直接子元素只有图标，没有 .en-text，没有其他文本内容 */
+.btn:has(> i:only-child):not(:has(.en-text)),
+.btn:has(> i:first-child:last-child):not(:has(.en-text)) {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* 只有图标按钮中的图标：确保居中且无额外边距 */
+.btn:has(> i:only-child):not(:has(.en-text)) > i,
+.btn:has(> i:first-child:last-child):not(:has(.en-text)) > i {
+    margin: 0 !important;
+}
+
+/* 通用规则：所有按钮中的图标默认移除边距（Bootstrap 可能添加了默认边距） */
+.btn > i {
+    margin: 0;
+}
+
+/* 确保只有图标的按钮使用 flex 布局居中（覆盖可能被其他样式影响的按钮） */
+.btn:not(:has(.en-text)):not(:has(.cn-text)):has(> i:only-child),
+.btn:not(:has(.en-text)):not(:has(.cn-text)):has(> i:first-child:last-child) {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* ========================================
+   双语切换功能
+   ======================================== */
+
+/* 切换按钮样式 */
+#bilingual-toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#bilingual-toggle-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* 通知样式 */
+.bilingual-notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 14px;
+    z-index: 1001;
+    display: none;
+}
+
+/* ========================================
+   响应式设计
+   ======================================== */
+
+@media (max-width: 768px) {
+    #bilingual-toggle-btn {
+        top: 10px;
+        right: 10px;
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+    
+    .en-text {
+        font-size: 0.7em;
+    }
+    
+    .btn .en-text {
+        font-size: 0.65em;
+    }
+    
+    .btn-group .en-text {
+        font-size: 0.6em;
+    }
+}
+
+/* 赛事归属列：双击复制 key（与 util.js data-csg-affiliation-id 配套） */
+.csg-hash-tag-badge.csg-hash-tag-badge--affiliation {
+    cursor: copy;
+}

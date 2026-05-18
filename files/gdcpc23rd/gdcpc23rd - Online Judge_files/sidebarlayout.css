@@ -1,0 +1,709 @@
+main {
+    position: relative;
+    max-width: 1280px;
+    padding: 1rem 2rem;
+    margin: 0 auto;
+    /* 默认情况下，main 独立居中，不考虑侧边栏（移动端） */
+}
+/* 仅站点侧栏顶栏（body 直接子级），勿匹配 main 内页面级 <header>（如 csg_page_header） */
+body > header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    top: 0;
+}
+.cpc-navbar
+{
+    display: block;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+    width: 100%;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Logo 水印背景 */
+.brand-watermark {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.watermark-logo {
+    width: 200px;
+    object-fit: contain;
+    object-position: center bottom;
+    opacity: 0.08;
+    filter: grayscale(100%) brightness(1.2);
+    transition: opacity 0.3s ease;
+    transform: translateY(40%);
+}
+
+.cpc-navbar:hover .watermark-logo {
+    opacity: 0.12;
+}
+
+/* 品牌内容容器 */
+.brand-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 20px;
+    width: 100%;
+    min-width: 0; /* 允许内部 flex 子项收缩，避免把 toggler 顶出边框 */
+}
+
+.brand-main {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1 1 auto;
+    min-width: 0; /* 关键：允许标题区域在小宽度下收缩 */
+}
+
+.brand-link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.brand-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 品牌文本容器 */
+.brand-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    width: 100%;
+    min-width: 0;
+}
+
+/* 品牌标题 - 自适应字号 */
+.cpc-brand,
+.cpc-brand:hover,
+.cpc-brand:focus,
+.cpc-brand:active,
+.cpc-brand:visited{
+    text-decoration:none;
+    color: #FFFFFF;
+    background: none;
+    opacity: 1;
+    margin: 0;
+    font-size: 2.5rem; /* 默认大字号 */
+    font-weight: 700;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+    text-align: left;
+    width: auto;
+    white-space: nowrap;          /* 避免折行 */
+    /* 注意：不使用省略号/裁切，要求完整显示。
+       若超出容器宽度，应通过 JS(按字符数)缩小字号来适配。 */
+}
+
+/* 根据文本长度自适应字号 */
+.cpc-brand[data-text*="CCPCOJ"] { font-size: 2.2rem; }
+.cpc-brand[data-text*="Online Judge"] { font-size: 1.8rem; }
+.cpc-brand[data-text*="Contest System"] { font-size: 1.6rem; }
+.cpc-brand[data-text*="Experiment System"] { font-size: 1.4rem; }
+.cpc-brand[data-text*="Admin Panel"] { font-size: 1.8rem; }
+.cpc-brand[data-text*="Training Team"] { font-size: 1.6rem; }
+.cpc-brand[data-text*="Tools"] { font-size: 2.5rem; }
+
+/* 通用长文本适配 */
+.cpc-brand[data-text]:not([data-text*="CCPCOJ"]):not([data-text*="Online Judge"]):not([data-text*="Contest System"]):not([data-text*="Experiment System"]):not([data-text*="Admin Panel"]):not([data-text*="Training Team"]):not([data-text*="Tools"]) {
+    font-size: clamp(1.2rem, 4vw, 2.5rem);
+}
+
+/* 按字符数的动态长文本适配（>5 字符） */
+.cpc-brand.cpc-brand-long {
+    font-size: clamp(1.2rem, 3.2vw, 2.0rem);
+    letter-spacing: 0.2px;
+}
+
+.brand-link:hover .cpc-brand {
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transform: translateY(-1px);
+}
+
+/* 副标题容器 */
+.brand-subtitle-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 8px;
+    padding-bottom: 8px;
+    text-align: left;
+    gap: 8px;
+}
+
+.cpc-brand-subtitle {
+    position: relative;
+    font-size: 14px;
+    color: #EEEEEE;
+    font-weight: 500;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    line-height: 1.4;
+    transition: all 0.3s ease;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.brand-link:hover .cpc-brand-subtitle {
+    color: #FFFFFF;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* 副标题主要内容 */
+.subtitle-main {
+    display: inline;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    text-align: left;
+}
+
+/* 品牌区域中的英文副标题样式 - 横向排列 */
+.cpc-brand-subtitle .en-text {
+    display: inline !important;
+    font-size: 0.7em;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 400;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    line-height: 1.3em;
+    margin-left: 0;
+    margin-top: 0;
+    font-style: italic;
+    opacity: 0.9;
+    letter-spacing: 0.2px;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.brand-link:hover .cpc-brand-subtitle .en-text {
+    color: rgba(255, 255, 255, 0.95);
+    opacity: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+
+.sidebar {
+    display: block;
+    padding: 1rem 0;
+    width: 100%;
+    height: 100% !important;
+    z-index: 1000;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+    border-right: 1px solid #dee2e6;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+/* 默认配色 - 未设置 class 的 brand 使用此配色 */
+.cpc-navbar:not([class*="cpc-navbar-"]) {
+    background-color: #6c757d;
+}
+.cpc-navbar:not([class*="cpc-navbar-"]) .cpc-brand-subtitle .en-text {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Bootstrap 5 颜色系统更新 */
+.cpc-navbar.cpc-navbar-csgoj {
+    background-color: #0d6efd;
+}
+.cpc-navbar.cpc-navbar-csgoj .cpc-brand-subtitle .en-text {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+
+.cpc-navbar.cpc-navbar-cr {
+    background-color: #198754;
+}
+.cpc-navbar.cpc-navbar-cr .cpc-brand-subtitle .en-text {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+
+.cpc-navbar.cpc-navbar-index {
+    background-color: #212529;
+}
+.cpc-navbar.cpc-navbar-index .cpc-brand-subtitle .en-text {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+
+.cpc-navbar.cpc-navbar-cpcsys {
+    background-color: #fd7e14;
+}
+.cpc-navbar.cpc-navbar-cpcsys .cpc-brand-subtitle .en-text {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+
+.cpc-navbar.cpc-navbar-admin {
+    background-color: #dc3545; /* admin：标准红色 */
+}
+.cpc-navbar.cpc-navbar-admin .cpc-brand-subtitle .en-text {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+
+.cpc-navbar.cpc-navbar-tt {
+    background-color: #0d6efd;
+}
+.cpc-navbar.cpc-navbar-tt .cpc-brand-subtitle .en-text {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+
+.cpc-navbar.cpc-navbar-ojtool {
+    background-color: #20c997;
+}
+.cpc-navbar.cpc-navbar-ojtool .cpc-brand-subtitle .en-text {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Course 课程管理 - 根据 OJ_MODE 调整配色 */
+.cpc-navbar.cpc-navbar-course {
+    background-color: #0dcaf0; /* online 模式：舒缓的青色 */
+}
+.cpc-navbar.cpc-navbar-course.cpc-navbar-tension {
+    background-color: #ffc107; /* cpcsys 模式：紧张的黄色 */
+}
+.cpc-navbar.cpc-navbar-course .cpc-brand-subtitle .en-text {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+.cpc-navbar.cpc-navbar-course.cpc-navbar-tension .cpc-brand-subtitle .en-text {
+    /* 统一风格：无论背景如何，品牌副标题英文保持浅色 */
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* OJ_STATUS=exp 模式下的统一配色 - 多个模块共用紫色 */
+.cpc-navbar.cpc-navbar-exindex,
+.cpc-navbar.cpc-navbar-expsys,
+.cpc-navbar.cpc-navbar-examsys {
+    background-color: #6f42c1; /* exp 模式：统一的紫色 */
+}
+.cpc-navbar.cpc-navbar-exindex.cpc-navbar-tension,
+.cpc-navbar.cpc-navbar-expsys.cpc-navbar-tension,
+.cpc-navbar.cpc-navbar-examsys.cpc-navbar-tension {
+    background-color: #dc3545; /* cpcsys-exp 模式：统一的红色 */
+}
+.cpc-navbar.cpc-navbar-exindex .cpc-brand-subtitle .en-text,
+.cpc-navbar.cpc-navbar-expsys .cpc-brand-subtitle .en-text,
+.cpc-navbar.cpc-navbar-examsys .cpc-brand-subtitle .en-text {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* exadmin 管理后台 - 使用红色，与 admin 稍微区分 */
+.cpc-navbar.cpc-navbar-exadmin {
+    background-color: #c82333; /* exadmin：深红色，区别于 admin 的标准红色 */
+}
+.cpc-navbar.cpc-navbar-exadmin.cpc-navbar-tension {
+    background-color: #bd2130; /* cpcsys-exp 模式：更深的红色 */
+}
+.cpc-navbar.cpc-navbar-exadmin .cpc-brand-subtitle .en-text {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+.cpc-navbar.cpc-navbar-exadmin.cpc-navbar-tension .cpc-brand-subtitle .en-text {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+@media (max-width: 768px)
+{
+    /*窄页面菜单toggle按钮样式 - Bootstrap 5 更新*/
+    .cpc-nav-toggle
+    {
+        position: absolute;
+        top: 0.5rem;
+        right: 1rem;
+        height: 2.5rem;
+        width: 2.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 0.375rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+    
+    .cpc-nav-toggle:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: scale(1.05);
+    }
+    
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+    }
+    
+    .icon-bar {
+        display: block;
+        width: 18px;
+        height: 2px;
+        background-color: #EEEEEE;
+        border-radius: 1px;
+        margin: 2px 0;
+        transition: all 0.3s ease;
+        transform-origin: center;
+    }
+    
+    .cpc-nav-toggle:hover .icon-bar {
+        background-color: #FFFFFF;
+    }
+    
+    .cpc-nav-toggle[aria-expanded="true"] .icon-bar:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .cpc-nav-toggle[aria-expanded="true"] .icon-bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .cpc-nav-toggle[aria-expanded="true"] .icon-bar:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+    /*窄页面navbar置顶横向占满 - Bootstrap 5 优化*/
+    .cpc-navbar
+    {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        width: 100%;
+        height: 3.5rem;
+    }
+    
+    .brand-content {
+        padding: 0 10px;
+    }
+    
+    .brand-main {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    .brand-link {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    .brand-text-container {
+        width: 100%;
+        align-items: flex-start;
+    }
+    
+    .cpc-brand {
+        font-size: 1.8rem !important; /* 移动端固定字号 */
+        text-align: left;
+    }
+    
+    .brand-subtitle-container {
+        align-items: flex-start;
+        margin-top: 6px;
+        padding-bottom: 6px;
+        gap: 6px;
+    }
+    
+    .cpc-brand-subtitle {
+        font-size: 12px;
+        text-align: left;
+        line-height: 1.4;
+        gap: 6px;
+    }
+    
+    .cpc-brand-subtitle .en-text {
+        font-size: 0.65em;
+        text-align: left;
+        margin-top: 0;
+        color: rgba(255, 255, 255, 0.85) !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+    }
+    
+    /* 移动端水印Logo调整 */
+    .watermark-logo {
+        width: 200px;
+        opacity: 0.06;
+        transform: translateY(40%);
+    }
+
+    .sidebar
+    {
+        display: none;
+    }
+    .show {
+        display: block !important;
+    }
+    main {
+        margin-top: 3.5rem;
+        padding: 1rem;
+    }
+    .cpc-brand-img{
+        display: none;
+    }
+
+    /* 移动端侧栏打开：固定抽屉叠在正文上（与 sidebar_mobile_edge.js 一致） */
+    #sidebar_div.sidebar.show {
+        position: fixed;
+        left: 0;
+        top: 3.5rem;
+        bottom: 0;
+        width: min(20rem, 88vw);
+        max-width: 88vw;
+        height: auto !important;
+        z-index: 1002;
+        margin: 0;
+        padding-top: 0.75rem;
+        overflow-x: hidden;
+        overflow-y: auto;
+        box-shadow: 0.35rem 0 1.25rem rgba(0, 0, 0, 0.14);
+        border-right: 1px solid #dee2e6;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* 遮罩：点击关闭（顶栏不遮，避免挡汉堡） */
+    .csg-sidebar-mobile-backdrop {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 3.5rem;
+        bottom: 0;
+        z-index: 1001;
+        background-color: rgba(33, 37, 41, 0.45);
+        backdrop-filter: blur(2px);
+    }
+
+    /* 明显关闭钮：圆形 FAB，贴近抽屉右缘（脚本定位 left/top） */
+    .csg-sidebar-mobile-close-fab {
+        position: fixed;
+        z-index: 1003;
+        width: 2.75rem;
+        height: 2.75rem;
+        min-width: 2.75rem;
+        min-height: 2.75rem;
+        padding: 0;
+        margin: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.95);
+        background: #0d6efd;
+        color: #fff !important;
+        box-shadow: 0 0.25rem 1rem rgba(13, 110, 253, 0.42),
+            0 0.12rem 0.35rem rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        line-height: 1;
+        transition: transform 0.15s ease, filter 0.15s ease,
+            box-shadow 0.15s ease;
+    }
+
+    .csg-sidebar-mobile-close-fab:active {
+        transform: scale(0.94);
+        filter: brightness(0.94);
+    }
+
+    .csg-sidebar-mobile-close-fab .bi {
+        font-size: 1.2rem;
+        line-height: 1;
+    }
+}
+@media (min-width: 768px)
+{
+    .cpc-nav-toggle {
+        display: none;
+    }
+    .cpc-navbar
+    {
+        overflow: hidden;
+        position: relative;
+        padding: 0;
+    }
+    .sidebar {
+        display: block !important;
+    }
+    /* 屏幕宽度不够时：菜单贴左边，main 在右侧 */
+    body > header
+    {
+        left: 0;
+        width: 200px;
+        height: 100%;
+    }
+    main
+    {
+        margin-left: 200px;
+        max-width: 1280px;
+        margin-right: auto;
+    }
+    
+    /* 桌面端品牌区域优化 */
+    .brand-content {
+        padding: 20px 15px 20px 25px;
+    }
+    
+    .brand-main {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    .brand-link {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    .brand-text-container {
+        width: 100%;
+        align-items: flex-start;
+    }
+    
+    .cpc-brand {
+        text-align: left;
+    }
+    
+    .brand-subtitle-container {
+        align-items: flex-start;
+        margin-top: 8px;
+        padding-bottom: 8px;
+        gap: 8px;
+    }
+    
+    .cpc-brand-subtitle {
+        font-size: 14px;
+        text-align: left;
+        line-height: 1.4;
+        gap: 8px;
+    }
+    
+    .cpc-brand-subtitle .en-text {
+        display: inline !important;
+        font-size: 0.7em;
+        text-align: left;
+        margin-top: 0;
+        color: rgba(255, 255, 255, 0.85) !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+    }
+    
+    /* 桌面端水印Logo */
+    .watermark-logo {
+        width: 200px;
+        opacity: 0.08;
+        transform: translateY(40%);
+    }
+}
+/* 屏幕宽度足够时（>= 1700px）：main 居中，菜单相对于 main 放在左侧 */
+/* 断点计算：菜单 left = calc(50% - 840px)，要确保 >= 0 */
+/* 即：窗口宽度 / 2 - 840 >= 0 => 窗口宽度 >= 1680px */
+/* 取 1700px 作为断点，确保菜单不会跑到屏幕外 */
+@media (min-width: 1700px)
+{
+    /* main 无条件居中 */
+    main
+    {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1280px;
+    }
+    /* 菜单相对于 main 放在左侧 */
+    /* main 中心位置 = 50%，main 左边缘 = 50% - 640px，菜单右边缘应该在 main 左边缘 */
+    /* 菜单左边缘 = 50% - 640px - 200px = 50% - 840px */
+    body > header
+    {
+        left: calc(50% - 840px);
+        width: 200px;
+        height: 100%;
+    }
+}
+
+@media (min-width: 1730px)
+{
+    .sidebar
+    {
+        background-color: #ffffff;
+        border-right: 1px solid #dee2e6;
+        border-left: 1px solid #dee2e6;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    }
+}
+/* Bootstrap 5 导航样式优化 */
+.nav-flush .nav-link {
+    border-radius: 0;
+}
+
+/* 导航链接悬停效果 */
+.sidebar .nav-link {
+    color: #495057;
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    margin: 0.125rem 0.5rem;
+    transition: all 0.15s ease-in-out;
+}
+
+.sidebar .nav-link:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+    color: #0d6efd;
+}
+
+.sidebar .nav-link.active {
+    background-color: #0d6efd;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* 激活状态下的英文文本颜色 */
+.sidebar .nav-link.active .en-text {
+    color: rgba(255, 255, 255, 0.8) !important;
+    opacity: 0.9 !important;
+}
+
+/* 响应式导航优化 */
+@media (max-width: 767.98px) {
+    .sidebar .nav-link {
+        padding: 1rem;
+        margin: 0.25rem 0;
+        border-radius: 0;
+    }
+}

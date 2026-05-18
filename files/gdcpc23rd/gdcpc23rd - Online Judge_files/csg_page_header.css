@@ -1,0 +1,538 @@
+/**
+ * 全站通用页头 — 扁平实色、无渐变；禁止左侧色条与标题栏容器圆角（项目约定）
+ * 语义：.csg-page-header*；兼容：.admin-page-header*
+ */
+
+:root {
+	--csg-ph-bg: #ffffff;
+	--csg-ph-border: #e2e8f0;
+	--csg-ph-border-strong: #cbd5e1;
+	--csg-ph-shadow: none;
+	--csg-ph-accent: #2563eb;
+	--csg-ph-accent-hover: #1d4ed8;
+	--csg-ph-accent-fg: #ffffff;
+	--csg-ph-icon-bg: #f1f5f9;
+	--csg-ph-text: #0f172a;
+	--csg-ph-muted: #64748b;
+}
+
+/* ========== 新版 .csg-page-header ========== */
+
+.csg-page-header {
+	width: 100%;
+	max-width: 100%;
+	box-sizing: border-box;
+	margin-bottom: 1.5rem;
+}
+
+.csg-page-header__sheet {
+	width: 100%;
+	box-sizing: border-box;
+	border-radius: 0;
+	border: 1px solid var(--csg-ph-border);
+	background: var(--csg-ph-bg);
+	box-shadow: var(--csg-ph-shadow);
+}
+
+.csg-page-header__grid {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem 1.5rem;
+	padding: 1.25rem 1.5rem;
+	flex-wrap: wrap;
+}
+
+.csg-page-header__identity {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	min-width: 0;
+	flex: 1;
+}
+
+.csg-page-header__icon {
+	flex-shrink: 0;
+	width: 2.75rem;
+	height: 2.75rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 0;
+	background: var(--csg-ph-icon-bg);
+	border: 1px solid var(--csg-ph-border);
+	color: var(--csg-ph-accent);
+	font-size: 1.25rem;
+}
+
+.csg-page-header__wording {
+	min-width: 0;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 0.375rem;
+}
+
+.csg-page-header__heading {
+	margin: 0;
+	font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+	font-weight: 600;
+	letter-spacing: -0.02em;
+	line-height: 1.25;
+	color: var(--csg-ph-text);
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.5rem 1rem;
+}
+
+.csg-page-header__title {
+	color: var(--csg-ph-text);
+}
+
+/* 与题目编辑页一致：中英标题同一行（覆盖 bilingual.css 里 h1 .en-text { display:block }） */
+.csg-page-header__heading > .csg-page-header__en,
+.csg-page-header__heading > .en-text.csg-page-header__en {
+	display: inline !important;
+	margin-top: 0 !important;
+	margin-left: 0;
+	white-space: nowrap;
+	vertical-align: baseline;
+}
+
+.csg-page-header__en,
+.csg-page-header__heading .en-text {
+	font-size: 0.6875rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--csg-ph-muted) !important;
+	font-style: normal !important;
+	opacity: 1 !important;
+}
+
+.csg-page-header__meta-stack {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.375rem;
+	min-width: 0;
+}
+
+.csg-page-header__meta-stack .en-text {
+	text-transform: uppercase;
+	font-size: 0.6875rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	color: var(--csg-ph-muted) !important;
+	font-style: normal !important;
+	opacity: 1 !important;
+}
+
+.csg-page-header__chips {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.csg-page-header__badge,
+a.csg-page-header__badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	padding: 0.25rem 0.625rem;
+	border-radius: 0;
+	font-size: 0.75rem;
+	font-weight: 600;
+	text-decoration: none;
+	color: var(--csg-ph-accent-fg) !important;
+	background: var(--csg-ph-accent);
+	border: 1px solid var(--csg-ph-accent);
+	transition: background-color 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+}
+
+.csg-page-header__badge:hover {
+	color: var(--csg-ph-accent-fg) !important;
+	background: var(--csg-ph-accent-hover);
+	border-color: var(--csg-ph-accent-hover);
+}
+
+.csg-page-header__actions {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	flex-shrink: 0;
+}
+
+.csg-page-header__actions .btn {
+	border-radius: 0;
+	font-weight: 500;
+	background-image: none !important;
+	box-shadow: none !important;
+}
+
+.admin-page-header-actions .btn {
+	background-image: none !important;
+	box-shadow: none !important;
+}
+
+@media (max-width: 768px) {
+	.csg-page-header__grid {
+		flex-direction: column;
+		align-items: stretch;
+		padding: 1.1rem 1.25rem;
+	}
+	.csg-page-header__actions {
+		justify-content: flex-end;
+	}
+}
+
+@media (max-width: 576px) {
+	.csg-page-header__icon {
+		width: 2.5rem;
+		height: 2.5rem;
+		font-size: 1.1rem;
+	}
+	.csg-page-header__heading {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.25rem;
+	}
+}
+
+/* ========== 旧版 .admin-page-header（同套扁平语言，无渐变） ========== */
+
+.admin-page-header {
+	position: relative;
+	overflow: visible;
+	border-radius: 0;
+	border: 1px solid var(--csg-ph-border);
+	background: var(--csg-ph-bg);
+	box-shadow: var(--csg-ph-shadow);
+	margin-bottom: 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 1.25rem 1.5rem;
+	flex-wrap: wrap;
+}
+
+.admin-page-header-left {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	gap: 1rem;
+	flex: 1;
+	min-width: 0;
+}
+
+.admin-page-header-right {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	gap: 0.75rem;
+	flex-shrink: 0;
+	flex-wrap: wrap;
+}
+
+.admin-page-header-icon {
+	background: var(--csg-ph-icon-bg);
+	border: 1px solid var(--csg-ph-border);
+	border-radius: 0;
+	padding: 0;
+	width: 2.75rem;
+	height: 2.75rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.admin-page-header-icon i {
+	color: var(--csg-ph-accent);
+	font-size: 1.25rem;
+}
+
+.admin-page-header-title {
+	font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+	font-weight: 600;
+	letter-spacing: -0.02em;
+	color: var(--csg-ph-text);
+	margin: 0;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	flex: 1;
+	min-width: 0;
+	flex-wrap: wrap;
+}
+
+.admin-page-header-title-main {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	color: var(--csg-ph-text);
+}
+
+.admin-page-header-title-right {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.25rem;
+}
+
+.admin-page-header-title-meta-right {
+	margin-left: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.25rem;
+}
+
+.admin-page-header-title .en-text,
+.admin-page-header-title-right .en-text {
+	font-size: 0.6875rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--csg-ph-muted) !important;
+	white-space: nowrap;
+	font-style: normal !important;
+	opacity: 1 !important;
+}
+
+.admin-page-header-id {
+	background: var(--csg-ph-accent);
+	color: var(--csg-ph-accent-fg) !important;
+	font-size: 0.75rem;
+	font-weight: 600;
+	padding: 0.25rem 0.625rem;
+	border-radius: 0;
+	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	transition: background-color 0.12s ease, border-color 0.12s ease;
+	border: 1px solid var(--csg-ph-accent);
+	white-space: nowrap;
+}
+
+.admin-page-header-id:hover {
+	color: var(--csg-ph-accent-fg) !important;
+	text-decoration: none;
+	background: var(--csg-ph-accent-hover);
+	border-color: var(--csg-ph-accent-hover);
+}
+
+.admin-page-header-actions {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+}
+
+.admin-page-header-actions .btn {
+	font-size: 0.875rem;
+	padding: 0.375rem 0.75rem;
+	border-radius: 0;
+	font-weight: 500;
+}
+
+@media (max-width: 768px) {
+	.admin-page-header {
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 1.1rem 1.25rem;
+	}
+	.admin-page-header-left {
+		width: 100%;
+		flex-wrap: wrap;
+	}
+	.admin-page-header-title {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.5rem;
+	}
+	.admin-page-header-title-right {
+		align-items: flex-start;
+	}
+	.admin-page-header-actions {
+		width: 100%;
+		justify-content: flex-end;
+	}
+}
+
+@media (max-width: 576px) {
+	.admin-page-header-title {
+		font-size: 1.125rem;
+	}
+	.admin-page-header-actions .btn {
+		font-size: 0.8rem;
+		padding: 0.25rem 0.5rem;
+	}
+	.admin-page-header-icon {
+		width: 2.5rem;
+		height: 2.5rem;
+	}
+	.admin-page-header-icon i {
+		font-size: 1.1rem;
+	}
+}
+
+/* 页头内「赛已结束 / 只读」：贴右侧按钮区，避免随左侧标题长短横向漂移 */
+.admin-page-header--with-ended-notice {
+	align-items: center;
+}
+
+.admin-page-header--with-ended-notice .admin-page-header-left {
+	/* 与默认一致：占满标题与提示条之间的弹性空间，把提示条顶到右侧 */
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.admin-page-header-ended-notice {
+	flex: 0 1 auto;
+	min-width: 0;
+	max-width: min(28rem, 44vw);
+	margin: 0 0 0 auto;
+	padding: 0.4rem 0.75rem;
+	border-radius: 0.35rem;
+	border: 1px solid rgba(220, 53, 69, 0.45);
+	background: rgba(220, 53, 69, 0.08);
+	color: var(--csg-ph-text, #212529);
+}
+
+.admin-page-header-ended-notice__line-cn {
+	font-size: 0.9375rem;
+	font-weight: 600;
+	line-height: 1.35;
+	letter-spacing: 0.01em;
+}
+
+.admin-page-header-ended-notice__line-en {
+	display: block;
+	margin-top: 0.12rem;
+	font-size: 0.8125rem;
+	font-weight: 500;
+	line-height: 1.3;
+	opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+	.admin-page-header--with-ended-notice {
+		flex-wrap: wrap;
+	}
+	.admin-page-header--with-ended-notice .admin-page-header-ended-notice {
+		order: 3;
+		flex: 1 0 100%;
+		max-width: none;
+		margin: 0.5rem 0 0;
+	}
+}
+
+/* 获奖页等：页头内「发布前请核对」提示（与 ended-notice 同布局，语义为提醒） */
+.admin-page-header--with-award-confirm {
+	align-items: center;
+}
+.admin-page-header--with-award-confirm .admin-page-header-left {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+.admin-page-header-award-confirm {
+	flex: 0 1 auto;
+	min-width: 0;
+	max-width: min(36rem, 48vw);
+	margin: 0 0.5rem 0 auto;
+	padding: 0.35rem 0.75rem;
+	border-radius: 0.35rem;
+	border: 1px solid rgba(255, 159, 67, 0.55);
+	background: rgba(255, 193, 7, 0.12);
+	color: var(--csg-ph-text, #212529);
+}
+.admin-page-header-award-confirm__line-cn {
+	font-size: 0.8125rem;
+	font-weight: 600;
+	line-height: 1.35;
+	letter-spacing: 0.01em;
+}
+.admin-page-header-award-confirm__line-cn a {
+	font-weight: 700;
+}
+.admin-page-header-award-confirm__line-en {
+	display: block;
+	margin-top: 0.1rem;
+	font-size: 0.75rem;
+	font-weight: 500;
+	line-height: 1.3;
+	opacity: 0.88;
+}
+.admin-page-header-actions--compact .btn {
+	padding: 0.22rem 0.45rem;
+	font-size: 0.8125rem;
+	line-height: 1.25;
+}
+.admin-page-header-actions--compact .btn i {
+	font-size: 0.95rem;
+}
+@media (max-width: 768px) {
+	.admin-page-header--with-award-confirm {
+		flex-wrap: wrap;
+	}
+	.admin-page-header--with-award-confirm .admin-page-header-award-confirm {
+		order: 3;
+		flex: 1 0 100%;
+		max-width: none;
+		margin: 0.5rem 0 0;
+	}
+}
+
+/*
+ * 比赛小后台 · 页头「帮助 / 规则」折叠说明（Harness）
+ * 与 cpcsys/admin/contest_teamgen、csgoj/admin/award 等页一致：article.alert.alert-info.collapse
+ */
+.csg-admin-help-collapse {
+	margin-bottom: 1rem;
+	border-radius: 0.5rem;
+}
+.csg-admin-help-collapse h5.bilingual-inline {
+	margin-top: 0;
+	margin-bottom: 0.75rem;
+	font-size: 1rem;
+	font-weight: 700;
+	line-height: 1.35;
+	color: inherit;
+}
+.csg-admin-help-collapse h5.bilingual-inline ~ h5.bilingual-inline {
+	margin-top: 1.25rem;
+}
+.csg-admin-help-collapse p {
+	margin-bottom: 0.65rem;
+	font-size: 0.9375rem;
+	line-height: 1.55;
+}
+.csg-admin-help-collapse p:last-child {
+	margin-bottom: 0;
+}
+.csg-admin-help-collapse code {
+	font-size: 0.875em;
+}
+.csg-admin-help-collapse .table {
+	font-size: 0.875rem;
+}
+
+/* ========== 日期时间列：时区 tag 独占一行（general_formatter createDateTimeFormatter） ========== */
+.csg-datetime-tz-row {
+	margin-top: 0.15rem;
+	line-height: 1;
+}
+.csg-datetime-tz-row .csg-tz-tag {
+	font-size: 0.68em;
+	font-weight: 500;
+	padding: 0.12em 0.42em;
+	font-variant-numeric: tabular-nums;
+	letter-spacing: 0.02em;
+	/* 小圆角 chip（与 `rounded-2` 同量级，略方于 pill） */
+	border-radius: 0.25rem;
+}

@@ -1,0 +1,98 @@
+/**
+ * 全站可复用 UI 角标（不占文档流宽度/高度；依赖父级 position: relative）
+ *
+ * - .csg-anchor-tr          ：为角标提供定位上下文，常与标题等 shrink-to-fit 内容同用
+ * - .csg-marker-layer-tl    ：零尺寸承载层，左上锚点；子元素 pointer-events:auto 可响应 title
+ * - .csg-marker-yellow-star-tl ：左上小黄星（附加题等）
+ * - .csg-marker-girl-tl      ：左上粉心（女队；与榜单 `team-girl` / `bi-heart-fill` 同源）
+ * - .modified-indicator     ：表单项「已修改」右上圆点小黄星（评测机配置、课程组编辑等）
+ */
+:root {
+    --csg-marker-yellow-star-color: #ffc107;
+    --csg-marker-yellow-star-shadow: 0 0 1px rgba(255, 255, 255, 0.95), 0 1px 2px rgba(0, 0, 0, 0.28);
+    --csg-marker-girl-color: #ec4899;
+    --csg-marker-girl-shadow: 0 0 1px rgba(255, 255, 255, 0.95), 0 1px 2px rgba(0, 0, 0.22);
+    /* 左上悬浮角标相对锚点的位移（负 X = 再往左） */
+    --csg-marker-tl-offset-x: -52%;
+    --csg-marker-tl-offset-y: -44%;
+}
+
+.csg-anchor-tr {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 100%;
+}
+
+/* 左上：零占位锚点层，避免角标参与 shrink-to-fit 宽度计算 */
+.csg-marker-layer-tl {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    overflow: visible;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.csg-marker-yellow-star-tl {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(var(--csg-marker-tl-offset-x), var(--csg-marker-tl-offset-y));
+    pointer-events: auto;
+    color: var(--csg-marker-yellow-star-color);
+    font-size: 0.7rem;
+    line-height: 1;
+    text-shadow: var(--csg-marker-yellow-star-shadow);
+}
+
+.csg-marker-yellow-star-tl .bi {
+    display: block;
+    line-height: 1;
+    vertical-align: top;
+}
+
+/* 女队：与 rank `.team-type-icon.girl` 同色，布局同左上小黄星 */
+.csg-marker-girl-tl {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(var(--csg-marker-tl-offset-x), var(--csg-marker-tl-offset-y));
+    pointer-events: auto;
+    color: var(--csg-marker-girl-color);
+    font-size: 0.7rem;
+    line-height: 1;
+    text-shadow: var(--csg-marker-girl-shadow);
+}
+
+.csg-marker-girl-tl .bi {
+    display: block;
+    line-height: 1;
+    vertical-align: top;
+}
+
+/* 表单项已修改：右上圆点小黄星（原 judge_manage / course_admin 共用） */
+.modified-indicator {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    color: var(--csg-marker-yellow-star-color);
+    font-size: 12px;
+    z-index: 10;
+    background: #fff;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+}
+
+.modified-indicator i {
+    display: block;
+    line-height: 1;
+}

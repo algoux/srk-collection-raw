@@ -1,0 +1,164 @@
+.csg-ms {
+    position: relative;
+}
+
+.csg-ms.csg-ms-disabled {
+    opacity: 0.7;
+}
+
+.csg-ms-toggle {
+    width: 100%;
+    min-height: 34px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #fff;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 4px 8px;
+}
+
+/* 与榜单「筛选 + 摘要」一体：左侧单行标签 | 中间 chips | 右侧计数（勿用 .en-text，见 bilingual.css .btn .en-text） */
+.csg-ms-toggle-label {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: baseline;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    padding: 0 8px 0 0;
+    margin: 0 6px 0 0;
+    border-right: 1px solid #e2e8f0;
+    line-height: 1.2;
+    max-width: 38%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.csg-ms-toggle-cn {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #334155;
+}
+
+.csg-ms-toggle-sep {
+    margin: 0 0.2em;
+    font-size: 11px;
+    font-weight: 500;
+    color: #94a3b8;
+}
+
+.csg-ms-toggle-en {
+    font-size: 10px;
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: 0.02em;
+    color: #64748b;
+    text-transform: none;
+}
+
+.csg-ms-toggle:focus {
+    border-color: #94a3b8;
+    box-shadow: 0 0 0 2px rgba(148, 163, 184, 0.2);
+}
+
+.csg-ms-summary {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.csg-ms-placeholder {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.csg-ms-chip {
+    display: inline-flex;
+    align-items: center;
+    max-width: 220px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    border: 1px solid #dbe3ee;
+    background: #f8fafc;
+    color: #334155;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.csg-ms-count {
+    flex-shrink: 0;
+    margin-left: auto;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.csg-ms-menu {
+    width: 100%;
+    min-width: 320px;
+    max-height: 260px;
+    overflow: auto;
+    border: 1px solid #d7dee8;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.1);
+    padding: 6px;
+}
+
+.csg-ms-search-wrap {
+    position: sticky;
+    top: -6px;
+    padding: 0 0 6px 0;
+    background: #fff;
+    z-index: 1;
+}
+
+.csg-ms-search {
+    border-radius: 6px;
+    border-color: #d7dee8;
+    font-size: 12px;
+}
+
+.csg-ms-options {
+    max-height: 204px;
+    overflow: auto;
+}
+
+.csg-ms-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 6px;
+    padding: 6px 8px;
+    cursor: pointer;
+    margin: 1px 0;
+}
+
+.csg-ms-option:hover {
+    background: #f1f5f9;
+}
+
+.csg-ms-option input[type="checkbox"] {
+    margin: 0;
+}
+
+.csg-ms-option-label {
+    font-size: 13px;
+    color: #0f172a;
+    line-height: 1.25;
+}
+
+.csg-ms-empty {
+    padding: 8px;
+    text-align: center;
+    color: #64748b;
+    font-size: 12px;
+}

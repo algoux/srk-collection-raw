@@ -1,0 +1,44 @@
+/**
+ * 数学公式样式
+ * 统一处理数学公式的显示样式，支持 KaTeX
+ */
+
+/* 数学公式容器样式 */
+.marked_math_div .katex,
+.marked_math_div .katex-display {
+    font-size: 100% !important;
+}
+
+/* 兼容旧类名 */
+.marked_math_div .MathJax {
+    font-size: 100% !important;
+}
+
+/* 数学公式表格样式 */
+.marked_math_div table td,
+.marked_math_div table th {
+    border: 1px solid;
+    padding: 5px;
+}
+
+/* KaTeX 公式样式优化 */
+.katex {
+    font-size: 1.1em;
+}
+
+.katex-display {
+    margin: 1em 0;
+    text-align: center;
+}
+
+/* 行内公式样式 */
+.katex-display > .katex {
+    text-align: left;
+}
+
+/* 导出页面中的数学公式样式 */
+.MathJax,
+.katex {
+    text-align: left !important;
+}
+

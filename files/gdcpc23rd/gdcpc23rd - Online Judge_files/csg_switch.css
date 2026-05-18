@@ -1,0 +1,408 @@
+/**
+ * CSG Switch — 与 Bootstrap 5 协调的开关；滑块位置由 CSS :checked 驱动，避免 JS 布局闪动。
+ */
+
+.csg-switch {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    --csg-gap: 0.2rem;
+    --csg-hpad: 0px;
+    --csg-pad-y: 0.12rem;
+    --csg-text-inset: 0.22rem;
+    --csg-track-w: 2.75rem;
+    --csg-track-h: 1.625rem;
+    --csg-slider: 1.125rem;
+    --csg-radius-track: 50rem;
+    --csg-transition: left 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+        right 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.csg-switch-input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    clip: rect(0, 0, 0, 0);
+    pointer-events: none;
+}
+
+.csg-switch-track {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: var(--csg-track-w);
+    width: var(--csg-track-w);
+    min-height: var(--csg-track-h);
+    height: var(--csg-track-h);
+    padding: var(--csg-pad-y) var(--csg-hpad);
+    cursor: pointer;
+    user-select: none;
+    border-radius: var(--csg-radius-track);
+    background-color: var(--bs-secondary-bg, #e9ecef);
+    border: 1px solid var(--bs-border-color, #dee2e6);
+    transition: var(--csg-transition);
+    overflow: hidden;
+}
+
+.csg-switch-slider {
+    position: absolute;
+    top: 50%;
+    left: calc(var(--csg-hpad) + var(--csg-gap));
+    right: auto;
+    width: var(--csg-slider);
+    height: var(--csg-slider);
+    margin: 0;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.06),
+        0 1px 3px rgba(0, 0, 0, 0.12);
+    transform: translateY(-50%);
+    transition: var(--csg-transition);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* checked 态：统一用 left 定位，确保 left→left 可 transition */
+.csg-switch-input:checked + .csg-switch-track .csg-switch-slider,
+.csg-switch-track.csg-switch-active .csg-switch-slider {
+    left: calc(100% - var(--csg-slider) - var(--csg-gap) - var(--csg-hpad));
+    right: auto;
+}
+
+.csg-switch-input:checked + .csg-switch-track,
+.csg-switch-track.csg-switch-active {
+    background-color: var(--bs-primary, #0d6efd);
+    border-color: var(--bs-primary, #0d6efd);
+}
+
+.csg-switch-input:hover:not(:disabled) + .csg-switch-track {
+    border-color: var(--bs-secondary-color, #6c757d);
+}
+
+.csg-switch-input:checked:hover:not(:disabled) + .csg-switch-track {
+    background-color: var(--bs-primary, #0d6efd);
+    filter: brightness(0.95);
+    border-color: transparent;
+}
+
+.csg-switch-input:focus-visible + .csg-switch-track {
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb, 13, 110, 253), 0.35);
+}
+
+.csg-switch-input:disabled + .csg-switch-track {
+    opacity: 0.55;
+    cursor: not-allowed;
+    filter: grayscale(0.15);
+}
+
+.csg-switch-input:disabled:checked + .csg-switch-track {
+    background-color: var(--bs-secondary, #6c757d);
+    border-color: var(--bs-secondary, #6c757d);
+}
+
+/* 轨道内文案层 */
+.csg-switch-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    z-index: 1;
+}
+
+.csg-switch-text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 600;
+    line-height: 1.15;
+    white-space: nowrap;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+/* 关：滑块在左，文字占右侧区域并靠右对齐 */
+.csg-switch-text-off {
+    left: calc(var(--csg-hpad) + var(--csg-slider) + var(--csg-gap) + var(--csg-text-inset));
+    right: var(--csg-hpad);
+    align-items: flex-end;
+    text-align: right;
+    opacity: 1;
+    color: var(--bs-secondary-color, #6c757d);
+}
+
+/* 开：滑块在右，文字占左侧区域并靠左对齐 */
+.csg-switch-text-on {
+    left: var(--csg-hpad);
+    right: calc(var(--csg-hpad) + var(--csg-slider) + var(--csg-gap) + var(--csg-text-inset));
+    align-items: flex-start;
+    text-align: left;
+    opacity: 0;
+    color: #fff;
+}
+
+.csg-switch-input:checked + .csg-switch-track .csg-switch-text-on,
+.csg-switch-track.csg-switch-active .csg-switch-text-on {
+    opacity: 1;
+}
+
+.csg-switch-input:checked + .csg-switch-track .csg-switch-text-off,
+.csg-switch-track.csg-switch-active .csg-switch-text-off {
+    opacity: 0;
+}
+
+.csg-switch-text-main {
+    font-size: inherit;
+    font-weight: 600;
+}
+
+.csg-switch-text-en {
+    font-size: 0.6rem;
+    font-weight: 400;
+    opacity: 0.85;
+    margin-top: 1px;
+}
+
+.csg-switch-track.csg-switch-has-text {
+    --csg-hpad: 0.3rem;
+    --csg-pad-y: 0.24rem;
+    width: max-content;
+    min-width: calc(var(--csg-slider) + var(--csg-gap) + var(--csg-text-inset) + 2.25rem);
+    height: auto;
+    min-height: max(var(--csg-track-h), calc(var(--csg-slider) + 2 * var(--csg-pad-y)));
+}
+
+.csg-switch-track:not(.csg-switch-has-text) .csg-switch-content {
+    display: none;
+}
+
+.csg-switch-track:not(.csg-switch-has-text) .csg-switch-text {
+    display: none;
+}
+
+/* 尺寸 */
+.csg-switch-sm {
+    --csg-gap: 0.15rem;
+    --csg-pad-y: 0.1rem;
+    --csg-track-w: 2.125rem;
+    --csg-track-h: 1.25rem;
+    --csg-slider: 0.875rem;
+}
+
+.csg-switch-md {
+    --csg-gap: 0.2rem;
+    --csg-pad-y: 0.12rem;
+    --csg-track-w: 2.75rem;
+    --csg-track-h: 1.625rem;
+    --csg-slider: 1.125rem;
+}
+
+.csg-switch-lg {
+    --csg-gap: 0.22rem;
+    --csg-pad-y: 0.14rem;
+    --csg-track-w: 3.25rem;
+    --csg-track-h: 1.875rem;
+    --csg-slider: 1.3125rem;
+}
+
+.csg-switch-lg .csg-switch-text {
+    font-size: 0.72rem;
+}
+
+.csg-switch-lg .csg-switch-text-en {
+    font-size: 0.65rem;
+}
+
+/* 主题变体（开启态轨道） */
+.csg-switch-success .csg-switch-input:checked + .csg-switch-track,
+.csg-switch-success .csg-switch-track.csg-switch-active {
+    background-color: var(--bs-success, #198754);
+    border-color: var(--bs-success, #198754);
+}
+
+.csg-switch-success .csg-switch-input:focus-visible + .csg-switch-track {
+    box-shadow: 0 0 0 0.25rem rgba(var(--bs-success-rgb, 25, 135, 84), 0.35);
+}
+
+.csg-switch-warning .csg-switch-input:checked + .csg-switch-track,
+.csg-switch-warning .csg-switch-track.csg-switch-active {
+    background-color: var(--bs-warning, #ffc107);
+    border-color: var(--bs-warning, #ffc107);
+    color: var(--bs-dark, #212529);
+}
+
+.csg-switch-warning .csg-switch-input:checked + .csg-switch-track .csg-switch-text-on,
+.csg-switch-warning .csg-switch-track.csg-switch-active .csg-switch-text-on {
+    color: var(--bs-dark, #212529);
+}
+
+.csg-switch-warning .csg-switch-input:focus-visible + .csg-switch-track {
+    box-shadow: 0 0 0 0.25rem rgba(var(--bs-warning-rgb, 255, 193, 7), 0.45);
+}
+
+.csg-switch-danger .csg-switch-input:checked + .csg-switch-track,
+.csg-switch-danger .csg-switch-track.csg-switch-active {
+    background-color: var(--bs-danger, #dc3545);
+    border-color: var(--bs-danger, #dc3545);
+}
+
+.csg-switch-danger .csg-switch-input:focus-visible + .csg-switch-track {
+    box-shadow: 0 0 0 0.25rem rgba(var(--bs-danger-rgb, 220, 53, 69), 0.35);
+}
+
+.csg-switch-info .csg-switch-input:checked + .csg-switch-track,
+.csg-switch-info .csg-switch-track.csg-switch-active {
+    background-color: var(--bs-info, #0dcaf0);
+    border-color: var(--bs-info, #0dcaf0);
+    color: var(--bs-dark, #212529);
+}
+
+.csg-switch-info .csg-switch-input:checked + .csg-switch-track .csg-switch-text-on,
+.csg-switch-info .csg-switch-track.csg-switch-active .csg-switch-text-on {
+    color: var(--bs-dark, #212529);
+}
+
+.csg-switch-info .csg-switch-input:focus-visible + .csg-switch-track {
+    box-shadow: 0 0 0 0.25rem rgba(var(--bs-info-rgb, 13, 202, 240), 0.4);
+}
+
+/* 设置项卡片（评测配置等） */
+.csg-switch-setting {
+    background: var(--bs-light, #f8f9fa);
+    border: 1px solid var(--bs-border-color-translucent, rgba(0, 0, 0, 0.08));
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    margin-bottom: 0.5rem;
+}
+
+.csg-switch-setting:hover {
+    background: var(--bs-body-bg, #fff);
+    border-color: var(--bs-border-color, #dee2e6);
+}
+
+.csg-switch-setting-content {
+    flex: 1;
+    margin-right: 0.75rem;
+    min-width: 0;
+}
+
+.csg-switch-setting-title {
+    font-weight: 600;
+    color: var(--bs-body-color, #212529);
+    font-size: 0.9rem;
+    line-height:1.35;
+}
+
+.csg-switch-setting-control {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .csg-switch-setting .d-flex {
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+
+    .csg-switch-setting-content {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+        width: 100%;
+    }
+
+    .csg-switch-setting-control {
+        align-self: flex-end;
+    }
+}
+
+/* 可选：略长一点的过渡（data-csg-animate="true"） */
+.csg-switch-animate .csg-switch-slider,
+.csg-switch-animate .csg-switch-track {
+    transition-duration: 0.32s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.csg-switch-advanced .csg-switch-slider,
+.csg-switch-advanced .csg-switch-track {
+    transition-duration: 0.38s;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.csg-switch-elastic .csg-switch-slider {
+    transition-timing-function: cubic-bezier(0.34, 1.3, 0.64, 1);
+}
+
+/* 加载中 */
+.csg-switch-loading .csg-switch-track {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+@keyframes csg-switch-pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.55;
+    }
+}
+
+.csg-switch-loading .csg-switch-slider {
+    animation: csg-switch-pulse 1.2s ease-in-out infinite;
+}
+
+/* 可选视觉增强（页面可加 class） */
+.csg-switch-premium .csg-switch-track {
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.35);
+}
+
+.csg-switch-premium .csg-switch-input:checked + .csg-switch-track {
+    box-shadow:
+        inset 0 1px 2px rgba(255, 255, 255, 0.2),
+        0 2px 8px rgba(var(--bs-primary-rgb, 13, 110, 253), 0.25);
+}
+
+.csg-switch-glass .csg-switch-track {
+    backdrop-filter: blur(8px);
+    background-color: color-mix(in srgb, var(--bs-secondary-bg, #e9ecef) 88%, transparent);
+}
+
+/* data-csg-shape="square"：方角轨道 + 方形滑块（略抬对比度，避免「呆板灰块」） */
+.csg-switch-shape-square {
+    --csg-radius-track: 0.32rem;
+}
+.csg-switch-shape-square .csg-switch-slider {
+    border-radius: 0.22rem;
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.07),
+        0 1px 2px rgba(0, 0, 0, 0.12);
+}
+.csg-switch-shape-square .csg-switch-track {
+    border-radius: var(--csg-radius-track);
+    background: linear-gradient(180deg, var(--bs-secondary-bg, #e9ecef) 0%, color-mix(in srgb, var(--bs-secondary-bg, #e9ecef) 88%, #000) 100%);
+}
+.csg-switch-shape-square .csg-switch-input:checked + .csg-switch-track,
+.csg-switch-shape-square .csg-switch-track.csg-switch-active {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--bs-primary, #0d6efd) 92%, #fff) 0%, var(--bs-primary, #0d6efd) 100%);
+}
+.csg-switch-shape-square.csg-switch-success .csg-switch-input:checked + .csg-switch-track,
+.csg-switch-shape-square.csg-switch-success .csg-switch-track.csg-switch-active {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--bs-success, #198754) 90%, #fff) 0%, var(--bs-success, #198754) 100%);
+}

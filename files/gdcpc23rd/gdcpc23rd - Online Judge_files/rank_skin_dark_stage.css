@@ -1,0 +1,1059 @@
+/**
+ * 榜单皮肤：深色主题（dark_stage）
+ *
+ * 与 data-rank-skin="dark_stage"、rank.js 中 RANK_SKIN_VALUES / rankSkinOptions 一致。
+ * 维护约定：见 docs/guide/14.榜单皮肤.md。默认主题样式仍在 rank.css；非默认主题样式用本文件级联覆盖。
+ */
+
+/* 筛选行高亮（rank_page） */
+.rank-system[data-rank-skin="dark_stage"] {
+    --rank-filter-bg: rgba(56, 189, 248, 0.12);
+    --rank-filter-accent: #38bdf8;
+    --rank-filter-outline: rgba(56, 189, 248, 0.28);
+    --rank-filter-bg-hover: rgba(56, 189, 248, 0.18);
+}
+
+/* ========== 榜单主体（.rank-system） ========== */
+.rank-system[data-rank-skin="dark_stage"] {
+    background: radial-gradient(circle at 20% 10%, #1f2937 0%, #0b1220 45%, #05080f 100%);
+    color: #dbe5f5;
+    /* 浅色字叠在半透明校徽上：深色描边 + 外晕（与 roll_award_overlay dark 一致取向） */
+    --rank-legibility-stroke: 0.5px rgba(15, 23, 42, 0.85);
+    --rank-legibility-shadow:
+        -1px 0 0 rgba(15, 23, 42, 0.88),
+        1px 0 0 rgba(15, 23, 42, 0.88),
+        0 -1px 0 rgba(15, 23, 42, 0.88),
+        0 1px 0 rgba(15, 23, 42, 0.88),
+        -1px -1px 0 rgba(15, 23, 42, 0.72),
+        1px -1px 0 rgba(15, 23, 42, 0.72),
+        -1px 1px 0 rgba(15, 23, 42, 0.72),
+        1px 1px 0 rgba(15, 23, 42, 0.72),
+        0 0 14px rgba(0, 0, 0, 0.5);
+    /* 滚榜焦点行：深蓝实底 + 高亮左条，与暗色行带区分 */
+    --roll-judging-row-base-bg: rgba(22, 40, 78, 0.94);
+    --roll-judging-row-inset-marker: rgba(147, 197, 253, 0.88);
+    --roll-judging-shine-edge: rgba(186, 220, 255, 0.22);
+    --roll-judging-shine-mid: rgba(219, 234, 254, 0.4);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .rank-row {
+    background: rgba(15, 23, 42, 0.86);
+    border-color: rgba(148, 163, 184, 0.28);
+    color: #dbe5f5;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .rank-header-row {
+    background: rgba(8, 14, 28, 0.92);
+    color: #e2ebff;
+    border-color: rgba(148, 163, 184, 0.28);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .rank-grid {
+    background: #0e1628;
+    border-color: rgba(148, 163, 184, 0.35);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .rank-row:nth-child(even),
+.rank-system[data-rank-skin="dark_stage"] .rank-row:nth-child(odd),
+.rank-system[data-rank-skin="dark_stage"] .rank-row:hover {
+    background: rgba(15, 23, 42, 0.9) !important;
+}
+
+/* 压过上行 nth-child(!important)，否则滚榜焦点行与斑马纹同色难以瞬间辨认 */
+.rank-system[data-rank-skin="dark_stage"] .rank-row.roll-judging {
+    background-color: var(--roll-judging-row-base-bg) !important;
+    background-image: linear-gradient(
+        135deg,
+        rgba(96, 165, 250, 0.32) 0%,
+        rgba(59, 130, 246, 0.22) 50%,
+        rgba(129, 140, 248, 0.28) 100%
+    ) !important;
+    box-shadow:
+        inset 4px 0 0 var(--roll-judging-row-inset-marker),
+        inset 0 0 22px rgba(59, 130, 246, 0.14),
+        0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .rank-row.judging {
+    background: linear-gradient(135deg, rgba(120, 90, 30, 0.35), rgba(90, 70, 25, 0.4)) !important;
+    box-shadow: inset 0 0 12px rgba(234, 179, 8, 0.15);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .rank-row.judging-last {
+    background: linear-gradient(135deg, rgba(30, 90, 55, 0.35), rgba(25, 70, 45, 0.4)) !important;
+    box-shadow: inset 0 0 10px rgba(34, 197, 94, 0.12);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .coach-player-section,
+.rank-system[data-rank-skin="dark_stage"] .team-info-section,
+.rank-system[data-rank-skin="dark_stage"] .rank-col-rank,
+.rank-system[data-rank-skin="dark_stage"] .rank-col-solve,
+.rank-system[data-rank-skin="dark_stage"] .rank-col-penalty {
+    border-color: transparent;
+    box-shadow: none;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .team-info-section {
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.72) 100%);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .team-names::after {
+    background: linear-gradient(90deg, transparent 0%, rgba(15, 23, 42, 0.7) 45%, rgba(15, 23, 42, 0.95) 100%);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .team-name-cn,
+.rank-system[data-rank-skin="dark_stage"] .team-name-en,
+.rank-system[data-rank-skin="dark_stage"] .school-name,
+.rank-system[data-rank-skin="dark_stage"] .coach-name,
+.rank-system[data-rank-skin="dark_stage"] .player-name,
+.rank-system[data-rank-skin="dark_stage"] .rank-item {
+    color: #e6edf8;
+}
+
+/* 登录账号占位（公开/私有/加密赛）暗肤覆盖 */
+.rank-system[data-rank-skin="dark_stage"] .coach-player-section .account-display {
+    background: rgba(15, 23, 42, 0.6);
+    border-color: rgba(148, 163, 184, 0.4);
+    color: #e2e8f0;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .coach-player-section .account-display .account-icon {
+    color: #94a3b8;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .coach-player-section a.account-display:hover {
+    border-color: rgba(56, 189, 248, 0.55);
+    color: #f0f9ff;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .coach-player-section a.account-display:hover .account-icon {
+    color: #f0f9ff;
+}
+
+/* 打星队排名「*」：勿沿用 rank.css 浅灰白底，否则暗肤下行内一块「白花」 */
+.rank-system[data-rank-skin="dark_stage"] .rank-item.star {
+    background: linear-gradient(145deg, rgba(51, 65, 85, 0.4) 0%, rgba(30, 41, 59, 0.78) 100%);
+    border: 2px solid rgba(251, 191, 36, 0.45);
+    color: #fef3c7;
+    box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 0.55) inset,
+        0 2px 10px rgba(0, 0, 0, 0.32);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .rank-item.star .rank-number {
+    color: #fffbeb;
+    paint-order: stroke fill;
+    -webkit-text-stroke: 0.5px rgba(15, 23, 42, 0.88);
+    text-shadow:
+        0 0 1px rgba(15, 23, 42, 0.92),
+        0 1px 3px rgba(0, 0, 0, 0.45);
+}
+
+/* 金银铜：上行统一把 .rank-item 字提亮后，数字在亮金属底上发虚 → 浅色字 + 深色描边 */
+.rank-system[data-rank-skin="dark_stage"] .rank-item.gold .rank-number,
+.rank-system[data-rank-skin="dark_stage"] .rank-item.silver .rank-number,
+.rank-system[data-rank-skin="dark_stage"] .rank-item.bronze .rank-number {
+    color: #f8fafc !important;
+    paint-order: stroke fill;
+    -webkit-text-stroke: 0.48px rgba(15, 23, 42, 0.85);
+    text-shadow:
+        0 0 1px rgba(15, 23, 42, 0.95),
+        -1px 0 1px rgba(15, 23, 42, 0.4),
+        1px 0 1px rgba(15, 23, 42, 0.4),
+        0 -1px 1px rgba(15, 23, 42, 0.4),
+        0 1px 1px rgba(15, 23, 42, 0.4);
+}
+
+/* 题数 / 罚时：深色底上提高边框与底色对比，蓝 vs 琥珀便于一眼区分 */
+.rank-system[data-rank-skin="dark_stage"] .solve-item {
+    color: #e0f2fe;
+    background: rgba(56, 189, 248, 0.14);
+    border: 1px solid rgba(125, 211, 252, 0.72);
+    box-shadow:
+        0 0 0 1px rgba(56, 189, 248, 0.2) inset,
+        0 1px 8px rgba(0, 0, 0, 0.28);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .penalty-item {
+    color: #fff7ed;
+    background: rgba(251, 146, 60, 0.12);
+    border: 1px solid rgba(253, 186, 116, 0.7);
+    box-shadow:
+        0 0 0 1px rgba(251, 191, 36, 0.18) inset,
+        0 1px 8px rgba(0, 0, 0, 0.28);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .penalty-content,
+.rank-system[data-rank-skin="dark_stage"] .penalty-time-brief,
+.rank-system[data-rank-skin="dark_stage"] .penalty-time-full {
+    color: #f8fafc !important;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .school-logo {
+    opacity: 0.26;
+    filter: grayscale(20%) contrast(1.05) brightness(0.9);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .coach-icon,
+.rank-system[data-rank-skin="dark_stage"] .player-icon {
+    color: #94a3b8;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .coach-icon:hover,
+.rank-system[data-rank-skin="dark_stage"] .player-icon:hover {
+    background-color: rgba(148, 163, 184, 0.15);
+    color: #e2e8f0;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .team-type-icon {
+    color: #94a3b8;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .team-type-icon.regular {
+    color: #93c5fd;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .team-type-icon.girl {
+    color: #f9a8d4;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .team-type-icon.star {
+    color: #fcd34d;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .loading-overlay-dim {
+    background: rgba(5, 8, 15, 0.72);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+/* loading 卡片使用 .rank-loading-card--neutral 固定浅色，此处仅作用于其它场景下的卡片 */
+.rank-system[data-rank-skin="dark_stage"] .rank-loading-card:not(.rank-loading-card--neutral) {
+    background: rgba(33, 37, 41, 0.92) !important;
+    color: #fff !important;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35) !important;
+    border: 1px solid rgba(148, 163, 184, 0.28);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .rank-loading-card:not(.rank-loading-card--neutral) .rank-loading-msg {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .rank-loading-card:not(.rank-loading-card--neutral) .rank-loading-msg en-text {
+    color: rgba(255, 255, 255, 0.82) !important;
+    opacity: 1;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .rank-loading-card:not(.rank-loading-card--neutral) .rank-loading-bs-spinner {
+    border-color: rgba(255, 255, 255, 0.35) !important;
+    border-right-color: rgba(252, 211, 77, 0.95) !important;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .modal-overlay {
+    background: rgba(0, 0, 0, 0.65);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .modal-content {
+    background: #0f172a;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    color: #e2e8f0;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .modal-header {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-bottom-color: rgba(148, 163, 184, 0.35);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .modal-header h3 {
+    color: #f1f5f9;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .modal-body {
+    color: #e2e8f0;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .close-btn {
+    color: #94a3b8;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .close-btn:hover {
+    color: #f1f5f9;
+    background: rgba(148, 163, 184, 0.2);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .close-btn:active {
+    background: rgba(148, 163, 184, 0.3);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .modal-footer,
+.rank-system[data-rank-skin="dark_stage"] .rank-filter-modal-footer {
+    background: #0b1220;
+    border-top-color: rgba(148, 163, 184, 0.35);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-card,
+.rank-system[data-rank-skin="dark_stage"] .rank-filter-modal-content .rank-filter-top-controls .filter-card-star-mode,
+.rank-system[data-rank-skin="dark_stage"] .rank-filter-modal-content .rank-filter-top-controls .filter-card-display-mode {
+    background: rgba(30, 41, 59, 0.85);
+    border-color: rgba(148, 163, 184, 0.3);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-card-title,
+.rank-system[data-rank-skin="dark_stage"] .rank-filter-modal-content .filter-card-title {
+    color: #cbd5e1;
+    border-bottom-color: rgba(148, 163, 184, 0.25);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-popover {
+    background: #0f172a;
+    border-color: rgba(148, 163, 184, 0.4);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-popover::before {
+    background: #0f172a;
+    border-color: rgba(148, 163, 184, 0.4);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-popover-label {
+    color: #94a3b8;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-popover-mode-btn,
+.rank-system[data-rank-skin="dark_stage"] .rank-radio-btn {
+    background: rgba(15, 23, 42, 0.9);
+    border-color: rgba(148, 163, 184, 0.35);
+    color: #e2e8f0;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-popover-mode-btn:hover,
+.rank-system[data-rank-skin="dark_stage"] .rank-radio-btn:hover {
+    background: rgba(51, 65, 85, 0.95);
+    border-color: rgba(186, 199, 216, 0.45);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-popover-mode-btn.active,
+.rank-system[data-rank-skin="dark_stage"] .rank-radio-btn.active {
+    background: rgba(30, 58, 138, 0.55);
+    border-color: rgba(96, 165, 250, 0.55);
+    color: #eff6ff;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-search-input {
+    background: rgba(15, 23, 42, 0.9);
+    border-color: rgba(148, 163, 184, 0.4);
+    color: #f1f5f9;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-search-input:focus {
+    border-color: rgba(96, 165, 250, 0.65);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-candidates-dropdown {
+    background: #0f172a;
+    border-color: rgba(148, 163, 184, 0.35);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-candidate-item {
+    color: #e2e8f0;
+    border-bottom-color: rgba(148, 163, 184, 0.15);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-candidate-item:hover {
+    background: rgba(51, 65, 85, 0.85);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-candidate-school,
+.rank-system[data-rank-skin="dark_stage"] .filter-candidate-team-meta {
+    color: #94a3b8;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-tag {
+    background: rgba(30, 58, 138, 0.45);
+    border-color: rgba(96, 165, 250, 0.4);
+    color: #e0f2fe;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-tag-meta {
+    color: #94a3b8;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-clear-btn {
+    background: transparent;
+    color: #94a3b8;
+    border-color: rgba(148, 163, 184, 0.4);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-clear-btn:hover {
+    background: rgba(127, 29, 29, 0.35);
+    color: #fecaca;
+    border-color: rgba(248, 113, 113, 0.45);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-apply-btn {
+    background: linear-gradient(180deg, rgba(37, 99, 235, 0.85), rgba(29, 78, 216, 0.75));
+    color: #fff;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-apply-btn:hover {
+    background: linear-gradient(180deg, rgba(29, 78, 216, 0.95), rgba(30, 64, 175, 0.9));
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-apply-btn:active {
+    filter: brightness(0.95);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-column-title-text {
+    color: #f1f5f9;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-column-title-row {
+    border-bottom-color: rgba(148, 163, 184, 0.35);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-title-count {
+    background: rgba(30, 58, 138, 0.5);
+    color: #bfdbfe;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-title-clear {
+    background: rgba(15, 23, 42, 0.9);
+    border-color: rgba(148, 163, 184, 0.35);
+    color: #cbd5e1;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-title-clear:hover {
+    color: #fecaca;
+    border-color: rgba(248, 113, 113, 0.45);
+    background: rgba(127, 29, 29, 0.3);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .rank-filter-pinned-host {
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.95) 0%, rgba(8, 14, 28, 0.98) 100%);
+    border-color: rgba(148, 163, 184, 0.35);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .rank-filter-pinned-title {
+    color: #cbd5e1;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .rank-filter-pinned-divider {
+    background: rgba(148, 163, 184, 0.3);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .rank-filter-pinned-separator {
+    border-top: 2px dashed rgba(226, 232, 240, 0.78);
+    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.85), 0 6px 14px -4px rgba(56, 189, 248, 0.14);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-column-divider {
+    background: rgba(148, 163, 184, 0.3);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .rank-filter-group-controls {
+    background: rgba(15, 23, 42, 0.75);
+    border-color: rgba(148, 163, 184, 0.3);
+}
+
+.rank-system[data-rank-skin="dark_stage"] .rank-filter-group-controls .btn,
+.rank-system[data-rank-skin="dark_stage"] .rank-filter-group-controls #filter-group-select {
+    background: rgba(15, 23, 42, 0.95);
+    border-color: rgba(148, 163, 184, 0.4);
+    color: #e2e8f0;
+}
+
+.rank-system[data-rank-skin="dark_stage"] .filter-switch-item .filter-mode-select {
+    background: rgba(15, 23, 42, 0.95);
+    border-color: rgba(148, 163, 184, 0.4);
+    color: #e2e8f0;
+}
+
+.rank-system.fullscreen[data-rank-skin="dark_stage"] {
+    background: radial-gradient(circle at 20% 10%, #1f2937 0%, #0b1220 45%, #05080f 100%);
+}
+
+.rank-system[data-rank-skin="dark_stage"] ::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.6);
+}
+
+.rank-system[data-rank-skin="dark_stage"] ::-webkit-scrollbar-thumb {
+    background: rgba(71, 85, 105, 0.85);
+}
+
+.rank-system[data-rank-skin="dark_stage"] ::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 116, 139, 0.95);
+}
+
+/* ========== 顶栏 .rank-header（在 rank-system 外） ========== */
+.rank-header[data-rank-skin="dark_stage"] .header-content,
+.rank-header[data-rank-skin="dark_stage"] .title-section {
+    color: #e2e8f0;
+}
+
+.rank-header[data-rank-skin="dark_stage"] #rank-page-title {
+    color: #f8fafc;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .controls-time-section {
+    background: rgba(5, 10, 20, 0.92);
+    border-top-color: rgba(148, 163, 184, 0.22);
+    border-bottom-color: rgba(148, 163, 184, 0.22);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .controls-time-container {
+    background: transparent;
+    color: #e2ebff;
+    border-color: transparent;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .rank-mode-indicator,
+.rank-header[data-rank-skin="dark_stage"] .rank-mode-indicator en-text {
+    color: #c9d6f0;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .bilingual-en .rank-mode-indicator en-text {
+    color: #c9d6f0;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .controls-toolbar {
+    background: rgba(15, 23, 42, 0.88);
+    border: 1px solid rgba(148, 163, 184, 0.32);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .controls-toggle-btn {
+    background: rgba(15, 23, 42, 0.88);
+    color: #e2e8f0;
+    border-color: rgba(148, 163, 184, 0.35);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .controls-toggle-btn:hover {
+    background: rgba(30, 41, 59, 0.95);
+    border-color: rgba(186, 199, 216, 0.45);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .controls-toggle-btn:active {
+    background: rgba(51, 65, 85, 0.98);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .controls-dropdown {
+    background: rgba(15, 23, 42, 0.98);
+    border: 1px solid rgba(148, 163, 184, 0.38);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .controls-dropdown .control-btn.with-text .button-text,
+.rank-header[data-rank-skin="dark_stage"] .controls-dropdown .custom-select-btn .option-text {
+    color: #e2e8f0;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .controls-dropdown .control-btn.with-text .button-text en-text,
+.rank-header[data-rank-skin="dark_stage"] .controls-dropdown .custom-select-btn .option-text en-text,
+.rank-header[data-rank-skin="dark_stage"] .controls-dropdown .control-btn.with-text .button-text .roll-button-text-en {
+    color: #94a3b8;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .controls-dropdown .control-btn.with-text .button-text .roll-button-text-cn {
+    color: #e2e8f0;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .custom-select-btn {
+    background: rgba(30, 41, 59, 0.92);
+    border-color: rgba(148, 163, 184, 0.35);
+    color: #e2ebff;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .custom-select-btn:hover {
+    background: rgba(51, 65, 85, 0.95);
+    border-color: rgba(186, 199, 216, 0.45);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .custom-select-btn:focus {
+    outline-color: rgba(96, 165, 250, 0.75);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .custom-select-btn:active {
+    background: rgba(30, 41, 59, 1);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .custom-select-dropdown {
+    background: rgba(15, 23, 42, 0.98);
+    border-color: rgba(148, 163, 184, 0.35);
+    color: #e2ebff;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .custom-select-option {
+    color: #e2e8f0;
+    border-bottom-color: rgba(148, 163, 184, 0.12);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .custom-select-option:hover {
+    background: rgba(51, 65, 85, 0.9);
+    color: #f8fafc;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .custom-select-option.selected {
+    background: rgba(30, 58, 138, 0.55);
+    color: #eff6ff;
+    border-left-color: #60a5fa;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .custom-select-option .option-text en-text {
+    color: #94a3b8;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .control-btn {
+    background: rgba(30, 41, 59, 0.92);
+    border-color: rgba(148, 163, 184, 0.35);
+    color: #e2e8f0;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .control-btn:hover {
+    background: rgba(51, 65, 85, 0.95);
+    border-color: rgba(186, 199, 216, 0.45);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .control-btn:active {
+    background: rgba(15, 23, 42, 0.98);
+    border-color: rgba(148, 163, 184, 0.5);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .control-btn.active {
+    background: rgba(51, 65, 85, 0.98);
+    border-color: rgba(248, 250, 252, 0.35);
+    color: #f8fafc;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .control-btn:focus {
+    outline-color: rgba(96, 165, 250, 0.75);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .control-btn.filter-active {
+    background: rgba(12, 74, 110, 0.55);
+    border-color: rgba(56, 189, 248, 0.45);
+    color: #e0f2fe;
+    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.2);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .control-btn.filter-active:hover {
+    background: rgba(14, 90, 120, 0.6);
+    border-color: rgba(125, 211, 252, 0.55);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .control-btn.filter-active i.bi {
+    color: #38bdf8;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .filter-badge {
+    background: #dc2626;
+    color: #fff;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .filter-quick-info {
+    color: #dce8ff;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .summary-btn {
+    background: rgba(113, 63, 18, 0.55);
+    color: #fef3c7;
+    border-color: rgba(245, 158, 11, 0.45);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .summary-btn:hover {
+    background: rgba(120, 70, 20, 0.65);
+    border-color: rgba(251, 191, 36, 0.55);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .summary-btn:active {
+    filter: brightness(0.92);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .roll-btn {
+    background: rgba(22, 78, 99, 0.55);
+    color: #cffafe;
+    border-color: rgba(34, 211, 238, 0.4);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .roll-btn:hover {
+    background: rgba(21, 94, 117, 0.65);
+    border-color: rgba(103, 232, 249, 0.5);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .roll-btn:active {
+    filter: brightness(0.93);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .fullscreen-btn {
+    background: rgba(20, 83, 45, 0.5);
+    color: #dcfce7;
+    border-color: rgba(74, 222, 128, 0.4);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .fullscreen-btn:hover {
+    background: rgba(22, 101, 52, 0.6);
+    border-color: rgba(134, 239, 172, 0.5);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .fullscreen-btn:active {
+    filter: brightness(0.93);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .refresh-btn {
+    background: rgba(30, 58, 138, 0.5);
+    color: #dbeafe;
+    border-color: rgba(96, 165, 250, 0.45);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .refresh-btn:hover {
+    background: rgba(30, 64, 175, 0.6);
+    border-color: rgba(147, 197, 253, 0.55);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .refresh-btn:active {
+    filter: brightness(0.93);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .refresh-btn.loading {
+    opacity: 0.75;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .time-progress-wrapper {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .time-progress-wrapper:hover {
+    border-color: rgba(148, 163, 184, 0.45);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .time-current {
+    color: #93c5fd;
+    text-shadow: none;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .time-total {
+    color: #94a3b8;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .time-current.time-replay-mode {
+    color: #fcd34d;
+    text-shadow: none;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .time-progress-bar-container {
+    background: rgba(30, 41, 59, 0.9);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .time-progress-track {
+    background: #3b82f6;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .time-progress-track-outline {
+    border-color: rgba(148, 163, 184, 0.35);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .time-progress-slider::-webkit-slider-thumb {
+    background: #60a5fa;
+    border-color: rgba(15, 23, 42, 0.95);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .time-progress-slider::-webkit-slider-thumb:hover {
+    background: #93c5fd;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .time-progress-slider::-moz-range-thumb {
+    background: #60a5fa;
+    border-color: rgba(15, 23, 42, 0.95);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .time-progress-slider::-moz-range-thumb:hover {
+    background: #93c5fd;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .time-reset-btn {
+    color: #94a3b8;
+    border-color: rgba(148, 163, 184, 0.35);
+    background: rgba(15, 23, 42, 0.5);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .time-reset-btn:hover {
+    color: #e2e8f0;
+    border-color: rgba(96, 165, 250, 0.55);
+    background: rgba(30, 58, 138, 0.45);
+}
+
+.rank-header[data-rank-skin="dark_stage"] .time-reset-btn:active {
+    background: rgba(30, 41, 59, 0.95);
+}
+
+/* 皮肤切换：深色主题——深蓝底 + 亮蓝边 + 青色图标（无渐变） */
+.rank-header[data-rank-skin="dark_stage"] #rank-skin-btn,
+.rank-header[data-rank-skin="dark_stage"] #rank-skin-btn-dd {
+    background: rgba(15, 23, 42, 0.96);
+    border-color: rgba(96, 165, 250, 0.65);
+    color: #e0f2fe;
+    box-shadow: none;
+}
+
+.rank-header[data-rank-skin="dark_stage"] #rank-skin-btn i,
+.rank-header[data-rank-skin="dark_stage"] #rank-skin-btn-dd i {
+    color: #38bdf8;
+}
+
+.rank-header[data-rank-skin="dark_stage"] #rank-skin-btn:hover,
+.rank-header[data-rank-skin="dark_stage"] #rank-skin-btn-dd:hover {
+    background: rgba(30, 41, 59, 0.98);
+    border-color: #93c5fd;
+    color: #ffffff;
+}
+
+.rank-header[data-rank-skin="dark_stage"] #rank-skin-btn:hover i,
+.rank-header[data-rank-skin="dark_stage"] #rank-skin-btn-dd:hover i {
+    color: #e0f2fe;
+}
+
+.rank-header[data-rank-skin="dark_stage"] #rank-skin-btn:focus,
+.rank-header[data-rank-skin="dark_stage"] #rank-skin-btn-dd:focus {
+    outline-color: rgba(96, 165, 250, 0.85);
+}
+
+/* ========== 滚榜工具条 ========== */
+.roll-controls-section[data-rank-skin="dark_stage"] {
+    background: rgba(8, 14, 28, 0.88);
+    border-bottom-color: rgba(148, 163, 184, 0.28);
+}
+
+/* 滚榜工具条内复用 .controls-toolbar：须单独覆写，避免 rank.css 白底透出 */
+.roll-controls-section[data-rank-skin="dark_stage"] .controls-toolbar.roll-controls-toolbar,
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-controls-toolbar {
+    background: rgba(15, 23, 42, 0.88);
+    border: 1px solid rgba(148, 163, 184, 0.32);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-group-filter-label {
+    color: #e2ebff;
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-group-filter-label-stack .roll-button-text-cn {
+    color: #e2ebff;
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-group-filter-label-stack .roll-button-text-en {
+    color: rgba(226, 235, 255, 0.78);
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-toolbar-skin-item .custom-select-btn {
+    background: rgba(30, 41, 59, 0.95);
+    border-color: rgba(148, 163, 184, 0.35);
+    color: #e2ebff;
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-toolbar-skin-item .custom-select-btn:hover {
+    background: rgba(51, 65, 85, 0.95);
+    border-color: rgba(186, 199, 216, 0.45);
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-toolbar-skin-item .custom-select-btn:active {
+    background: rgba(15, 23, 42, 1);
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-toolbar-skin-item #rank-skin-btn {
+    background: rgba(15, 23, 42, 0.96);
+    border-color: rgba(96, 165, 250, 0.65);
+    color: #e0f2fe;
+    box-shadow: none;
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-toolbar-skin-item #rank-skin-btn i {
+    color: #38bdf8;
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-toolbar-skin-item #rank-skin-btn:hover {
+    background: rgba(30, 41, 59, 0.98);
+    border-color: #93c5fd;
+    color: #ffffff;
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-toolbar-skin-item #rank-skin-btn:hover i {
+    color: #e0f2fe;
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-toolbar-skin-item #rank-skin-btn:active {
+    background: rgba(15, 23, 42, 1);
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .custom-select-dropdown {
+    background: rgba(15, 23, 42, 0.98);
+    border-color: rgba(148, 163, 184, 0.35);
+    color: #e2ebff;
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .custom-select-option {
+    color: #e2e8f0;
+    border-bottom-color: rgba(148, 163, 184, 0.12);
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .custom-select-option:hover {
+    background: rgba(51, 65, 85, 0.9);
+    color: #f8fafc;
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .custom-select-option.selected {
+    background: rgba(30, 58, 138, 0.55);
+    color: #eff6ff;
+    border-left-color: #60a5fa;
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .custom-select-option .option-text en-text {
+    color: #94a3b8;
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-control-btn-secondary {
+    background: rgba(30, 41, 59, 0.95);
+    color: #e2ebff;
+    border-color: rgba(148, 163, 184, 0.35);
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-control-btn-secondary:hover {
+    background: rgba(51, 65, 85, 0.95);
+    border-color: rgba(186, 199, 216, 0.45);
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-control-btn-secondary:active {
+    background: rgba(15, 23, 42, 0.98);
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-control-btn-outline-secondary,
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-control-btn-outline-info {
+    background: rgba(15, 23, 42, 0.6);
+    color: #dbe5f5;
+    border-color: rgba(148, 163, 184, 0.35);
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-control-btn-outline-secondary:hover,
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-control-btn-outline-info:hover {
+    background: rgba(30, 41, 59, 0.85);
+    border-color: rgba(186, 199, 216, 0.45);
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-control-btn-outline-secondary:active,
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-control-btn-outline-info:active {
+    background: rgba(15, 23, 42, 0.95);
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-control-btn-primary {
+    color: #ffffff;
+    border-color: rgba(147, 197, 253, 0.85);
+    background: #2563eb;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        0 1px 0 rgba(15, 23, 42, 0.35),
+        0 4px 12px rgba(37, 99, 235, 0.35);
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-control-btn-primary:hover {
+    background: #3b82f6;
+    border-color: #e0f2fe;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.14),
+        0 1px 0 rgba(15, 23, 42, 0.3),
+        0 6px 16px rgba(59, 130, 246, 0.4);
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-control-btn-primary:active {
+    background: #1d4ed8;
+    border-color: rgba(147, 197, 253, 0.75);
+    box-shadow: inset 0 2px 5px rgba(15, 23, 42, 0.35);
+    transform: translateY(1px);
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-control-btn-primary .roll-button-text-cn,
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-control-btn-primary .roll-button-text-en {
+    color: #ffffff;
+    opacity: 0.95;
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-control-btn-primary i {
+    color: #ffffff;
+}
+
+.roll-controls-section[data-rank-skin="dark_stage"] .roll-control-btn:not(.roll-control-btn-primary) .roll-button-text-en {
+    color: rgba(226, 235, 255, 0.82);
+}
+
+/* ========== 滚榜模式下行内增强（沿用原 rank.css 逻辑） ========== */
+.rank-system[data-rank-mode="roll"][data-rank-skin="dark_stage"] .rank-row-roll .school-logo {
+    background-color: rgba(15, 23, 42, 0.92);
+    border-color: rgba(148, 163, 184, 0.28);
+    box-shadow: var(--rank-shadow-surface);
+    opacity: 1;
+    filter: contrast(1.04) brightness(0.96);
+}
+
+.rank-system[data-rank-mode="roll"][data-rank-skin="dark_stage"] .rank-row-roll .rank-item {
+    box-shadow: var(--rank-shadow-surface);
+}
+
+.rank-system[data-rank-mode="roll"][data-rank-skin="dark_stage"] .rank-row-roll .penalty-content,
+.rank-system[data-rank-mode="roll"][data-rank-skin="dark_stage"] .rank-row-roll .penalty-time-brief,
+.rank-system[data-rank-mode="roll"][data-rank-skin="dark_stage"] .rank-row-roll .penalty-time-full {
+    color: #f8fafc !important;
+}
+
+.rank-system[data-rank-mode="roll"][data-rank-skin="dark_stage"] .rank-row-roll .school-name,
+.rank-system[data-rank-mode="roll"][data-rank-skin="dark_stage"] .rank-row-roll .team-name-cn {
+    color: #f8fafc;
+}
+
+.rank-system[data-rank-mode="roll"][data-rank-skin="dark_stage"] .rank-row-roll .team-name-en {
+    color: #cbd5e1;
+}
+
+.rank-system[data-rank-mode="roll"][data-rank-skin="dark_stage"] .rank-header-row > .rank-col-roll-logo {
+    background: rgba(8, 14, 28, 0.92);
+    color: #e2ebff;
+    border-color: rgba(148, 163, 184, 0.28);
+}
+
+/* 筛选按钮内「G0·T0」文案（rank_page 覆盖为深色字，暗肤需提亮） */
+.rank-header[data-rank-skin="dark_stage"] .control-btn.filter-info-btn .filter-quick-info {
+    color: #cbd5e1;
+}
+
+.rank-header[data-rank-skin="dark_stage"] .control-btn.filter-info-btn.filter-active .filter-quick-info {
+    color: #e0f2fe;
+}
+
+/* 帮助 / 滚榜帮助：正文与 code 块在深色弹窗内可读 */
+.rank-system[data-rank-skin="dark_stage"] #rank-help-modal .roll-help-section-title,
+.rank-system[data-rank-skin="dark_stage"] #roll-help-modal .roll-help-section-title {
+    color: #e2e8f0;
+    border-bottom-color: #60a5fa;
+}
+
+.rank-system[data-rank-skin="dark_stage"] #rank-help-modal .roll-help-item,
+.rank-system[data-rank-skin="dark_stage"] #roll-help-modal .roll-help-item {
+    color: #cbd5e1;
+}
+
+.rank-system[data-rank-skin="dark_stage"] #rank-help-modal .roll-help-item code,
+.rank-system[data-rank-skin="dark_stage"] #roll-help-modal .roll-help-item code {
+    background: rgba(30, 41, 59, 0.95);
+    color: #93c5fd;
+    border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.rank-system[data-rank-skin="dark_stage"] #roll-help-modal .modal-header {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-bottom-color: rgba(148, 163, 184, 0.35);
+}
+
+.rank-system[data-rank-skin="dark_stage"] #roll-help-modal .modal-header h3 {
+    color: #f1f5f9;
+}

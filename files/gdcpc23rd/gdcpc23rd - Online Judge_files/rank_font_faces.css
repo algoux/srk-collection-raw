@@ -1,0 +1,82 @@
+/**
+ * 榜单 / 滚榜 / 外榜共用自托管字体（OFL）。
+ * 中文：Noto Sans SC；拉丁与数字：Plus Jakarta Sans（拉丁子集 woff2）。
+ * 文件目录：static/fonts/csg_rank/ — 见该目录 README.md。
+ * 当前仅托管至字重 700：大屏获奖 overlay 等 UI 请用 ≤700，避免 font-weight:800 触发伪粗体发糊。
+ *
+ * Bebas Neue：与投屏 **`live_timer`**（`contestlive.css` · `CsgLiveBebasNeue`）同源，供榜单全屏倒计时 / 角标倒计时。
+ * 文件目录：**`static/fonts/live_display/`**
+ */
+
+@font-face {
+    font-family: 'CsgLiveBebasNeue';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../../fonts/live_display/bebas-neue-latin-400-normal.woff2') format('woff2');
+}
+
+/* 与投屏 live_timer 计时页 Outfit 同源，用于全屏计时标题 / 状态行 */
+@font-face {
+    font-family: 'CsgLiveOutfit';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('../../fonts/live_display/outfit-latin-500.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'CsgRank SC';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../../fonts/csg_rank/noto-sans-sc-chinese-simplified-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'CsgRank SC';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('../../fonts/csg_rank/noto-sans-sc-chinese-simplified-500-normal.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'CsgRank SC';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../../fonts/csg_rank/noto-sans-sc-chinese-simplified-700-normal.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'CsgRank Latin';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../../fonts/csg_rank/plus-jakarta-sans-latin-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'CsgRank Latin';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('../../fonts/csg_rank/plus-jakarta-sans-latin-500-normal.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'CsgRank Latin';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('../../fonts/csg_rank/plus-jakarta-sans-latin-600-normal.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'CsgRank Latin';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../../fonts/csg_rank/plus-jakarta-sans-latin-700-normal.woff2') format('woff2');
+}
