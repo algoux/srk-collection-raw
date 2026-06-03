@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)https://oj.glowxq.com/awards/gxpc-2026 -->
+<html lang="zh-CN" data-darkreader-proxy-injected="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 中国·东盟国际大学生程序设计大赛 · 金银铜公示</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./gxcpc9th 2026 中国·东盟国际大学生程序设计大赛 · 金银铜公示_files/css2" rel="stylesheet">
+<style>
+  :root{
+    --ink:#070b16;
+    --ink-2:#0a1020;
+    --panel:rgba(255,255,255,.035);
+    --panel-2:rgba(255,255,255,.05);
+    --line:rgba(255,255,255,.09);
+    --line-strong:rgba(255,255,255,.16);
+    --text:#eaf0fb;
+    --muted:#8b95ad;
+    --faint:#5b657d;
+
+    --gold:#ffd76b;
+    --gold-2:#f3b73e;
+    --silver:#d6deec;
+    --silver-2:#a9b4c7;
+    --bronze:#e7975a;
+    --bronze-2:#c06a32;
+    --cyan:#3ce6cb;
+    --cyan-deep:#0e9c8a;
+
+    --grad-gold:linear-gradient(135deg,#fff0bd,#ffd76b 35%,#e6a52c 75%,#a6711a);
+    --grad-silver:linear-gradient(135deg,#ffffff,#d6deec 40%,#9aa6bb 80%,#717c92);
+    --grad-bronze:linear-gradient(135deg,#ffd0a3,#e7975a 40%,#bb6630 80%,#834420);
+
+    --r:16px;
+    --maxw:1160px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Noto Sans SC",sans-serif;
+    background:var(--ink);
+    color:var(--text);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--gold);color:#1a1303}
+
+  /* ---------- animated background ---------- */
+  .bg{position:fixed;inset:0;z-index:-2;overflow:hidden;background:
+      radial-gradient(120% 90% at 8% -10%, rgba(255,215,107,.10), transparent 45%),
+      radial-gradient(120% 110% at 100% 110%, rgba(60,230,203,.10), transparent 50%),
+      radial-gradient(80% 80% at 50% 40%, rgba(140,90,255,.05), transparent 60%),
+      var(--ink);}
+  .bg::before{content:"";position:absolute;inset:-2px;
+    background-image:
+      linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+    background-size:54px 54px;
+    mask-image:radial-gradient(120% 100% at 50% 0%,#000 35%,transparent 78%);
+    -webkit-mask-image:radial-gradient(120% 100% at 50% 0%,#000 35%,transparent 78%);}
+  .bg::after{content:"";position:absolute;inset:0;opacity:.5;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");}
+  .orb{position:fixed;border-radius:50%;filter:blur(60px);z-index:-1;opacity:.4;animation:drift 22s var(--ease) infinite alternate}
+  .orb.g{width:340px;height:340px;background:radial-gradient(circle,rgba(255,200,80,.5),transparent 70%);top:-80px;left:-60px}
+  .orb.c{width:380px;height:380px;background:radial-gradient(circle,rgba(60,230,203,.4),transparent 70%);bottom:-120px;right:-80px;animation-delay:-8s}
+  @keyframes drift{to{transform:translate(60px,50px) scale(1.15)}}
+
+  .float{position:fixed;z-index:-1;font-family:"JetBrains Mono",monospace;color:rgba(255,255,255,.06);font-size:13px;pointer-events:none;animation:rise linear infinite}
+  @keyframes rise{0%{transform:translateY(20px);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-110vh);opacity:0}}
+
+  /* ---------- layout ---------- */
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  section{position:relative}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:12.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--cyan);font-weight:600}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:34px}
+  .sec-title{font-size:clamp(26px,4vw,42px);font-weight:900;letter-spacing:-.01em;line-height:1.1}
+  .sec-title .em{background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sec-sub{color:var(--muted);max-width:30ch;font-size:14.5px}
+
+  /* ---------- HERO ---------- */
+  header.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:120px 24px 80px;position:relative;max-width:var(--maxw);margin:0 auto}
+  .hero .tag{display:inline-flex;align-items:center;gap:12px;font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);
+    border:1px solid var(--line);border-radius:100px;padding:8px 16px;width:fit-content;background:var(--panel);backdrop-filter:blur(8px)}
+  .hero .tag .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan);animation:pulse 1.8s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+  .hero h1{margin:30px 0 0;font-family:"ZCOOL QingKe HuangYou",sans-serif;font-weight:400;
+    font-size:clamp(40px,8.5vw,104px);line-height:.98;letter-spacing:.01em}
+  .hero h1 .l1{display:block;color:var(--text)}
+  .hero h1 .l2{display:block;background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 6px 30px rgba(255,200,80,.25))}
+  .hero .also{margin-top:26px;display:flex;flex-direction:column;gap:6px;max-width:760px}
+  .hero .also span{color:var(--muted);font-size:clamp(14px,2.2vw,18px);font-weight:300}
+  .hero .also b{color:var(--text);font-weight:500}
+
+  .hero .medals{display:flex;gap:14px;margin-top:40px;flex-wrap:wrap}
+  .mchip{display:flex;align-items:center;gap:10px;padding:12px 20px 12px 14px;border-radius:100px;border:1px solid var(--line);background:var(--panel);backdrop-filter:blur(10px)}
+  .mchip .disc{width:24px;height:24px;border-radius:50%;box-shadow:0 2px 10px rgba(0,0,0,.4),inset 0 1px 2px rgba(255,255,255,.5)}
+  .mchip.g .disc{background:var(--grad-gold)}
+  .mchip.s .disc{background:var(--grad-silver)}
+  .mchip.b .disc{background:var(--grad-bronze)}
+  .mchip .lab{font-size:13px;color:var(--muted)}
+  .mchip .num{font-family:"JetBrains Mono",monospace;font-weight:800;font-size:18px}
+  .mchip.g .num{color:var(--gold)} .mchip.s .num{color:var(--silver)} .mchip.b .num{color:var(--bronze)}
+
+  .scrollcue{position:absolute;bottom:30px;left:24px;display:flex;align-items:center;gap:12px;color:var(--faint);font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.25em}
+  .scrollcue .bar{width:1px;height:40px;background:linear-gradient(var(--cyan),transparent);position:relative;overflow:hidden}
+  .scrollcue .bar::after{content:"";position:absolute;top:-40px;left:0;width:100%;height:40px;background:var(--cyan);animation:scrolldot 2s var(--ease) infinite}
+  @keyframes scrolldot{to{top:40px}}
+
+  /* reveal animation */
+  .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .rv.in{opacity:1;transform:none}
+  .rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}.rv.d5{transition-delay:.4s}.rv.d6{transition-delay:.48s}
+
+  /* ---------- STAT GRID (participation) ---------- */
+  .part{padding:54px 0 72px}
+  .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .stat{border:1px solid var(--line);border-radius:var(--r);padding:26px 22px;background:linear-gradient(160deg,var(--panel-2),transparent);position:relative;overflow:hidden}
+  .stat::before{content:"";position:absolute;top:0;left:0;width:100%;height:2px;background:var(--accent,var(--cyan));opacity:.7}
+  .stat .n{font-family:"JetBrains Mono",monospace;font-weight:800;font-size:clamp(32px,4vw,46px);line-height:1;letter-spacing:-.02em}
+  .stat .k{margin-top:10px;color:var(--muted);font-size:13.5px;letter-spacing:.02em}
+  .stat .u{font-size:.5em;color:var(--faint);margin-left:4px;font-weight:500}
+  .stat.gold{--accent:var(--gold)} .stat.gold .n{color:var(--gold)}
+  .stat.silver{--accent:var(--silver)} .stat.silver .n{color:var(--silver)}
+  .stat.bronze{--accent:var(--bronze)} .stat.bronze .n{color:var(--bronze)}
+
+  /* ---------- DISTRIBUTION ---------- */
+  .dist{padding:70px 0}
+  .dist-bar{height:30px;border-radius:100px;overflow:hidden;display:flex;border:1px solid var(--line);background:var(--ink-2)}
+  .dist-bar span{height:100%;width:0;transition:width 1.4s var(--ease)}
+  .dist-bar .sg{background:var(--grad-gold)} .dist-bar .ss{background:var(--grad-silver)} .dist-bar .sb{background:var(--grad-bronze)}
+  .dist-legend{display:flex;gap:26px;margin-top:18px;flex-wrap:wrap;font-size:13.5px;color:var(--muted);font-family:"JetBrains Mono",monospace}
+  .dist-legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:8px;vertical-align:middle}
+
+  /* ---------- CATEGORIES ---------- */
+  .cats{padding:70px 0}
+  .cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .catcard{border:1px solid var(--line);border-radius:var(--r);padding:26px;background:linear-gradient(155deg,var(--panel-2),transparent);transition:transform .4s var(--ease),border-color .4s}
+  .catcard:hover{transform:translateY(-4px);border-color:var(--line-strong)}
+  .catcard .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+  .catcard .name{font-size:20px;font-weight:700}
+  .catcard .tot{font-family:"JetBrains Mono",monospace;font-size:34px;font-weight:800;color:var(--cyan);line-height:1}
+  .catcard .tot .u{font-size:13px;color:var(--faint);font-weight:500;margin-left:3px}
+  .catcard .mini{margin-top:20px;display:flex;flex-direction:column;gap:10px}
+  .mini-row{display:grid;grid-template-columns:42px 1fr 34px;align-items:center;gap:12px;font-size:13px}
+  .mini-row .ml{color:var(--muted)}
+  .mini-row .track{height:8px;background:var(--ink-2);border-radius:100px;overflow:hidden;border:1px solid var(--line)}
+  .mini-row .fill{height:100%;width:0;border-radius:100px;transition:width 1.2s var(--ease)}
+  .mini-row .fill.g{background:var(--grad-gold)} .mini-row .fill.s{background:var(--grad-silver)} .mini-row .fill.b{background:var(--grad-bronze)}
+  .mini-row .mv{font-family:"JetBrains Mono",monospace;text-align:right;color:var(--text);font-weight:600}
+
+  /* ---------- SCHOOLS ---------- */
+  .schools{padding:70px 0}
+  .board{display:flex;flex-direction:column;gap:11px}
+  .brow{display:grid;grid-template-columns:36px 1fr;gap:16px;align-items:center}
+  .brank{font-family:"JetBrains Mono",monospace;font-weight:800;font-size:15px;color:var(--faint);text-align:right}
+  .brow:nth-child(1) .brank{color:var(--gold)} .brow:nth-child(2) .brank{color:var(--silver)} .brow:nth-child(3) .brank{color:var(--bronze)}
+  .bbody{position:relative}
+  .bbar{position:relative;height:46px;border-radius:10px;background:var(--ink-2);border:1px solid var(--line);overflow:hidden}
+  .bfill{position:absolute;inset:0;width:0;background:linear-gradient(90deg,rgba(60,230,203,.28),rgba(60,230,203,.08));border-right:2px solid var(--cyan);transition:width 1.3s var(--ease)}
+  .brow:nth-child(1) .bfill{background:linear-gradient(90deg,rgba(255,215,107,.32),rgba(255,215,107,.06));border-color:var(--gold)}
+  .brow:nth-child(2) .bfill{background:linear-gradient(90deg,rgba(214,222,236,.28),rgba(214,222,236,.05));border-color:var(--silver)}
+  .brow:nth-child(3) .bfill{background:linear-gradient(90deg,rgba(231,151,90,.28),rgba(231,151,90,.05));border-color:var(--bronze)}
+  .blabel{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 16px;z-index:2}
+  .bname{font-weight:500;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .bcount{font-family:"JetBrains Mono",monospace;font-weight:800;font-size:15px;flex-shrink:0;margin-left:12px}
+  .bmedals{display:flex;gap:3px;margin-left:10px;flex-shrink:0}
+  .bmedals .m{width:8px;height:8px;border-radius:50%}
+  .bmedals .m.g{background:var(--gold)} .bmedals .m.s{background:var(--silver)} .bmedals .m.b{background:var(--bronze)}
+
+  /* ---------- ROSTER ---------- */
+  .roster{padding:70px 0 40px}
+  .controls{display:flex;flex-direction:column;gap:16px;margin-bottom:26px;position:sticky;top:0;z-index:30;
+    padding:18px 0;background:linear-gradient(var(--ink) 70%,transparent);backdrop-filter:blur(2px)}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap}
+  .tab{font-family:inherit;font-size:13.5px;color:var(--muted);background:var(--panel);border:1px solid var(--line);
+    padding:9px 17px;border-radius:100px;cursor:pointer;transition:all .25s var(--ease);white-space:nowrap}
+  .tab:hover{color:var(--text);border-color:var(--line-strong)}
+  .tab.on{background:var(--text);color:var(--ink);border-color:var(--text);font-weight:700}
+  .filterbar{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .pills{display:flex;gap:6px}
+  .pill{font-family:"JetBrains Mono",monospace;font-size:12.5px;cursor:pointer;border:1px solid var(--line);background:var(--panel);
+    color:var(--muted);padding:7px 14px;border-radius:8px;transition:all .25s;display:flex;align-items:center;gap:7px}
+  .pill .dt{width:9px;height:9px;border-radius:50%}
+  .pill.g .dt{background:var(--grad-gold)} .pill.s .dt{background:var(--grad-silver)} .pill.b .dt{background:var(--grad-bronze)} .pill.all .dt{background:var(--cyan)}
+  .pill:hover{color:var(--text)}
+  .pill.on{border-color:var(--text);color:var(--text);background:var(--panel-2)}
+  .search{flex:1;min-width:200px;position:relative}
+  .search input{width:100%;font-family:inherit;font-size:14px;color:var(--text);background:var(--ink-2);
+    border:1px solid var(--line);border-radius:10px;padding:11px 16px 11px 40px;outline:none;transition:border-color .25s}
+  .search input:focus{border-color:var(--cyan)}
+  .search input::placeholder{color:var(--faint)}
+  .search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);stroke:var(--faint);width:16px;height:16px}
+  .rcount{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--faint);white-space:nowrap}
+  .rcount b{color:var(--cyan)}
+
+  .list{display:flex;flex-direction:column;gap:8px}
+  .entry{display:grid;grid-template-columns:74px 1fr auto;gap:18px;align-items:center;
+    border:1px solid var(--line);border-left-width:3px;border-radius:12px;padding:15px 20px;
+    background:var(--panel);transition:transform .3s var(--ease),background .3s,border-color .3s;
+    animation:entryIn .5s var(--ease) both}
+  @keyframes entryIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .entry:hover{transform:translateX(4px);background:var(--panel-2);border-color:var(--line-strong)}
+  .entry.g{border-left-color:var(--gold)} .entry.s{border-left-color:var(--silver)} .entry.b{border-left-color:var(--bronze)}
+  .badge{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:12.5px;font-weight:700;
+    padding:5px 0;border-radius:7px;width:62px;text-align:center}
+  .badge.g{background:rgba(255,215,107,.14);color:var(--gold);border:1px solid rgba(255,215,107,.35)}
+  .badge.s{background:rgba(214,222,236,.12);color:var(--silver);border:1px solid rgba(214,222,236,.3)}
+  .badge.b{background:rgba(231,151,90,.13);color:var(--bronze);border:1px solid rgba(231,151,90,.32)}
+  .entry .team{font-weight:500;font-size:15.5px;overflow-wrap:anywhere}
+  .entry .school{font-size:13.5px;color:var(--muted);display:flex;align-items:center;gap:8px;text-align:right;justify-content:flex-end}
+  .entry .ctag{font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--faint);border:1px solid var(--line);padding:3px 8px;border-radius:6px;white-space:nowrap}
+  .empty{text-align:center;padding:60px 0;color:var(--faint);font-family:"JetBrains Mono",monospace}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line);margin-top:60px;padding:50px 0 70px;text-align:center}
+  footer .ft{font-family:"ZCOOL QingKe HuangYou",sans-serif;font-size:clamp(22px,3.5vw,34px);background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+  footer .fm{color:var(--faint);font-size:12.5px;margin-top:14px;font-family:"JetBrains Mono",monospace;letter-spacing:.05em}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:900px){
+    .stat-grid{grid-template-columns:repeat(2,1fr)}
+    .cat-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:620px){
+    .wrap{padding:0 16px}
+    header.hero{padding:100px 16px 70px}
+    .entry{grid-template-columns:62px 1fr;gap:12px;row-gap:8px}
+    .entry .school{grid-column:1/-1;justify-content:flex-start;text-align:left}
+    .stat-grid{grid-template-columns:1fr 1fr}
+    .scrollcue{display:none}
+    .controls{position:static}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="orb g"></div>
+<div class="orb c"></div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="tag rv in"><span class="dot"></span>OFFICIAL AWARD ANNOUNCEMENT · 金 银 铜 公示</div>
+  <h1>
+    <span class="l1 rv in d1">第九届广西大学生</span>
+    <span class="l2 rv in d2">程序设计大赛</span>
+  </h1>
+  <div class="also">
+    <span class="rv in d3">暨 <b>2026 中国 · 东盟国际大学生程序设计大赛</b></span>
+    <span class="rv in d4">暨 <b>2026 广西中小学生程序设计邀请赛</b></span>
+  </div>
+  <div class="scrollcue"><span class="bar"></span>SCROLL</div>
+</header>
+
+<!-- PARTICIPATION -->
+<section class="part wrap">
+  <div class="sec-head">
+    <div>
+      <div class="eyebrow rv in">Participating Schools</div>
+      <h2 class="sec-title rv d1 in">参与<span class="em">学校数</span></h2>
+    </div>
+  </div>
+  <div class="stat-grid" id="partgrid">
+    <div class="stat rv in" data-n="73" style="--accent: var(--cyan); --darkreader-bg--accent: var(--darkreader-bg--cyan);"><div class="n"><span class="v">73</span></div><div class="k">区外本科 <span class="u">schools</span></div></div>
+    <div class="stat rv d1 in" data-n="22" style="--accent: #7aa2ff; --darkreader-bg--accent: var(--darkreader-background-7aa2ff, #002783);"><div class="n"><span class="v">22</span></div><div class="k">区内本科 <span class="u">schools</span></div></div>
+    <div class="stat rv d2 in" data-n="5" style="--accent: #b48cff; --darkreader-bg--accent: var(--darkreader-background-b48cff, #2a0078);"><div class="n"><span class="v">5</span></div><div class="k">高职高专 <span class="u">schools</span></div></div>
+    <div class="stat rv d3 in" data-n="16" style="--accent: #ff9f7a; --darkreader-bg--accent: var(--darkreader-background-ff9f7a, #832400);"><div class="n"><span class="v">16</span></div><div class="k">中小学 <span class="u">schools</span></div></div>
+  </div>
+</section>
+
+<!-- AWARDED SCHOOLS -->
+<section class="part wrap">
+  <div class="sec-head">
+    <div>
+      <div class="eyebrow rv in">Awarded Schools</div>
+      <h2 class="sec-title rv d1 in">获奖<span class="em">学校数</span></h2>
+    </div>
+  </div>
+  <div class="stat-grid" id="awardgrid">
+    <div class="stat rv in" data-n="65" style="--accent: var(--cyan); --darkreader-bg--accent: var(--darkreader-bg--cyan);"><div class="n"><span class="v">65</span></div><div class="k">区外本科 <span class="u">schools</span></div></div>
+    <div class="stat rv d1 in" data-n="19" style="--accent: #7aa2ff; --darkreader-bg--accent: var(--darkreader-background-7aa2ff, #002783);"><div class="n"><span class="v">19</span></div><div class="k">区内本科 <span class="u">schools</span></div></div>
+    <div class="stat rv d2 in" data-n="4" style="--accent: #b48cff; --darkreader-bg--accent: var(--darkreader-background-b48cff, #2a0078);"><div class="n"><span class="v">4</span></div><div class="k">高职专科组 <span class="u">schools</span></div></div>
+    <div class="stat rv d3 in" data-n="14" style="--accent: #ff9f7a; --darkreader-bg--accent: var(--darkreader-background-ff9f7a, #832400);"><div class="n"><span class="v">14</span></div><div class="k">中小学 <span class="u">schools</span></div></div>
+  </div>
+</section>
+
+<!-- SCHOOLS -->
+<section class="schools wrap">
+  <div class="sec-head">
+    <div>
+      <div class="eyebrow rv in">School Leaderboard</div>
+      <h2 class="sec-title rv d1 in">获奖<span class="em">学校榜</span></h2>
+    </div>
+    <p class="sec-sub rv d2 in">按获奖总数排名的院校，色点表示其金 / 银 / 铜构成。</p>
+  </div>
+  <div class="board" id="board"><div class="brow rv d0 in"><div class="brank">01</div>
+      <div class="bbody"><div class="bbar"><div class="bfill" data-w="100" style="width: 100%;"></div>
+        <div class="blabel"><span class="bname">江西农业大学</span>
+          <span style="display:flex;align-items:center"><span class="bmedals"><span class="m g"></span><span class="m g"></span><span class="m g"></span><span class="m s"></span><span class="m s"></span><span class="m b"></span><span class="m b"></span><span class="m b"></span><span class="m b"></span><span class="m b"></span><span class="m b"></span></span><span class="bcount">11</span></span>
+        </div></div></div></div><div class="brow rv d1 in"><div class="brank">02</div>
+      <div class="bbody"><div class="bbar"><div class="bfill" data-w="81.81818181818183" style="width: 81.8182%;"></div>
+        <div class="blabel"><span class="bname">江西财经大学</span>
+          <span style="display:flex;align-items:center"><span class="bmedals"><span class="m g"></span><span class="m g"></span><span class="m s"></span><span class="m s"></span><span class="m s"></span><span class="m s"></span><span class="m s"></span><span class="m b"></span><span class="m b"></span></span><span class="bcount">9</span></span>
+        </div></div></div></div><div class="brow rv d2 in"><div class="brank">03</div>
+      <div class="bbody"><div class="bbar"><div class="bfill" data-w="81.81818181818183" style="width: 81.8182%;"></div>
+        <div class="blabel"><span class="bname">河南师范大学</span>
+          <span style="display:flex;align-items:center"><span class="bmedals"><span class="m s"></span><span class="m s"></span><span class="m s"></span><span class="m s"></span><span class="m b"></span><span class="m b"></span><span class="m b"></span><span class="m b"></span><span class="m b"></span></span><span class="bcount">9</span></span>
+        </div></div></div></div><div class="brow rv d3 in"><div class="brank">04</div>
+      <div class="bbody"><div class="bbar"><div class="bfill" data-w="72.72727272727273" style="width: 72.7273%;"></div>
+        <div class="blabel"><span class="bname">南宁市第三中学</span>
+          <span style="display:flex;align-items:center"><span class="bmedals"><span class="m g"></span><span class="m g"></span><span class="m s"></span><span class="m s"></span><span class="m s"></span><span class="m b"></span><span class="m b"></span><span class="m b"></span></span><span class="bcount">8</span></span>
+        </div></div></div></div><div class="brow rv d4 in"><div class="brank">05</div>
+      <div class="bbody"><div class="bbar"><div class="bfill" data-w="63.63636363636363" style="width: 63.6364%;"></div>
+        <div class="blabel"><span class="bname">广西科技大学</span>
+          <span style="display:flex;align-items:center"><span class="bmedals"><span class="m g"></span><span class="m g"></span><span class="m g"></span><span class="m s"></span><span class="m s"></span><span class="m b"></span><span class="m b"></span></span><span class="bcount">7</span></span>
+        </div></div></div></div><div class="brow rv d5 in"><div class="brank">06</div>
+      <div class="bbody"><div class="bbar"><div class="bfill" data-w="63.63636363636363" style="width: 63.6364%;"></div>
+        <div class="blabel"><span class="bname">广西师范大学</span>
+          <span style="display:flex;align-items:center"><span class="bmedals"><span class="m g"></span><span class="m b"></span><span class="m b"></span><span class="m b"></span><span class="m b"></span><span class="m b"></span><span class="m b"></span></span><span class="bcount">7</span></span>
+        </div></div></div></div><div class="brow rv d0 in"><div class="brank">07</div>
+      <div class="bbody"><div class="bbar"><div class="bfill" data-w="54.54545454545454" style="width: 54.5455%;"></div>
+        <div class="blabel"><span class="bname">广西大学</span>
+          <span style="display:flex;align-items:center"><span class="bmedals"><span class="m g"></span><span class="m g"></span><span class="m g"></span><span class="m g"></span><span class="m s"></span><span class="m b"></span></span><span class="bcount">6</span></span>
+        </div></div></div></div><div class="brow rv d1 in"><div class="brank">08</div>
+      <div class="bbody"><div class="bbar"><div class="bfill" data-w="54.54545454545454" style="width: 54.5455%;"></div>
+        <div class="blabel"><span class="bname">柳州铁一中学（初中部）</span>
+          <span style="display:flex;align-items:center"><span class="bmedals"><span class="m g"></span><span class="m s"></span><span class="m s"></span><span class="m b"></span><span class="m b"></span><span class="m b"></span></span><span class="bcount">6</span></span>
+        </div></div></div></div><div class="brow rv d2 in"><div class="brank">09</div>
+      <div class="bbody"><div class="bbar"><div class="bfill" data-w="45.45454545454545" style="width: 45.4545%;"></div>
+        <div class="blabel"><span class="bname">桂林市国龙外国语学校</span>
+          <span style="display:flex;align-items:center"><span class="bmedals"><span class="m g"></span><span class="m g"></span><span class="m s"></span><span class="m s"></span><span class="m b"></span></span><span class="bcount">5</span></span>
+        </div></div></div></div><div class="brow rv d3 in"><div class="brank">10</div>
+      <div class="bbody"><div class="bbar"><div class="bfill" data-w="45.45454545454545" style="width: 45.4545%;"></div>
+        <div class="blabel"><span class="bname">东莞理工学院</span>
+          <span style="display:flex;align-items:center"><span class="bmedals"><span class="m s"></span><span class="m b"></span><span class="m b"></span><span class="m b"></span><span class="m b"></span></span><span class="bcount">5</span></span>
+        </div></div></div></div><div class="brow rv d4 in"><div class="brank">11</div>
+      <div class="bbody"><div class="bbar"><div class="bfill" data-w="36.36363636363637" style="width: 36.3636%;"></div>
+        <div class="blabel"><span class="bname">广东工业大学</span>
+          <span style="display:flex;align-items:center"><span class="bmedals"><span class="m g"></span><span class="m g"></span><span class="m s"></span><span class="m s"></span></span><span class="bcount">4</span></span>
+        </div></div></div></div><div class="brow rv d5 in"><div class="brank">12</div>
+      <div class="bbody"><div class="bbar"><div class="bfill" data-w="36.36363636363637" style="width: 36.3636%;"></div>
+        <div class="blabel"><span class="bname">陕西师范大学</span>
+          <span style="display:flex;align-items:center"><span class="bmedals"><span class="m g"></span><span class="m s"></span><span class="m s"></span><span class="m b"></span></span><span class="bcount">4</span></span>
+        </div></div></div></div></div>
+</section>
+
+<!-- ROSTER -->
+<section class="roster wrap">
+  <div class="sec-head">
+    <div>
+      <div class="eyebrow rv in">Full Roster</div>
+      <h2 class="sec-title rv d1 in">完整<span class="em">获奖名单</span></h2>
+    </div>
+    <p class="sec-sub rv d2 in">按组别与奖项筛选，或直接搜索队伍 / 学校名称。</p>
+  </div>
+
+  <div class="controls">
+    <div class="tabs" id="tabs"><button class="tab on" data-c="all">全部 <span style="opacity:.5;font-family:&#39;JetBrains Mono&#39;,monospace;font-size:12px">217</span></button><button class="tab" data-c="邀请赛组">邀请赛组 <span style="opacity:.5;font-family:&#39;JetBrains Mono&#39;,monospace;font-size:12px">131</span></button><button class="tab" data-c="广西区内本科组">区内本科组 <span style="opacity:.5;font-family:&#39;JetBrains Mono&#39;,monospace;font-size:12px">45</span></button><button class="tab" data-c="中小学组">中小学组 <span style="opacity:.5;font-family:&#39;JetBrains Mono&#39;,monospace;font-size:12px">37</span></button><button class="tab" data-c="高职专科组">高职专科组 <span style="opacity:.5;font-family:&#39;JetBrains Mono&#39;,monospace;font-size:12px">4</span></button></div>
+    <div class="filterbar">
+      <div class="pills" id="pills">
+        <span class="pill all on" data-a="all"><span class="dt"></span>全部</span>
+        <span class="pill g" data-a="金奖"><span class="dt"></span>金</span>
+        <span class="pill s" data-a="银奖"><span class="dt"></span>银</span>
+        <span class="pill b" data-a="铜奖"><span class="dt"></span>铜</span>
+      </div>
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4-4"></path></svg>
+        <input id="q" type="text" placeholder="搜索队伍名称或学校…" autocomplete="off">
+      </div>
+      <div class="rcount"><b id="rcount">217</b> / 217 项</div>
+    </div>
+  </div>
+
+  <div class="list" id="list"><div class="entry g" style="animation-delay:0ms">
+      <span class="badge g">金奖</span>
+      <span class="team">你怎么知道我们实验室天花板掉老鼠</span>
+      <span class="school"><span class="ctag">邀请赛组</span>长沙理工大学</span>
+    </div><div class="entry g" style="animation-delay:14ms">
+      <span class="badge g">金奖</span>
+      <span class="team">雾纸糊</span>
+      <span class="school"><span class="ctag">邀请赛组</span>湖南师范大学</span>
+    </div><div class="entry g" style="animation-delay:28ms">
+      <span class="badge g">金奖</span>
+      <span class="team">夜曲 OP.55 N.1</span>
+      <span class="school"><span class="ctag">邀请赛组</span>江西农业大学</span>
+    </div><div class="entry g" style="animation-delay:42ms">
+      <span class="badge g">金奖</span>
+      <span class="team">花开之夜</span>
+      <span class="school"><span class="ctag">邀请赛组</span>济南大学</span>
+    </div><div class="entry g" style="animation-delay:56ms">
+      <span class="badge g">金奖</span>
+      <span class="team">毕业旅行</span>
+      <span class="school"><span class="ctag">邀请赛组</span>武汉大学</span>
+    </div><div class="entry g" style="animation-delay:70ms">
+      <span class="badge g">金奖</span>
+      <span class="team">Star-E343</span>
+      <span class="school"><span class="ctag">邀请赛组</span>西北工业大学</span>
+    </div><div class="entry g" style="animation-delay:84ms">
+      <span class="badge g">金奖</span>
+      <span class="team">擢升</span>
+      <span class="school"><span class="ctag">邀请赛组</span>华中农业大学</span>
+    </div><div class="entry g" style="animation-delay:98ms">
+      <span class="badge g">金奖</span>
+      <span class="team">华工七队</span>
+      <span class="school"><span class="ctag">邀请赛组</span>华南理工大学</span>
+    </div><div class="entry g" style="animation-delay:112ms">
+      <span class="badge g">金奖</span>
+      <span class="team">唯独一同打ACM的时光，我从未忘却</span>
+      <span class="school"><span class="ctag">邀请赛组</span>浙江农林大学</span>
+    </div><div class="entry g" style="animation-delay:126ms">
+      <span class="badge g">金奖</span>
+      <span class="team">雨</span>
+      <span class="school"><span class="ctag">邀请赛组</span>河南大学</span>
+    </div><div class="entry g" style="animation-delay:140ms">
+      <span class="badge g">金奖</span>
+      <span class="team">04:59:59 AC</span>
+      <span class="school"><span class="ctag">邀请赛组</span>四川大学</span>
+    </div><div class="entry g" style="animation-delay:154ms">
+      <span class="badge g">金奖</span>
+      <span class="team">无限蓝</span>
+      <span class="school"><span class="ctag">邀请赛组</span>扬州大学</span>
+    </div><div class="entry g" style="animation-delay:168ms">
+      <span class="badge g">金奖</span>
+      <span class="team">打灰猫猫虫</span>
+      <span class="school"><span class="ctag">邀请赛组</span>广东工业大学</span>
+    </div><div class="entry g" style="animation-delay:182ms">
+      <span class="badge g">金奖</span>
+      <span class="team">天空的格林尼治</span>
+      <span class="school"><span class="ctag">邀请赛组</span>武汉轻工大学</span>
+    </div><div class="entry g" style="animation-delay:196ms">
+      <span class="badge g">金奖</span>
+      <span class="team">Haust-1</span>
+      <span class="school"><span class="ctag">邀请赛组</span>河南科技大学</span>
+    </div><div class="entry g" style="animation-delay:210ms">
+      <span class="badge g">金奖</span>
+      <span class="team">1</span>
+      <span class="school"><span class="ctag">邀请赛组</span>陕西师范大学</span>
+    </div><div class="entry g" style="animation-delay:224ms">
+      <span class="badge g">金奖</span>
+      <span class="team">领航者</span>
+      <span class="school"><span class="ctag">邀请赛组</span>江西农业大学</span>
+    </div><div class="entry g" style="animation-delay:238ms">
+      <span class="badge g">金奖</span>
+      <span class="team">喜欢只是错觉..</span>
+      <span class="school"><span class="ctag">邀请赛组</span>江西财经大学</span>
+    </div><div class="entry g" style="animation-delay:252ms">
+      <span class="badge g">金奖</span>
+      <span class="team">关注复活小聪明喵，关注复活小聪明谢谢喵</span>
+      <span class="school"><span class="ctag">邀请赛组</span>江西财经大学</span>
+    </div><div class="entry g" style="animation-delay:266ms">
+      <span class="badge g">金奖</span>
+      <span class="team">超越时间之影</span>
+      <span class="school"><span class="ctag">邀请赛组</span>江西农业大学</span>
+    </div><div class="entry g" style="animation-delay:280ms">
+      <span class="badge g">金奖</span>
+      <span class="team">全民算竞求生开局抽到神级系统无限叠加罚时</span>
+      <span class="school"><span class="ctag">邀请赛组</span>江汉大学</span>
+    </div><div class="entry g" style="animation-delay:294ms">
+      <span class="badge g">金奖</span>
+      <span class="team">幻想郷最強伝説と完全で瀟洒な従者</span>
+      <span class="school"><span class="ctag">邀请赛组</span>浙江工业大学之江学院</span>
+    </div><div class="entry g" style="animation-delay:308ms">
+      <span class="badge g">金奖</span>
+      <span class="team">DJ.皇牌梦之队</span>
+      <span class="school"><span class="ctag">邀请赛组</span>广东工业大学</span>
+    </div><div class="entry g" style="animation-delay:322ms">
+      <span class="badge g">金奖</span>
+      <span class="team">为什么被子不够长？因为打a这被子就这样了</span>
+      <span class="school"><span class="ctag">邀请赛组</span>海南大学</span>
+    </div><div class="entry s" style="animation-delay:336ms">
+      <span class="badge s">银奖</span>
+      <span class="team">天糖制造</span>
+      <span class="school"><span class="ctag">邀请赛组</span>华中农业大学</span>
+    </div><div class="entry s" style="animation-delay:350ms">
+      <span class="badge s">银奖</span>
+      <span class="team">超级卡比猎人队</span>
+      <span class="school"><span class="ctag">邀请赛组</span>苏州工学院</span>
+    </div><div class="entry s" style="animation-delay:364ms">
+      <span class="badge s">银奖</span>
+      <span class="team">琪露诺与喵喵藜的最后n舞</span>
+      <span class="school"><span class="ctag">邀请赛组</span>西安邮电大学</span>
+    </div><div class="entry s" style="animation-delay:378ms">
+      <span class="badge s">银奖</span>
+      <span class="team">我依然是世一a批</span>
+      <span class="school"><span class="ctag">邀请赛组</span>陕西师范大学</span>
+    </div><div class="entry s" style="animation-delay:392ms">
+      <span class="badge s">银奖</span>
+      <span class="team">养马王</span>
+      <span class="school"><span class="ctag">邀请赛组</span>中国海洋大学</span>
+    </div><div class="entry s" style="animation-delay:406ms">
+      <span class="badge s">银奖</span>
+      <span class="team">君与ACM之恋</span>
+      <span class="school"><span class="ctag">邀请赛组</span>郑州经贸学院</span>
+    </div><div class="entry s" style="animation-delay:420ms">
+      <span class="badge s">银奖</span>
+      <span class="team">别开香槟开早了</span>
+      <span class="school"><span class="ctag">邀请赛组</span>江西财经大学</span>
+    </div><div class="entry s" style="animation-delay:434ms">
+      <span class="badge s">银奖</span>
+      <span class="team">火花，喵喵，水蓝蓝</span>
+      <span class="school"><span class="ctag">邀请赛组</span>河南师范大学</span>
+    </div><div class="entry s" style="animation-delay:448ms">
+      <span class="badge s">银奖</span>
+      <span class="team">拿到属于我们的一切</span>
+      <span class="school"><span class="ctag">邀请赛组</span>山东财经大学</span>
+    </div><div class="entry s" style="animation-delay:462ms">
+      <span class="badge s">银奖</span>
+      <span class="team">圳美奶牛队</span>
+      <span class="school"><span class="ctag">邀请赛组</span>深圳理工大学</span>
+    </div><div class="entry s" style="animation-delay:476ms">
+      <span class="badge s">银奖</span>
+      <span class="team">星光</span>
+      <span class="school"><span class="ctag">邀请赛组</span>广东工业大学</span>
+    </div><div class="entry s" style="animation-delay:490ms">
+      <span class="badge s">银奖</span>
+      <span class="team">扣 114514 送广东特供免费罚时</span>
+      <span class="school"><span class="ctag">邀请赛组</span>香港城市大学（东莞）</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">以下犯上</span>
+      <span class="school"><span class="ctag">邀请赛组</span>武汉学院</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">哥布林之家</span>
+      <span class="school"><span class="ctag">邀请赛组</span>广东金融学院</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">酱菜一队</span>
+      <span class="school"><span class="ctag">邀请赛组</span>江西财经大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">四小时下班</span>
+      <span class="school"><span class="ctag">邀请赛组</span>郑州工商学院</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">大一旅游团</span>
+      <span class="school"><span class="ctag">邀请赛组</span>浙江工商大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">样例过了就是过了</span>
+      <span class="school"><span class="ctag">邀请赛组</span>河南师范大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">芝士雪豹爱嗦粉</span>
+      <span class="school"><span class="ctag">邀请赛组</span>西安邮电大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">小猪可以学算法吗</span>
+      <span class="school"><span class="ctag">邀请赛组</span>华中师范大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">哈基米哦南北路多</span>
+      <span class="school"><span class="ctag">邀请赛组</span>广州软件学院</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">线段树维护麦当劳薯条</span>
+      <span class="school"><span class="ctag">邀请赛组</span>齐鲁工业大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">队长说拿金请我吃KFC</span>
+      <span class="school"><span class="ctag">邀请赛组</span>福建师范大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">讨厌TLE</span>
+      <span class="school"><span class="ctag">邀请赛组</span>华东师范大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">200g金牌和200g铁牌哪个更重..</span>
+      <span class="school"><span class="ctag">邀请赛组</span>江西财经大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">毛毛虫坐火箭</span>
+      <span class="school"><span class="ctag">邀请赛组</span>华中农业大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">零罚时</span>
+      <span class="school"><span class="ctag">邀请赛组</span>湖南农业大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">猪头少年</span>
+      <span class="school"><span class="ctag">邀请赛组</span>江西农业大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">神秘</span>
+      <span class="school"><span class="ctag">邀请赛组</span>河南师范大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">超级地球真理部</span>
+      <span class="school"><span class="ctag">邀请赛组</span>苏州工学院</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">whalisa</span>
+      <span class="school"><span class="ctag">邀请赛组</span>河南科技大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">雷霆苦力怕</span>
+      <span class="school"><span class="ctag">邀请赛组</span>惠州学院</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">喝生椰就不会拿铁咯</span>
+      <span class="school"><span class="ctag">邀请赛组</span>湖南农业大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">阳光彩虹不白码..</span>
+      <span class="school"><span class="ctag">邀请赛组</span>江西财经大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">无基转生~到了算竞界就拿出真本事~</span>
+      <span class="school"><span class="ctag">邀请赛组</span>湖北经济学院</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">取名好难</span>
+      <span class="school"><span class="ctag">邀请赛组</span>广东工业大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">莞工の夜空哨戒班</span>
+      <span class="school"><span class="ctag">邀请赛组</span>东莞理工学院</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">蔚然兴墨</span>
+      <span class="school"><span class="ctag">邀请赛组</span>惠州学院</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">四氧化三铁</span>
+      <span class="school"><span class="ctag">邀请赛组</span>江西财经大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">如果忧郁是种天赋</span>
+      <span class="school"><span class="ctag">邀请赛组</span>黄淮学院</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">拿牌去看那艺娜演唱会结果发现她塌房了</span>
+      <span class="school"><span class="ctag">邀请赛组</span>江西农业大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">昼夜恒星落在每页窗外永恒永远</span>
+      <span class="school"><span class="ctag">邀请赛组</span>陕西师范大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">菜菜求带飞</span>
+      <span class="school"><span class="ctag">邀请赛组</span>西北大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">组一辈子乐队</span>
+      <span class="school"><span class="ctag">邀请赛组</span>天津工业大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">好的队</span>
+      <span class="school"><span class="ctag">邀请赛组</span>河南师范大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">松弛感</span>
+      <span class="school"><span class="ctag">邀请赛组</span>武昌理工学院</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">我的算法青春果然没问题</span>
+      <span class="school"><span class="ctag">邀请赛组</span>苏州工学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">我的学姐呢</span>
+      <span class="school"><span class="ctag">邀请赛组</span>五邑大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">队名</span>
+      <span class="school"><span class="ctag">邀请赛组</span>西南石油大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">acm轻而易举啊！坏了坏了WAWAWA</span>
+      <span class="school"><span class="ctag">邀请赛组</span>武汉轻工大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">王子请AC</span>
+      <span class="school"><span class="ctag">邀请赛组</span>南京农业大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">队友六级没过还能打XCPC吗？</span>
+      <span class="school"><span class="ctag">邀请赛组</span>中北大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">这个队名放到校园网上影响不好</span>
+      <span class="school"><span class="ctag">邀请赛组</span>韶关学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">combo</span>
+      <span class="school"><span class="ctag">邀请赛组</span>华东师范大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">迪迦大战奶龙</span>
+      <span class="school"><span class="ctag">邀请赛组</span>河南师范大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">砂糖橘看日出</span>
+      <span class="school"><span class="ctag">邀请赛组</span>江西农业大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">CTF我们来了！！！</span>
+      <span class="school"><span class="ctag">邀请赛组</span>河南理工大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">蓝色夜晚的记忆</span>
+      <span class="school"><span class="ctag">邀请赛组</span>衡阳师范学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">没AC肯定是主办方动我机子了</span>
+      <span class="school"><span class="ctag">邀请赛组</span>长沙学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">扣114514送广东特供免费罚时</span>
+      <span class="school"><span class="ctag">邀请赛组</span>东莞城市学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">至今，仍未找到一个舒服的睡觉姿势</span>
+      <span class="school"><span class="ctag">邀请赛组</span>华中师范大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">队长霸占机子封榜后怒过三题</span>
+      <span class="school"><span class="ctag">邀请赛组</span>江西农业大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">芙芙天下第一</span>
+      <span class="school"><span class="ctag">邀请赛组</span>东莞理工学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">你怎么知道我英语四级375</span>
+      <span class="school"><span class="ctag">邀请赛组</span>广东金融学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">三年之约</span>
+      <span class="school"><span class="ctag">邀请赛组</span>湖南工业大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">人生何处不青山</span>
+      <span class="school"><span class="ctag">邀请赛组</span>华中师范大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">最后998244353舞</span>
+      <span class="school"><span class="ctag">邀请赛组</span>武汉纺织大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">清纯粉毛小萝莉.</span>
+      <span class="school"><span class="ctag">邀请赛组</span>江西财经大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">下等马</span>
+      <span class="school"><span class="ctag">邀请赛组</span>河南师范大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">组一辈子乐队</span>
+      <span class="school"><span class="ctag">邀请赛组</span>广东东软学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">问号大神带我们拿金牌</span>
+      <span class="school"><span class="ctag">邀请赛组</span>五邑大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">嘎嘎香</span>
+      <span class="school"><span class="ctag">邀请赛组</span>嘉应学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">dui队</span>
+      <span class="school"><span class="ctag">邀请赛组</span>湖南工学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">凉菜小宇宙爆发</span>
+      <span class="school"><span class="ctag">邀请赛组</span>江西农业大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">星云X</span>
+      <span class="school"><span class="ctag">邀请赛组</span>桂林电子科技大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">ACACAC</span>
+      <span class="school"><span class="ctag">邀请赛组</span>衡阳师范学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">给个金吧！</span>
+      <span class="school"><span class="ctag">邀请赛组</span>河南理工大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">mwwwwj</span>
+      <span class="school"><span class="ctag">邀请赛组</span>江西农业大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">外经贸_铁铁铁</span>
+      <span class="school"><span class="ctag">邀请赛组</span>武汉纺织大学外经贸学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">我很神秘</span>
+      <span class="school"><span class="ctag">邀请赛组</span>河南师范大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">命运之触</span>
+      <span class="school"><span class="ctag">邀请赛组</span>浙江农林大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">只会暴力和罚时</span>
+      <span class="school"><span class="ctag">邀请赛组</span>东莞理工学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">福运常伴，如愿相随</span>
+      <span class="school"><span class="ctag">邀请赛组</span>衡阳师范学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">苦也这还溢栈</span>
+      <span class="school"><span class="ctag">邀请赛组</span>中国海洋大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">关注塔菲</span>
+      <span class="school"><span class="ctag">邀请赛组</span>天津职业技术师范大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">我发现用大脑思考不用token</span>
+      <span class="school"><span class="ctag">邀请赛组</span>江西财经大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">月球区域金</span>
+      <span class="school"><span class="ctag">邀请赛组</span>陕西师范大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">没有起队名队</span>
+      <span class="school"><span class="ctag">邀请赛组</span>河南师范大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">深藏Blue</span>
+      <span class="school"><span class="ctag">邀请赛组</span>江西农业大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">过了样例就是队</span>
+      <span class="school"><span class="ctag">邀请赛组</span>东莞理工学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">无论再久还是老鸡，无论再远还是广西</span>
+      <span class="school"><span class="ctag">邀请赛组</span>广东技术师范大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">转生铁牌</span>
+      <span class="school"><span class="ctag">邀请赛组</span>广州软件学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">飞吧!!!</span>
+      <span class="school"><span class="ctag">邀请赛组</span>河南科技大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">魔仙堡</span>
+      <span class="school"><span class="ctag">邀请赛组</span>青岛农业大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">奶娃游向海</span>
+      <span class="school"><span class="ctag">邀请赛组</span>河南师范大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">签完到就去吃饭</span>
+      <span class="school"><span class="ctag">邀请赛组</span>齐鲁工业大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">always kill</span>
+      <span class="school"><span class="ctag">邀请赛组</span>深圳理工大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">李兵爱钓鱼，钓到如今于</span>
+      <span class="school"><span class="ctag">邀请赛组</span>青岛农业大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">旮旯给木领域大蛇</span>
+      <span class="school"><span class="ctag">邀请赛组</span>江西农业大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">两点一十</span>
+      <span class="school"><span class="ctag">邀请赛组</span>西南石油大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">神秘AC事件调查组</span>
+      <span class="school"><span class="ctag">邀请赛组</span>惠州学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">最优解在左</span>
+      <span class="school"><span class="ctag">邀请赛组</span>武昌理工学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">素未谋面</span>
+      <span class="school"><span class="ctag">邀请赛组</span>青岛农业大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">开心的靴子</span>
+      <span class="school"><span class="ctag">邀请赛组</span>甘肃农业大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">巴巴博弈</span>
+      <span class="school"><span class="ctag">邀请赛组</span>东莞理工学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">贪心优化者三队</span>
+      <span class="school"><span class="ctag">邀请赛组</span>太原理工大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">四点五十三</span>
+      <span class="school"><span class="ctag">邀请赛组</span>西南石油大学</span>
+    </div><div class="entry g" style="animation-delay:500ms">
+      <span class="badge g">金奖</span>
+      <span class="team">队名WA2了</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西大学</span>
+    </div><div class="entry g" style="animation-delay:500ms">
+      <span class="badge g">金奖</span>
+      <span class="team">都是时臣的错</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西大学</span>
+    </div><div class="entry g" style="animation-delay:500ms">
+      <span class="badge g">金奖</span>
+      <span class="team">明日的你去往何方</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西大学</span>
+    </div><div class="entry g" style="animation-delay:500ms">
+      <span class="badge g">金奖</span>
+      <span class="team">你是我的梦幻之AC</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西大学</span>
+    </div><div class="entry g" style="animation-delay:500ms">
+      <span class="badge g">金奖</span>
+      <span class="team">哦吼吼吼吼</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西师范大学</span>
+    </div><div class="entry g" style="animation-delay:500ms">
+      <span class="badge g">金奖</span>
+      <span class="team">Deepsleep V4 Pro 满血版</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西科技大学</span>
+    </div><div class="entry g" style="animation-delay:500ms">
+      <span class="badge g">金奖</span>
+      <span class="team">兔子见完章鱼归来发现鲨鱼的xp是氢氧化钠</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西科技师范学院</span>
+    </div><div class="entry g" style="animation-delay:500ms">
+      <span class="badge g">金奖</span>
+      <span class="team">姚村小学零基础一队</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西科技大学</span>
+    </div><div class="entry g" style="animation-delay:500ms">
+      <span class="badge g">金奖</span>
+      <span class="team">没事就夸hz</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西科技大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">奶龙战神</span>
+      <span class="school"><span class="ctag">区内本科组</span>桂林电子科技大学北海校区</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">这一发·来自终焉</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西科技大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">apcitye不在作用域内的夏天</span>
+      <span class="school"><span class="ctag">区内本科组</span>桂林电子科技大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">Happy猫和他的小伙伴们</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西城市职业大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">王从天降</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">千LE万WA</span>
+      <span class="school"><span class="ctag">区内本科组</span>梧州学院</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">闹麻了</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西科技大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">AAA铁牌代打</span>
+      <span class="school"><span class="ctag">区内本科组</span>桂林航天工业学院</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">闪光炫彩六命哈基米</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西民族大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">或许是风太大，把之前温柔都吹散了</span>
+      <span class="school"><span class="ctag">区内本科组</span>桂林理工大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">无铊：与时无咎</span>
+      <span class="school"><span class="ctag">区内本科组</span>桂林电子科技大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">又被算法打败啦</span>
+      <span class="school"><span class="ctag">区内本科组</span>玉林师范学院</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">队友呢队友呢，救一下啊</span>
+      <span class="school"><span class="ctag">区内本科组</span>桂林理工大学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">豆包豆包，帮我生成一个队名</span>
+      <span class="school"><span class="ctag">区内本科组</span>桂林理工大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">尽力而为</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">哇哈哈哈哈</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西师范大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">爆栈小队</span>
+      <span class="school"><span class="ctag">区内本科组</span>桂林航天工业学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">wa整改办</span>
+      <span class="school"><span class="ctag">区内本科组</span>河池学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">败犬女主太多了</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西师范大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">安全边界</span>
+      <span class="school"><span class="ctag">区内本科组</span>贺州学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">星界军炮灰</span>
+      <span class="school"><span class="ctag">区内本科组</span>桂林信息科技学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">图0·冯诺1曼</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西农业职业技术大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">你何时有了AC的错觉</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西民族大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">迷途之子</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西民族大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">样例过了就算队</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西师范大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">来吃KFC</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西师范大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">别WA求求了</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西职业师范学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">自动AC机</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西科技大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">debug特困三人组</span>
+      <span class="school"><span class="ctag">区内本科组</span>贺州学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">给我一份肯德基</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西师范大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">重生之我在gxpc现场守银</span>
+      <span class="school"><span class="ctag">区内本科组</span>南宁师范大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">WA专业户</span>
+      <span class="school"><span class="ctag">区内本科组</span>河池学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">番茄薯条芝士汉堡</span>
+      <span class="school"><span class="ctag">区内本科组</span>桂林学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">关注塔菲喵</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西科技大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">我怎么可能成为oier，不行不行</span>
+      <span class="school"><span class="ctag">区内本科组</span>广西师范大学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">贪心必</span>
+      <span class="school"><span class="ctag">区内本科组</span>桂林理工大学</span>
+    </div><div class="entry g" style="animation-delay:500ms">
+      <span class="badge g">金奖</span>
+      <span class="team">交题不WA真君</span>
+      <span class="school"><span class="ctag">中小学组</span>南宁市第三中学</span>
+    </div><div class="entry g" style="animation-delay:500ms">
+      <span class="badge g">金奖</span>
+      <span class="team">支持《凭澜》喵，支持《凭澜》谢谢喵</span>
+      <span class="school"><span class="ctag">中小学组</span>柳州铁一中学</span>
+    </div><div class="entry g" style="animation-delay:500ms">
+      <span class="badge g">金奖</span>
+      <span class="team">我不会</span>
+      <span class="school"><span class="ctag">中小学组</span>南宁市第三中学</span>
+    </div><div class="entry g" style="animation-delay:500ms">
+      <span class="badge g">金奖</span>
+      <span class="team">超时空KDTree姬</span>
+      <span class="school"><span class="ctag">中小学组</span>柳州铁一中学</span>
+    </div><div class="entry g" style="animation-delay:500ms">
+      <span class="badge g">金奖</span>
+      <span class="team">国龙3队-M87宇宙警备队</span>
+      <span class="school"><span class="ctag">中小学组</span>桂林市国龙外国语学校</span>
+    </div><div class="entry g" style="animation-delay:500ms">
+      <span class="badge g">金奖</span>
+      <span class="team">扎扎师无敌</span>
+      <span class="school"><span class="ctag">中小学组</span>南宁市第二中学</span>
+    </div><div class="entry g" style="animation-delay:500ms">
+      <span class="badge g">金奖</span>
+      <span class="team">项绑驾你冯^_^^_^</span>
+      <span class="school"><span class="ctag">中小学组</span>柳州铁一中学（初中部）</span>
+    </div><div class="entry g" style="animation-delay:500ms">
+      <span class="badge g">金奖</span>
+      <span class="team">国龙2队-你写的代码连bug都是香的</span>
+      <span class="school"><span class="ctag">中小学组</span>桂林市国龙外国语学校</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">TriCode</span>
+      <span class="school"><span class="ctag">中小学组</span>南宁市第三中学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">886年级</span>
+      <span class="school"><span class="ctag">中小学组</span>柳州铁一中学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">AAA凯锋超高压郊狼批发（玖拾壹件起发）</span>
+      <span class="school"><span class="ctag">中小学组</span>柳州高级中学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">奶龙大战广叉碳磷碳</span>
+      <span class="school"><span class="ctag">中小学组</span>南宁市第三中学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">雪球队</span>
+      <span class="school"><span class="ctag">中小学组</span>柳州铁一中学（初中部）</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">国龙1队-我也可以法师转术士十年造出具身智能吗</span>
+      <span class="school"><span class="ctag">中小学组</span>桂林市国龙外国语学校</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">自动AC</span>
+      <span class="school"><span class="ctag">中小学组</span>南宁市第三中学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">星际解码少年</span>
+      <span class="school"><span class="ctag">中小学组</span>南宁市第二中学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">碳基生物</span>
+      <span class="school"><span class="ctag">中小学组</span>柳州市崇远中学</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">国龙4队-重生之我在桂电打暴力</span>
+      <span class="school"><span class="ctag">中小学组</span>桂林市国龙外国语学校</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">初生牛犊不怕虎</span>
+      <span class="school"><span class="ctag">中小学组</span>岑溪市育才实验学校</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">暴力大队</span>
+      <span class="school"><span class="ctag">中小学组</span>柳州市未来自定义科技培训有限公司</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">tle</span>
+      <span class="school"><span class="ctag">中小学组</span>柳州铁一中学（初中部）</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">aaa 代码批发部</span>
+      <span class="school"><span class="ctag">中小学组</span>柳州铁一中学（初中部）</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">不WA只AC</span>
+      <span class="school"><span class="ctag">中小学组</span>南宁市第三中学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">国龙5队-刘念王道，廖事如神</span>
+      <span class="school"><span class="ctag">中小学组</span>桂林市国龙外国语学校</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">源码追梦队</span>
+      <span class="school"><span class="ctag">中小学组</span>南宁市良庆区琼林学校</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">三只小猪</span>
+      <span class="school"><span class="ctag">中小学组</span>南宁市第二中学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">程序宝宝-马到成功队</span>
+      <span class="school"><span class="ctag">中小学组</span>贵港市荷城初级中学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">AC收割机</span>
+      <span class="school"><span class="ctag">中小学组</span>柳州市崇远中学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">三体问题</span>
+      <span class="school"><span class="ctag">中小学组</span>南宁市第三中学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">Bug退散队</span>
+      <span class="school"><span class="ctag">中小学组</span>柳州市崇远中学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">乘风破浪队</span>
+      <span class="school"><span class="ctag">中小学组</span>南宁市第三中学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">奋勇直前</span>
+      <span class="school"><span class="ctag">中小学组</span>桂林市桂林中学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">Go reckless,goin’all in(无所顾忌，一把梭哈)</span>
+      <span class="school"><span class="ctag">中小学组</span>岑溪市岑溪中学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">想没脑</span>
+      <span class="school"><span class="ctag">中小学组</span>柳州铁一中学（初中部）</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">灵珠队</span>
+      <span class="school"><span class="ctag">中小学组</span>柳州铁一中学（初中部）</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">二进制星河</span>
+      <span class="school"><span class="ctag">中小学组</span>柳州市景行小学</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">debug到天亮</span>
+      <span class="school"><span class="ctag">中小学组</span>岑溪市岑溪中学</span>
+    </div><div class="entry g" style="animation-delay:500ms">
+      <span class="badge g">金奖</span>
+      <span class="team">我的带专生物語果然有問題</span>
+      <span class="school"><span class="ctag">高职专科组</span>武汉软件工程职业学院</span>
+    </div><div class="entry g" style="animation-delay:500ms">
+      <span class="badge g">金奖</span>
+      <span class="team">我爱大自然</span>
+      <span class="school"><span class="ctag">高职专科组</span>广西自然资源职业技术学院</span>
+    </div><div class="entry s" style="animation-delay:500ms">
+      <span class="badge s">银奖</span>
+      <span class="team">弃优从暴</span>
+      <span class="school"><span class="ctag">高职专科组</span>柳州城市职业学院</span>
+    </div><div class="entry b" style="animation-delay:500ms">
+      <span class="badge b">铜奖</span>
+      <span class="team">队友带我飞</span>
+      <span class="school"><span class="ctag">高职专科组</span>广西职业技术学院</span>
+    </div></div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ft">恭喜全体获奖队伍</div>
+    <div class="fm">2026 CHINA-ASEAN INTERNATIONAL COLLEGIATE PROGRAMMING CONTEST · GUANGXI</div>
+  </div>
+</footer>
+
+<script>
+const DATA = /*__DATA__*/[{"cat":"广西区内本科组","award":"金奖","team":"队名WA2了","school":"广西大学"},{"cat":"广西区内本科组","award":"金奖","team":"都是时臣的错","school":"广西大学"},{"cat":"广西区内本科组","award":"金奖","team":"明日的你去往何方","school":"广西大学"},{"cat":"广西区内本科组","award":"金奖","team":"你是我的梦幻之AC","school":"广西大学"},{"cat":"广西区内本科组","award":"金奖","team":"哦吼吼吼吼","school":"广西师范大学"},{"cat":"广西区内本科组","award":"金奖","team":"Deepsleep V4 Pro 满血版","school":"广西科技大学"},{"cat":"广西区内本科组","award":"金奖","team":"兔子见完章鱼归来发现鲨鱼的xp是氢氧化钠","school":"广西科技师范学院"},{"cat":"广西区内本科组","award":"金奖","team":"姚村小学零基础一队","school":"广西科技大学"},{"cat":"广西区内本科组","award":"金奖","team":"没事就夸hz","school":"广西科技大学"},{"cat":"广西区内本科组","award":"银奖","team":"奶龙战神","school":"桂林电子科技大学北海校区"},{"cat":"广西区内本科组","award":"银奖","team":"这一发·来自终焉","school":"广西科技大学"},{"cat":"广西区内本科组","award":"银奖","team":"apcitye不在作用域内的夏天","school":"桂林电子科技大学"},{"cat":"广西区内本科组","award":"银奖","team":"Happy猫和他的小伙伴们","school":"广西城市职业大学"},{"cat":"广西区内本科组","award":"银奖","team":"王从天降","school":"广西大学"},{"cat":"广西区内本科组","award":"银奖","team":"千LE万WA","school":"梧州学院"},{"cat":"广西区内本科组","award":"银奖","team":"闹麻了","school":"广西科技大学"},{"cat":"广西区内本科组","award":"银奖","team":"AAA铁牌代打","school":"桂林航天工业学院"},{"cat":"广西区内本科组","award":"银奖","team":"闪光炫彩六命哈基米","school":"广西民族大学"},{"cat":"广西区内本科组","award":"银奖","team":"或许是风太大，把之前温柔都吹散了","school":"桂林理工大学"},{"cat":"广西区内本科组","award":"银奖","team":"无铊：与时无咎","school":"桂林电子科技大学"},{"cat":"广西区内本科组","award":"银奖","team":"又被算法打败啦","school":"玉林师范学院"},{"cat":"广西区内本科组","award":"银奖","team":"队友呢队友呢，救一下啊","school":"桂林理工大学"},{"cat":"广西区内本科组","award":"银奖","team":"豆包豆包，帮我生成一个队名","school":"桂林理工大学"},{"cat":"广西区内本科组","award":"铜奖","team":"尽力而为","school":"广西大学"},{"cat":"广西区内本科组","award":"铜奖","team":"哇哈哈哈哈","school":"广西师范大学"},{"cat":"广西区内本科组","award":"铜奖","team":"爆栈小队","school":"桂林航天工业学院"},{"cat":"广西区内本科组","award":"铜奖","team":"wa整改办","school":"河池学院"},{"cat":"广西区内本科组","award":"铜奖","team":"败犬女主太多了","school":"广西师范大学"},{"cat":"广西区内本科组","award":"铜奖","team":"安全边界","school":"贺州学院"},{"cat":"广西区内本科组","award":"铜奖","team":"星界军炮灰","school":"桂林信息科技学院"},{"cat":"广西区内本科组","award":"铜奖","team":"图0·冯诺1曼","school":"广西农业职业技术大学"},{"cat":"广西区内本科组","award":"铜奖","team":"你何时有了AC的错觉","school":"广西民族大学"},{"cat":"广西区内本科组","award":"铜奖","team":"迷途之子","school":"广西民族大学"},{"cat":"广西区内本科组","award":"铜奖","team":"样例过了就算队","school":"广西师范大学"},{"cat":"广西区内本科组","award":"铜奖","team":"来吃KFC","school":"广西师范大学"},{"cat":"广西区内本科组","award":"铜奖","team":"别WA求求了","school":"广西职业师范学院"},{"cat":"广西区内本科组","award":"铜奖","team":"自动AC机","school":"广西科技大学"},{"cat":"广西区内本科组","award":"铜奖","team":"debug特困三人组","school":"贺州学院"},{"cat":"广西区内本科组","award":"铜奖","team":"给我一份肯德基","school":"广西师范大学"},{"cat":"广西区内本科组","award":"铜奖","team":"重生之我在gxpc现场守银","school":"南宁师范大学"},{"cat":"广西区内本科组","award":"铜奖","team":"WA专业户","school":"河池学院"},{"cat":"广西区内本科组","award":"铜奖","team":"番茄薯条芝士汉堡","school":"桂林学院"},{"cat":"广西区内本科组","award":"铜奖","team":"关注塔菲喵","school":"广西科技大学"},{"cat":"广西区内本科组","award":"铜奖","team":"我怎么可能成为oier，不行不行","school":"广西师范大学"},{"cat":"广西区内本科组","award":"铜奖","team":"贪心必","school":"桂林理工大学"},{"cat":"高职专科组","award":"金奖","team":"我的带专生物語果然有問題","school":"武汉软件工程职业学院"},{"cat":"高职专科组","award":"金奖","team":"我爱大自然","school":"广西自然资源职业技术学院"},{"cat":"高职专科组","award":"银奖","team":"弃优从暴","school":"柳州城市职业学院"},{"cat":"高职专科组","award":"铜奖","team":"队友带我飞","school":"广西职业技术学院"},{"cat":"中小学组","award":"金奖","team":"交题不WA真君","school":"南宁市第三中学"},{"cat":"中小学组","award":"金奖","team":"支持《凭澜》喵，支持《凭澜》谢谢喵","school":"柳州铁一中学"},{"cat":"中小学组","award":"金奖","team":"我不会","school":"南宁市第三中学"},{"cat":"中小学组","award":"金奖","team":"超时空KDTree姬","school":"柳州铁一中学"},{"cat":"中小学组","award":"金奖","team":"国龙3队-M87宇宙警备队","school":"桂林市国龙外国语学校"},{"cat":"中小学组","award":"金奖","team":"扎扎师无敌","school":"南宁市第二中学"},{"cat":"中小学组","award":"金奖","team":"项绑驾你冯^_^^_^","school":"柳州铁一中学（初中部）"},{"cat":"中小学组","award":"金奖","team":"国龙2队-你写的代码连bug都是香的","school":"桂林市国龙外国语学校"},{"cat":"中小学组","award":"银奖","team":"TriCode","school":"南宁市第三中学"},{"cat":"中小学组","award":"银奖","team":"886年级","school":"柳州铁一中学"},{"cat":"中小学组","award":"银奖","team":"AAA凯锋超高压郊狼批发（玖拾壹件起发）","school":"柳州高级中学"},{"cat":"中小学组","award":"银奖","team":"奶龙大战广叉碳磷碳","school":"南宁市第三中学"},{"cat":"中小学组","award":"银奖","team":"雪球队","school":"柳州铁一中学（初中部）"},{"cat":"中小学组","award":"银奖","team":"国龙1队-我也可以法师转术士十年造出具身智能吗","school":"桂林市国龙外国语学校"},{"cat":"中小学组","award":"银奖","team":"自动AC","school":"南宁市第三中学"},{"cat":"中小学组","award":"银奖","team":"星际解码少年","school":"南宁市第二中学"},{"cat":"中小学组","award":"银奖","team":"碳基生物","school":"柳州市崇远中学"},{"cat":"中小学组","award":"银奖","team":"国龙4队-重生之我在桂电打暴力","school":"桂林市国龙外国语学校"},{"cat":"中小学组","award":"银奖","team":"初生牛犊不怕虎","school":"岑溪市育才实验学校"},{"cat":"中小学组","award":"银奖","team":"暴力大队","school":"柳州市未来自定义科技培训有限公司"},{"cat":"中小学组","award":"银奖","team":"tle","school":"柳州铁一中学（初中部）"},{"cat":"中小学组","award":"铜奖","team":"aaa 代码批发部","school":"柳州铁一中学（初中部）"},{"cat":"中小学组","award":"铜奖","team":"不WA只AC","school":"南宁市第三中学"},{"cat":"中小学组","award":"铜奖","team":"国龙5队-刘念王道，廖事如神","school":"桂林市国龙外国语学校"},{"cat":"中小学组","award":"铜奖","team":"源码追梦队","school":"南宁市良庆区琼林学校"},{"cat":"中小学组","award":"铜奖","team":"三只小猪","school":"南宁市第二中学"},{"cat":"中小学组","award":"铜奖","team":"程序宝宝-马到成功队","school":"贵港市荷城初级中学"},{"cat":"中小学组","award":"铜奖","team":"AC收割机","school":"柳州市崇远中学"},{"cat":"中小学组","award":"铜奖","team":"三体问题","school":"南宁市第三中学"},{"cat":"中小学组","award":"铜奖","team":"Bug退散队","school":"柳州市崇远中学"},{"cat":"中小学组","award":"铜奖","team":"乘风破浪队","school":"南宁市第三中学"},{"cat":"中小学组","award":"铜奖","team":"奋勇直前","school":"桂林市桂林中学"},{"cat":"中小学组","award":"铜奖","team":"Go reckless,goin’all in(无所顾忌，一把梭哈)","school":"岑溪市岑溪中学"},{"cat":"中小学组","award":"铜奖","team":"想没脑","school":"柳州铁一中学（初中部）"},{"cat":"中小学组","award":"铜奖","team":"灵珠队","school":"柳州铁一中学（初中部）"},{"cat":"中小学组","award":"铜奖","team":"二进制星河","school":"柳州市景行小学"},{"cat":"中小学组","award":"铜奖","team":"debug到天亮","school":"岑溪市岑溪中学"},{"cat":"邀请赛组","award":"金奖","team":"你怎么知道我们实验室天花板掉老鼠","school":"长沙理工大学"},{"cat":"邀请赛组","award":"金奖","team":"雾纸糊","school":"湖南师范大学"},{"cat":"邀请赛组","award":"金奖","team":"夜曲 OP.55 N.1","school":"江西农业大学"},{"cat":"邀请赛组","award":"金奖","team":"花开之夜","school":"济南大学"},{"cat":"邀请赛组","award":"金奖","team":"毕业旅行","school":"武汉大学"},{"cat":"邀请赛组","award":"金奖","team":"Star-E343","school":"西北工业大学"},{"cat":"邀请赛组","award":"金奖","team":"擢升","school":"华中农业大学"},{"cat":"邀请赛组","award":"金奖","team":"华工七队","school":"华南理工大学"},{"cat":"邀请赛组","award":"金奖","team":"唯独一同打ACM的时光，我从未忘却","school":"浙江农林大学"},{"cat":"邀请赛组","award":"金奖","team":"雨","school":"河南大学"},{"cat":"邀请赛组","award":"金奖","team":"04:59:59 AC","school":"四川大学"},{"cat":"邀请赛组","award":"金奖","team":"无限蓝","school":"扬州大学"},{"cat":"邀请赛组","award":"金奖","team":"打灰猫猫虫","school":"广东工业大学"},{"cat":"邀请赛组","award":"金奖","team":"天空的格林尼治","school":"武汉轻工大学"},{"cat":"邀请赛组","award":"金奖","team":"Haust-1","school":"河南科技大学"},{"cat":"邀请赛组","award":"金奖","team":"1","school":"陕西师范大学"},{"cat":"邀请赛组","award":"金奖","team":"领航者","school":"江西农业大学"},{"cat":"邀请赛组","award":"金奖","team":"喜欢只是错觉..","school":"江西财经大学"},{"cat":"邀请赛组","award":"金奖","team":"关注复活小聪明喵，关注复活小聪明谢谢喵","school":"江西财经大学"},{"cat":"邀请赛组","award":"金奖","team":"超越时间之影","school":"江西农业大学"},{"cat":"邀请赛组","award":"金奖","team":"全民算竞求生开局抽到神级系统无限叠加罚时","school":"江汉大学"},{"cat":"邀请赛组","award":"金奖","team":"幻想郷最強伝説と完全で瀟洒な従者","school":"浙江工业大学之江学院"},{"cat":"邀请赛组","award":"金奖","team":"DJ.皇牌梦之队","school":"广东工业大学"},{"cat":"邀请赛组","award":"金奖","team":"为什么被子不够长？因为打a这被子就这样了","school":"海南大学"},{"cat":"邀请赛组","award":"银奖","team":"天糖制造","school":"华中农业大学"},{"cat":"邀请赛组","award":"银奖","team":"超级卡比猎人队","school":"苏州工学院"},{"cat":"邀请赛组","award":"银奖","team":"琪露诺与喵喵藜的最后n舞","school":"西安邮电大学"},{"cat":"邀请赛组","award":"银奖","team":"我依然是世一a批","school":"陕西师范大学"},{"cat":"邀请赛组","award":"银奖","team":"养马王","school":"中国海洋大学"},{"cat":"邀请赛组","award":"银奖","team":"君与ACM之恋","school":"郑州经贸学院"},{"cat":"邀请赛组","award":"银奖","team":"别开香槟开早了","school":"江西财经大学"},{"cat":"邀请赛组","award":"银奖","team":"火花，喵喵，水蓝蓝","school":"河南师范大学"},{"cat":"邀请赛组","award":"银奖","team":"拿到属于我们的一切","school":"山东财经大学"},{"cat":"邀请赛组","award":"银奖","team":"圳美奶牛队","school":"深圳理工大学"},{"cat":"邀请赛组","award":"银奖","team":"星光","school":"广东工业大学"},{"cat":"邀请赛组","award":"银奖","team":"扣 114514 送广东特供免费罚时","school":"香港城市大学（东莞）"},{"cat":"邀请赛组","award":"银奖","team":"以下犯上","school":"武汉学院"},{"cat":"邀请赛组","award":"银奖","team":"哥布林之家","school":"广东金融学院"},{"cat":"邀请赛组","award":"银奖","team":"酱菜一队","school":"江西财经大学"},{"cat":"邀请赛组","award":"银奖","team":"四小时下班","school":"郑州工商学院"},{"cat":"邀请赛组","award":"银奖","team":"大一旅游团","school":"浙江工商大学"},{"cat":"邀请赛组","award":"银奖","team":"样例过了就是过了","school":"河南师范大学"},{"cat":"邀请赛组","award":"银奖","team":"芝士雪豹爱嗦粉","school":"西安邮电大学"},{"cat":"邀请赛组","award":"银奖","team":"小猪可以学算法吗","school":"华中师范大学"},{"cat":"邀请赛组","award":"银奖","team":"哈基米哦南北路多","school":"广州软件学院"},{"cat":"邀请赛组","award":"银奖","team":"线段树维护麦当劳薯条","school":"齐鲁工业大学"},{"cat":"邀请赛组","award":"银奖","team":"队长说拿金请我吃KFC","school":"福建师范大学"},{"cat":"邀请赛组","award":"银奖","team":"讨厌TLE","school":"华东师范大学"},{"cat":"邀请赛组","award":"银奖","team":"200g金牌和200g铁牌哪个更重..","school":"江西财经大学"},{"cat":"邀请赛组","award":"银奖","team":"毛毛虫坐火箭","school":"华中农业大学"},{"cat":"邀请赛组","award":"银奖","team":"零罚时","school":"湖南农业大学"},{"cat":"邀请赛组","award":"银奖","team":"猪头少年","school":"江西农业大学"},{"cat":"邀请赛组","award":"银奖","team":"神秘","school":"河南师范大学"},{"cat":"邀请赛组","award":"银奖","team":"超级地球真理部","school":"苏州工学院"},{"cat":"邀请赛组","award":"银奖","team":"whalisa","school":"河南科技大学"},{"cat":"邀请赛组","award":"银奖","team":"雷霆苦力怕","school":"惠州学院"},{"cat":"邀请赛组","award":"银奖","team":"喝生椰就不会拿铁咯","school":"湖南农业大学"},{"cat":"邀请赛组","award":"银奖","team":"阳光彩虹不白码..","school":"江西财经大学"},{"cat":"邀请赛组","award":"银奖","team":"无基转生~到了算竞界就拿出真本事~","school":"湖北经济学院"},{"cat":"邀请赛组","award":"银奖","team":"取名好难","school":"广东工业大学"},{"cat":"邀请赛组","award":"银奖","team":"莞工の夜空哨戒班","school":"东莞理工学院"},{"cat":"邀请赛组","award":"银奖","team":"蔚然兴墨","school":"惠州学院"},{"cat":"邀请赛组","award":"银奖","team":"四氧化三铁","school":"江西财经大学"},{"cat":"邀请赛组","award":"银奖","team":"如果忧郁是种天赋","school":"黄淮学院"},{"cat":"邀请赛组","award":"银奖","team":"拿牌去看那艺娜演唱会结果发现她塌房了","school":"江西农业大学"},{"cat":"邀请赛组","award":"银奖","team":"昼夜恒星落在每页窗外永恒永远","school":"陕西师范大学"},{"cat":"邀请赛组","award":"银奖","team":"菜菜求带飞","school":"西北大学"},{"cat":"邀请赛组","award":"银奖","team":"组一辈子乐队","school":"天津工业大学"},{"cat":"邀请赛组","award":"银奖","team":"好的队","school":"河南师范大学"},{"cat":"邀请赛组","award":"银奖","team":"松弛感","school":"武昌理工学院"},{"cat":"邀请赛组","award":"银奖","team":"我的算法青春果然没问题","school":"苏州工学院"},{"cat":"邀请赛组","award":"铜奖","team":"我的学姐呢","school":"五邑大学"},{"cat":"邀请赛组","award":"铜奖","team":"队名","school":"西南石油大学"},{"cat":"邀请赛组","award":"铜奖","team":"acm轻而易举啊！坏了坏了WAWAWA","school":"武汉轻工大学"},{"cat":"邀请赛组","award":"铜奖","team":"王子请AC","school":"南京农业大学"},{"cat":"邀请赛组","award":"铜奖","team":"队友六级没过还能打XCPC吗？","school":"中北大学"},{"cat":"邀请赛组","award":"铜奖","team":"这个队名放到校园网上影响不好","school":"韶关学院"},{"cat":"邀请赛组","award":"铜奖","team":"combo","school":"华东师范大学"},{"cat":"邀请赛组","award":"铜奖","team":"迪迦大战奶龙","school":"河南师范大学"},{"cat":"邀请赛组","award":"铜奖","team":"砂糖橘看日出","school":"江西农业大学"},{"cat":"邀请赛组","award":"铜奖","team":"CTF我们来了！！！","school":"河南理工大学"},{"cat":"邀请赛组","award":"铜奖","team":"蓝色夜晚的记忆","school":"衡阳师范学院"},{"cat":"邀请赛组","award":"铜奖","team":"没AC肯定是主办方动我机子了","school":"长沙学院"},{"cat":"邀请赛组","award":"铜奖","team":"扣114514送广东特供免费罚时","school":"东莞城市学院"},{"cat":"邀请赛组","award":"铜奖","team":"至今，仍未找到一个舒服的睡觉姿势","school":"华中师范大学"},{"cat":"邀请赛组","award":"铜奖","team":"队长霸占机子封榜后怒过三题","school":"江西农业大学"},{"cat":"邀请赛组","award":"铜奖","team":"芙芙天下第一","school":"东莞理工学院"},{"cat":"邀请赛组","award":"铜奖","team":"你怎么知道我英语四级375","school":"广东金融学院"},{"cat":"邀请赛组","award":"铜奖","team":"三年之约","school":"湖南工业大学"},{"cat":"邀请赛组","award":"铜奖","team":"人生何处不青山","school":"华中师范大学"},{"cat":"邀请赛组","award":"铜奖","team":"最后998244353舞","school":"武汉纺织大学"},{"cat":"邀请赛组","award":"铜奖","team":"清纯粉毛小萝莉.","school":"江西财经大学"},{"cat":"邀请赛组","award":"铜奖","team":"下等马","school":"河南师范大学"},{"cat":"邀请赛组","award":"铜奖","team":"组一辈子乐队","school":"广东东软学院"},{"cat":"邀请赛组","award":"铜奖","team":"问号大神带我们拿金牌","school":"五邑大学"},{"cat":"邀请赛组","award":"铜奖","team":"嘎嘎香","school":"嘉应学院"},{"cat":"邀请赛组","award":"铜奖","team":"dui队","school":"湖南工学院"},{"cat":"邀请赛组","award":"铜奖","team":"凉菜小宇宙爆发","school":"江西农业大学"},{"cat":"邀请赛组","award":"铜奖","team":"星云X","school":"桂林电子科技大学"},{"cat":"邀请赛组","award":"铜奖","team":"ACACAC","school":"衡阳师范学院"},{"cat":"邀请赛组","award":"铜奖","team":"给个金吧！","school":"河南理工大学"},{"cat":"邀请赛组","award":"铜奖","team":"mwwwwj","school":"江西农业大学"},{"cat":"邀请赛组","award":"铜奖","team":"外经贸_铁铁铁","school":"武汉纺织大学外经贸学院"},{"cat":"邀请赛组","award":"铜奖","team":"我很神秘","school":"河南师范大学"},{"cat":"邀请赛组","award":"铜奖","team":"命运之触","school":"浙江农林大学"},{"cat":"邀请赛组","award":"铜奖","team":"只会暴力和罚时","school":"东莞理工学院"},{"cat":"邀请赛组","award":"铜奖","team":"福运常伴，如愿相随","school":"衡阳师范学院"},{"cat":"邀请赛组","award":"铜奖","team":"苦也这还溢栈","school":"中国海洋大学"},{"cat":"邀请赛组","award":"铜奖","team":"关注塔菲","school":"天津职业技术师范大学"},{"cat":"邀请赛组","award":"铜奖","team":"我发现用大脑思考不用token","school":"江西财经大学"},{"cat":"邀请赛组","award":"铜奖","team":"月球区域金","school":"陕西师范大学"},{"cat":"邀请赛组","award":"铜奖","team":"没有起队名队","school":"河南师范大学"},{"cat":"邀请赛组","award":"铜奖","team":"深藏Blue","school":"江西农业大学"},{"cat":"邀请赛组","award":"铜奖","team":"过了样例就是队","school":"东莞理工学院"},{"cat":"邀请赛组","award":"铜奖","team":"无论再久还是老鸡，无论再远还是广西","school":"广东技术师范大学"},{"cat":"邀请赛组","award":"铜奖","team":"转生铁牌","school":"广州软件学院"},{"cat":"邀请赛组","award":"铜奖","team":"飞吧!!!","school":"河南科技大学"},{"cat":"邀请赛组","award":"铜奖","team":"魔仙堡","school":"青岛农业大学"},{"cat":"邀请赛组","award":"铜奖","team":"奶娃游向海","school":"河南师范大学"},{"cat":"邀请赛组","award":"铜奖","team":"签完到就去吃饭","school":"齐鲁工业大学"},{"cat":"邀请赛组","award":"铜奖","team":"always kill","school":"深圳理工大学"},{"cat":"邀请赛组","award":"铜奖","team":"李兵爱钓鱼，钓到如今于","school":"青岛农业大学"},{"cat":"邀请赛组","award":"铜奖","team":"旮旯给木领域大蛇","school":"江西农业大学"},{"cat":"邀请赛组","award":"铜奖","team":"两点一十","school":"西南石油大学"},{"cat":"邀请赛组","award":"铜奖","team":"神秘AC事件调查组","school":"惠州学院"},{"cat":"邀请赛组","award":"铜奖","team":"最优解在左","school":"武昌理工学院"},{"cat":"邀请赛组","award":"铜奖","team":"素未谋面","school":"青岛农业大学"},{"cat":"邀请赛组","award":"铜奖","team":"开心的靴子","school":"甘肃农业大学"},{"cat":"邀请赛组","award":"铜奖","team":"巴巴博弈","school":"东莞理工学院"},{"cat":"邀请赛组","award":"铜奖","team":"贪心优化者三队","school":"太原理工大学"},{"cat":"邀请赛组","award":"铜奖","team":"四点五十三","school":"西南石油大学"}];
+
+/* ---------- meta ---------- */
+const CAT_ORDER = ["邀请赛组","广西区内本科组","中小学组","高职专科组"];
+const CAT_SHORT = {"邀请赛组":"邀请赛组","广西区内本科组":"区内本科组","中小学组":"中小学组","高职专科组":"高职专科组"};
+const AWARD_RANK = {"金奖":0,"银奖":1,"铜奖":2};
+const AWARD_CLASS = {"金奖":"g","银奖":"s","铜奖":"b"};
+
+/* ---------- count-up ---------- */
+function countUp(el,target,dur=1400){
+  const start=performance.now();
+  const from=0;
+  function tick(now){
+    const p=Math.min(1,(now-start)/dur);
+    const e=1-Math.pow(1-p,3);
+    el.textContent=Math.round(from+(target-from)*e).toLocaleString();
+    if(p<1)requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+/* ---------- reveal observer ---------- */
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.18});
+document.querySelectorAll('.rv').forEach(el=>{ if(!el.classList.contains('in')) io.observe(el); });
+
+/* stat-grid counters — participation & awarded schools */
+document.querySelectorAll('.stat-grid').forEach(grid=>{
+  const ob=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){
+    e.target.querySelectorAll('.stat').forEach((s,i)=>setTimeout(()=>countUp(s.querySelector('.v'),+s.dataset.n),i*90));
+    ob.disconnect();
+  }})});
+  ob.observe(grid);
+});
+
+/* ---------- schools leaderboard ---------- */
+function buildSchools(){
+  const map={};
+  DATA.forEach(d=>{(map[d.school]??={g:0,s:0,b:0,t:0});
+    map[d.school].t++; map[d.school][AWARD_CLASS[d.award]]++;});
+  const arr=Object.entries(map).map(([name,v])=>({name,...v})).sort((a,b)=>b.t-a.t||b.g-a.g);
+  const top=arr.slice(0,12), max=top[0].t;
+  const board=document.getElementById('board');
+  top.forEach((s,i)=>{
+    const row=document.createElement('div');row.className='brow rv d'+(i%6);
+    const dots=[...Array(s.g).fill('g'),...Array(s.s).fill('s'),...Array(s.b).fill('b')]
+      .map(c=>`<span class="m ${c}"></span>`).join('');
+    row.innerHTML=`<div class="brank">${String(i+1).padStart(2,'0')}</div>
+      <div class="bbody"><div class="bbar"><div class="bfill" data-w="${s.t/max*100}"></div>
+        <div class="blabel"><span class="bname">${s.name}</span>
+          <span style="display:flex;align-items:center"><span class="bmedals">${dots}</span><span class="bcount">${s.t}</span></span>
+        </div></div></div>`;
+    board.appendChild(row);io.observe(row);
+    const bo=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){
+      setTimeout(()=>row.querySelector('.bfill').style.width=row.querySelector('.bfill').dataset.w+'%',i*60);
+      bo.disconnect();}})});
+    bo.observe(row);
+  });
+}
+
+/* ---------- roster ---------- */
+let curCat='all', curAward='all', curQ='';
+function buildTabs(){
+  const tabs=document.getElementById('tabs');
+  const items=[['all','全部',DATA.length]];
+  CAT_ORDER.forEach(c=>items.push([c,CAT_SHORT[c],DATA.filter(d=>d.cat===c).length]));
+  tabs.innerHTML=items.map(([v,l,n],i)=>`<button class="tab${i===0?' on':''}" data-c="${v}">${l} <span style="opacity:.5;font-family:'JetBrains Mono',monospace;font-size:12px">${n}</span></button>`).join('');
+  tabs.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+    tabs.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+    t.classList.add('on');curCat=t.dataset.c;render();});
+}
+function bindPills(){
+  document.querySelectorAll('#pills .pill').forEach(p=>p.onclick=()=>{
+    document.querySelectorAll('#pills .pill').forEach(x=>x.classList.remove('on'));
+    p.classList.add('on');curAward=p.dataset.a;render();});
+}
+function render(){
+  const list=document.getElementById('list');
+  let rows=DATA.filter(d=>
+    (curCat==='all'||d.cat===curCat)&&
+    (curAward==='all'||d.award===curAward)&&
+    (curQ===''||d.team.toLowerCase().includes(curQ)||d.school.toLowerCase().includes(curQ)));
+  rows=rows.slice().sort((a,b)=>
+    CAT_ORDER.indexOf(a.cat)-CAT_ORDER.indexOf(b.cat)||
+    AWARD_RANK[a.award]-AWARD_RANK[b.award]);
+  document.getElementById('rcount').textContent=rows.length;
+  if(!rows.length){list.innerHTML='<div class="empty">// 没有匹配的获奖记录</div>';return;}
+  list.innerHTML=rows.map((d,i)=>{
+    const c=AWARD_CLASS[d.award];const dl=Math.min(i*14,500);
+    return `<div class="entry ${c}" style="animation-delay:${dl}ms">
+      <span class="badge ${c}">${d.award}</span>
+      <span class="team">${esc(d.team)}</span>
+      <span class="school"><span class="ctag">${CAT_SHORT[d.cat]}</span>${esc(d.school)}</span>
+    </div>`;}).join('');
+}
+function esc(s){return String(s).replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]));}
+
+document.getElementById('q').addEventListener('input',e=>{curQ=e.target.value.trim().toLowerCase();render();});
+
+/* init */
+buildSchools();
+buildTabs();
+bindPills();
+render();
+</script>
+
+
+<deepl-input-controller translate="no"><template shadowrootmode="open"><link rel="stylesheet" href="chrome-extension://cofdbpoegempjloogbagkncekinflcnj/build/content.css"><div dir="ltr" style="visibility: initial !important;"><div class="dl-input-translation-container svelte-95aucy"><div></div></div></div></template></deepl-input-controller></body></html>

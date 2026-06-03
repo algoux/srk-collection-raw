@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)https://oj.glowxq.com/ranklist -->
+<html lang="zh-CN" class=" js" data-darkreader-proxy-injected="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <meta name="color-scheme" content="dark">
+  <title>最终榜单 · 算法竞赛排行</title>
+  <script>document.documentElement.className += ' js';</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="./gxcpc9th 最终榜单 · 算法竞赛排行_files/css2" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg-0:#04060d; --bg-1:#070b16;
+      --panel: rgba(12,19,38,.66);
+      --panel-2: rgba(16,26,50,.5);
+      --line: rgba(120,165,235,.14);
+      --line-2: rgba(120,165,235,.30);
+      --ink:#e9f0ff;
+      --muted:#8ea4cd;
+      --muted-2:#5f73a0;
+      --cyan:#34f5d6;
+      --cyan-2:#27d3ff;
+      --blue:#4d8dff;
+      --violet:#a98bff;
+      --gold:#ffd45e;
+      --silver:#cddcff;
+      --bronze:#f0a25e;
+      --pink:#ff5ea8;
+      --font-display:"Chakra Petch","PingFang SC","Microsoft YaHei",sans-serif;
+      --font-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+      --font-cjk:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC","Hiragino Sans GB",sans-serif;
+      --font-body:"JetBrains Mono","PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: var(--font-body);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      background:
+        radial-gradient(1200px 700px at 12% -10%, rgba(39,211,255,.10), transparent 60%),
+        radial-gradient(1100px 650px at 95% 0%, rgba(169,139,255,.10), transparent 55%),
+        radial-gradient(900px 900px at 50% 120%, rgba(52,245,214,.08), transparent 60%),
+        linear-gradient(180deg, var(--bg-1), var(--bg-0));
+      /* copy protection */
+      -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;
+      -webkit-touch-callout: none;
+    }
+    /* animated grid */
+    body::before {
+      content:""; position: fixed; inset: -40px; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(95,140,225,.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(95,140,225,.10) 1px, transparent 1px);
+      background-size: 46px 46px;
+      -webkit-mask-image: radial-gradient(120% 90% at 50% 0%, #000 35%, transparent 78%);
+              mask-image: radial-gradient(120% 90% at 50% 0%, #000 35%, transparent 78%);
+      animation: gridDrift 26s linear infinite;
+    }
+    /* aurora blobs */
+    body::after {
+      content:""; position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .7;
+      background:
+        radial-gradient(40% 40% at 18% 22%, rgba(52,245,214,.16), transparent 60%),
+        radial-gradient(42% 42% at 82% 12%, rgba(77,141,255,.16), transparent 60%),
+        radial-gradient(45% 45% at 60% 95%, rgba(169,139,255,.14), transparent 60%);
+      filter: blur(22px);
+      animation: auroraFloat 18s ease-in-out infinite alternate;
+    }
+    @keyframes gridDrift { to { background-position: 46px 920px, 46px 920px; } }
+    @keyframes auroraFloat { from { transform: translate3d(-2%,-1%,0) scale(1); } to { transform: translate3d(2%,2%,0) scale(1.08); } }
+
+    .page {
+      position: relative; z-index: 1;
+      width: min(1180px, calc(100vw - 28px));
+      margin: 30px auto 48px;
+      background: linear-gradient(180deg, rgba(12,19,38,.78), rgba(8,13,27,.72));
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 30px 80px rgba(2,6,20,.6), inset 0 1px 0 rgba(255,255,255,.04);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      overflow: hidden;
+    }
+    .page::before {
+      content:""; position: absolute; left: 0; right: 0; top: 0; height: 2px; z-index: 3;
+      background: linear-gradient(90deg, transparent, var(--cyan), var(--blue), var(--violet), transparent);
+      background-size: 200% 100%;
+      animation: edgeFlow 6s linear infinite;
+    }
+    @keyframes edgeFlow { to { background-position: 200% 0; } }
+
+    header {
+      position: relative;
+      padding: 34px clamp(18px,4vw,40px) 26px;
+      border-bottom: 1px solid var(--line);
+      background:
+        radial-gradient(120% 160% at 0% 0%, rgba(52,245,214,.08), transparent 55%),
+        radial-gradient(120% 160% at 100% 0%, rgba(169,139,255,.08), transparent 55%);
+      overflow: hidden;
+    }
+    .kicker {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: .24em;
+      text-transform: uppercase; color: var(--cyan);
+      padding: 6px 13px; border: 1px solid var(--line-2); border-radius: 999px;
+      background: rgba(52,245,214,.06);
+    }
+    .kicker .dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--cyan);
+      box-shadow: 0 0 10px var(--cyan); animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .4; transform: scale(.65); } }
+    h1 {
+      margin: 16px 0 10px; font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(34px, 6.4vw, 62px); line-height: 1.02; letter-spacing: .01em;
+      background: linear-gradient(180deg, #ffffff, #bcd3ff 58%, #7fa8ff);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      text-shadow: 0 0 36px rgba(77,141,255,.25);
+    }
+    h1 .en {
+      display: block; font-size: clamp(11px,1.6vw,15px); letter-spacing: .5em;
+      font-weight: 500; color: var(--muted); -webkit-text-fill-color: var(--muted);
+      margin-top: 12px;
+    }
+    .lead { color: var(--muted); font-size: 14px; max-width: 64ch; margin: 0; }
+
+    .stats {
+      margin-top: 22px; display: grid; gap: 12px;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+    .stat {
+      position: relative; padding: 14px 16px; border-radius: 14px;
+      border: 1px solid var(--line); background: var(--panel-2); overflow: hidden;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .stat::after {
+      content:""; position: absolute; left: 0; top: 0; width: 3px; height: 100%;
+      background: linear-gradient(var(--cyan), var(--blue)); opacity: .9;
+    }
+    .stat:nth-child(2)::after { background: linear-gradient(var(--blue), var(--violet)); }
+    .stat:nth-child(3)::after { background: linear-gradient(var(--cyan), var(--gold)); }
+    .stat:nth-child(4)::after { background: linear-gradient(var(--violet), var(--pink)); }
+    .stat:hover { transform: translateY(-3px); border-color: var(--line-2); box-shadow: 0 14px 30px rgba(2,8,24,.5); }
+    .stat .k {
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--muted-2);
+    }
+    .stat .v {
+      font-family: var(--font-mono); font-weight: 800;
+      font-size: clamp(24px,3.2vw,34px); color: var(--ink); margin-top: 6px;
+      font-variant-numeric: tabular-nums; line-height: 1.1;
+    }
+    .stat .v small { font-size: 13px; color: var(--muted); font-weight: 600; margin-left: 4px; }
+
+    .toolbar {
+      display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+      padding: 16px clamp(18px,4vw,40px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(7,12,26,.5);
+    }
+    .search { position: relative; flex: 1 1 280px; max-width: 440px; }
+    .search svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--muted-2); }
+    .search input {
+      width: 100%; padding: 11px 14px 11px 40px; border-radius: 11px;
+      border: 1px solid var(--line-2); background: rgba(4,8,18,.7); color: var(--ink);
+      font-family: var(--font-body); font-size: 14px; outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      -webkit-user-select: text; user-select: text;
+    }
+    .search input::placeholder { color: var(--muted-2); }
+    .search input:focus { border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(52,245,214,.16), 0 0 24px rgba(52,245,214,.12); }
+    .count { font-family: var(--font-mono); font-size: 13px; color: var(--muted); white-space: nowrap; }
+    .count b { color: var(--cyan); }
+
+    .wrap { overflow: auto; }
+    table { width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; font-size: 14px; }
+    thead th {
+      position: sticky; top: 0; z-index: 2; text-align: left; white-space: nowrap;
+      padding: 14px 14px; font-family: var(--font-mono); font-weight: 700;
+      font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #cfe0ff;
+      background: linear-gradient(180deg, rgba(20,33,64,.97), rgba(13,22,46,.97));
+      border-bottom: 1px solid var(--line-2);
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    }
+    thead th::after {
+      content:""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent); opacity: .5;
+    }
+    th.rank { width: 86px; text-align: center; }
+    th.team { width: 38%; }
+    th.school { width: 28%; }
+    th.solved { width: 124px; }
+    th.penalty { width: 140px; text-align: right; }
+
+    tbody td {
+      padding: 12px 14px; border-bottom: 1px solid rgba(120,165,235,.08);
+      vertical-align: middle; overflow-wrap: anywhere;
+    }
+    tbody tr { transition: background .18s ease, box-shadow .18s ease; }
+    tbody tr:nth-child(even) { background: rgba(120,165,235,.035); }
+    tbody tr:hover { background: rgba(52,245,214,.07); box-shadow: inset 3px 0 0 var(--cyan), inset 0 0 40px rgba(52,245,214,.05); }
+
+    /* scroll reveal (only when JS active, prevents FOUC) */
+    .js tbody tr { opacity: 0; transform: translateY(10px); }
+    .js tbody tr.in { opacity: 1; transform: none; transition: opacity .5s ease, transform .5s cubic-bezier(.2,.7,.2,1); }
+
+    td.rank { text-align: center; }
+    .rk {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 30px; height: 30px; padding: 0 8px; border-radius: 9px;
+      font-family: var(--font-mono); font-weight: 700; font-size: 14px; color: var(--muted);
+      background: rgba(120,165,235,.08); border: 1px solid var(--line);
+    }
+    .rk-medal { color: #1a1208; border: 0; position: relative; box-shadow: 0 4px 16px rgba(0,0,0,.35); }
+    .rk-1 { background: linear-gradient(145deg, #fff0bf, #ffcf45 55%, #e89a17); }
+    .rk-2 { background: linear-gradient(145deg, #ffffff, #c7d6f2 55%, #93a7cf); }
+    .rk-3 { background: linear-gradient(145deg, #ffd9a8, #f0a256 55%, #c8762f); }
+    .rk-medal::before {
+      content:""; position: absolute; inset: 0; border-radius: 9px;
+      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.75) 50%, transparent 70%);
+      background-size: 220% 100%; animation: shimmer 3.2s linear infinite;
+    }
+    @keyframes shimmer { to { background-position: -220% 0; } }
+    .rk-star { color: var(--violet); background: rgba(169,139,255,.12); border-color: rgba(169,139,255,.4); }
+
+    tr.rk1 { background: linear-gradient(90deg, rgba(255,212,94,.12), transparent 62%) !important; }
+    tr.rk2 { background: linear-gradient(90deg, rgba(205,220,255,.10), transparent 62%) !important; }
+    tr.rk3 { background: linear-gradient(90deg, rgba(240,162,94,.10), transparent 62%) !important; }
+    tr.is-star { background: linear-gradient(90deg, rgba(169,139,255,.08), transparent 62%); }
+    tr.is-star:hover { box-shadow: inset 3px 0 0 var(--violet), inset 0 0 40px rgba(169,139,255,.06); }
+
+    td.team { font-weight: 600; color: #eaf1ff; font-family: var(--font-cjk); }
+    tr.is-star td.team { color: #d9ccff; }
+    td.school { color: var(--muted); font-size: 13.5px; font-family: var(--font-cjk); }
+
+    .sv { display: flex; align-items: center; gap: 10px; justify-content: flex-end; }
+    .sv-num {
+      font-family: var(--font-mono); font-weight: 800; font-size: 18px; color: var(--cyan);
+      min-width: 1.3em; text-align: right; font-variant-numeric: tabular-nums;
+      text-shadow: 0 0 14px rgba(52,245,214,.35);
+    }
+    .sv-bar { position: relative; width: 58px; height: 6px; border-radius: 6px; background: rgba(120,165,235,.14); overflow: hidden; flex: none; }
+    .sv-bar i {
+      position: absolute; left: 0; top: 0; height: 100%; width: 0; border-radius: 6px;
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+      box-shadow: 0 0 12px rgba(52,245,214,.5);
+      transition: width 1s cubic-bezier(.2,.7,.2,1);
+    }
+    td.penalty { text-align: right; font-family: var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; font-size: 13.5px; }
+    td.penalty.pen-inf { color: var(--pink); font-weight: 700; text-shadow: 0 0 14px rgba(255,94,168,.4); letter-spacing: .04em; }
+
+    footer {
+      padding: 18px clamp(18px,4vw,40px) 26px; border-top: 1px solid var(--line);
+      display: flex; flex-wrap: wrap; gap: 10px 18px; justify-content: space-between; align-items: center;
+      color: var(--muted-2); font-size: 12px; font-family: var(--font-mono);
+    }
+    footer .caret { color: var(--cyan); }
+    footer .caret::after { content: "_"; animation: blink 1.1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .wrap::-webkit-scrollbar { height: 10px; width: 10px; }
+    .wrap::-webkit-scrollbar-thumb { background: rgba(95,140,225,.35); border-radius: 8px; }
+    .wrap::-webkit-scrollbar-track { background: transparent; }
+
+    /* header load-in */
+    .js header > * { opacity: 0; transform: translateY(14px); animation: rise .7s ease forwards; }
+    .js .kicker { animation-delay: .05s; }
+    .js h1 { animation-delay: .15s; }
+    .js .lead { animation-delay: .25s; }
+    .js .stats { animation-delay: .35s; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+
+    @media (max-width: 860px) {
+      .stats { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .page { width: calc(100vw - 16px); margin: 14px auto 28px; border-radius: 14px; }
+      thead { display: none; }
+      table, tbody, tr, td { display: block; width: 100%; }
+      tbody tr {
+        position: relative; margin: 0 12px 12px; padding: 14px 14px 12px;
+        border: 1px solid var(--line); border-radius: 14px; background: var(--panel-2);
+      }
+      tbody tr:nth-child(even) { background: var(--panel-2); }
+      tbody td { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 7px 0; border-bottom: 1px dashed rgba(120,165,235,.12); }
+      tbody td:last-child { border-bottom: 0; }
+      tbody td::before {
+        content: attr(data-label); font-family: var(--font-mono); font-size: 11px;
+        letter-spacing: .1em; text-transform: uppercase; color: var(--muted-2);
+      }
+      td.rank { position: absolute; top: 12px; right: 12px; padding: 0; border: 0; }
+      td.rank::before { display: none; }
+      td.team { flex-direction: column; align-items: flex-start; gap: 3px; padding-right: 50px; }
+      .sv { justify-content: flex-end; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+      body::before, body::after { animation: none !important; }
+      .js tbody tr, .js header > * { opacity: 1 !important; transform: none !important; }
+      .sv-bar i { transition: none !important; }
+    }
+
+    /* block printing to preserve copy protection */
+    @media print { html { display: none !important; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <span class="kicker"><span class="dot"></span>ALGORITHM CONTEST · 最终排行</span>
+      <h1>最终榜单<span class="en">FINAL&nbsp;STANDINGS</span></h1>
+      <div class="stats">
+        <div class="stat"><div class="k">参赛队伍</div><div class="v"><span class="num">312</span></div></div>
+        <div class="stat"><div class="k">参赛学校</div><div class="v"><span class="num">118</span></div></div>
+      </div>
+    </header>
+    <div class="toolbar">
+      <label class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke: currentColor;"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>
+        <input id="q" type="text" placeholder="搜索队伍或学校…" autocomplete="off" spellcheck="false">
+      </label>
+      <div class="count">显示 <b id="shown">312</b> / <span id="total">312</span> 支队伍</div>
+    </div>
+    <div class="wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="rank">#</th>
+            <th class="team">队伍名称</th>
+            <th class="school">学校</th>
+            <th class="solved">通过</th>
+            <th class="penalty">修正罚时</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="transition-delay: 0s;" class="in"><td class="rank" data-label="排名"><span class="rk">1</span></td><td class="team" data-label="队伍">你怎么知道我们实验室天花板掉老鼠</td><td class="school" data-label="学校">长沙理工大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">9</span><span class="sv-bar"><i data-w="100.0" style="width: 100%;"></i></span></div></td><td class="penalty" data-label="罚时">14:46:42</td></tr>
+          <tr style="transition-delay: 0.03s;" class="in"><td class="rank" data-label="排名"><span class="rk">2</span></td><td class="team" data-label="队伍">*队长说原先的队名没有新意</td><td class="school" data-label="学校">广西师范大学附属外国语学校</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">9</span><span class="sv-bar"><i data-w="100.0" style="width: 100%;"></i></span></div></td><td class="penalty" data-label="罚时">14:55:58</td></tr>
+          <tr style="transition-delay: 0.06s;" class="in"><td class="rank" data-label="排名"><span class="rk">3</span></td><td class="team" data-label="队伍">雾纸糊</td><td class="school" data-label="学校">湖南师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">9</span><span class="sv-bar"><i data-w="100.0" style="width: 100%;"></i></span></div></td><td class="penalty" data-label="罚时">17:41:24</td></tr>
+          <tr style="transition-delay: 0.09s;" class="in"><td class="rank" data-label="排名"><span class="rk">4</span></td><td class="team" data-label="队伍">夜曲 OP.55 N.1</td><td class="school" data-label="学校">江西农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">9</span><span class="sv-bar"><i data-w="100.0" style="width: 100%;"></i></span></div></td><td class="penalty" data-label="罚时">18:08:22</td></tr>
+          <tr style="transition-delay: 0.12s;" class="in"><td class="rank" data-label="排名"><span class="rk">5</span></td><td class="team" data-label="队伍">花开之夜</td><td class="school" data-label="学校">济南大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">9</span><span class="sv-bar"><i data-w="100.0" style="width: 100%;"></i></span></div></td><td class="penalty" data-label="罚时">18:15:53</td></tr>
+          <tr style="transition-delay: 0.15s;" class="in"><td class="rank" data-label="排名"><span class="rk">6</span></td><td class="team" data-label="队伍">毕业旅行</td><td class="school" data-label="学校">武汉大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">9</span><span class="sv-bar"><i data-w="100.0" style="width: 100%;"></i></span></div></td><td class="penalty" data-label="罚时">22:44:00</td></tr>
+          <tr style="transition-delay: 0.18s;" class="in"><td class="rank" data-label="排名"><span class="rk">7</span></td><td class="team" data-label="队伍">交题不WA真君</td><td class="school" data-label="学校">南宁市第三中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">8</span><span class="sv-bar"><i data-w="88.9" style="width: 88.9%;"></i></span></div></td><td class="penalty" data-label="罚时">13:24:03</td></tr>
+          <tr style="transition-delay: 0.21s;" class="in"><td class="rank" data-label="排名"><span class="rk">8</span></td><td class="team" data-label="队伍">Star-E343</td><td class="school" data-label="学校">西北工业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">8</span><span class="sv-bar"><i data-w="88.9" style="width: 88.9%;"></i></span></div></td><td class="penalty" data-label="罚时">15:39:26</td></tr>
+          <tr style="transition-delay: 0.24s;" class="in"><td class="rank" data-label="排名"><span class="rk">9</span></td><td class="team" data-label="队伍">擢升</td><td class="school" data-label="学校">华中农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">8</span><span class="sv-bar"><i data-w="88.9" style="width: 88.9%;"></i></span></div></td><td class="penalty" data-label="罚时">16:32:59</td></tr>
+          <tr style="transition-delay: 0.27s;" class="in"><td class="rank" data-label="排名"><span class="rk">10</span></td><td class="team" data-label="队伍">华工七队</td><td class="school" data-label="学校">华南理工大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">8</span><span class="sv-bar"><i data-w="88.9" style="width: 88.9%;"></i></span></div></td><td class="penalty" data-label="罚时">16:45:12</td></tr>
+          <tr style="transition-delay: 0.3s;" class="in"><td class="rank" data-label="排名"><span class="rk">11</span></td><td class="team" data-label="队伍">唯独一同打ACM的时光，我从未忘却</td><td class="school" data-label="学校">浙江农林大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">8</span><span class="sv-bar"><i data-w="88.9" style="width: 88.9%;"></i></span></div></td><td class="penalty" data-label="罚时">17:24:41</td></tr>
+          <tr style="transition-delay: 0.33s;" class="in"><td class="rank" data-label="排名"><span class="rk">12</span></td><td class="team" data-label="队伍">雨</td><td class="school" data-label="学校">河南大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">8</span><span class="sv-bar"><i data-w="88.9" style="width: 88.9%;"></i></span></div></td><td class="penalty" data-label="罚时">18:14:03</td></tr>
+          <tr style="transition-delay: 0.36s;" class="in"><td class="rank" data-label="排名"><span class="rk">13</span></td><td class="team" data-label="队伍">*苦来苦兮</td><td class="school" data-label="学校">个人参赛</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">8</span><span class="sv-bar"><i data-w="88.9" style="width: 88.9%;"></i></span></div></td><td class="penalty" data-label="罚时">20:47:13</td></tr>
+          <tr style="transition-delay: 0.39s;" class="in"><td class="rank" data-label="排名"><span class="rk">14</span></td><td class="team" data-label="队伍">04:59:59 AC</td><td class="school" data-label="学校">四川大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">8</span><span class="sv-bar"><i data-w="88.9" style="width: 88.9%;"></i></span></div></td><td class="penalty" data-label="罚时">23:28:52</td></tr>
+          <tr style="transition-delay: 0.42s;" class="in"><td class="rank" data-label="排名"><span class="rk">15</span></td><td class="team" data-label="队伍">支持《凭澜》喵，支持《凭澜》谢谢喵</td><td class="school" data-label="学校">柳州铁一中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">7</span><span class="sv-bar"><i data-w="77.8" style="width: 77.8%;"></i></span></div></td><td class="penalty" data-label="罚时">04:48:19</td></tr>
+          <tr style="transition-delay: 0.45s;" class="in"><td class="rank" data-label="排名"><span class="rk">16</span></td><td class="team" data-label="队伍">无限蓝</td><td class="school" data-label="学校">扬州大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">7</span><span class="sv-bar"><i data-w="77.8" style="width: 77.8%;"></i></span></div></td><td class="penalty" data-label="罚时">08:53:15</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">17</span></td><td class="team" data-label="队伍">打灰猫猫虫</td><td class="school" data-label="学校">广东工业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">7</span><span class="sv-bar"><i data-w="77.8" style="width: 77.8%;"></i></span></div></td><td class="penalty" data-label="罚时">09:59:00</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">18</span></td><td class="team" data-label="队伍">*教练正在热身</td><td class="school" data-label="学校">华平教育</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">7</span><span class="sv-bar"><i data-w="77.8" style="width: 77.8%;"></i></span></div></td><td class="penalty" data-label="罚时">10:38:25</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">19</span></td><td class="team" data-label="队伍">天空的格林尼治</td><td class="school" data-label="学校">武汉轻工大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">7</span><span class="sv-bar"><i data-w="77.8" style="width: 77.8%;"></i></span></div></td><td class="penalty" data-label="罚时">11:08:51</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">20</span></td><td class="team" data-label="队伍">Haust-1</td><td class="school" data-label="学校">河南科技大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">7</span><span class="sv-bar"><i data-w="77.8" style="width: 77.8%;"></i></span></div></td><td class="penalty" data-label="罚时">11:20:45</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">21</span></td><td class="team" data-label="队伍">1</td><td class="school" data-label="学校">陕西师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">7</span><span class="sv-bar"><i data-w="77.8" style="width: 77.8%;"></i></span></div></td><td class="penalty" data-label="罚时">12:39:02</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">22</span></td><td class="team" data-label="队伍">队名WA2了</td><td class="school" data-label="学校">广西大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">7</span><span class="sv-bar"><i data-w="77.8" style="width: 77.8%;"></i></span></div></td><td class="penalty" data-label="罚时">12:44:32</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">23</span></td><td class="team" data-label="队伍">领航者</td><td class="school" data-label="学校">江西农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">7</span><span class="sv-bar"><i data-w="77.8" style="width: 77.8%;"></i></span></div></td><td class="penalty" data-label="罚时">12:52:34</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">24</span></td><td class="team" data-label="队伍">我不会</td><td class="school" data-label="学校">南宁市第三中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">7</span><span class="sv-bar"><i data-w="77.8" style="width: 77.8%;"></i></span></div></td><td class="penalty" data-label="罚时">13:27:38</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">25</span></td><td class="team" data-label="队伍">超时空KDTree姬</td><td class="school" data-label="学校">柳州铁一中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">7</span><span class="sv-bar"><i data-w="77.8" style="width: 77.8%;"></i></span></div></td><td class="penalty" data-label="罚时">14:05:48</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">26</span></td><td class="team" data-label="队伍">喜欢只是错觉..</td><td class="school" data-label="学校">江西财经大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">7</span><span class="sv-bar"><i data-w="77.8" style="width: 77.8%;"></i></span></div></td><td class="penalty" data-label="罚时">14:19:43</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">27</span></td><td class="team" data-label="队伍">关注复活小聪明喵，关注复活小聪明谢谢喵</td><td class="school" data-label="学校">江西财经大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">7</span><span class="sv-bar"><i data-w="77.8" style="width: 77.8%;"></i></span></div></td><td class="penalty" data-label="罚时">15:05:43</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">28</span></td><td class="team" data-label="队伍">都是时臣的错</td><td class="school" data-label="学校">广西大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">7</span><span class="sv-bar"><i data-w="77.8" style="width: 77.8%;"></i></span></div></td><td class="penalty" data-label="罚时">16:10:34</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">29</span></td><td class="team" data-label="队伍">超越时间之影</td><td class="school" data-label="学校">江西农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">7</span><span class="sv-bar"><i data-w="77.8" style="width: 77.8%;"></i></span></div></td><td class="penalty" data-label="罚时">16:42:45</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">30</span></td><td class="team" data-label="队伍">全民算竞求生开局抽到神级系统无限叠加罚时</td><td class="school" data-label="学校">江汉大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">7</span><span class="sv-bar"><i data-w="77.8" style="width: 77.8%;"></i></span></div></td><td class="penalty" data-label="罚时">17:38:44</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">31</span></td><td class="team" data-label="队伍">幻想郷最強伝説と完全で瀟洒な従者</td><td class="school" data-label="学校">浙江工业大学之江学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">05:02:03</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">32</span></td><td class="team" data-label="队伍">DJ.皇牌梦之队</td><td class="school" data-label="学校">广东工业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">06:59:50</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">33</span></td><td class="team" data-label="队伍">为什么被子不够长？因为打a这被子就这样了</td><td class="school" data-label="学校">海南大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">07:31:36</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">34</span></td><td class="team" data-label="队伍">天糖制造</td><td class="school" data-label="学校">华中农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">07:35:48</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">35</span></td><td class="team" data-label="队伍">明日的你去往何方</td><td class="school" data-label="学校">广西大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">07:42:05</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">36</span></td><td class="team" data-label="队伍">超级卡比猎人队</td><td class="school" data-label="学校">苏州工学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">09:06:59</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">37</span></td><td class="team" data-label="队伍">琪露诺与喵喵藜的最后n舞</td><td class="school" data-label="学校">西安邮电大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">09:12:05</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">38</span></td><td class="team" data-label="队伍">你是我的梦幻之AC</td><td class="school" data-label="学校">广西大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">09:23:57</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">39</span></td><td class="team" data-label="队伍">我依然是世一a批</td><td class="school" data-label="学校">陕西师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">09:37:04</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">40</span></td><td class="team" data-label="队伍">养马王</td><td class="school" data-label="学校">中国海洋大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">09:54:32</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">41</span></td><td class="team" data-label="队伍">君与ACM之恋</td><td class="school" data-label="学校">郑州经贸学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">10:13:43</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">42</span></td><td class="team" data-label="队伍">别开香槟开早了</td><td class="school" data-label="学校">江西财经大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">10:17:48</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">43</span></td><td class="team" data-label="队伍">火花，喵喵，水蓝蓝</td><td class="school" data-label="学校">河南师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">10:20:11</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">44</span></td><td class="team" data-label="队伍">拿到属于我们的一切</td><td class="school" data-label="学校">山东财经大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">10:55:29</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">45</span></td><td class="team" data-label="队伍">圳美奶牛队</td><td class="school" data-label="学校">深圳理工大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">11:09:17</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">46</span></td><td class="team" data-label="队伍">星光</td><td class="school" data-label="学校">广东工业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">11:14:40</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">47</span></td><td class="team" data-label="队伍">扣 114514 送广东特供免费罚时</td><td class="school" data-label="学校">香港城市大学（东莞）</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">11:22:12</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">48</span></td><td class="team" data-label="队伍">以下犯上</td><td class="school" data-label="学校">武汉学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">11:55:10</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">49</span></td><td class="team" data-label="队伍">哥布林之家</td><td class="school" data-label="学校">广东金融学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">12:09:57</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">50</span></td><td class="team" data-label="队伍">酱菜一队</td><td class="school" data-label="学校">江西财经大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">12:26:01</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">51</span></td><td class="team" data-label="队伍">四小时下班</td><td class="school" data-label="学校">郑州工商学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">13:29:53</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">52</span></td><td class="team" data-label="队伍">大一旅游团</td><td class="school" data-label="学校">浙江工商大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">14:00:47</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">53</span></td><td class="team" data-label="队伍">样例过了就是过了</td><td class="school" data-label="学校">河南师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">14:23:09</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">54</span></td><td class="team" data-label="队伍">芝士雪豹爱嗦粉</td><td class="school" data-label="学校">西安邮电大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">15:20:32</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">55</span></td><td class="team" data-label="队伍">小猪可以学算法吗</td><td class="school" data-label="学校">华中师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">6</span><span class="sv-bar"><i data-w="66.7" style="width: 66.7%;"></i></span></div></td><td class="penalty" data-label="罚时">15:28:11</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">56</span></td><td class="team" data-label="队伍">哈基米哦南北路多</td><td class="school" data-label="学校">广州软件学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">04:32:18</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">57</span></td><td class="team" data-label="队伍">线段树维护麦当劳薯条</td><td class="school" data-label="学校">齐鲁工业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">04:38:59</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">58</span></td><td class="team" data-label="队伍">队长说拿金请我吃KFC</td><td class="school" data-label="学校">福建师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">04:48:18</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">59</span></td><td class="team" data-label="队伍">讨厌TLE</td><td class="school" data-label="学校">华东师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">04:50:54</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">60</span></td><td class="team" data-label="队伍">200g金牌和200g铁牌哪个更重..</td><td class="school" data-label="学校">江西财经大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">04:54:53</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">61</span></td><td class="team" data-label="队伍">毛毛虫坐火箭</td><td class="school" data-label="学校">华中农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">05:07:51</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">62</span></td><td class="team" data-label="队伍">零罚时</td><td class="school" data-label="学校">湖南农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">05:45:52</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">63</span></td><td class="team" data-label="队伍">国龙3队-M87宇宙警备队</td><td class="school" data-label="学校">桂林市国龙外国语学校</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">06:08:56</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">64</span></td><td class="team" data-label="队伍">猪头少年</td><td class="school" data-label="学校">江西农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">06:09:35</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">65</span></td><td class="team" data-label="队伍">神秘</td><td class="school" data-label="学校">河南师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">06:29:26</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">66</span></td><td class="team" data-label="队伍">扎扎师无敌</td><td class="school" data-label="学校">南宁市第二中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">06:36:29</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">67</span></td><td class="team" data-label="队伍">超级地球真理部</td><td class="school" data-label="学校">苏州工学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">06:40:18</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">68</span></td><td class="team" data-label="队伍">哦吼吼吼吼</td><td class="school" data-label="学校">广西师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">06:41:51</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">69</span></td><td class="team" data-label="队伍">whalisa</td><td class="school" data-label="学校">河南科技大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">06:44:07</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">70</span></td><td class="team" data-label="队伍">雷霆苦力怕</td><td class="school" data-label="学校">惠州学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">06:57:26</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">71</span></td><td class="team" data-label="队伍">喝生椰就不会拿铁咯</td><td class="school" data-label="学校">湖南农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">06:59:02</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">72</span></td><td class="team" data-label="队伍">阳光彩虹不白码..</td><td class="school" data-label="学校">江西财经大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">07:04:06</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">73</span></td><td class="team" data-label="队伍">无基转生~到了算竞界就拿出真本事~</td><td class="school" data-label="学校">湖北经济学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">07:06:25</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">74</span></td><td class="team" data-label="队伍">取名好难</td><td class="school" data-label="学校">广东工业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">07:06:31</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">75</span></td><td class="team" data-label="队伍">莞工の夜空哨戒班</td><td class="school" data-label="学校">东莞理工学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">07:09:09</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">76</span></td><td class="team" data-label="队伍">蔚然兴墨</td><td class="school" data-label="学校">惠州学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">07:14:43</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">77</span></td><td class="team" data-label="队伍">四氧化三铁</td><td class="school" data-label="学校">江西财经大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">07:23:12</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">78</span></td><td class="team" data-label="队伍">如果忧郁是种天赋</td><td class="school" data-label="学校">黄淮学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">07:23:19</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">79</span></td><td class="team" data-label="队伍">拿牌去看那艺娜演唱会结果发现她塌房了</td><td class="school" data-label="学校">江西农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">07:29:27</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">80</span></td><td class="team" data-label="队伍">Deepsleep V4 Pro 满血版</td><td class="school" data-label="学校">广西科技大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">07:45:54</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">81</span></td><td class="team" data-label="队伍">昼夜恒星落在每页窗外永恒永远</td><td class="school" data-label="学校">陕西师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">07:47:25</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">82</span></td><td class="team" data-label="队伍">菜菜求带飞</td><td class="school" data-label="学校">西北大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">07:55:36</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">83</span></td><td class="team" data-label="队伍">项绑驾你冯^_^^_^</td><td class="school" data-label="学校">柳州铁一中学（初中部）</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">08:06:51</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">84</span></td><td class="team" data-label="队伍">组一辈子乐队</td><td class="school" data-label="学校">天津工业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">08:17:55</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">85</span></td><td class="team" data-label="队伍">好的队</td><td class="school" data-label="学校">河南师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">08:24:20</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">86</span></td><td class="team" data-label="队伍">松弛感</td><td class="school" data-label="学校">武昌理工学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">08:24:56</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">87</span></td><td class="team" data-label="队伍">我的算法青春果然没问题</td><td class="school" data-label="学校">苏州工学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">08:36:13</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">88</span></td><td class="team" data-label="队伍">我的学姐呢</td><td class="school" data-label="学校">五邑大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">08:45:50</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">89</span></td><td class="team" data-label="队伍">队名</td><td class="school" data-label="学校">西南石油大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">09:01:03</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">90</span></td><td class="team" data-label="队伍">兔子见完章鱼归来发现鲨鱼的xp是氢氧化钠</td><td class="school" data-label="学校">广西科技师范学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">09:19:30</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">91</span></td><td class="team" data-label="队伍">acm轻而易举啊！坏了坏了WAWAWA</td><td class="school" data-label="学校">武汉轻工大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">09:33:58</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">92</span></td><td class="team" data-label="队伍">王子请AC</td><td class="school" data-label="学校">南京农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">09:34:37</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">93</span></td><td class="team" data-label="队伍">我的带专生物語果然有問題</td><td class="school" data-label="学校">武汉软件工程职业学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">09:36:08</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">94</span></td><td class="team" data-label="队伍">队友六级没过还能打XCPC吗？</td><td class="school" data-label="学校">中北大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">10:08:05</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">95</span></td><td class="team" data-label="队伍">国龙2队-你写的代码连bug都是香的</td><td class="school" data-label="学校">桂林市国龙外国语学校</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">10:09:58</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">96</span></td><td class="team" data-label="队伍">这个队名放到校园网上影响不好</td><td class="school" data-label="学校">韶关学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">10:25:35</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">97</span></td><td class="team" data-label="队伍">combo</td><td class="school" data-label="学校">华东师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">10:44:54</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">98</span></td><td class="team" data-label="队伍">迪迦大战奶龙</td><td class="school" data-label="学校">河南师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">12:00:30</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">99</span></td><td class="team" data-label="队伍">砂糖橘看日出</td><td class="school" data-label="学校">江西农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">12:05:01</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">100</span></td><td class="team" data-label="队伍">CTF我们来了！！！</td><td class="school" data-label="学校">河南理工大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">12:09:23</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">101</span></td><td class="team" data-label="队伍">姚村小学零基础一队</td><td class="school" data-label="学校">广西科技大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">5</span><span class="sv-bar"><i data-w="55.6" style="width: 55.6%;"></i></span></div></td><td class="penalty" data-label="罚时">14:37:59</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">102</span></td><td class="team" data-label="队伍">蓝色夜晚的记忆</td><td class="school" data-label="学校">衡阳师范学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">01:27:28</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">103</span></td><td class="team" data-label="队伍">没AC肯定是主办方动我机子了</td><td class="school" data-label="学校">长沙学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">01:37:14</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">104</span></td><td class="team" data-label="队伍">扣114514送广东特供免费罚时</td><td class="school" data-label="学校">东莞城市学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">01:39:43</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">105</span></td><td class="team" data-label="队伍">没事就夸hz</td><td class="school" data-label="学校">广西科技大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">01:40:54</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">106</span></td><td class="team" data-label="队伍">至今，仍未找到一个舒服的睡觉姿势</td><td class="school" data-label="学校">华中师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">01:43:24</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">107</span></td><td class="team" data-label="队伍">队长霸占机子封榜后怒过三题</td><td class="school" data-label="学校">江西农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">01:52:29</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">108</span></td><td class="team" data-label="队伍">芙芙天下第一</td><td class="school" data-label="学校">东莞理工学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">01:53:45</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">109</span></td><td class="team" data-label="队伍">奶龙战神</td><td class="school" data-label="学校">桂林电子科技大学北海校区</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">01:54:19</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">110</span></td><td class="team" data-label="队伍">这一发·来自终焉</td><td class="school" data-label="学校">广西科技大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">01:54:59</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">111</span></td><td class="team" data-label="队伍">apcitye不在作用域内的夏天</td><td class="school" data-label="学校">桂林电子科技大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">01:55:27</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">112</span></td><td class="team" data-label="队伍">你怎么知道我英语四级375</td><td class="school" data-label="学校">广东金融学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">01:57:29</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">113</span></td><td class="team" data-label="队伍">三年之约</td><td class="school" data-label="学校">湖南工业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">02:06:52</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">114</span></td><td class="team" data-label="队伍">Happy猫和他的小伙伴们</td><td class="school" data-label="学校">广西城市职业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">02:07:38</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">115</span></td><td class="team" data-label="队伍">王从天降</td><td class="school" data-label="学校">广西大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">02:19:15</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">116</span></td><td class="team" data-label="队伍">千LE万WA</td><td class="school" data-label="学校">梧州学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">02:24:56</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">117</span></td><td class="team" data-label="队伍">TriCode</td><td class="school" data-label="学校">南宁市第三中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">02:26:49</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">118</span></td><td class="team" data-label="队伍">人生何处不青山</td><td class="school" data-label="学校">华中师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">02:29:57</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">119</span></td><td class="team" data-label="队伍">最后998244353舞</td><td class="school" data-label="学校">武汉纺织大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">02:35:50</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">120</span></td><td class="team" data-label="队伍">清纯粉毛小萝莉.</td><td class="school" data-label="学校">江西财经大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">02:47:05</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">121</span></td><td class="team" data-label="队伍">下等马</td><td class="school" data-label="学校">河南师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">02:48:21</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">122</span></td><td class="team" data-label="队伍">闹麻了</td><td class="school" data-label="学校">广西科技大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">02:55:14</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">123</span></td><td class="team" data-label="队伍">组一辈子乐队</td><td class="school" data-label="学校">广东东软学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">02:59:02</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">124</span></td><td class="team" data-label="队伍">问号大神带我们拿金牌</td><td class="school" data-label="学校">五邑大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">03:03:18</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">125</span></td><td class="team" data-label="队伍">嘎嘎香</td><td class="school" data-label="学校">嘉应学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">03:04:40</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">126</span></td><td class="team" data-label="队伍">AAA铁牌代打</td><td class="school" data-label="学校">桂林航天工业学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">03:06:27</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">127</span></td><td class="team" data-label="队伍">dui队</td><td class="school" data-label="学校">湖南工学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">03:09:43</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">128</span></td><td class="team" data-label="队伍">凉菜小宇宙爆发</td><td class="school" data-label="学校">江西农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">03:11:02</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">129</span></td><td class="team" data-label="队伍">886年级</td><td class="school" data-label="学校">柳州铁一中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">03:12:06</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">130</span></td><td class="team" data-label="队伍">星云X</td><td class="school" data-label="学校">桂林电子科技大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">03:14:06</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">131</span></td><td class="team" data-label="队伍">AAA凯锋超高压郊狼批发（玖拾壹件起发）</td><td class="school" data-label="学校">柳州高级中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">03:18:39</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">132</span></td><td class="team" data-label="队伍">ACACAC</td><td class="school" data-label="学校">衡阳师范学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">03:20:07</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">133</span></td><td class="team" data-label="队伍">给个金吧！</td><td class="school" data-label="学校">河南理工大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">03:28:07</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">134</span></td><td class="team" data-label="队伍">mwwwwj</td><td class="school" data-label="学校">江西农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">03:35:48</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">135</span></td><td class="team" data-label="队伍">外经贸_铁铁铁</td><td class="school" data-label="学校">武汉纺织大学外经贸学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">03:35:52</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">136</span></td><td class="team" data-label="队伍">我很神秘</td><td class="school" data-label="学校">河南师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">03:43:07</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">137</span></td><td class="team" data-label="队伍">命运之触</td><td class="school" data-label="学校">浙江农林大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">03:45:14</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">138</span></td><td class="team" data-label="队伍">只会暴力和罚时</td><td class="school" data-label="学校">东莞理工学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">03:45:53</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">139</span></td><td class="team" data-label="队伍">福运常伴，如愿相随</td><td class="school" data-label="学校">衡阳师范学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">03:46:19</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">140</span></td><td class="team" data-label="队伍">苦也这还溢栈</td><td class="school" data-label="学校">中国海洋大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">03:46:54</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">141</span></td><td class="team" data-label="队伍">关注塔菲</td><td class="school" data-label="学校">天津职业技术师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">03:47:36</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">142</span></td><td class="team" data-label="队伍">奶龙大战广叉碳磷碳</td><td class="school" data-label="学校">南宁市第三中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">03:47:47</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">143</span></td><td class="team" data-label="队伍">我发现用大脑思考不用token</td><td class="school" data-label="学校">江西财经大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">03:59:55</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">144</span></td><td class="team" data-label="队伍">月球区域金</td><td class="school" data-label="学校">陕西师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">04:02:19</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">145</span></td><td class="team" data-label="队伍">没有起队名队</td><td class="school" data-label="学校">河南师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">04:02:51</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">146</span></td><td class="team" data-label="队伍">深藏Blue</td><td class="school" data-label="学校">江西农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">04:08:10</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">147</span></td><td class="team" data-label="队伍">过了样例就是队</td><td class="school" data-label="学校">东莞理工学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">04:08:10</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">148</span></td><td class="team" data-label="队伍">无论再久还是老鸡，无论再远还是广西</td><td class="school" data-label="学校">广东技术师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">04:08:42</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">149</span></td><td class="team" data-label="队伍">雪球队</td><td class="school" data-label="学校">柳州铁一中学（初中部）</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">04:13:39</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">150</span></td><td class="team" data-label="队伍">转生铁牌</td><td class="school" data-label="学校">广州软件学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">04:21:47</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">151</span></td><td class="team" data-label="队伍">闪光炫彩六命哈基米</td><td class="school" data-label="学校">广西民族大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">04:32:16</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">152</span></td><td class="team" data-label="队伍">飞吧!!!</td><td class="school" data-label="学校">河南科技大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">04:35:23</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">153</span></td><td class="team" data-label="队伍">或许是风太大，把之前温柔都吹散了</td><td class="school" data-label="学校">桂林理工大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">04:43:19</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">154</span></td><td class="team" data-label="队伍">魔仙堡</td><td class="school" data-label="学校">青岛农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">04:56:51</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">155</span></td><td class="team" data-label="队伍">奶娃游向海</td><td class="school" data-label="学校">河南师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">04:58:20</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">156</span></td><td class="team" data-label="队伍">签完到就去吃饭</td><td class="school" data-label="学校">齐鲁工业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">05:01:37</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">157</span></td><td class="team" data-label="队伍">always kill</td><td class="school" data-label="学校">深圳理工大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">05:07:38</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">158</span></td><td class="team" data-label="队伍">李兵爱钓鱼，钓到如今于</td><td class="school" data-label="学校">青岛农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">05:08:46</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">159</span></td><td class="team" data-label="队伍">旮旯给木领域大蛇</td><td class="school" data-label="学校">江西农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">05:11:45</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">160</span></td><td class="team" data-label="队伍">两点一十</td><td class="school" data-label="学校">西南石油大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">05:12:31</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">161</span></td><td class="team" data-label="队伍">神秘AC事件调查组</td><td class="school" data-label="学校">惠州学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">05:14:51</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">162</span></td><td class="team" data-label="队伍">无铊：与时无咎</td><td class="school" data-label="学校">桂林电子科技大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">05:29:47</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">163</span></td><td class="team" data-label="队伍">又被算法打败啦</td><td class="school" data-label="学校">玉林师范学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">05:36:05</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">164</span></td><td class="team" data-label="队伍">最优解在左</td><td class="school" data-label="学校">武昌理工学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">05:37:43</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">165</span></td><td class="team" data-label="队伍">队友呢队友呢，救一下啊</td><td class="school" data-label="学校">桂林理工大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">05:37:48</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">166</span></td><td class="team" data-label="队伍">素未谋面</td><td class="school" data-label="学校">青岛农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">05:54:01</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">167</span></td><td class="team" data-label="队伍">开心的靴子</td><td class="school" data-label="学校">甘肃农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">06:00:19</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">168</span></td><td class="team" data-label="队伍">巴巴博弈</td><td class="school" data-label="学校">东莞理工学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">06:06:22</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">169</span></td><td class="team" data-label="队伍">贪心优化者三队</td><td class="school" data-label="学校">太原理工大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">06:07:59</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">170</span></td><td class="team" data-label="队伍">国龙1队-我也可以法师转术士十年造出具身智能吗</td><td class="school" data-label="学校">桂林市国龙外国语学校</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">06:31:11</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">171</span></td><td class="team" data-label="队伍">四点五十三</td><td class="school" data-label="学校">西南石油大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">06:34:20</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">172</span></td><td class="team" data-label="队伍">比赛可以输，汉堡必须吃双份</td><td class="school" data-label="学校">江西农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">06:45:59</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">173</span></td><td class="team" data-label="队伍">不打铁就赢了</td><td class="school" data-label="学校">河南理工大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">06:50:19</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">174</span></td><td class="team" data-label="队伍">轻语闪电 M14，我从来都不会输</td><td class="school" data-label="学校">华中农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">07:03:07</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">175</span></td><td class="team" data-label="队伍">赖神了</td><td class="school" data-label="学校">湖北经济学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">07:10:42</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">176</span></td><td class="team" data-label="队伍">一个NPC</td><td class="school" data-label="学校">合肥大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">07:16:23</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">177</span></td><td class="team" data-label="队伍">豆包豆包，帮我生成一个队名</td><td class="school" data-label="学校">桂林理工大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">07:22:43</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">178</span></td><td class="team" data-label="队伍">尽力而为</td><td class="school" data-label="学校">广西大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">07:34:14</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">179</span></td><td class="team" data-label="队伍">栈溢出晚风</td><td class="school" data-label="学校">湖南工学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">07:35:02</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">180</span></td><td class="team" data-label="队伍">自动AC</td><td class="school" data-label="学校">南宁市第三中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">07:55:24</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">181</span></td><td class="team" data-label="队伍">哇哈哈哈哈</td><td class="school" data-label="学校">广西师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">4</span><span class="sv-bar"><i data-w="44.4" style="width: 44.4%;"></i></span></div></td><td class="penalty" data-label="罚时">09:49:04</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">182</span></td><td class="team" data-label="队伍">午夜ac</td><td class="school" data-label="学校">重庆第二师范学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">00:41:36</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">183</span></td><td class="team" data-label="队伍">爆栈小队</td><td class="school" data-label="学校">桂林航天工业学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">00:43:38</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">184</span></td><td class="team" data-label="队伍">wa整改办</td><td class="school" data-label="学校">河池学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">00:49:38</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">185</span></td><td class="team" data-label="队伍">NOWA</td><td class="school" data-label="学校">衡阳师范学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">00:50:53</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">186</span></td><td class="team" data-label="队伍">败犬女主太多了</td><td class="school" data-label="学校">广西师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">00:54:23</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">187</span></td><td class="team" data-label="队伍">安全边界</td><td class="school" data-label="学校">贺州学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">00:55:27</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">188</span></td><td class="team" data-label="队伍">星际解码少年</td><td class="school" data-label="学校">南宁市第二中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">00:55:48</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">189</span></td><td class="team" data-label="队伍">编译器说我队</td><td class="school" data-label="学校">东莞理工学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">00:55:55</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">190</span></td><td class="team" data-label="队伍">狗熊岭算法三巨头</td><td class="school" data-label="学校">江西农业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">00:57:46</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">191</span></td><td class="team" data-label="队伍">#include "maimai.dx"</td><td class="school" data-label="学校">深圳理工大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:02:48</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">192</span></td><td class="team" data-label="队伍">咕咕嘎嘎打铁队</td><td class="school" data-label="学校">东莞理工学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:05:36</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">193</span></td><td class="team" data-label="队伍">星界军炮灰</td><td class="school" data-label="学校">桂林信息科技学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:06:30</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">194</span></td><td class="team" data-label="队伍">碳基生物</td><td class="school" data-label="学校">柳州市崇远中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:10:19</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">195</span></td><td class="team" data-label="队伍">茉法少女</td><td class="school" data-label="学校">广州南方学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:14:32</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">196</span></td><td class="team" data-label="队伍">图0·冯诺1曼</td><td class="school" data-label="学校">广西农业职业技术大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:14:44</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">197</span></td><td class="team" data-label="队伍">国龙4队-重生之我在桂电打暴力</td><td class="school" data-label="学校">桂林市国龙外国语学校</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:16:38</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">198</span></td><td class="team" data-label="队伍">上兰帝国理工</td><td class="school" data-label="学校">中北大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:18:17</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">199</span></td><td class="team" data-label="队伍">你何时有了AC的错觉</td><td class="school" data-label="学校">广西民族大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:18:22</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">200</span></td><td class="team" data-label="队伍">999</td><td class="school" data-label="学校">河南师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:19:53</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">201</span></td><td class="team" data-label="队伍">AAACCC</td><td class="school" data-label="学校">衡阳师范学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:21:34</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">202</span></td><td class="team" data-label="队伍">三个键盘手也要组乐队</td><td class="school" data-label="学校">惠州学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:24:24</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">203</span></td><td class="team" data-label="队伍">浙农林余子赫实名比赛</td><td class="school" data-label="学校">浙江农林大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:26:09</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">204</span></td><td class="team" data-label="队伍">迷途之子</td><td class="school" data-label="学校">广西民族大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:27:29</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">205</span></td><td class="team" data-label="队伍">你们不要再打了！</td><td class="school" data-label="学校">浙江农林大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:29:51</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">206</span></td><td class="team" data-label="队伍">玄学AC队</td><td class="school" data-label="学校">合肥大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:29:55</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">207</span></td><td class="team" data-label="队伍">初生牛犊不怕虎</td><td class="school" data-label="学校">岑溪市育才实验学校</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:31:32</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">208</span></td><td class="team" data-label="队伍">样例过了就算队</td><td class="school" data-label="学校">广西师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:32:09</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">209</span></td><td class="team" data-label="队伍">来吃KFC</td><td class="school" data-label="学校">广西师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:32:52</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">210</span></td><td class="team" data-label="队伍">别WA求求了</td><td class="school" data-label="学校">广西职业师范学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:33:58</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">211</span></td><td class="team" data-label="队伍">自动AC机</td><td class="school" data-label="学校">广西科技大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:34:06</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">212</span></td><td class="team" data-label="队伍">debug特困三人组</td><td class="school" data-label="学校">贺州学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:34:10</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">213</span></td><td class="team" data-label="队伍">转生成为 AC 之神</td><td class="school" data-label="学校">齐鲁工业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:35:27</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">214</span></td><td class="team" data-label="队伍">暴力大队</td><td class="school" data-label="学校">柳州市未来自定义科技培训有限公司</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:36:15</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">215</span></td><td class="team" data-label="队伍">漓江岸边嗦米粉</td><td class="school" data-label="学校">西安邮电大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:37:13</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">216</span></td><td class="team" data-label="队伍">给我一份肯德基</td><td class="school" data-label="学校">广西师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:38:25</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">217</span></td><td class="team" data-label="队伍">重生之我在gxpc现场守银</td><td class="school" data-label="学校">南宁师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:40:50</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">218</span></td><td class="team" data-label="队伍">WA专业户</td><td class="school" data-label="学校">河池学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:40:56</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">219</span></td><td class="team" data-label="队伍">番茄薯条芝士汉堡</td><td class="school" data-label="学校">桂林学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:41:15</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">220</span></td><td class="team" data-label="队伍">tle</td><td class="school" data-label="学校">柳州铁一中学（初中部）</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:44:09</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">221</span></td><td class="team" data-label="队伍">关注塔菲喵</td><td class="school" data-label="学校">广西科技大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:45:05</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">222</span></td><td class="team" data-label="队伍">aaa 代码批发部</td><td class="school" data-label="学校">柳州铁一中学（初中部）</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:46:25</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">223</span></td><td class="team" data-label="队伍">我怎么可能成为oier，不行不行</td><td class="school" data-label="学校">广西师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:46:56</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">224</span></td><td class="team" data-label="队伍">贪心必</td><td class="school" data-label="学校">桂林理工大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:47:57</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">225</span></td><td class="team" data-label="队伍">纯路人，请问这是打字比赛吗</td><td class="school" data-label="学校">桂林理工大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:52:01</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">226</span></td><td class="team" data-label="队伍">其实是来旅游的</td><td class="school" data-label="学校">西安邮电大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:52:15</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">227</span></td><td class="team" data-label="队伍">去年在千恋*万花，今年在ac</td><td class="school" data-label="学校">桂林电子科技大学北海校区</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:52:27</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">228</span></td><td class="team" data-label="队伍">莫名其妙就对了</td><td class="school" data-label="学校">广西科技大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:53:58</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">229</span></td><td class="team" data-label="队伍">不WA只AC</td><td class="school" data-label="学校">南宁市第三中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:57:07</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">230</span></td><td class="team" data-label="队伍">江湖逍遥</td><td class="school" data-label="学校">南宁师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">01:58:31</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">231</span></td><td class="team" data-label="队伍">526宿舍长威武</td><td class="school" data-label="学校">广东技术师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:03:57</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">232</span></td><td class="team" data-label="队伍">西格玛AC机</td><td class="school" data-label="学校">河南师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:05:35</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">233</span></td><td class="team" data-label="队伍">星际漫游</td><td class="school" data-label="学校">广西科技大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:07:06</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">234</span></td><td class="team" data-label="队伍">队友氵群不叫咱</td><td class="school" data-label="学校">广东技术师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:08:18</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">235</span></td><td class="team" data-label="队伍">到此一睡</td><td class="school" data-label="学校">桂林电子科技大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:10:10</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">236</span></td><td class="team" data-label="队伍">国龙5队-刘念王道，廖事如神</td><td class="school" data-label="学校">桂林市国龙外国语学校</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:10:29</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">237</span></td><td class="team" data-label="队伍">&lt;think&gt;用户怒了！用户想要一个GXCPC队名…</td><td class="school" data-label="学校">广西科技师范学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:14:20</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">238</span></td><td class="team" data-label="队伍">隆中队</td><td class="school" data-label="学校">广西师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:14:23</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">239</span></td><td class="team" data-label="队伍">北部湾大学一队</td><td class="school" data-label="学校">北部湾大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:17:11</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">240</span></td><td class="team" data-label="队伍">八千代下播之后要和彩叶一起干嘛？</td><td class="school" data-label="学校">广西科技师范学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:22:00</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">241</span></td><td class="team" data-label="队伍">源码追梦队</td><td class="school" data-label="学校">南宁市良庆区琼林学校</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:22:12</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">242</span></td><td class="team" data-label="队伍">不要wa!</td><td class="school" data-label="学校">桂林理工大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:25:41</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">243</span></td><td class="team" data-label="队伍">超级魔王冰封狼的脚皮</td><td class="school" data-label="学校">南宁师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:26:43</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">244</span></td><td class="team" data-label="队伍">白毛蓝瞳小萝莉</td><td class="school" data-label="学校">广西民族大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:31:13</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">245</span></td><td class="team" data-label="队伍">奇思妙想</td><td class="school" data-label="学校">桂林学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:33:45</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">246</span></td><td class="team" data-label="队伍">真能拿奖吗？</td><td class="school" data-label="学校">桂林信息科技学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:43:23</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">247</span></td><td class="team" data-label="队伍">求求大佬别炸我了</td><td class="school" data-label="学校">桂林电子科技大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:43:43</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">248</span></td><td class="team" data-label="队伍">没事就夸xsy</td><td class="school" data-label="学校">广西科技大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:44:54</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">249</span></td><td class="team" data-label="队伍">超人强我要出现</td><td class="school" data-label="学校">桂林航天工业学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:47:58</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">250</span></td><td class="team" data-label="队伍">又来吃肯德基了</td><td class="school" data-label="学校">桂林理工大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:48:39</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">251</span></td><td class="team" data-label="队伍">晨曦队</td><td class="school" data-label="学校">桂林电子科技大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:51:33</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">252</span></td><td class="team" data-label="队伍">凑合打打</td><td class="school" data-label="学校">河南师范大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:52:48</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">253</span></td><td class="team" data-label="队伍">黄金体验队</td><td class="school" data-label="学校">河南科技大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:53:02</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">254</span></td><td class="team" data-label="队伍">好像不太队</td><td class="school" data-label="学校">贺州学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:54:13</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">255</span></td><td class="team" data-label="队伍">三只小猪</td><td class="school" data-label="学校">南宁市第二中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">02:57:07</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">256</span></td><td class="team" data-label="队伍">栈溢出了</td><td class="school" data-label="学校">广西外国语学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">03:00:16</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">257</span></td><td class="team" data-label="队伍">程序宝宝-马到成功队</td><td class="school" data-label="学校">贵港市荷城初级中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">03:02:58</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">258</span></td><td class="team" data-label="队伍">马铃薯炖土豆</td><td class="school" data-label="学校">桂林学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">03:19:38</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">259</span></td><td class="team" data-label="队伍">我和谁一队</td><td class="school" data-label="学校">桂林理工大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">03:23:18</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">260</span></td><td class="team" data-label="队伍">随缘过题队</td><td class="school" data-label="学校">河池学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">03:23:39</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">261</span></td><td class="team" data-label="队伍">AC收割机</td><td class="school" data-label="学校">柳州市崇远中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">03:35:02</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">262</span></td><td class="team" data-label="队伍">三体问题</td><td class="school" data-label="学校">南宁市第三中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">03:36:39</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">263</span></td><td class="team" data-label="队伍">Bug退散队</td><td class="school" data-label="学校">柳州市崇远中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">03:36:46</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">264</span></td><td class="team" data-label="队伍">!空悲切</td><td class="school" data-label="学校">中南民族大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">03:39:06</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">265</span></td><td class="team" data-label="队伍">乘风破浪队</td><td class="school" data-label="学校">南宁市第三中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">03:47:56</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">266</span></td><td class="team" data-label="队伍">奋勇直前</td><td class="school" data-label="学校">桂林市桂林中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">03:49:29</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">267</span></td><td class="team" data-label="队伍">哈鸡坤</td><td class="school" data-label="学校">广西城市职业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">03:53:46</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">268</span></td><td class="team" data-label="队伍">罚时绝缘体</td><td class="school" data-label="学校">桂林理工大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">04:01:37</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">269</span></td><td class="team" data-label="队伍">Go reckless,goin’all in(无所顾忌，一把梭哈)</td><td class="school" data-label="学校">岑溪市岑溪中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">04:04:47</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">270</span></td><td class="team" data-label="队伍">想没脑</td><td class="school" data-label="学校">柳州铁一中学（初中部）</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">04:11:56</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">271</span></td><td class="team" data-label="队伍">卖火柴的小女孩</td><td class="school" data-label="学校">桂林信息科技学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">04:12:58</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">272</span></td><td class="team" data-label="队伍">全靠同行衬托队</td><td class="school" data-label="学校">广东金融学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">04:21:40</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">273</span></td><td class="team" data-label="队伍">芋泥螺西昏</td><td class="school" data-label="学校">桂林电子科技大学北海校区</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">04:30:02</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">274</span></td><td class="team" data-label="队伍">超级棒棒糖</td><td class="school" data-label="学校">上海第二工业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">04:37:54</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">275</span></td><td class="team" data-label="队伍">灵珠队</td><td class="school" data-label="学校">柳州铁一中学（初中部）</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">04:54:26</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">276</span></td><td class="team" data-label="队伍">二进制星河</td><td class="school" data-label="学校">柳州市景行小学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">04:55:15</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">277</span></td><td class="team" data-label="队伍">江南可乐</td><td class="school" data-label="学校">桂林航天工业学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">04:57:52</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">278</span></td><td class="team" data-label="队伍">debug到天亮</td><td class="school" data-label="学校">岑溪市岑溪中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">04:58:41</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">279</span></td><td class="team" data-label="队伍">G²W能过样例就算队</td><td class="school" data-label="学校">广西民族大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">05:18:55</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">280</span></td><td class="team" data-label="队伍">求AC降临</td><td class="school" data-label="学校">齐鲁工业大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">05:21:54</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">281</span></td><td class="team" data-label="队伍">逐码三行</td><td class="school" data-label="学校">南宁市第三中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">05:31:37</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">282</span></td><td class="team" data-label="队伍">再调5分钟就行</td><td class="school" data-label="学校">桂林航天工业学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">05:39:02</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">283</span></td><td class="team" data-label="队伍">玉师二队</td><td class="school" data-label="学校">玉林师范学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">05:52:56</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">284</span></td><td class="team" data-label="队伍">匡扶汉室</td><td class="school" data-label="学校">柳州铁一中学（初中部）</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">06:07:38</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">285</span></td><td class="team" data-label="队伍">逐码少年</td><td class="school" data-label="学校">广西奇贝教育科技有限公司</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">06:16:18</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">286</span></td><td class="team" data-label="队伍">华侨大学境外生队</td><td class="school" data-label="学校">华侨大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">06:17:26</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">287</span></td><td class="team" data-label="队伍">未知象限</td><td class="school" data-label="学校">河池市金城江区第五初级中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">06:37:31</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">288</span></td><td class="team" data-label="队伍">扮猪给老虎吃</td><td class="school" data-label="学校">广西职业师范学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">06:47:55</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">289</span></td><td class="team" data-label="队伍">北部湾大学二队</td><td class="school" data-label="学校">北部湾大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">06:58:54</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">290</span></td><td class="team" data-label="队伍">寒霜碎星噬灵苍狼王</td><td class="school" data-label="学校">桂林学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">07:07:02</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">291</span></td><td class="team" data-label="队伍">暴力出奇迹</td><td class="school" data-label="学校">南宁市第三中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">07:32:44</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">292</span></td><td class="team" data-label="队伍">旅游观光队</td><td class="school" data-label="学校">广西职业师范学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">08:12:26</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">293</span></td><td class="team" data-label="队伍">划水</td><td class="school" data-label="学校">广西职业师范学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">08:19:18</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">294</span></td><td class="team" data-label="队伍">蜡笔小新</td><td class="school" data-label="学校">桂林学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">08:32:41</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">295</span></td><td class="team" data-label="队伍">燕巍NB不解释</td><td class="school" data-label="学校">柳州铁一中学（初中部）</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">09:02:47</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">296</span></td><td class="team" data-label="队伍">就这个了</td><td class="school" data-label="学校">桂林航天工业学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">09:36:39</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">297</span></td><td class="team" data-label="队伍">amigos3.0队</td><td class="school" data-label="学校">广西中医药大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">10:37:59</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">298</span></td><td class="team" data-label="队伍">明睿定序</td><td class="school" data-label="学校">桂林电子科技大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">3</span><span class="sv-bar"><i data-w="33.3" style="width: 33.3%;"></i></span></div></td><td class="penalty" data-label="罚时">16:55:02</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">299</span></td><td class="team" data-label="队伍">双人成行</td><td class="school" data-label="学校">广东工商职业技术大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">2</span><span class="sv-bar"><i data-w="22.2" style="width: 22.2%;"></i></span></div></td><td class="penalty" data-label="罚时">01:54:57</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">300</span></td><td class="team" data-label="队伍">队名来不及商量</td><td class="school" data-label="学校">柳州铁一中学（初中部）</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">2</span><span class="sv-bar"><i data-w="22.2" style="width: 22.2%;"></i></span></div></td><td class="penalty" data-label="罚时">02:06:05</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">301</span></td><td class="team" data-label="队伍">栈顶之光</td><td class="school" data-label="学校">柳州市崇远中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">2</span><span class="sv-bar"><i data-w="22.2" style="width: 22.2%;"></i></span></div></td><td class="penalty" data-label="罚时">02:06:54</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">302</span></td><td class="team" data-label="队伍">我爱大自然</td><td class="school" data-label="学校">广西自然资源职业技术学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">2</span><span class="sv-bar"><i data-w="22.2" style="width: 22.2%;"></i></span></div></td><td class="penalty" data-label="罚时">02:07:26</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">303</span></td><td class="team" data-label="队伍">弃优从暴</td><td class="school" data-label="学校">柳州城市职业学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">2</span><span class="sv-bar"><i data-w="22.2" style="width: 22.2%;"></i></span></div></td><td class="penalty" data-label="罚时">03:13:10</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">304</span></td><td class="team" data-label="队伍">程序宝宝-逢考必胜队</td><td class="school" data-label="学校">贵港市荷城初级中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">2</span><span class="sv-bar"><i data-w="22.2" style="width: 22.2%;"></i></span></div></td><td class="penalty" data-label="罚时">05:07:03</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">305</span></td><td class="team" data-label="队伍">荷城三剑客</td><td class="school" data-label="学校">贵港市荷城初级中学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">2</span><span class="sv-bar"><i data-w="22.2" style="width: 22.2%;"></i></span></div></td><td class="penalty" data-label="罚时">05:27:44</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">306</span></td><td class="team" data-label="队伍">队友带我飞</td><td class="school" data-label="学校">广西职业技术学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">2</span><span class="sv-bar"><i data-w="22.2" style="width: 22.2%;"></i></span></div></td><td class="penalty" data-label="罚时">05:32:56</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">307</span></td><td class="team" data-label="队伍">懵懂不太懂</td><td class="school" data-label="学校">广西生态工程职业技术学院</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">2</span><span class="sv-bar"><i data-w="22.2" style="width: 22.2%;"></i></span></div></td><td class="penalty" data-label="罚时">07:54:55</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">308</span></td><td class="team" data-label="队伍">桂电码衡天</td><td class="school" data-label="学校">广西奇贝教育科技有限公司</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">1</span><span class="sv-bar"><i data-w="11.1" style="width: 11.1%;"></i></span></div></td><td class="penalty" data-label="罚时">01:21:37</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">309</span></td><td class="team" data-label="队伍">seesee</td><td class="school" data-label="学校">柳州铁一中学（初中部）</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">1</span><span class="sv-bar"><i data-w="11.1" style="width: 11.1%;"></i></span></div></td><td class="penalty" data-label="罚时">01:47:49</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">310</span></td><td class="team" data-label="队伍">只会猛攻不会写</td><td class="school" data-label="学校">广西奇贝教育科技有限公司</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">0</span><span class="sv-bar"><i data-w="0.0" style="width: 0%;"></i></span></div></td><td class="penalty" data-label="罚时">00:00:00</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">311</span></td><td class="team" data-label="队伍">小菜一碟</td><td class="school" data-label="学校">广西奇贝教育科技有限公司</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">0</span><span class="sv-bar"><i data-w="0.0" style="width: 0%;"></i></span></div></td><td class="penalty" data-label="罚时">00:00:00</td></tr>
+          <tr class="in"><td class="rank" data-label="排名"><span class="rk">312</span></td><td class="team" data-label="队伍">广西中医药大学见习队</td><td class="school" data-label="学校">广西中医药大学</td><td class="solved" data-label="通过"><div class="sv"><span class="sv-num">0</span><span class="sv-bar"><i data-w="0.0" style="width: 0%;"></i></span></div></td><td class="penalty" data-label="罚时">00:00:00</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <footer>
+      <span>// 数据仅供展示 · 内容受保护，禁止复制与打印</span>
+      <span class="caret">RANKED&nbsp;BY&nbsp;SOLVED&nbsp;·&nbsp;PENALTY&nbsp;</span>
+    </footer>
+  </main>
+  <script>
+  (function () {
+    var tbody = document.querySelector('tbody');
+    if (!tbody) return;
+    var rows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
+
+    // ---- pass 1: aggregate ----
+    var schools = {}, schoolCount = 0, maxSolved = 0, starCount = 0;
+    var data = rows.map(function (tr) {
+      var team = tr.querySelector('.team');
+      var school = tr.querySelector('.school');
+      var solvedC = tr.querySelector('.solved');
+      var penC = tr.querySelector('.penalty');
+      var name = (team ? team.textContent : '').trim();
+      var isStar = name.charAt(0) === '*';
+      var solved = parseInt((solvedC ? solvedC.textContent : '0').replace(/[^0-9-]/g, ''), 10);
+      if (isNaN(solved)) solved = 0;
+      var sch = school ? school.textContent.trim() : '';
+      if (sch && !schools[sch]) { schools[sch] = 1; schoolCount++; }
+      if (solved > maxSolved) maxSolved = solved;
+      if (isStar) starCount++;
+      return { tr: tr, team: team, school: school, solvedC: solvedC, penC: penC, isStar: isStar, solved: solved, fill: null };
+    });
+    if (maxSolved <= 0) maxSolved = 1;
+
+    // ---- pass 2: decorate (official rank skips star teams) ----
+    var official = 0;
+    data.forEach(function (d) {
+      var tr = d.tr;
+      var td = document.createElement('td');
+      td.className = 'rank';
+      td.setAttribute('data-label', '排名');
+      official++;
+      td.innerHTML = '<span class="rk">' + official + '</span>';
+      tr.insertBefore(td, tr.firstChild);
+
+      if (d.team) d.team.setAttribute('data-label', '队伍');
+      if (d.school) d.school.setAttribute('data-label', '学校');
+      if (d.solvedC) d.solvedC.setAttribute('data-label', '通过');
+      if (d.penC) d.penC.setAttribute('data-label', '罚时');
+
+      if (d.solvedC) {
+        var p = Math.max(0, Math.min(1, d.solved / maxSolved));
+        var wrap = document.createElement('div'); wrap.className = 'sv';
+        var num = document.createElement('span'); num.className = 'sv-num'; num.textContent = d.solved;
+        var bar = document.createElement('span'); bar.className = 'sv-bar';
+        var fill = document.createElement('i'); fill.setAttribute('data-w', (p * 100).toFixed(1));
+        bar.appendChild(fill);
+        wrap.appendChild(num); wrap.appendChild(bar);
+        d.solvedC.textContent = '';
+        d.solvedC.appendChild(wrap);
+        d.fill = fill;
+      }
+
+      if (d.penC && /[∞]/.test(d.penC.textContent)) d.penC.classList.add('pen-inf');
+    });
+
+    // ---- stats count-up ----
+    function countUp(el, target) {
+      target = target || 0; var dur = 1100, start = null;
+      function step(ts) {
+        if (start === null) start = ts;
+        var t = Math.min(1, (ts - start) / dur);
+        var e = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(target * e);
+        if (t < 1) requestAnimationFrame(step); else el.textContent = target;
+      }
+      requestAnimationFrame(step);
+    }
+    var nums = document.querySelectorAll('.stat .num');
+    if (nums[0]) countUp(nums[0], rows.length);
+    if (nums[1]) countUp(nums[1], schoolCount);
+    if (nums[2]) countUp(nums[2], maxSolved);
+    if (nums[3]) countUp(nums[3], starCount);
+    var totalEl = document.getElementById('total'); if (totalEl) totalEl.textContent = rows.length;
+    var shownEl = document.getElementById('shown'); if (shownEl) shownEl.textContent = rows.length;
+
+    // ---- reveal on scroll + bar fill ----
+    function fillBar(d) { if (d.fill) d.fill.style.width = d.fill.getAttribute('data-w') + '%'; }
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) {
+            en.target.classList.add('in');
+            if (en.target._d) fillBar(en.target._d);
+            io.unobserve(en.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -6% 0px', threshold: 0.02 });
+      data.forEach(function (d, i) {
+        d.tr._d = d;
+        if (i < 16) d.tr.style.transitionDelay = (i * 0.03) + 's';
+        io.observe(d.tr);
+      });
+    } else {
+      data.forEach(function (d) { d.tr.classList.add('in'); fillBar(d); });
+    }
+
+    // ---- live search ----
+    var q = document.getElementById('q');
+    if (q) {
+      q.addEventListener('input', function () {
+        var v = q.value.trim().toLowerCase();
+        var shown = 0;
+        data.forEach(function (d) {
+          var hay = ((d.team ? d.team.textContent : '') + ' ' + (d.school ? d.school.textContent : '')).toLowerCase();
+          var hit = !v || hay.indexOf(v) >= 0;
+          d.tr.style.display = hit ? '' : 'none';
+          if (hit) { shown++; d.tr.classList.add('in'); fillBar(d); }
+        });
+        if (shownEl) shownEl.textContent = shown;
+      });
+    }
+
+    // ---- copy protection ----
+    function editable(t) { return t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable); }
+    ['contextmenu', 'copy', 'cut', 'dragstart', 'selectstart'].forEach(function (ev) {
+      document.addEventListener(ev, function (e) { if (editable(e.target)) return; e.preventDefault(); }, { passive: false });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (editable(e.target)) return;
+      var k = (e.key || '').toLowerCase();
+      if ((e.ctrlKey || e.metaKey) && (k === 'c' || k === 'x' || k === 'a' || k === 's' || k === 'u' || k === 'p')) e.preventDefault();
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (k === 'i' || k === 'j' || k === 'c')) e.preventDefault();
+      if (k === 'f12') e.preventDefault();
+    });
+  })();
+  </script>
+
+
+<deepl-input-controller translate="no"><template shadowrootmode="open"><link rel="stylesheet" href="chrome-extension://cofdbpoegempjloogbagkncekinflcnj/build/content.css"><div dir="ltr" style="visibility: initial !important;"><div class="dl-input-translation-container svelte-95aucy"><div></div></div></div></template></deepl-input-controller></body></html>
