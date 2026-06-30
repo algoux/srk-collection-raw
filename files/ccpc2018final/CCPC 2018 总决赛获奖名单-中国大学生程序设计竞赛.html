@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<!-- saved from url=(0024)https://ccpc.io/post/137 -->
+<html data-darkreader-mode="dynamic" data-darkreader-scheme="dark" data-darkreader-proxy-injected="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style class="darkreader darkreader--fallback" media="screen"></style><style class="darkreader darkreader--user-agent" media="screen">@layer {
+html {
+    background-color: var(--darkreader-background-ffffff, #181a1b) !important;
+}
+html {
+    color-scheme: dark !important;
+}
+iframe {
+    color-scheme: dark !important;
+}
+html, body {
+    background-color: var(--darkreader-background-ffffff, #181a1b);
+}
+html, body {
+    border-color: var(--darkreader-border-4c4c4c, #736b5e);
+    color: var(--darkreader-text-000000, #e8e6e3);
+}
+a {
+    color: var(--darkreader-text-0040ff, #3391ff);
+}
+table {
+    border-color: var(--darkreader-border-808080, #545b5e);
+}
+mark {
+    color: var(--darkreader-text-000000, #e8e6e3);
+}
+::placeholder {
+    color: var(--darkreader-text-a9a9a9, #b2aba1);
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: var(--darkreader-background-faffbd, #404400) !important;
+    color: var(--darkreader-text-000000, #e8e6e3) !important;
+}
+::selection {
+    background-color: var(--darkreader-background-0060d4, #004daa) !important;
+    color: var(--darkreader-text-ffffff, #e8e6e3) !important;
+}
+::-moz-selection {
+    background-color: var(--darkreader-background-0060d4, #004daa) !important;
+    color: var(--darkreader-text-ffffff, #e8e6e3) !important;
+}
+}</style><style class="darkreader darkreader--text" media="screen"></style><style class="darkreader darkreader--invert" media="screen">.jfk-bubble.gtx-bubble, .captcheck_answer_label > input + img, span#closed_text > img[src^="https://www.gstatic.com/images/branding/googlelogo"], span[data-href^="https://www.hcaptcha.com/"] > #icon, img.Wirisformula, a[data-testid="headerMediumLogo"]>svg, .d2l-navigation-link-image-container, .d2l-iframe-loading-container, div.mc-ip-hide[style*="background: rgb(255, 255, 255) !important"], [style*="color: rgb(0, 0, 1) !important;"] {
+    filter: invert(100%) hue-rotate(180deg) contrast(90%) !important;
+}</style><style class="darkreader darkreader--inline" media="screen">[data-darkreader-inline-bgcolor] {
+  background-color: var(--darkreader-inline-bgcolor) !important;
+}
+[data-darkreader-inline-bgimage] {
+  background-image: var(--darkreader-inline-bgimage) !important;
+}
+[data-darkreader-inline-border] {
+  border-color: var(--darkreader-inline-border) !important;
+}
+[data-darkreader-inline-border-bottom] {
+  border-bottom-color: var(--darkreader-inline-border-bottom) !important;
+}
+[data-darkreader-inline-border-left] {
+  border-left-color: var(--darkreader-inline-border-left) !important;
+}
+[data-darkreader-inline-border-right] {
+  border-right-color: var(--darkreader-inline-border-right) !important;
+}
+[data-darkreader-inline-border-top] {
+  border-top-color: var(--darkreader-inline-border-top) !important;
+}
+[data-darkreader-inline-boxshadow] {
+  box-shadow: var(--darkreader-inline-boxshadow) !important;
+}
+[data-darkreader-inline-color] {
+  color: var(--darkreader-inline-color) !important;
+}
+[data-darkreader-inline-fill] {
+  fill: var(--darkreader-inline-fill) !important;
+}
+[data-darkreader-inline-stroke] {
+  stroke: var(--darkreader-inline-stroke) !important;
+}
+[data-darkreader-inline-outline] {
+  outline-color: var(--darkreader-inline-outline) !important;
+}
+[data-darkreader-inline-stopcolor] {
+  stop-color: var(--darkreader-inline-stopcolor) !important;
+}
+[data-darkreader-inline-bg] {
+  background: var(--darkreader-inline-bg) !important;
+}
+[data-darkreader-inline-border-short] {
+  border: var(--darkreader-inline-border-short) !important;
+}
+[data-darkreader-inline-border-bottom-short] {
+  border-bottom: var(--darkreader-inline-border-bottom-short) !important;
+}
+[data-darkreader-inline-border-left-short] {
+  border-left: var(--darkreader-inline-border-left-short) !important;
+}
+[data-darkreader-inline-border-right-short] {
+  border-right: var(--darkreader-inline-border-right-short) !important;
+}
+[data-darkreader-inline-border-top-short] {
+  border-top: var(--darkreader-inline-border-top-short) !important;
+}
+[data-darkreader-inline-invert] {
+    filter: invert(100%) hue-rotate(180deg);
+}</style><style class="darkreader darkreader--variables" media="screen">:root {
+   --darkreader-neutral-background: var(--darkreader-background-ffffff, #181a1b);
+   --darkreader-neutral-text: var(--darkreader-text-000000, #e8e6e3);
+   --darkreader-selection-background: var(--darkreader-background-0060d4, #004daa);
+   --darkreader-selection-text: var(--darkreader-text-ffffff, #e8e6e3);
+}</style><style class="darkreader darkreader--root-vars" media="screen"></style><link rel="manifest" href="https://ccpc.io/manifest.json"><link rel="stylesheet" href="./CCPC 2018 总决赛获奖名单-中国大学生程序设计竞赛_files/umi.b5ea7236.css"><style class="darkreader darkreader--sync" media="screen"></style><title>CCPC 2018 总决赛获奖名单-中国大学生程序设计竞赛</title><script src="./CCPC 2018 总决赛获奖名单-中国大学生程序设计竞赛_files/push.js"></script><script src="./CCPC 2018 总决赛获奖名单-中国大学生程序设计竞赛_files/hm.js"></script><script>window.routerBase = "/";</script><meta name="darkreader" content="6ea3e3d58fe7414ea0bd7c38946e77a0"><style class="darkreader darkreader--override" media="screen">.vimvixen-hint {
+    background-color: var(--darkreader-background-ffd76e, #684b00) !important;
+    border-color: var(--darkreader-background-c59d00, #9e7e00) !important;
+    color: var(--darkreader-text-302505, #d7d4cf) !important;
+}
+#vimvixen-console-frame {
+    color-scheme: light !important;
+}
+::placeholder {
+    opacity: 0.5 !important;
+}
+#edge-translate-panel-body,
+.MuiTypography-body1,
+.nfe-quote-text {
+    color: var(--darkreader-neutral-text) !important;
+}
+gr-main-header {
+    background-color: var(--darkreader-background-add8e6, #1b4958) !important;
+}
+.tou-z65h9k,
+.tou-mignzq,
+.tou-1b6i2ox,
+.tou-lnqlqk {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.tou-75mvi {
+    background-color: var(--darkreader-background-cfecf5, #0f3a47) !important;
+}
+.tou-ta9e87,
+.tou-1w3fhi0,
+.tou-1b8t2us,
+.tou-py7lfi,
+.tou-1lpmd9d,
+.tou-1frrtv8,
+.tou-17ezmgn {
+    background-color: var(--darkreader-background-f5f5f5, #1e2021) !important;
+}
+.tou-uknfeu {
+    background-color: var(--darkreader-background-faedda, #432c09) !important;
+}
+.tou-6i3zyv {
+    background-color: var(--darkreader-background-85c3d8, #245d70) !important;
+}
+div.mermaid-viewer-control-panel .btn {
+    background-color: var(--darkreader-neutral-background);
+    fill: var(--darkreader-neutral-text);
+}
+svg g rect.er {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.entityBox {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.attributeBoxOdd {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.attributeBoxEven {
+    fill: var(--darkreader-selection-background);
+    fill-opacity: 0.8 !important;
+}
+svg rect.er.relationshipLabelBox {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g g.nodes rect,
+svg g g.nodes polygon {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.task {
+    fill: var(--darkreader-selection-background) !important;
+}
+svg line.messageLine0,
+svg line.messageLine1 {
+    stroke: var(--darkreader-neutral-text) !important;
+}
+div.mermaid .actor {
+    fill: var(--darkreader-neutral-background) !important;
+}
+mitid-authenticators-code-app > .code-app-container {
+    background-color: white !important;
+    padding-top: 1rem;
+}
+iframe#unpaywall[src$="unpaywall.html"] {
+    color-scheme: light !important;
+}
+select {
+    --darkreader-bg--form-control-background-color: rgba(22, 22, 22, 0) !important;
+}
+body#tumblr {
+    --darkreader-bg--secondary-accent: 31, 32, 34 !important;
+    --darkreader-bg--white: 23, 23, 23 !important;
+    --darkreader-text--black: 228, 224, 218 !important;
+}
+:host {
+    --d2l-border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+    --d2l-button-icon-background-color-hover: var(--darkreader-bg--d2l-color-gypsum) !important;
+    --d2l-color-ferrite: var(--darkreader-neutral-text) !important;
+    --d2l-color-sylvite: var(--darkreader-bg--d2l-color-sylvite) !important;
+    --d2l-dropdown-background-color: var(--darkreader-neutral-background) !important;
+    --d2l-dropdown-border-color: var(--darkreader-border--d2l-color-mica) !important;
+    --d2l-input-backgroud-color: var(--darkreader-neutral-background) !important;
+    --d2l-menu-border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+    --d2l-tooltip-background-color: var(--darkreader-neutral-background) !important;
+    --d2l-tooltip-border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+:host([_floating]) .d2l-floating-buttons-container {
+    background-color: var(--darkreader-neutral-background) !important;
+    border-top-color: var(--darkreader-border--d2l-color-mica) !important;
+    opacity: 0.88 !important;
+}
+d2l-card {
+    background: var(--darkreader-neutral-background) !important;
+    border-color: var(--darkreader-border--d2l-color-gypsum) !important;
+}
+d2l-dropdown-content > div,
+d2l-menu-item {
+    background-color: var(--darkreader-neutral-background) !important;
+    border-radius: 10px !important;
+}
+d2l-empty-state-simple {
+    border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+.d2l-button-filter > ul > li > a.vui-button {
+    border-color: var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-label-text:has(.d2l-button-subtle-content):hover,
+.d2l-label-text:has(.d2l-button-subtle-content):focus,
+.d2l-label-text:has(.d2l-button-subtle-content):active {
+    background-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+.d2l-navigation-centerer {
+    color: inherit !important;
+}
+.d2l-tabs-layout {
+    border-color: var(--darkreader-border--d2l-color-gypsum) !important;
+}
+.d2l-input,
+.d2l-calendar-date,
+.d2l-htmleditor-container {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.d2l-collapsible-panel {
+    border: 1px solid var(--darkreader-border--d2l-color-mica) !important;
+    border-radius: 0.4rem !important;
+}
+.d2l-collapsible-panel-divider {
+    border-bottom: 1px solid var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-w2d-flex {
+    border-bottom: 2px solid var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-collapsible-panel scrolled,
+.d2l-collapsible-panel-header,
+.d2l-w2d-collection-fixed {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.d2l-loading-spinner-bg {
+    fill: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+.d2l-loading-spinner-bg-stroke {
+    stroke: var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-loading-spinner-wrapper svg path,
+.d2l-loading-spinner-wrapper svg circle {
+    fill: var(--darkreader-neutral-background) !important;
+}
+.d2l-twopanelselector-side.d2l-twopanelselector-side-sep {
+    background: var(--darkreader-bg--d2l-color-mica) !important;
+}
+.d2l-le-TreeAccordionItem-anchor::before {
+    background: var(--darkreader-bg--d2l-color-corundum) !important;
+}
+table[class|="moz-header"] {
+    background: none;
+}
+*[style*="color: rgba(0,0,0,"],
+*[style*="color: rgba(0, 0, 0,"],
+*[style*="color:#000"],
+*[style*="color:black"],
+*[style*="color:#282828"],
+*[style*="color:#444"] {
+    color: var(--darkreader-neutral-text) !important;
+}
+*[style*="background:#fff"],
+*[style*="background-color:#fff"] {
+    background: var(--darkreader-neutral-background) !important;
+}
+*[bgcolor="#F5F5F5"],
+*[style*="background-color: #F5F5F5"] {
+    background: var(--darkreader-background-f5f5f5, #1e2021) !important;
+}
+body[style*="background: rgb(255, 255, 255) !important"] *:not(a),
+.body[style*="background-color: rgb(254, 254, 254) !important"] *:not(a) {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+div[style*="www.gstatic.com/android/"] {
+    background: none !important;
+}
+*[style*="background:#f9f9f9"] {
+    background: var(--darkreader-background-f9f9f9, #1b1e1f) !important;
+}
+body.mediawiki.skin-vector #mw-page-base {
+    background-image: none !important;
+}</style><script async="" src="./CCPC 2018 总决赛获奖名单-中国大学生程序设计竞赛_files/pwacompat.min.js"></script><link rel="stylesheet" type="text/css" href="./CCPC 2018 总决赛获奖名单-中国大学生程序设计竞赛_files/vendors.fc012620.chunk.css"><style class="darkreader darkreader--sync" media="screen"></style><script charset="utf-8" src="./CCPC 2018 总决赛获奖名单-中国大学生程序设计竞赛_files/vendors.2b0eeaea.async.js"></script><link rel="stylesheet" type="text/css" href="./CCPC 2018 总决赛获奖名单-中国大学生程序设计竞赛_files/2.6b5d0bc7.chunk.css"><style class="darkreader darkreader--sync" media="screen"></style><script charset="utf-8" src="./CCPC 2018 总决赛获奖名单-中国大学生程序设计竞赛_files/2.67e7de58.async.js"></script><link rel="stylesheet" type="text/css" href="./CCPC 2018 总决赛获奖名单-中国大学生程序设计竞赛_files/3.c6e6d039.chunk.css"><style class="darkreader darkreader--sync" media="screen"></style><script charset="utf-8" src="./CCPC 2018 总决赛获奖名单-中国大学生程序设计竞赛_files/3.066ebe78.async.js"></script><meta name="mobile-web-app-capable" content="yes"><meta name="x5-orientation" content="portrait"><meta name="screen-orientation" content="portrait"><meta name="x5-fullscreen" content="true"><meta name="full-screen" content="yes"><link rel="stylesheet" type="text/css" href="./CCPC 2018 总决赛获奖名单-中国大学生程序设计竞赛_files/10.5b9b1680.chunk.css"><style class="darkreader darkreader--sync" media="screen"></style><script charset="utf-8" src="./CCPC 2018 总决赛获奖名单-中国大学生程序设计竞赛_files/10.d109b3ef.async.js"></script></head><body style="min-width: 1190px;"><div id="root"><div class="normal___YzYMc"><div class="headerWrap___2cCxC "><div class="headerContentWrap___3bcw- "><a class="logoWrap___2PB2V" href="https://ccpc.io/"><img alt="ccpc-logo" class="logoImg___1dfDY" src="./CCPC 2018 总决赛获奖名单-中国大学生程序设计竞赛_files/TB1T9YCeVYqK1RjSZLeXXbXppXa-189-189.png"><div class="ccpcText___2tLJh"><h1 class="footerLogoMain___2mRqM">中国大学生程序设计竞赛</h1><h2 class="footerLogoSec___1ZxFE ">China Collegiate Programming Contest</h2></div></a><div><ul class="navUlWrap___15tOb"><a class="navItem___zTNXi navItemSelected___273JK" href="https://ccpc.io/"><span>首页</span></a><a class="navItem___zTNXi " href="https://ccpc.io/intro"><span>简介</span></a><a class="navItem___zTNXi " href="https://ccpc.io/rules"><span>规则</span></a><a class="navItem___zTNXi " href="https://ccpc.io/event"><span>赛事</span></a><a class="navItem___zTNXi " href="https://ccpc.io/placard"><span>公告</span></a><a class="navItem___zTNXi " href="https://ccpc.io/rank"><span>榜单</span></a><a class="navItem___zTNXi " href="https://ccpc.io/cert"><span>证书</span></a><a class="navItem___zTNXi " href="https://ccpc.io/award"><span>获奖</span></a><a class="navItem___zTNXi " href="https://ccpc.io/co"><span>合作</span></a><a rel="noopener noreferrer" target="_blank" href="http://dev.ccpc.io/#/?_k=y7i4fu" class="navItem___zTNXi "><span>注册</span></a><a class="navItem___zTNXi " href="https://ccpc.io/download"><span>下载</span></a><a class="navItem___zTNXi " href="https://ccpc.io/search"><span>查询</span></a></ul></div></div></div><div class="children___3HfeG" style="opacity: 1;"><div class="posterWrap___DxBPG"><div class="titleWrap___Jm2WD"><p class="title___27yUS">CCPC 2018 总决赛获奖名单</p><p class="desc___25JvJ"> 发布于 2018-11-14  | 作者：ericxie</p></div><div class="typo"><div>
+<style type="text/css">
+#medal 
+  {
+  font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+  width:100%;
+  border-collapse:collapse;
+  }
+
+#medal td, #medal th 
+  {
+  font-size:1em;
+  border:1px solid #D3D3D3;
+  padding:3px 7px 2px 7px;
+  }
+
+#medal th 
+  {
+  font-size:1.1em;
+  text-align:left;
+  padding-top:5px;
+  padding-bottom:4px;
+  background-color:#A7C942;
+  color:#000000;
+  }
+
+#medal tr.alt td 
+  {
+  background-color:#EAF2D3;
+  }
+
+</style><style class="darkreader darkreader--sync" media="screen"></style>
+<table id="medal">
+<thead>
+<tr><th>队伍排名</th><th>学校排名</th><th>奖项</th><th>学校名</th><th>队员一</th><th>队员二</th><th>队员三</th><th>教练</th></tr>
+</thead>
+<tbody>		
+		<tr class="alt"><td>1</td><td>1</td><td>金奖</td><td>清华大学</td><td>杜瑜皓</td><td>吴作凡</td><td>徐明宽</td><td>邬晓钧</td></tr><tr><td>2</td><td>2</td><td>金奖</td><td>清华大学</td><td>高睿泉</td><td>徐海珂</td><td>钟知闲</td><td>邬晓钧</td></tr><tr class="alt"><td>3</td><td>2</td><td>金奖</td><td>南京大学</td><td>凌浩</td><td>刘弘洋</td><td>张扬播</td><td>马骏</td></tr><tr><td>4</td><td>3</td><td>金奖</td><td>复旦大学</td><td>高铭鸿</td><td>吴明健</td><td>王轩宇</td><td>张新宇</td></tr><tr class="alt"><td>5</td><td>4</td><td>金奖</td><td>香港大学</td><td>郭健曦</td><td>李俊諺</td><td>許百楠</td><td>孙斌韬</td></tr><tr><td>6</td><td>5</td><td>金奖</td><td>华东师范大学</td><td>林方欣</td><td>周亦然</td><td>张羽戈</td><td>肖春芸</td></tr><tr class="alt"><td>7</td><td>6</td><td>金奖</td><td>上海交通大学</td><td>孙恩泽</td><td>罗中瑭</td><td>毛潇涵</td><td>俞勇</td></tr><tr><td>8</td><td>7</td><td>金奖</td><td>浙江大学</td><td>颜姜哲</td><td>蒋仕彪</td><td>刘振威</td><td>王灿</td></tr><tr class="alt"><td>9</td><td>8</td><td>金奖</td><td>复旦大学</td><td>周霖</td><td>温昕岳</td><td>苏津岳</td><td>孙未未</td></tr><tr><td>10</td><td>8</td><td>金奖</td><td>北京大学</td><td>孙奕灿</td><td>黄致焕</td><td>黄臻祺</td><td>罗国杰</td></tr><tr class="alt"><td>11</td><td>9</td><td>金奖</td><td>广东工业大学</td><td>唐铭锴</td><td>杨富强</td><td>林渲竺</td><td>孙宣东</td></tr><tr><td>12</td><td>10</td><td>金奖</td><td>中山大学</td><td>傅畅</td><td>黄途亮</td><td>刘瀚之</td><td>郭嵩山</td></tr><tr class="alt"><td>13</td><td>11</td><td>银奖</td><td>中山大学</td><td>林一诺</td><td>李洋</td><td>邓明昱</td><td>郭嵩山</td></tr><tr><td>14</td><td>11</td><td>银奖</td><td>北京邮电大学</td><td>潘鹤翔</td><td>张恺晨</td><td>董冉</td><td>杨亚</td></tr><tr class="alt"><td>15</td><td>12</td><td>银奖</td><td>香港科技大学</td><td>王天赐</td><td>叶智恺</td><td>周晟</td><td>张浩千</td></tr><tr><td>16</td><td>13</td><td>银奖</td><td>北京航空航天大学</td><td>伍俊洁</td><td>钟梓皓</td><td>邓一兴</td><td>梁明阳</td></tr><tr class="alt"><td>17</td><td>14</td><td>银奖</td><td>哈尔滨工业大学</td><td>姚顺</td><td>于金鹭</td><td>陈海峰</td><td>孙大烈</td></tr><tr><td>18</td><td>15</td><td>银奖</td><td>南京大学</td><td>陈劭源</td><td>王冬杨</td><td>王淳扬</td><td>马骏</td></tr><tr class="alt"><td>19</td><td>15</td><td>银奖</td><td>上海交通大学</td><td>陈伟哲</td><td>卢宇欣</td><td>郭林松</td><td>俞勇</td></tr><tr><td>20</td><td>15</td><td>银奖</td><td>电子科技大学</td><td>李子通</td><td>金欧文</td><td>刘昕</td><td>杨鹏</td></tr><tr class="alt"><td>21</td><td>16</td><td>银奖</td><td>浙江工业大学</td><td>李弘毅</td><td>李昕虎</td><td>陶宇星</td><td>侯向辉</td></tr><tr><td>22</td><td>17</td><td>银奖</td><td>浙江大学</td><td>黄洋逸</td><td>刘一辰</td><td>邓浩然</td><td>王灿</td></tr><tr class="alt"><td>23</td><td>17</td><td>银奖</td><td>武汉大学</td><td>郭松</td><td>刘瑾俐</td><td>黄敬哲</td><td>董文永</td></tr><tr><td>24</td><td>18</td><td>银奖</td><td>华南理工大学</td><td>孙宇鹏</td><td>黄浩填</td><td>王络</td><td>陈俊颖</td></tr><tr class="alt"><td>25</td><td>19</td><td>银奖</td><td>东南大学</td><td>张建东</td><td>陈曦</td><td>韩数</td><td>倪庆剑</td></tr><tr><td>26</td><td>20</td><td>银奖</td><td>杭州电子科技大学</td><td>陈惇显</td><td>祝之禺</td><td>徐景滨</td><td>刘春英</td></tr><tr class="alt"><td>27</td><td>21</td><td>银奖</td><td>同济大学</td><td>刘毅韬</td><td>欧阳小伟</td><td>任秋宇</td><td>叶晨</td></tr><tr><td>28</td><td>22</td><td>银奖</td><td>湖南大学 </td><td>陈安祺</td><td>周国浩</td><td>朱伟劲</td><td>吴昊</td></tr><tr class="alt"><td>29</td><td>23</td><td>银奖</td><td>长沙理工大学</td><td>张昊</td><td>刘健博</td><td>刘乐遥</td><td>章登勇</td></tr><tr><td>30</td><td>24</td><td>银奖</td><td>福州大学</td><td>吴媛媛</td><td>尹泽锋</td><td>傅滨</td><td>傅仰耿</td></tr><tr class="alt"><td>31</td><td>25</td><td>银奖</td><td>北京交通大学</td><td>吴泽航</td><td>王丹羽</td><td>郑栩僮</td><td>许华婷</td></tr><tr><td>32</td><td>26</td><td>银奖</td><td>华中科技大学</td><td>张嘉辉</td><td>陈威宇</td><td>武敏颜</td><td>何琨</td></tr><tr class="alt"><td>33</td><td>27</td><td>银奖</td><td>重庆大学</td><td>张博虓</td><td>徐茂凯</td><td>汪啸宇</td><td>李佳</td></tr><tr><td>34</td><td>28</td><td>银奖</td><td>北京邮电大学</td><td>张泉</td><td>褚孝杰</td><td>刘兆岩</td><td>杨亚</td></tr><tr class="alt"><td>35</td><td>28</td><td>银奖</td><td>山东理工大学</td><td>李东庆</td><td>孙振强</td><td>李绪伟</td><td>张先伟</td></tr><tr><td>36</td><td>29</td><td>银奖</td><td>南京邮电大学</td><td>李尧羿</td><td>吴永琦</td><td>孙斗南</td><td>陈志</td></tr><tr class="alt"><td>37</td><td>30</td><td>银奖</td><td>浙江大学宁波理工学院</td><td>叶森</td><td>颜蒙杰</td><td>陈一帆</td><td>蔡明伦</td></tr><tr><td>38</td><td>31</td><td>铜奖</td><td>北京理工大学</td><td>尹昊</td><td>徐子懋</td><td>龙水彬</td><td>林永钢</td></tr><tr class="alt"><td>39</td><td>32</td><td>铜奖</td><td>四川大学</td><td>孙典圣</td><td>陈荣钰</td><td>嵇名程</td><td>左劼</td></tr><tr><td>40</td><td>33</td><td>铜奖</td><td>中国科学院大学</td><td>韩雨</td><td>李建徽</td><td>任瀚昇</td><td>孙晓明</td></tr><tr class="alt"><td>41</td><td>34</td><td>铜奖</td><td>南方科技大学</td><td>贺启旸</td><td>朱泓霖</td><td>黄博</td><td>唐博</td></tr><tr><td>42</td><td>35</td><td>铜奖</td><td>中国科学技术大学</td><td>陈墨涵</td><td>林元芃</td><td>曾明亮</td><td>杨俊涵</td></tr><tr class="alt"><td>43</td><td>36</td><td>铜奖</td><td>杭州师范大学</td><td>薛鸿涛</td><td>潘律旨</td><td>罗天松</td><td>单振宇</td></tr><tr><td>44</td><td>37</td><td>铜奖</td><td>苏州大学</td><td>祝秀军</td><td>王仁杰</td><td>郝永昌</td><td>徐汀荣</td></tr><tr class="alt"><td>45</td><td>38</td><td>铜奖</td><td>浙江理工大学</td><td>林航宇</td><td>杨昊泽</td><td>罗晨宇</td><td>叶海荣</td></tr><tr><td>46</td><td>39</td><td>铜奖</td><td>哈尔滨理工大学</td><td>高尚</td><td>张皓然</td><td>季发虎</td><td>唐远新</td></tr><tr class="alt"><td>47</td><td>40</td><td>铜奖</td><td>北京化工大学</td><td>赵伟杰</td><td>邓佩瑶</td><td>刘权达</td><td>彭冰</td></tr><tr><td>48</td><td>41</td><td>铜奖</td><td>东北林业大学</td><td>牟冠华</td><td>张云铭</td><td>宋健宇</td><td>陈宇</td></tr><tr class="alt"><td>49</td><td>42</td><td>铜奖</td><td>浙江农林大学</td><td>黄磊</td><td>余凯</td><td>顾博盛</td><td>童孟军</td></tr><tr><td>50</td><td>43</td><td>铜奖</td><td>重庆邮电大学</td><td>林锦</td><td>李超予</td><td>鲁运</td><td>甘玲</td></tr><tr class="alt"><td>51</td><td>44</td><td>铜奖</td><td>浙江大学城市学院</td><td>吴成铭</td><td>周佳辉</td><td>周德阳</td><td>柯海丰</td></tr><tr><td>52</td><td>45</td><td>铜奖</td><td>北京师范大学</td><td>吴剑荣</td><td>黄鸣宇</td><td>吴松原</td><td>冯速</td></tr><tr class="alt"><td>53</td><td>46</td><td>铜奖</td><td>山东大学</td><td>赵玉鑫</td><td>霍瑜</td><td>杜保河</td><td>何萌</td></tr><tr><td>54</td><td>47</td><td>铜奖</td><td>南京航空航天大学</td><td>吕超杰</td><td>王浩泽</td><td>尼博琳</td><td>邹春然</td></tr><tr class="alt"><td>55</td><td>48</td><td>铜奖</td><td>北京航空航天大学</td><td>郭镕昊</td><td>王嘉翼</td><td>姜圣虎</td><td>梁明阳</td></tr><tr><td>56</td><td>48</td><td>铜奖</td><td>华中科技大学</td><td>李毅朝</td><td>罗宇兵</td><td>董小钧</td><td>何琨</td></tr><tr class="alt"><td>57</td><td>48</td><td>铜奖</td><td>浙江中医药大学</td><td>陈志渠</td><td>林初阜</td><td>周期律</td><td>罗杰</td></tr><tr><td>58</td><td>49</td><td>铜奖</td><td>大连理工大学</td><td>傅心语</td><td>任奕舟</td><td>林俊贤</td><td>陆坤</td></tr><tr class="alt"><td>59</td><td>50</td><td>铜奖</td><td>中国矿业大学</td><td>蒋理文</td><td>蒋宇</td><td>陈俊宇</td><td>杨文嘉</td></tr><tr><td>60</td><td>51</td><td>铜奖</td><td>东北大学秦皇岛分校</td><td>金轶凡</td><td>吴嘉梁</td><td>毛润</td><td>王和兴</td></tr><tr class="alt"><td>61</td><td>52</td><td>铜奖</td><td>华南农业大学</td><td>谭志康</td><td>黄柏贵</td><td>肖文洋</td><td>曾亮</td></tr><tr><td>62</td><td>53</td><td>铜奖</td><td>中国传媒大学</td><td>初国俊</td><td>邓楚盟</td><td>夏业伟</td><td>杨丽芳</td></tr><tr class="alt"><td>63</td><td>54</td><td>铜奖</td><td>深圳大学</td><td>傅奕飞</td><td>周园洲</td><td>胡杰仁</td><td>张小健</td></tr><tr><td>64</td><td>55</td><td>铜奖</td><td>河海大学</td><td>郑涌</td><td>王文</td><td>张世伟</td><td>张雪洁</td></tr><tr class="alt"><td>65</td><td>56</td><td>铜奖</td><td>湘潭大学</td><td>斯海洋</td><td>程坚</td><td>郭晨亮</td><td>谢勇</td></tr><tr><td>66</td><td>57</td><td>铜奖</td><td>南阳理工学院</td><td>贺鹏程</td><td>程天祥</td><td>高胤润</td><td>赵东江</td></tr><tr class="alt"><td>67</td><td>58</td><td>铜奖</td><td>上海大学</td><td>俞硕文</td><td>许立雄</td><td>任悦</td><td>沈俊</td></tr><tr><td>68</td><td>59</td><td>铜奖</td><td>华中师范大学</td><td>武玥彤</td><td>朱有为</td><td>金秀树</td><td>叶俊民</td></tr><tr class="alt"><td>69</td><td>60</td><td>铜奖</td><td>华东理工大学</td><td>付成瑜</td><td>傅志凌</td><td>彭博</td><td>罗勇军</td></tr><tr><td>70</td><td>61</td><td>优胜奖</td><td>浙江财经大学</td><td>黄森林</td><td>王教律</td><td>于翔</td><td>陈琰宏</td></tr><tr class="alt"><td>71</td><td>62</td><td>优胜奖</td><td>武汉科技大学</td><td>王星</td><td>刘银虎</td><td>胡辰</td><td>李顺新</td></tr><tr><td>72</td><td>63</td><td>优胜奖</td><td>东北师范大学</td><td>许征航</td><td>赵梦宇</td><td>樊友朋</td><td>罗娜</td></tr><tr class="alt"><td>73</td><td>64</td><td>优胜奖</td><td>中国石油大学（北京）</td><td>吕博枫</td><td>李昊元</td><td>冯云豪</td><td>范江波</td></tr><tr><td>74</td><td>65</td><td>优胜奖</td><td>福建工程学院</td><td>许伟骐</td><td>陈鑫</td><td>陈盛廸</td><td>张顺淼</td></tr><tr class="alt"><td>75</td><td>66</td><td>优胜奖</td><td>广东海洋大学</td><td>谭棋钊</td><td>康泽恩</td><td>麦朗迅</td><td>刘桃丽</td></tr><tr><td>76</td><td>67</td><td>优胜奖</td><td>中国海洋大学</td><td>唐汉林</td><td>张高阳</td><td>张航</td><td>刘培顺</td></tr><tr class="alt"><td>77</td><td>68</td><td>优胜奖</td><td>山东科技大学</td><td>郝宗寅</td><td>王树河</td><td>肖沂锟</td><td>吴振寰</td></tr><tr><td>78</td><td>69</td><td>优胜奖</td><td>浙江科技学院</td><td>戴梁辉</td><td>胡恩泽</td><td>刘汉林</td><td>林志洁</td></tr><tr class="alt"><td>79</td><td>70</td><td>优胜奖</td><td>浙江师范大学</td><td>张骏</td><td>张胜</td><td>金明熠</td><td>韩建民</td></tr><tr><td>80</td><td>71</td><td>优胜奖</td><td>国防科技大学</td><td>邱昊中</td><td>宋澎玉</td><td>夏功榆</td><td>尹良泽</td></tr><tr class="alt"><td>81</td><td>72</td><td>优胜奖</td><td>长春理工大学</td><td>李泽鹏</td><td>陈昶文</td><td>孟令书</td><td>李华</td></tr><tr><td>82</td><td>73</td><td>优胜奖</td><td>天津大学</td><td>冯桥</td><td>张启晗</td><td>樊鹏</td><td>喻梅</td></tr><tr class="alt"><td>83</td><td>74</td><td>优胜奖</td><td>南京理工大学</td><td>王珂</td><td>颜俊梁</td><td>王兵</td><td>余立功</td></tr><tr><td>84</td><td>75</td><td>优胜奖</td><td>南京晓庄学院</td><td>蒋俊杰</td><td>夏天阳</td><td>薛明怡</td><td>周恺</td></tr><tr class="alt"><td>85</td><td>76</td><td>优胜奖</td><td>北华大学</td><td>欧阳隆</td><td>林倩</td><td>秦鹏</td><td>鲁静轩</td></tr><tr><td>86</td><td>77</td><td>优胜奖</td><td>中北大学</td><td>陈权威</td><td>黄秋娟</td><td>李子轩</td><td>张静</td></tr><tr class="alt"><td>87</td><td>78</td><td>优胜奖</td><td>山东师范大学</td><td>陈仕博</td><td>任耀辰</td><td>王远睿</td><td>李圣涛</td></tr><tr><td>88</td><td>79</td><td>优胜奖</td><td>西安电子科技大学</td><td>韦润民</td><td>黄海同</td><td>余天焕</td><td>张淑平</td></tr><tr class="alt"><td>89</td><td>80</td><td>优胜奖</td><td>香港城市大学</td><td>翟兴钰</td><td>汪方舟</td><td>郑乐谦</td><td>李闽溟</td></tr><tr><td>90</td><td>81</td><td>优胜奖</td><td>湖南科技大学</td><td>孙庞博</td><td>汤越凡</td><td>徐赛博</td><td>向德生</td></tr><tr class="alt"><td>91</td><td>82</td><td>优胜奖</td><td>湖南师范大学</td><td>杨盼成</td><td>郭子源</td><td>陆泽军</td><td>罗迅</td></tr><tr><td>92</td><td>83</td><td>优胜奖</td><td>东北大学</td><td>袁乾宸</td><td>王惟</td><td>杨博</td><td>刘小锋</td></tr><tr class="alt"><td>93</td><td>84</td><td>优胜奖</td><td>郑州大学</td><td>陈洋</td><td>陈炜超</td><td>支麒越</td><td>吴云鹏</td></tr><tr><td>94</td><td>85</td><td>优胜奖</td><td>暨南大学</td><td>黄芝琪</td><td>黄书鹏</td><td>张力豪</td><td>陈双平</td></tr><tr class="alt"><td>95</td><td>86</td><td>优胜奖</td><td>天津工业大学</td><td>董京林</td><td>门剑锋</td><td>李孜</td><td>任淑霞</td></tr><tr><td>96</td><td>87</td><td>优胜奖</td><td>南开大学</td><td>王明鹏</td><td>金鹏翔</td><td>卢政先</td><td>刘晓光</td></tr><tr class="alt"><td>97</td><td>88</td><td>优胜奖</td><td>厦门大学</td><td>岳宇超</td><td>张添翼</td><td>赵佳驰</td><td>林文水</td></tr><tr><td>98</td><td>89</td><td>优胜奖</td><td>台州学院</td><td>黄睿博</td><td>陶源</td><td>詹志龙</td><td>华晓锋</td></tr><tr class="alt"><td>99</td><td>90</td><td>优胜奖</td><td>哈尔滨工业大学(深圳)</td><td>刘颂唐</td><td>宁之涵</td><td>廖儒</td><td>唐琳琳</td></tr><tr><td>100</td><td>91</td><td>优胜奖</td><td>西南民族大学</td><td> 蒋弦峰</td><td>谭瑞</td><td>杨玉婷</td><td>王琳</td></tr><tr class="alt"><td>101</td><td>92</td><td>优胜奖</td><td>哈尔滨工程大学</td><td>张凌源</td><td>连金清</td><td>许明杰</td><td>国林</td></tr><tr><td>102</td><td>93</td><td>优胜奖</td><td>西北大学</td><td>黄德翔</td><td>胡谱赟</td><td>程嘉承</td><td>刘晓宁</td></tr><tr class="alt"><td>103</td><td>94</td><td>优胜奖</td><td>中南大学</td><td>吴垠</td><td>刘佳妮</td><td>朱思雨</td><td>冯启龙</td></tr><tr><td>104</td><td>95</td><td>优胜奖</td><td>东华大学</td><td>索文杰</td><td>陈辉</td><td>胡怡淳</td><td>黄永锋</td></tr><tr class="alt"><td>105</td><td>96</td><td>优胜奖</td><td>桂林电子科技大学</td><td>傅秋雨</td><td>段诩</td><td>谭珂</td><td>王子民</td></tr><tr><td>106</td><td>97</td><td>优胜奖</td><td>西安邮电大学</td><td>张天泰</td><td>黄文丰</td><td>杨晨磊</td><td>孟伟君</td></tr><tr class="alt"><td>107</td><td>98</td><td>优胜奖</td><td>华中农业大学</td><td>李思作</td><td>张博期</td><td>庄小帅</td><td>章英</td></tr><tr><td>108</td><td>99</td><td>优胜奖</td><td>广东外语外贸大学</td><td>曾迪鸿</td><td>叶俊杰</td><td>邝江洲</td><td>郑琪</td></tr><tr class="alt"><td>109</td><td>100</td><td>优胜奖</td><td>合肥工业大学</td><td>鲍嘉前</td><td>倪宇辰</td><td>王子健</td><td>徐本柱</td></tr><tr><td>110</td><td>101</td><td>优胜奖</td><td>湖南中医药大学</td><td>殷彪</td><td>杨冯天赐</td><td>钟子元</td><td>刘伟</td></tr><tr class="alt"><td>111</td><td>102</td><td>优胜奖</td><td>河南大学</td><td>蔡文飞</td><td>陈安然</td><td>高超尘</td><td>王建林</td></tr><tr><td>1</td><td>1</td><td>冠军</td><td>清华大学</td><td>杜瑜皓</td><td>吴作凡</td><td>徐明宽</td><td>邬晓钧</td></tr><tr class="alt"><td>2</td><td>2</td><td>第二名</td><td>清华大学</td><td>高睿泉</td><td>徐海珂</td><td>钟知闲</td><td>邬晓钧</td></tr><tr><td>3</td><td>2</td><td>亚军</td><td>南京大学</td><td>凌浩</td><td>刘弘洋</td><td>张扬播</td><td>马骏</td></tr><tr class="alt"><td>4</td><td>3</td><td>季军</td><td>复旦大学</td><td>高铭鸿</td><td>吴明健</td><td>王轩宇</td><td>张新宇</td></tr><tr><td>5</td><td>4</td><td>第四名</td><td>香港大学</td><td>郭健曦</td><td>李俊諺</td><td>許百楠</td><td>孙斌韬</td></tr><tr class="alt"><td>6</td><td>5</td><td>第五名</td><td>华东师范大学</td><td>林方欣</td><td>周亦然</td><td>张羽戈</td><td>肖春芸</td></tr><tr><td>7</td><td>6</td><td>第六名</td><td>上海交通大学</td><td>孙恩泽</td><td>罗中瑭</td><td>毛潇涵</td><td>俞勇</td></tr><tr class="alt"><td>8</td><td>7</td><td>第七名</td><td>浙江大学</td><td>颜姜哲</td><td>蒋仕彪</td><td>刘振威</td><td>王灿</td></tr><tr><td>9</td><td>8</td><td>第八名</td><td>复旦大学</td><td>周霖</td><td>温昕岳</td><td>苏津岳</td><td>孙未未</td></tr><tr class="alt"><td>10</td><td>8</td><td>第八名</td><td>北京大学</td><td>孙奕灿</td><td>黄致焕</td><td>黄臻祺</td><td>罗国杰</td></tr><tr><td>11</td><td>9</td><td>第九名</td><td>广东工业大学</td><td>唐铭锴</td><td>杨富强</td><td>林渲竺</td><td>孙宣东</td></tr><tr class="alt"><td>12</td><td>10</td><td>第十名</td><td>中山大学</td><td>傅畅</td><td>黄途亮</td><td>刘瀚之</td><td>郭嵩山</td></tr><tr><td>13</td><td>11</td><td>第十一名</td><td>中山大学</td><td>林一诺</td><td>李洋</td><td>邓明昱</td><td>郭嵩山</td></tr><tr class="alt"><td>14</td><td>11</td><td>第十一名</td><td>北京邮电大学</td><td>潘鹤翔</td><td>张恺晨</td><td>董冉</td><td>杨亚</td></tr><tr><td>15</td><td>12</td><td>第十二名</td><td>香港科技大学</td><td>王天赐</td><td>叶智恺</td><td>周晟</td><td>张浩千</td></tr><tr class="alt"><td>16</td><td>13</td><td>第十三名</td><td>北京航空航天大学</td><td>伍俊洁</td><td>钟梓皓</td><td>邓一兴</td><td>梁明阳</td></tr><tr><td>17</td><td>14</td><td>第十四名</td><td>哈尔滨工业大学</td><td>姚顺</td><td>于金鹭</td><td>陈海峰</td><td>孙大烈</td></tr><tr class="alt"><td>18</td><td>15</td><td>第十五名</td><td>南京大学</td><td>陈劭源</td><td>王冬杨</td><td>王淳扬</td><td>马骏</td></tr><tr><td>19</td><td>15</td><td>第十五名</td><td>上海交通大学</td><td>陈伟哲</td><td>卢宇欣</td><td>郭林松</td><td>俞勇</td></tr><tr class="alt"><td>20</td><td>15</td><td>第十五名</td><td>电子科技大学</td><td>李子通</td><td> 金欧文</td><td>刘昕</td><td>杨鹏</td></tr><tr><td>21</td><td>16</td><td>第十六名</td><td>浙江工业大学</td><td>李弘毅</td><td>李昕虎</td><td>陶宇星</td><td>侯向辉</td></tr><tr class="alt"><td>22</td><td>17</td><td>第十七名</td><td>浙江大学</td><td>黄洋逸</td><td>刘一辰</td><td>邓浩然</td><td>王灿</td></tr><tr><td>23</td><td>17</td><td>第十七名</td><td>武汉大学</td><td>郭松</td><td>刘瑾俐</td><td>黄敬哲</td><td>董文永</td></tr><tr class="alt"><td>24</td><td>18</td><td>第十八名</td><td>华南理工大学</td><td>孙宇鹏</td><td>黄浩填</td><td>王络</td><td>陈俊颖</td></tr><tr><td>25</td><td>19</td><td>第十九名</td><td>东南大学</td><td>张建东</td><td>陈曦</td><td>韩数</td><td>倪庆剑</td></tr><tr class="alt"><td>26</td><td>20</td><td>第二十名</td><td>杭州电子科技大学</td><td>陈惇显</td><td>祝之禺</td><td>徐景滨</td><td>刘春英</td></tr><tr><td>27</td><td>21</td><td>第二十一名</td><td>同济大学</td><td>刘毅韬</td><td>欧阳小伟</td><td>任秋宇</td><td>叶晨</td></tr><tr class="alt"><td>28</td><td>22</td><td>第二十二名</td><td>湖南大学 </td><td>陈安祺</td><td>周国浩</td><td>朱伟劲</td><td>吴昊</td></tr><tr><td>29</td><td>23</td><td>第二十三名</td><td>长沙理工大学</td><td>张昊</td><td>刘健博</td><td>刘乐遥</td><td>章登勇</td></tr><tr class="alt"><td>30</td><td>24</td><td>第二十四名</td><td>福州大学</td><td>吴媛媛</td><td>尹泽锋</td><td>傅滨</td><td>傅仰耿</td></tr><tr><td>31</td><td>25</td><td>第二十五名</td><td>北京交通大学</td><td>吴泽航</td><td>王丹羽</td><td>郑栩僮</td><td>许华婷</td></tr><tr class="alt"><td>32</td><td>26</td><td>第二十六名</td><td>华中科技大学</td><td>张嘉辉</td><td>陈威宇</td><td>武敏颜</td><td>何琨</td></tr><tr><td>33</td><td>27</td><td>第二十七名</td><td>重庆大学</td><td>张博虓</td><td>徐茂凯</td><td>汪啸宇</td><td>李佳</td></tr><tr class="alt"><td>34</td><td>28</td><td>第二十七名</td><td>北京邮电大学</td><td>张泉</td><td>褚孝杰</td><td>刘兆岩</td><td>杨亚</td></tr><tr><td>35</td><td>28</td><td>第二十八名</td><td>山东理工大学</td><td>李东庆</td><td>孙振强</td><td>李绪伟</td><td>张先伟</td></tr><tr class="alt"><td>36</td><td>29</td><td>第二十九名</td><td>南京邮电大学</td><td>李尧羿</td><td>吴永琦</td><td>孙斗南</td><td>陈志</td></tr><tr><td>37</td><td>30</td><td>第三十名</td><td>浙江大学宁波理工学院</td><td>叶森</td><td>颜蒙杰</td><td>陈一帆</td><td>蔡明伦</td></tr></tbody></table></div></div></div></div><div class="footerWrap___2ilBv"><div class="footerContentWrap___10AU2"><div class="leftContent___2JAi3"><div class="middleContent___ZTqLp"><p class="linkTitle___3T_y-">赞助商：</p><div><div></div><p class="link___1Rehl">白金赞助商：<a href="https://www.tencent.com/zh-cn/index.html" target="_blank">腾讯</a>、<a href="https://seed.bytedance.com/" target="_blank">字节跳动 Seed</a>、<a href="https://job.10jqka.com.cn/" target="_blank">同花顺</a></p><p class="link___1Rehl">黄金赞助商：<a href="https://avenirx.com/" target="_blank">Avenir Group</a></p></div></div></div><div class="rightContent___14zuj"><img class="ccpcLogo___39hwu" alt="ccpc" src="./CCPC 2018 总决赛获奖名单-中国大学生程序设计竞赛_files/TB1T9YCeVYqK1RjSZLeXXbXppXa-189-189.png"><div class="ccpcText___3-uFQ"><p class="footerTextMain___3fihg">中国大学生程序设计竞赛</p><p class="footerTextSec___2jkDf">China Collegiate Programming Contest</p></div></div></div><div class="copyright___KTEmz"><p class="copyrightText____6wif">©CCPC 2018 - 2026 版权所有</p></div></div></div></div><script src="./CCPC 2018 总决赛获奖名单-中国大学生程序设计竞赛_files/umi.1a82fa36.js"></script><deepl-input-controller translate="no"><template shadowrootmode="open"><style class="darkreader darkreader--inline" media="screen">[data-darkreader-inline-bgcolor] {
+  background-color: var(--darkreader-inline-bgcolor) !important;
+}
+[data-darkreader-inline-bgimage] {
+  background-image: var(--darkreader-inline-bgimage) !important;
+}
+[data-darkreader-inline-border] {
+  border-color: var(--darkreader-inline-border) !important;
+}
+[data-darkreader-inline-border-bottom] {
+  border-bottom-color: var(--darkreader-inline-border-bottom) !important;
+}
+[data-darkreader-inline-border-left] {
+  border-left-color: var(--darkreader-inline-border-left) !important;
+}
+[data-darkreader-inline-border-right] {
+  border-right-color: var(--darkreader-inline-border-right) !important;
+}
+[data-darkreader-inline-border-top] {
+  border-top-color: var(--darkreader-inline-border-top) !important;
+}
+[data-darkreader-inline-boxshadow] {
+  box-shadow: var(--darkreader-inline-boxshadow) !important;
+}
+[data-darkreader-inline-color] {
+  color: var(--darkreader-inline-color) !important;
+}
+[data-darkreader-inline-fill] {
+  fill: var(--darkreader-inline-fill) !important;
+}
+[data-darkreader-inline-stroke] {
+  stroke: var(--darkreader-inline-stroke) !important;
+}
+[data-darkreader-inline-outline] {
+  outline-color: var(--darkreader-inline-outline) !important;
+}
+[data-darkreader-inline-stopcolor] {
+  stop-color: var(--darkreader-inline-stopcolor) !important;
+}
+[data-darkreader-inline-bg] {
+  background: var(--darkreader-inline-bg) !important;
+}
+[data-darkreader-inline-border-short] {
+  border: var(--darkreader-inline-border-short) !important;
+}
+[data-darkreader-inline-border-bottom-short] {
+  border-bottom: var(--darkreader-inline-border-bottom-short) !important;
+}
+[data-darkreader-inline-border-left-short] {
+  border-left: var(--darkreader-inline-border-left-short) !important;
+}
+[data-darkreader-inline-border-right-short] {
+  border-right: var(--darkreader-inline-border-right-short) !important;
+}
+[data-darkreader-inline-border-top-short] {
+  border-top: var(--darkreader-inline-border-top-short) !important;
+}
+[data-darkreader-inline-invert] {
+    filter: invert(100%) hue-rotate(180deg);
+}</style><style class="darkreader darkreader--override" media="screen">.vimvixen-hint {
+    background-color: var(--darkreader-background-ffd76e, #684b00) !important;
+    border-color: var(--darkreader-background-c59d00, #9e7e00) !important;
+    color: var(--darkreader-text-302505, #d7d4cf) !important;
+}
+#vimvixen-console-frame {
+    color-scheme: light !important;
+}
+::placeholder {
+    opacity: 0.5 !important;
+}
+#edge-translate-panel-body,
+.MuiTypography-body1,
+.nfe-quote-text {
+    color: var(--darkreader-neutral-text) !important;
+}
+gr-main-header {
+    background-color: var(--darkreader-background-add8e6, #1b4958) !important;
+}
+.tou-z65h9k,
+.tou-mignzq,
+.tou-1b6i2ox,
+.tou-lnqlqk {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.tou-75mvi {
+    background-color: var(--darkreader-background-cfecf5, #0f3a47) !important;
+}
+.tou-ta9e87,
+.tou-1w3fhi0,
+.tou-1b8t2us,
+.tou-py7lfi,
+.tou-1lpmd9d,
+.tou-1frrtv8,
+.tou-17ezmgn {
+    background-color: var(--darkreader-background-f5f5f5, #1e2021) !important;
+}
+.tou-uknfeu {
+    background-color: var(--darkreader-background-faedda, #432c09) !important;
+}
+.tou-6i3zyv {
+    background-color: var(--darkreader-background-85c3d8, #245d70) !important;
+}
+div.mermaid-viewer-control-panel .btn {
+    background-color: var(--darkreader-neutral-background);
+    fill: var(--darkreader-neutral-text);
+}
+svg g rect.er {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.entityBox {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.attributeBoxOdd {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.attributeBoxEven {
+    fill: var(--darkreader-selection-background);
+    fill-opacity: 0.8 !important;
+}
+svg rect.er.relationshipLabelBox {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g g.nodes rect,
+svg g g.nodes polygon {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.task {
+    fill: var(--darkreader-selection-background) !important;
+}
+svg line.messageLine0,
+svg line.messageLine1 {
+    stroke: var(--darkreader-neutral-text) !important;
+}
+div.mermaid .actor {
+    fill: var(--darkreader-neutral-background) !important;
+}
+mitid-authenticators-code-app > .code-app-container {
+    background-color: white !important;
+    padding-top: 1rem;
+}
+iframe#unpaywall[src$="unpaywall.html"] {
+    color-scheme: light !important;
+}
+select {
+    --darkreader-bg--form-control-background-color: rgba(22, 22, 22, 0) !important;
+}
+body#tumblr {
+    --darkreader-bg--secondary-accent: 31, 32, 34 !important;
+    --darkreader-bg--white: 23, 23, 23 !important;
+    --darkreader-text--black: 228, 224, 218 !important;
+}
+:host {
+    --d2l-border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+    --d2l-button-icon-background-color-hover: var(--darkreader-bg--d2l-color-gypsum) !important;
+    --d2l-color-ferrite: var(--darkreader-neutral-text) !important;
+    --d2l-color-sylvite: var(--darkreader-bg--d2l-color-sylvite) !important;
+    --d2l-dropdown-background-color: var(--darkreader-neutral-background) !important;
+    --d2l-dropdown-border-color: var(--darkreader-border--d2l-color-mica) !important;
+    --d2l-input-backgroud-color: var(--darkreader-neutral-background) !important;
+    --d2l-menu-border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+    --d2l-tooltip-background-color: var(--darkreader-neutral-background) !important;
+    --d2l-tooltip-border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+:host([_floating]) .d2l-floating-buttons-container {
+    background-color: var(--darkreader-neutral-background) !important;
+    border-top-color: var(--darkreader-border--d2l-color-mica) !important;
+    opacity: 0.88 !important;
+}
+d2l-card {
+    background: var(--darkreader-neutral-background) !important;
+    border-color: var(--darkreader-border--d2l-color-gypsum) !important;
+}
+d2l-dropdown-content > div,
+d2l-menu-item {
+    background-color: var(--darkreader-neutral-background) !important;
+    border-radius: 10px !important;
+}
+d2l-empty-state-simple {
+    border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+.d2l-button-filter > ul > li > a.vui-button {
+    border-color: var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-label-text:has(.d2l-button-subtle-content):hover,
+.d2l-label-text:has(.d2l-button-subtle-content):focus,
+.d2l-label-text:has(.d2l-button-subtle-content):active {
+    background-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+.d2l-navigation-centerer {
+    color: inherit !important;
+}
+.d2l-tabs-layout {
+    border-color: var(--darkreader-border--d2l-color-gypsum) !important;
+}
+.d2l-input,
+.d2l-calendar-date,
+.d2l-htmleditor-container {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.d2l-collapsible-panel {
+    border: 1px solid var(--darkreader-border--d2l-color-mica) !important;
+    border-radius: 0.4rem !important;
+}
+.d2l-collapsible-panel-divider {
+    border-bottom: 1px solid var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-w2d-flex {
+    border-bottom: 2px solid var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-collapsible-panel scrolled,
+.d2l-collapsible-panel-header,
+.d2l-w2d-collection-fixed {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.d2l-loading-spinner-bg {
+    fill: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+.d2l-loading-spinner-bg-stroke {
+    stroke: var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-loading-spinner-wrapper svg path,
+.d2l-loading-spinner-wrapper svg circle {
+    fill: var(--darkreader-neutral-background) !important;
+}
+.d2l-twopanelselector-side.d2l-twopanelselector-side-sep {
+    background: var(--darkreader-bg--d2l-color-mica) !important;
+}
+.d2l-le-TreeAccordionItem-anchor::before {
+    background: var(--darkreader-bg--d2l-color-corundum) !important;
+}
+table[class|="moz-header"] {
+    background: none;
+}
+*[style*="color: rgba(0,0,0,"],
+*[style*="color: rgba(0, 0, 0,"],
+*[style*="color:#000"],
+*[style*="color:black"],
+*[style*="color:#282828"],
+*[style*="color:#444"] {
+    color: var(--darkreader-neutral-text) !important;
+}
+*[style*="background:#fff"],
+*[style*="background-color:#fff"] {
+    background: var(--darkreader-neutral-background) !important;
+}
+*[bgcolor="#F5F5F5"],
+*[style*="background-color: #F5F5F5"] {
+    background: var(--darkreader-background-f5f5f5, #1e2021) !important;
+}
+body[style*="background: rgb(255, 255, 255) !important"] *:not(a),
+.body[style*="background-color: rgb(254, 254, 254) !important"] *:not(a) {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+div[style*="www.gstatic.com/android/"] {
+    background: none !important;
+}
+*[style*="background:#f9f9f9"] {
+    background: var(--darkreader-background-f9f9f9, #1b1e1f) !important;
+}
+body.mediawiki.skin-vector #mw-page-base {
+    background-image: none !important;
+}</style><style class="darkreader darkreader--invert" media="screen">.jfk-bubble.gtx-bubble, .captcheck_answer_label > input + img, span#closed_text > img[src^="https://www.gstatic.com/images/branding/googlelogo"], span[data-href^="https://www.hcaptcha.com/"] > #icon, img.Wirisformula, a[data-testid="headerMediumLogo"]>svg, .d2l-navigation-link-image-container, .d2l-iframe-loading-container, div.mc-ip-hide[style*="background: rgb(255, 255, 255) !important"], [style*="color: rgb(0, 0, 1) !important;"] {
+    filter: invert(100%) hue-rotate(180deg) contrast(90%) !important;
+}</style><link rel="stylesheet" href="chrome-extension://cofdbpoegempjloogbagkncekinflcnj/build/content.css"><style class="darkreader darkreader--sync" media="screen"></style><div dir="ltr" style="visibility: initial !important;"><div class="dl-input-translation-container svelte-95aucy"><div></div></div></div></template></deepl-input-controller></body></html>
