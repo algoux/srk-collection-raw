@@ -1,0 +1,24 @@
+{
+  "schema": "srk-acmss-sync-config/v1",
+  "uk": "ccpc2019xiamen",
+  "status": "skipped-source-format",
+  "source": {
+    "entryDir": "convert/ccpc2019xiamen",
+    "report": "report.md",
+    "srk": "ccpc2019xiamen.srk.json",
+    "rawDir": "ccpc2019xiamen/"
+  },
+  "targets": {
+    "targetBaseDir": "~/GitProjects/algoux",
+    "collectionRepo": "srk-collection",
+    "collectionPath": "official/ccpc/ccpc2019/ccpc2019xiamen.srk.json",
+    "rawRepo": "srk-collection-raw",
+    "rawPath": "files/ccpc2019xiamen/",
+    "assetsPrefix": "ccpc2019xiamen/assets/",
+    "configYamlNote": "no update proposed by this skipped entry."
+  },
+  "sync": {
+    "enabled": false,
+    "reason": "status skipped-source-format is not syncable"
+  }
+}
