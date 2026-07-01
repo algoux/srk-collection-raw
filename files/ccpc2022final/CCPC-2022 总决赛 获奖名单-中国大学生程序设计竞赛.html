@@ -1,0 +1,2016 @@
+<!DOCTYPE html>
+<!-- saved from url=(0024)https://ccpc.io/post/304 -->
+<html data-darkreader-mode="dynamic" data-darkreader-scheme="dark" data-darkreader-proxy-injected="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style class="darkreader darkreader--fallback" media="screen"></style><style class="darkreader darkreader--user-agent" media="screen">@layer {
+html {
+    background-color: var(--darkreader-background-ffffff, #181a1b) !important;
+}
+html {
+    color-scheme: dark !important;
+}
+iframe {
+    color-scheme: dark !important;
+}
+html, body {
+    background-color: var(--darkreader-background-ffffff, #181a1b);
+}
+html, body {
+    border-color: var(--darkreader-border-4c4c4c, #736b5e);
+    color: var(--darkreader-text-000000, #e8e6e3);
+}
+a {
+    color: var(--darkreader-text-0040ff, #3391ff);
+}
+table {
+    border-color: var(--darkreader-border-808080, #545b5e);
+}
+mark {
+    color: var(--darkreader-text-000000, #e8e6e3);
+}
+::placeholder {
+    color: var(--darkreader-text-a9a9a9, #b2aba1);
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: var(--darkreader-background-faffbd, #404400) !important;
+    color: var(--darkreader-text-000000, #e8e6e3) !important;
+}
+::selection {
+    background-color: var(--darkreader-background-0060d4, #004daa) !important;
+    color: var(--darkreader-text-ffffff, #e8e6e3) !important;
+}
+::-moz-selection {
+    background-color: var(--darkreader-background-0060d4, #004daa) !important;
+    color: var(--darkreader-text-ffffff, #e8e6e3) !important;
+}
+}</style><style class="darkreader darkreader--text" media="screen"></style><style class="darkreader darkreader--invert" media="screen">.jfk-bubble.gtx-bubble, .captcheck_answer_label > input + img, span#closed_text > img[src^="https://www.gstatic.com/images/branding/googlelogo"], span[data-href^="https://www.hcaptcha.com/"] > #icon, img.Wirisformula, a[data-testid="headerMediumLogo"]>svg, .d2l-navigation-link-image-container, .d2l-iframe-loading-container, div.mc-ip-hide[style*="background: rgb(255, 255, 255) !important"], [style*="color: rgb(0, 0, 1) !important;"] {
+    filter: invert(100%) hue-rotate(180deg) contrast(90%) !important;
+}</style><style class="darkreader darkreader--inline" media="screen">[data-darkreader-inline-bgcolor] {
+  background-color: var(--darkreader-inline-bgcolor) !important;
+}
+[data-darkreader-inline-bgimage] {
+  background-image: var(--darkreader-inline-bgimage) !important;
+}
+[data-darkreader-inline-border] {
+  border-color: var(--darkreader-inline-border) !important;
+}
+[data-darkreader-inline-border-bottom] {
+  border-bottom-color: var(--darkreader-inline-border-bottom) !important;
+}
+[data-darkreader-inline-border-left] {
+  border-left-color: var(--darkreader-inline-border-left) !important;
+}
+[data-darkreader-inline-border-right] {
+  border-right-color: var(--darkreader-inline-border-right) !important;
+}
+[data-darkreader-inline-border-top] {
+  border-top-color: var(--darkreader-inline-border-top) !important;
+}
+[data-darkreader-inline-boxshadow] {
+  box-shadow: var(--darkreader-inline-boxshadow) !important;
+}
+[data-darkreader-inline-color] {
+  color: var(--darkreader-inline-color) !important;
+}
+[data-darkreader-inline-fill] {
+  fill: var(--darkreader-inline-fill) !important;
+}
+[data-darkreader-inline-stroke] {
+  stroke: var(--darkreader-inline-stroke) !important;
+}
+[data-darkreader-inline-outline] {
+  outline-color: var(--darkreader-inline-outline) !important;
+}
+[data-darkreader-inline-stopcolor] {
+  stop-color: var(--darkreader-inline-stopcolor) !important;
+}
+[data-darkreader-inline-bg] {
+  background: var(--darkreader-inline-bg) !important;
+}
+[data-darkreader-inline-border-short] {
+  border: var(--darkreader-inline-border-short) !important;
+}
+[data-darkreader-inline-border-bottom-short] {
+  border-bottom: var(--darkreader-inline-border-bottom-short) !important;
+}
+[data-darkreader-inline-border-left-short] {
+  border-left: var(--darkreader-inline-border-left-short) !important;
+}
+[data-darkreader-inline-border-right-short] {
+  border-right: var(--darkreader-inline-border-right-short) !important;
+}
+[data-darkreader-inline-border-top-short] {
+  border-top: var(--darkreader-inline-border-top-short) !important;
+}
+[data-darkreader-inline-invert] {
+    filter: invert(100%) hue-rotate(180deg);
+}</style><style class="darkreader darkreader--variables" media="screen">:root {
+   --darkreader-neutral-background: var(--darkreader-background-ffffff, #181a1b);
+   --darkreader-neutral-text: var(--darkreader-text-000000, #e8e6e3);
+   --darkreader-selection-background: var(--darkreader-background-0060d4, #004daa);
+   --darkreader-selection-text: var(--darkreader-text-ffffff, #e8e6e3);
+}</style><style class="darkreader darkreader--root-vars" media="screen"></style><link rel="manifest" href="https://ccpc.io/manifest.json"><link rel="stylesheet" href="./CCPC-2022 总决赛 获奖名单-中国大学生程序设计竞赛_files/umi.b5ea7236.css"><style class="darkreader darkreader--sync" media="screen"></style><title>CCPC-2022 总决赛 获奖名单-中国大学生程序设计竞赛</title><script src="./CCPC-2022 总决赛 获奖名单-中国大学生程序设计竞赛_files/push.js"></script><script src="./CCPC-2022 总决赛 获奖名单-中国大学生程序设计竞赛_files/hm.js"></script><script>window.routerBase = "/";</script><script async="" src="./CCPC-2022 总决赛 获奖名单-中国大学生程序设计竞赛_files/pwacompat.min.js"></script><meta name="darkreader" content="26ef397585ac4be3a003e4835d0fe40b"><style class="darkreader darkreader--override" media="screen">.vimvixen-hint {
+    background-color: var(--darkreader-background-ffd76e, #684b00) !important;
+    border-color: var(--darkreader-background-c59d00, #9e7e00) !important;
+    color: var(--darkreader-text-302505, #d7d4cf) !important;
+}
+#vimvixen-console-frame {
+    color-scheme: light !important;
+}
+::placeholder {
+    opacity: 0.5 !important;
+}
+#edge-translate-panel-body,
+.MuiTypography-body1,
+.nfe-quote-text {
+    color: var(--darkreader-neutral-text) !important;
+}
+gr-main-header {
+    background-color: var(--darkreader-background-add8e6, #1b4958) !important;
+}
+.tou-z65h9k,
+.tou-mignzq,
+.tou-1b6i2ox,
+.tou-lnqlqk {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.tou-75mvi {
+    background-color: var(--darkreader-background-cfecf5, #0f3a47) !important;
+}
+.tou-ta9e87,
+.tou-1w3fhi0,
+.tou-1b8t2us,
+.tou-py7lfi,
+.tou-1lpmd9d,
+.tou-1frrtv8,
+.tou-17ezmgn {
+    background-color: var(--darkreader-background-f5f5f5, #1e2021) !important;
+}
+.tou-uknfeu {
+    background-color: var(--darkreader-background-faedda, #432c09) !important;
+}
+.tou-6i3zyv {
+    background-color: var(--darkreader-background-85c3d8, #245d70) !important;
+}
+div.mermaid-viewer-control-panel .btn {
+    background-color: var(--darkreader-neutral-background);
+    fill: var(--darkreader-neutral-text);
+}
+svg g rect.er {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.entityBox {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.attributeBoxOdd {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.attributeBoxEven {
+    fill: var(--darkreader-selection-background);
+    fill-opacity: 0.8 !important;
+}
+svg rect.er.relationshipLabelBox {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g g.nodes rect,
+svg g g.nodes polygon {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.task {
+    fill: var(--darkreader-selection-background) !important;
+}
+svg line.messageLine0,
+svg line.messageLine1 {
+    stroke: var(--darkreader-neutral-text) !important;
+}
+div.mermaid .actor {
+    fill: var(--darkreader-neutral-background) !important;
+}
+mitid-authenticators-code-app > .code-app-container {
+    background-color: white !important;
+    padding-top: 1rem;
+}
+iframe#unpaywall[src$="unpaywall.html"] {
+    color-scheme: light !important;
+}
+select {
+    --darkreader-bg--form-control-background-color: rgba(22, 22, 22, 0) !important;
+}
+body#tumblr {
+    --darkreader-bg--secondary-accent: 31, 32, 34 !important;
+    --darkreader-bg--white: 23, 23, 23 !important;
+    --darkreader-text--black: 228, 224, 218 !important;
+}
+:host {
+    --d2l-border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+    --d2l-button-icon-background-color-hover: var(--darkreader-bg--d2l-color-gypsum) !important;
+    --d2l-color-ferrite: var(--darkreader-neutral-text) !important;
+    --d2l-color-sylvite: var(--darkreader-bg--d2l-color-sylvite) !important;
+    --d2l-dropdown-background-color: var(--darkreader-neutral-background) !important;
+    --d2l-dropdown-border-color: var(--darkreader-border--d2l-color-mica) !important;
+    --d2l-input-backgroud-color: var(--darkreader-neutral-background) !important;
+    --d2l-menu-border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+    --d2l-tooltip-background-color: var(--darkreader-neutral-background) !important;
+    --d2l-tooltip-border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+:host([_floating]) .d2l-floating-buttons-container {
+    background-color: var(--darkreader-neutral-background) !important;
+    border-top-color: var(--darkreader-border--d2l-color-mica) !important;
+    opacity: 0.88 !important;
+}
+d2l-card {
+    background: var(--darkreader-neutral-background) !important;
+    border-color: var(--darkreader-border--d2l-color-gypsum) !important;
+}
+d2l-dropdown-content > div,
+d2l-menu-item {
+    background-color: var(--darkreader-neutral-background) !important;
+    border-radius: 10px !important;
+}
+d2l-empty-state-simple {
+    border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+.d2l-button-filter > ul > li > a.vui-button {
+    border-color: var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-label-text:has(.d2l-button-subtle-content):hover,
+.d2l-label-text:has(.d2l-button-subtle-content):focus,
+.d2l-label-text:has(.d2l-button-subtle-content):active {
+    background-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+.d2l-navigation-centerer {
+    color: inherit !important;
+}
+.d2l-tabs-layout {
+    border-color: var(--darkreader-border--d2l-color-gypsum) !important;
+}
+.d2l-input,
+.d2l-calendar-date,
+.d2l-htmleditor-container {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.d2l-collapsible-panel {
+    border: 1px solid var(--darkreader-border--d2l-color-mica) !important;
+    border-radius: 0.4rem !important;
+}
+.d2l-collapsible-panel-divider {
+    border-bottom: 1px solid var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-w2d-flex {
+    border-bottom: 2px solid var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-collapsible-panel scrolled,
+.d2l-collapsible-panel-header,
+.d2l-w2d-collection-fixed {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.d2l-loading-spinner-bg {
+    fill: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+.d2l-loading-spinner-bg-stroke {
+    stroke: var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-loading-spinner-wrapper svg path,
+.d2l-loading-spinner-wrapper svg circle {
+    fill: var(--darkreader-neutral-background) !important;
+}
+.d2l-twopanelselector-side.d2l-twopanelselector-side-sep {
+    background: var(--darkreader-bg--d2l-color-mica) !important;
+}
+.d2l-le-TreeAccordionItem-anchor::before {
+    background: var(--darkreader-bg--d2l-color-corundum) !important;
+}
+table[class|="moz-header"] {
+    background: none;
+}
+*[style*="color: rgba(0,0,0,"],
+*[style*="color: rgba(0, 0, 0,"],
+*[style*="color:#000"],
+*[style*="color:black"],
+*[style*="color:#282828"],
+*[style*="color:#444"] {
+    color: var(--darkreader-neutral-text) !important;
+}
+*[style*="background:#fff"],
+*[style*="background-color:#fff"] {
+    background: var(--darkreader-neutral-background) !important;
+}
+*[bgcolor="#F5F5F5"],
+*[style*="background-color: #F5F5F5"] {
+    background: var(--darkreader-background-f5f5f5, #1e2021) !important;
+}
+body[style*="background: rgb(255, 255, 255) !important"] *:not(a),
+.body[style*="background-color: rgb(254, 254, 254) !important"] *:not(a) {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+div[style*="www.gstatic.com/android/"] {
+    background: none !important;
+}
+*[style*="background:#f9f9f9"] {
+    background: var(--darkreader-background-f9f9f9, #1b1e1f) !important;
+}
+body.mediawiki.skin-vector #mw-page-base {
+    background-image: none !important;
+}</style><link rel="stylesheet" type="text/css" href="./CCPC-2022 总决赛 获奖名单-中国大学生程序设计竞赛_files/vendors.fc012620.chunk.css"><style class="darkreader darkreader--sync" media="screen"></style><script charset="utf-8" src="./CCPC-2022 总决赛 获奖名单-中国大学生程序设计竞赛_files/vendors.2b0eeaea.async.js"></script><link rel="stylesheet" type="text/css" href="./CCPC-2022 总决赛 获奖名单-中国大学生程序设计竞赛_files/2.6b5d0bc7.chunk.css"><style class="darkreader darkreader--sync" media="screen"></style><script charset="utf-8" src="./CCPC-2022 总决赛 获奖名单-中国大学生程序设计竞赛_files/2.67e7de58.async.js"></script><link rel="stylesheet" type="text/css" href="./CCPC-2022 总决赛 获奖名单-中国大学生程序设计竞赛_files/10.5b9b1680.chunk.css"><style class="darkreader darkreader--sync" media="screen"></style><script charset="utf-8" src="./CCPC-2022 总决赛 获奖名单-中国大学生程序设计竞赛_files/10.d109b3ef.async.js"></script><meta name="mobile-web-app-capable" content="yes"><meta name="x5-orientation" content="portrait"><meta name="screen-orientation" content="portrait"><meta name="x5-fullscreen" content="true"><meta name="full-screen" content="yes"><link rel="stylesheet" type="text/css" href="./CCPC-2022 总决赛 获奖名单-中国大学生程序设计竞赛_files/3.c6e6d039.chunk.css"><style class="darkreader darkreader--sync" media="screen"></style><script charset="utf-8" src="./CCPC-2022 总决赛 获奖名单-中国大学生程序设计竞赛_files/3.066ebe78.async.js"></script></head><body style="min-width: 1190px;"><div id="root"><div class="normal___YzYMc"><div class="headerWrap___2cCxC "><div class="headerContentWrap___3bcw- "><a class="logoWrap___2PB2V" href="https://ccpc.io/"><img alt="ccpc-logo" class="logoImg___1dfDY" src="./CCPC-2022 总决赛 获奖名单-中国大学生程序设计竞赛_files/TB1T9YCeVYqK1RjSZLeXXbXppXa-189-189.png"><div class="ccpcText___2tLJh"><h1 class="footerLogoMain___2mRqM">中国大学生程序设计竞赛</h1><h2 class="footerLogoSec___1ZxFE ">China Collegiate Programming Contest</h2></div></a><div><ul class="navUlWrap___15tOb"><a class="navItem___zTNXi navItemSelected___273JK" href="https://ccpc.io/"><span>首页</span></a><a class="navItem___zTNXi " href="https://ccpc.io/intro"><span>简介</span></a><a class="navItem___zTNXi " href="https://ccpc.io/rules"><span>规则</span></a><a class="navItem___zTNXi " href="https://ccpc.io/event"><span>赛事</span></a><a class="navItem___zTNXi " href="https://ccpc.io/placard"><span>公告</span></a><a class="navItem___zTNXi " href="https://ccpc.io/rank"><span>榜单</span></a><a class="navItem___zTNXi " href="https://ccpc.io/cert"><span>证书</span></a><a class="navItem___zTNXi " href="https://ccpc.io/award"><span>获奖</span></a><a class="navItem___zTNXi " href="https://ccpc.io/co"><span>合作</span></a><a rel="noopener noreferrer" target="_blank" href="http://dev.ccpc.io/#/?_k=y7i4fu" class="navItem___zTNXi "><span>注册</span></a><a class="navItem___zTNXi " href="https://ccpc.io/download"><span>下载</span></a><a class="navItem___zTNXi " href="https://ccpc.io/search"><span>查询</span></a></ul></div></div></div><div class="children___3HfeG" style="opacity: 1;"><div class="posterWrap___DxBPG"><div class="titleWrap___Jm2WD"><p class="title___27yUS">CCPC-2022 总决赛 获奖名单</p><p class="desc___25JvJ"> 发布于 2023-08-28  | 作者：admin</p></div><div class="typo"><div><table border="0" cellpadding="0" cellspacing="0" width="820" style="width: 615pt;">
+ <colgroup><col width="45" style="mso-width-source:userset;mso-width-alt:1518;width:33pt">
+ <col width="209" style="mso-width-source:userset;mso-width-alt:7133;width:157pt">
+ <col width="45" style="mso-width-source:userset;mso-width-alt:1536;width:34pt">
+ <col width="158" style="mso-width-source:userset;mso-width-alt:5393;width:119pt">
+ <col width="102" style="mso-width-source:userset;mso-width-alt:3464;width:76pt">
+ <col width="61" style="mso-width-source:userset;mso-width-alt:2082;width:46pt">
+ <col width="61" style="mso-width-source:userset;mso-width-alt:2082;width:46pt">
+ <col width="78" style="mso-width-source:userset;mso-width-alt:2645;width:58pt">
+ <col width="61" style="mso-width-source:userset;mso-width-alt:2082;width:46pt">
+ </colgroup><tbody><tr height="36" style="height:27.0pt">
+  <td height="36" class="xl68" width="45" style="height:27.0pt;width:33pt">队伍<br>排名</td>
+  <td class="xl68" width="209" style="width:157pt">队伍名字</td>
+  <td class="xl69" width="45" style="width:34pt">组别</td>
+  <td class="xl68" width="158" style="width:119pt">学校</td>
+  <td class="xl68" width="102" style="width:76pt">奖项</td>
+  <td class="xl69" width="61" style="width:46pt">队员1</td>
+  <td class="xl69" width="61" style="width:46pt">队员2</td>
+  <td class="xl69" width="78" style="width:58pt">队员3</td>
+  <td class="xl69" width="61" style="width:46pt">教练</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">1</td>
+  <td class="xl67" width="209" style="width:157pt">重生之我是菜狗</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">北京大学</td>
+  <td class="xl67" width="102" style="width:76pt">冠军、金奖</td>
+  <td class="xl65">王展鹏</td>
+  <td class="xl65">罗煜翔</td>
+  <td class="xl65">蒋凌宇</td>
+  <td class="xl65">罗国杰</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">2</td>
+  <td class="xl67" width="209" style="width:157pt">摆烂人</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">北京大学</td>
+  <td class="xl67" width="102" style="width:76pt">金奖</td>
+  <td class="xl65">钱易</td>
+  <td class="xl65">彭博</td>
+  <td class="xl65">冯施源</td>
+  <td class="xl65">张勤健</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">3</td>
+  <td class="xl67" width="209" style="width:157pt">青蛙市中心</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">清华大学</td>
+  <td class="xl67" width="102" style="width:76pt">亚军、金奖</td>
+  <td class="xl65">李白天</td>
+  <td class="xl65">彭思进</td>
+  <td class="xl65">黄子宽</td>
+  <td class="xl65">邬晓钧</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">4</td>
+  <td class="xl67" width="209" style="width:157pt">有手有脚</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">清华大学</td>
+  <td class="xl67" width="102" style="width:76pt">金奖</td>
+  <td class="xl65">罗恺</td>
+  <td class="xl65">陈于思</td>
+  <td class="xl65">杨珖</td>
+  <td class="xl65">邬晓钧</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">5</td>
+  <td class="xl67" width="209" style="width:157pt">nameless story</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">浙江大学</td>
+  <td class="xl67" width="102" style="width:76pt">季军、金奖</td>
+  <td class="xl65">凌子恒</td>
+  <td class="xl65">胡家齐</td>
+  <td class="xl65">林响烨</td>
+  <td class="xl65">王灿</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">6</td>
+  <td class="xl67" width="209" style="width:157pt">柳</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">上海交通大学</td>
+  <td class="xl67" width="102" style="width:76pt">金奖</td>
+  <td class="xl65">王照梓</td>
+  <td class="xl65">叶瑶琦</td>
+  <td class="xl65">姜天乐</td>
+  <td class="xl65">俞勇</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">7</td>
+  <td class="xl67" width="209" style="width:157pt">ddl战神</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">北京理工大学</td>
+  <td class="xl67" width="102" style="width:76pt">金奖</td>
+  <td class="xl65">林恺</td>
+  <td class="xl65">朱子林</td>
+  <td class="xl65">邹知秋</td>
+  <td class="xl65">林永钢</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">8</td>
+  <td class="xl67" width="209" style="width:157pt">杭电1队</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">杭州电子科技大学</td>
+  <td class="xl67" width="102" style="width:76pt">金奖</td>
+  <td class="xl65">戴志炜</td>
+  <td class="xl65">尹吴潇</td>
+  <td class="xl65">赵政和</td>
+  <td class="xl65">刘春英</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">9</td>
+  <td class="xl67" width="209" style="width:157pt">Solitary Dream</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">浙江大学</td>
+  <td class="xl67" width="102" style="width:76pt">金奖</td>
+  <td class="xl65">彭博</td>
+  <td class="xl65">褚写庭</td>
+  <td class="xl65">陈逸</td>
+  <td class="xl65">王灿</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">10</td>
+  <td class="xl67" width="209" style="width:157pt">七叶寂照秘密主</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">南京邮电大学</td>
+  <td class="xl67" width="102" style="width:76pt">金奖</td>
+  <td class="xl65">何乐晗</td>
+  <td class="xl65">陈以信</td>
+  <td class="xl65">赵一舟</td>
+  <td class="xl65">陈志</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">11</td>
+  <td class="xl67" width="209" style="width:157pt">鸭鸭鱼鱼虫虫</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">华中科技大学</td>
+  <td class="xl67" width="102" style="width:76pt">金奖</td>
+  <td class="xl65">郑欣</td>
+  <td class="xl65">龚宸</td>
+  <td class="xl65">俞仲遥</td>
+  <td class="xl65">何琨</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">12</td>
+  <td class="xl67" width="209" style="width:157pt">希望这次背后没有高大爷凝视</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">复旦大学</td>
+  <td class="xl67" width="102" style="width:76pt">金奖</td>
+  <td class="xl65">聂绍珩</td>
+  <td class="xl65">程鹏志</td>
+  <td class="xl65">陈可汗</td>
+  <td class="xl65">孙未未</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">13</td>
+  <td class="xl67" width="209" style="width:157pt">超现实黄昏</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">南京大学</td>
+  <td class="xl67" width="102" style="width:76pt">金奖</td>
+  <td class="xl65">丁天行</td>
+  <td class="xl65">欧丰宁</td>
+  <td class="xl65">陈晓</td>
+  <td class="xl65">马骏</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">14</td>
+  <td class="xl67" width="209" style="width:157pt">银色子弹</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">上海交通大学</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">陈则佳</td>
+  <td class="xl65">江若泓</td>
+  <td class="xl65">戚洋</td>
+  <td class="xl65">俞勇</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">15</td>
+  <td class="xl67" width="209" style="width:157pt">红日初升</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">华侨大学</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">赵雨扬</td>
+  <td class="xl65">徐聪</td>
+  <td class="xl65">郑量</td>
+  <td class="xl65">罗伟</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">15</td>
+  <td class="xl67" width="209" style="width:157pt">平和猫猫头</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">南京理工大学</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">何平</td>
+  <td class="xl65">金朝哲</td>
+  <td class="xl65">陈涣焕</td>
+  <td class="xl65">余立功</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">17</td>
+  <td class="xl67" width="209" style="width:157pt">零压之旅</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">中山大学</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">赵肖睿</td>
+  <td class="xl65">高诗豪</td>
+  <td class="xl65">刘志源</td>
+  <td class="xl65">张子臻</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">18</td>
+  <td class="xl67" width="209" style="width:157pt">明日之风的三重奏</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">中南大学</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">赵伯阳</td>
+  <td class="xl65">徐国琛</td>
+  <td class="xl65">李玄靖&nbsp;</td>
+  <td class="xl65">陈再良</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">19</td>
+  <td class="xl67" width="209" style="width:157pt">自然选择号</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">国防科技大学</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">亢世嘉</td>
+  <td class="xl65">吴佳英</td>
+  <td class="xl65">王子恒</td>
+  <td class="xl65">尹良泽</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">20</td>
+  <td class="xl67" width="209" style="width:157pt">加权没了还想打ACM？</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">华中科技大学</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">陈开宇</td>
+  <td class="xl65">卞曜洋</td>
+  <td class="xl65">罗劲豪</td>
+  <td class="xl65">何琨</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">21</td>
+  <td class="xl67" width="209" style="width:157pt">UESTC_HappyCodingLife</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">电子科技大学</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">朱子涵</td>
+  <td class="xl65">山佩永</td>
+  <td class="xl65">吴立俊</td>
+  <td class="xl65">杨鹏</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">22</td>
+  <td class="xl67" width="209" style="width:157pt">我过了样例</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">东南大学</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">戚雨林</td>
+  <td class="xl65">汪子杰</td>
+  <td class="xl65">徐朔</td>
+  <td class="xl65">倪庆剑</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">23</td>
+  <td class="xl67" width="209" style="width:157pt">Nan 上加 Nan</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">吉林大学</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">方涵斌</td>
+  <td class="xl65">李祯浩</td>
+  <td class="xl65">周宇恒</td>
+  <td class="xl65">刘淼</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">24</td>
+  <td class="xl67" width="209" style="width:157pt">几何杀手</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">河海大学常州校区</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">俞天骋</td>
+  <td class="xl65">孙嘉昊</td>
+  <td class="xl65">王英吉&nbsp;</td>
+  <td class="xl65">陈慧萍</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">25</td>
+  <td class="xl67" width="209" style="width:157pt">树状数组维护01背包</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">天津大学</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">杜鼎勋</td>
+  <td class="xl65">何志凌</td>
+  <td class="xl65">张博凯</td>
+  <td class="xl65">喻梅</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">26</td>
+  <td class="xl67" width="209" style="width:157pt">中山大学_破晓</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">中山大学</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">欧梓洋</td>
+  <td class="xl65">吴景图</td>
+  <td class="xl65">古鸣浩</td>
+  <td class="xl65">张子臻</td>
+ </tr>
+ <tr height="36" style="height:27.0pt">
+  <td height="36" class="xl67" width="45" style="height:27.0pt;width:33pt">27</td>
+  <td class="xl67" width="209" style="width:157pt">下北泽沼气动力学园学园偶像同好会兼恋恋的信仰者教团改二</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">哈尔滨工程大学</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">徐子涵</td>
+  <td class="xl65">彭金浩</td>
+  <td class="xl65">王昊宇</td>
+  <td class="xl65">国林</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">28</td>
+  <td class="xl67" width="209" style="width:157pt">RE：从爆零开始的ACM生活</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">北京建筑大学</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">齐思恺</td>
+  <td class="xl65"></td>
+  <td class="xl65"></td>
+  <td class="xl65">钱丽萍</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">29</td>
+  <td class="xl67" width="209" style="width:157pt">点分治分点</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">厦门大学</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">周正</td>
+  <td class="xl65">徐铭逸</td>
+  <td class="xl65">邹品聪</td>
+  <td class="xl65">林文水</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">30</td>
+  <td class="xl67" width="209" style="width:157pt">跟不上榜</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">南京信息工程大学</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">洪伟</td>
+  <td class="xl65">董兆琦</td>
+  <td class="xl65">潘小康</td>
+  <td class="xl65">郑关胜</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">31</td>
+  <td class="xl67" width="209" style="width:157pt">树上猫猫虫</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">武汉理工大学</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">赵家荣</td>
+  <td class="xl65">闫卢昊</td>
+  <td class="xl65">易琢然</td>
+  <td class="xl65">赵冬冬</td>
+ </tr>
+ <tr height="36" style="height:27.0pt">
+  <td height="36" class="xl67" width="45" style="height:27.0pt;width:33pt">32</td>
+  <td class="xl67" width="209" style="width:157pt">清蒸狮子头</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">杭州电子科技大学信息工程学院</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">杨鑫</td>
+  <td class="xl65">尹凯乐</td>
+  <td class="xl65">柳徐吉</td>
+  <td class="xl65">李钧</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">33</td>
+  <td class="xl67" width="209" style="width:157pt">Elegia fan and her friends</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">复旦大学</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">陆佳艺</td>
+  <td class="xl65">张宇琪</td>
+  <td class="xl65">宋悦荣</td>
+  <td class="xl65">孙未未</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">34</td>
+  <td class="xl67" width="209" style="width:157pt">羊羊羊</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">北京交通大学</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">郭昱哲</td>
+  <td class="xl65">夏鹤鸣</td>
+  <td class="xl65">杨佳昊</td>
+  <td class="xl65">许华婷</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">35</td>
+  <td class="xl67" width="209" style="width:157pt">香港中文大学（深圳）1队</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">香港中文大学（深圳）</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">忙秋阳</td>
+  <td class="xl65">徐源</td>
+  <td class="xl65">郭青硕</td>
+  <td class="xl65">马晨昊</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">36</td>
+  <td class="xl67" width="209" style="width:157pt">达拉崩吧班德贝迪卜多比鲁翁</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">同济大学</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">孙治弘</td>
+  <td class="xl65">刘依扬</td>
+  <td class="xl65">张乐天</td>
+  <td class="xl65">叶晨</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">37</td>
+  <td class="xl67" width="209" style="width:157pt">AG.子渊</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">北京航空航天大学</td>
+  <td class="xl67" width="102" style="width:76pt">银奖</td>
+  <td class="xl65">闵家旭</td>
+  <td class="xl65">张羿凡</td>
+  <td class="xl65">崔绍锞</td>
+  <td class="xl65">宋友</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">38</td>
+  <td class="xl67" width="209" style="width:157pt">喵喵喵</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">西安电子科技大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">张亲翰</td>
+  <td class="xl65">刘朝旭</td>
+  <td class="xl65">罗杰</td>
+  <td class="xl65">张淑平</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">39</td>
+  <td class="xl67" width="209" style="width:157pt">蛤工业10队</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">哈尔滨工业大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">金义扬</td>
+  <td class="xl65">王续烨</td>
+  <td class="xl65">杜沛键</td>
+  <td class="xl65">孙大烈</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">40</td>
+  <td class="xl67" width="209" style="width:157pt">删点引猹</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">武汉大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">侯哲</td>
+  <td class="xl65">蔡玉聪</td>
+  <td class="xl65">冯烨聪</td>
+  <td class="xl65">董文永</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">41</td>
+  <td class="xl67" width="209" style="width:157pt">樱之重生</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">济南大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">张益铭</td>
+  <td class="xl65">龚奕天</td>
+  <td class="xl65">刘延松</td>
+  <td class="xl65">蒋彦</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">42</td>
+  <td class="xl67" width="209" style="width:157pt">杭电6队</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">杭州电子科技大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">陈载元</td>
+  <td class="xl65">潘思成</td>
+  <td class="xl65">姜正</td>
+  <td class="xl65">刘春英</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">43</td>
+  <td class="xl67" width="209" style="width:157pt">秋叶下落的速度是每秒五厘米</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">暨南大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">麦骏</td>
+  <td class="xl65">余欣妍</td>
+  <td class="xl65">贾子涵</td>
+  <td class="xl65">张震</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">44</td>
+  <td class="xl67" width="209" style="width:157pt">猫猫把妖怪抓走了</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">浙江师范大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">温启涛</td>
+  <td class="xl65">蒋润浩</td>
+  <td class="xl65">厉文浩</td>
+  <td class="xl65">韩建民</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">45</td>
+  <td class="xl67" width="209" style="width:157pt">我从未离去</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">郑州大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">邱宇</td>
+  <td class="xl65">古晨峰</td>
+  <td class="xl65">赵圣元</td>
+  <td class="xl65">张卫星</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">46</td>
+  <td class="xl67" width="209" style="width:157pt">嗷呜呜</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">清华大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">蔡欣然</td>
+  <td class="xl65">韩豫葳</td>
+  <td class="xl65">文语乐</td>
+  <td class="xl65">邬晓钧</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">47</td>
+  <td class="xl67" width="209" style="width:157pt">三只蒟蒻</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">北京邮电大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">王佳禾</td>
+  <td class="xl65">张天泽</td>
+  <td class="xl65">区庆亮</td>
+  <td class="xl65">杨亚</td>
+ </tr>
+ <tr height="36" style="page-break-before:always;height:27.0pt">
+  <td height="36" class="xl67" width="45" style="height:27.0pt;width:33pt">48</td>
+  <td class="xl67" width="209" style="width:157pt">求其金者得其银两长未4弟已6读题重任君莫负</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">长春理工大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">周泊宇</td>
+  <td class="xl65">郝良友</td>
+  <td class="xl65">任鑫</td>
+  <td class="xl65">王睿</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">49</td>
+  <td class="xl67" width="209" style="width:157pt">爱喝牛奶的猫猫酱</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">浙江工业大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">李汶芝</td>
+  <td class="xl65">狄鑫慧</td>
+  <td class="xl65">王瑞</td>
+  <td class="xl65">韩姗姗</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">50</td>
+  <td class="xl67" width="209" style="width:157pt">我们几乎又要拿到金牌了不是吗</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">兰州大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">王徐笙</td>
+  <td class="xl65">狄农雨</td>
+  <td class="xl65">孟戴浓达</td>
+  <td class="xl65">马俊</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">51</td>
+  <td class="xl67" width="209" style="width:157pt">小白兔海盐</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">山东大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">许蕴朴</td>
+  <td class="xl65">陈子载</td>
+  <td class="xl65">韩雨辰</td>
+  <td class="xl65">鹿旭东</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">52</td>
+  <td class="xl67" width="209" style="width:157pt">前面的题目以后再来探索吧？</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">重庆邮电大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">罗昊</td>
+  <td class="xl65">江骏扬</td>
+  <td class="xl65">辜飞云</td>
+  <td class="xl65">甘玲</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">53</td>
+  <td class="xl67" width="209" style="width:157pt">南方科技大学-维希</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">南方科技大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">洪朝阳</td>
+  <td class="xl65">陈璐瑶</td>
+  <td class="xl65">李浩宇</td>
+  <td class="xl65">唐博</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">54</td>
+  <td class="xl67" width="209" style="width:157pt">烧冻鸡翅</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">华中师范大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">熊吉祥</td>
+  <td class="xl65">钟鸣</td>
+  <td class="xl65">郭子寒</td>
+  <td class="xl65">叶俊民</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">55</td>
+  <td class="xl67" width="209" style="width:157pt">结束ccpc队</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">河海大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">张星宇</td>
+  <td class="xl65">陈奕涵</td>
+  <td class="xl65">张时钊</td>
+  <td class="xl65">张雪洁</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">56</td>
+  <td class="xl67" width="209" style="width:157pt">为什么你们这么熟练啊</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">北京理工大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">李坚辉</td>
+  <td class="xl65">廖嘉琦</td>
+  <td class="xl65">张程</td>
+  <td class="xl65">付莹</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">57</td>
+  <td class="xl67" width="209" style="width:157pt">555我的炸鸡</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">苏州大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">林志诚</td>
+  <td class="xl65">顾俊辉</td>
+  <td class="xl65">陈惟一</td>
+  <td class="xl65">朱晓旭</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">58</td>
+  <td class="xl67" width="209" style="width:157pt">文火鸽子汤</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">成都理工大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">张文渝</td>
+  <td class="xl65">闫学城</td>
+  <td class="xl65">汤昱力</td>
+  <td class="xl65">李军</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">59</td>
+  <td class="xl67" width="209" style="width:157pt">高兴就喝水，emo也要喝水</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">中国地质大学（北京）</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">黄恺瑞</td>
+  <td class="xl65">张宇潇</td>
+  <td class="xl65">许兴城</td>
+  <td class="xl65">张玉清</td>
+ </tr>
+ <tr height="36" style="height:27.0pt">
+  <td height="36" class="xl67" width="45" style="height:27.0pt;width:33pt">60</td>
+  <td class="xl67" width="209" style="width:157pt">删库跑路</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">哈尔滨工业大学（深圳）</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">梁珊</td>
+  <td class="xl65">任秦江</td>
+  <td class="xl65">卢郡然</td>
+  <td class="xl65">唐琳琳</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">61</td>
+  <td class="xl67" width="209" style="width:157pt">师大之娙</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">湖南师范大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">唐熙林</td>
+  <td class="xl65">胡缘</td>
+  <td class="xl65">魏佳蕾</td>
+  <td class="xl65">罗迅</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">62</td>
+  <td class="xl67" width="209" style="width:157pt">西南大学啦啦队</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">西南大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">陈雯丽</td>
+  <td class="xl65">何一</td>
+  <td class="xl65">徐畅</td>
+  <td class="xl65">王智</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">63</td>
+  <td class="xl67" width="209" style="width:157pt">想喝桂花冬酿酒</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">苏州大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">殷九思</td>
+  <td class="xl65">简嘉瑶</td>
+  <td class="xl65">郭沈琳</td>
+  <td class="xl65">朱晓旭</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">64</td>
+  <td class="xl67" width="209" style="width:157pt">竹取飞翔</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">东北师范大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">史曼玲</td>
+  <td class="xl65">刘一木</td>
+  <td class="xl65">李嘉琦</td>
+  <td class="xl65">王艺源</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">65</td>
+  <td class="xl67" width="209" style="width:157pt">前进!冲击!突破!</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">西南财经大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">杨文昊</td>
+  <td class="xl65">钟明汉</td>
+  <td class="xl65">张硕</td>
+  <td class="xl65">陈智</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">66</td>
+  <td class="xl67" width="209" style="width:157pt">青春Vibration</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">东北电力大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">徐浩东</td>
+  <td class="xl65">关凯铭</td>
+  <td class="xl65">李翔宇</td>
+  <td class="xl65">王敬东</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">66</td>
+  <td class="xl67" width="209" style="width:157pt">骑士与龙</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">中国科学院大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">徐亦周</td>
+  <td class="xl65">徐步骥</td>
+  <td class="xl65">苑骏康</td>
+  <td class="xl65">孙晓明</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">68</td>
+  <td class="xl67" width="209" style="width:157pt">归零</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">天津大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">陈奕池</td>
+  <td class="xl65">叶泽侬</td>
+  <td class="xl65">崔奕凡</td>
+  <td class="xl65">喻梅</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">69</td>
+  <td class="xl67" width="209" style="width:157pt">飞飞</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">浙江理工大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">朱鑫鑫</td>
+  <td class="xl65">徐波</td>
+  <td class="xl65">薛淞尹</td>
+  <td class="xl65">叶海荣</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">70</td>
+  <td class="xl67" width="209" style="width:157pt">胡学姐像阿尼亚一样可爱</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">上海理工大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">潘孝安</td>
+  <td class="xl65">刘斌然</td>
+  <td class="xl65">胡洁昌</td>
+  <td class="xl65">周春樵</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">71</td>
+  <td class="xl67" width="209" style="width:157pt">红烧乳鸽</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">广东工业大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">吴董超</td>
+  <td class="xl65">刘皓瑜</td>
+  <td class="xl65">陈逸霖</td>
+  <td class="xl65">孙宣东</td>
+ </tr>
+ <tr height="36" style="height:27.0pt">
+  <td height="36" class="xl67" width="45" style="height:27.0pt;width:33pt">72</td>
+  <td class="xl67" width="209" style="width:157pt">恭喜你加入羊群</td>
+  <td class="xl65">专科</td>
+  <td class="xl67" width="158" style="width:119pt">浙江工业职业技术学院</td>
+  <td class="xl67" width="102" style="width:76pt">冠军(专科)、金奖(专科）</td>
+  <td class="xl65">竺夏</td>
+  <td class="xl65">周越</td>
+  <td class="xl65">杨楠</td>
+  <td class="xl65">陈暄</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">73</td>
+  <td class="xl67" width="209" style="width:157pt">在CCPC中寻求WA并没有搞错什么</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">南京航空航天大学</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖</td>
+  <td class="xl65">姚远</td>
+  <td class="xl65">吕俊琪</td>
+  <td class="xl65">任衍硕</td>
+  <td class="xl65">邹春然</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">74</td>
+  <td class="xl67" width="209" style="width:157pt">参宿四</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">湘潭大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">李子熙</td>
+  <td class="xl65">魏志高</td>
+  <td class="xl65">付有鑫</td>
+  <td class="xl65">谢勇</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">75</td>
+  <td class="xl67" width="209" style="width:157pt">打到银牌就算赢</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">湖南大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">廖曙康</td>
+  <td class="xl65">朱名扬</td>
+  <td class="xl65">宋苏宇</td>
+  <td class="xl65">吴昊</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">76</td>
+  <td class="xl67" width="209" style="width:157pt">TidalBore</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">西安交通大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">田雨阳</td>
+  <td class="xl65">张清扬</td>
+  <td class="xl65">王禹皓</td>
+  <td class="xl65">王龙翔</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">77</td>
+  <td class="xl67" width="209" style="width:157pt">来杯拿铁</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">浙大城市学院</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">潘劲帆</td>
+  <td class="xl65">章晨榆</td>
+  <td class="xl65">钟天宇</td>
+  <td class="xl65">张高燕</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">78</td>
+  <td class="xl67" width="209" style="width:157pt">哈理工Z01队</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">哈尔滨理工大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">顾红卫</td>
+  <td class="xl65">陈嘉铭</td>
+  <td class="xl65">岑鸿杰</td>
+  <td class="xl65">叶飞</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">79</td>
+  <td class="xl67" width="209" style="width:157pt">挑灯听风雨，断弦待天明</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">西南科技大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">吴宇宏</td>
+  <td class="xl65">张宇含</td>
+  <td class="xl65">高源</td>
+  <td class="xl65">周成毅</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">80</td>
+  <td class="xl67" width="209" style="width:157pt">格兰芬多</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">南京邮电大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">黄问远</td>
+  <td class="xl65">陈兆锋</td>
+  <td class="xl65">展翼</td>
+  <td class="xl65">陈志</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">81</td>
+  <td class="xl67" width="209" style="width:157pt">直接交</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">重庆大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">黄锐</td>
+  <td class="xl65">王冀鲁</td>
+  <td class="xl65">葛轩铭</td>
+  <td class="xl65">李佳</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">82</td>
+  <td class="xl67" width="209" style="width:157pt">鹤望兰</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">杭州师范大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">包嘉城</td>
+  <td class="xl65">傅贤杨</td>
+  <td class="xl65">江宇杰</td>
+  <td class="xl65">单振宇</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">83</td>
+  <td class="xl67" width="209" style="width:157pt">九龙塘妙妙屋</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">香港城市大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">郑上锟</td>
+  <td class="xl65">何禹</td>
+  <td class="xl65">余喆涵</td>
+  <td class="xl65">邱俊乔</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">84</td>
+  <td class="xl67" width="209" style="width:157pt">我，真是个笨蛋</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">四川大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">顾曦骏</td>
+  <td class="xl65">楚博然</td>
+  <td class="xl65">杨雨豪</td>
+  <td class="xl65">左劼</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">85</td>
+  <td class="xl67" width="209" style="width:157pt">塔山之巅</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">燕山大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">孙振轩</td>
+  <td class="xl65">赵玉航</td>
+  <td class="xl65">李一阳</td>
+  <td class="xl65">穆运峰</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">86</td>
+  <td class="xl67" width="209" style="width:157pt">蓝色一望无际</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">郑州轻工业大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">司传钊</td>
+  <td class="xl65">赵永斌</td>
+  <td class="xl65">郑皓阳</td>
+  <td class="xl65">李晔</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">87</td>
+  <td class="xl67" width="209" style="width:157pt">胖头鱼头胖</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">华南理工大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">冼昊明</td>
+  <td class="xl65">李珲</td>
+  <td class="xl65">钱晨炼</td>
+  <td class="xl65">冼楚华</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">88</td>
+  <td class="xl67" width="209" style="width:157pt">夜归人</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">上海大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">陶钧</td>
+  <td class="xl65">易兰萱</td>
+  <td class="xl65">冀昱昊</td>
+  <td class="xl65">沈俊</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">89</td>
+  <td class="xl67" width="209" style="width:157pt">SEI1</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">华东师范大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">漆宇祥</td>
+  <td class="xl65">范晨阳</td>
+  <td class="xl65">余东桦</td>
+  <td class="xl65">杜育根</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">90</td>
+  <td class="xl67" width="209" style="width:157pt">怎么去拥有一道彩虹</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">中国人民大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">刘书玮</td>
+  <td class="xl65">陈志朋</td>
+  <td class="xl65">罗碚</td>
+  <td class="xl65">孙辉</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">91</td>
+  <td class="xl67" width="209" style="width:157pt">不可视境界线-Final</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">东华大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">方荥荣</td>
+  <td class="xl65">刘青山</td>
+  <td class="xl65">黄城帆</td>
+  <td class="xl65">黄永锋</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">92</td>
+  <td class="xl67" width="209" style="width:157pt">南方科技大学-希腊奶</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">南方科技大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">周珈伊</td>
+  <td class="xl65">张嘉妤</td>
+  <td class="xl65"></td>
+  <td class="xl65">唐博</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">93</td>
+  <td class="xl67" width="209" style="width:157pt">梭哈队</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">华南师范大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">覃醒亮</td>
+  <td class="xl65">林叶华</td>
+  <td class="xl65">冼嘉荣</td>
+  <td class="xl65">陈寅</td>
+ </tr>
+ <tr height="36" style="height:27.0pt">
+  <td height="36" class="xl67" width="45" style="height:27.0pt;width:33pt">94</td>
+  <td class="xl67" width="209" style="width:157pt">无名之辈 - 我们都会有很好出路</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">桂林电子科技大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">鲁智昊</td>
+  <td class="xl65">刘思语</td>
+  <td class="xl65">汪庭浩</td>
+  <td class="xl65">王子民</td>
+ </tr>
+ <tr height="18" style="page-break-before:always;height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">95</td>
+  <td class="xl67" width="209" style="width:157pt">Duckforces</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">浙江大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">张志心</td>
+  <td class="xl65">楼沁霈</td>
+  <td class="xl65">郭一铭</td>
+  <td class="xl65">王灿</td>
+ </tr>
+ <tr height="36" style="height:27.0pt">
+  <td height="36" class="xl67" width="45" style="height:27.0pt;width:33pt">96</td>
+  <td class="xl67" width="209" style="width:157pt">帅比队长在线征婚</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">哈尔滨工业大学（威海）</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">解裕懋</td>
+  <td class="xl65">曹瑞宁</td>
+  <td class="xl65">戚煜</td>
+  <td class="xl65">董开坤</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">97</td>
+  <td class="xl67" width="209" style="width:157pt">Indigo</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">河南农业大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">李治毅</td>
+  <td class="xl65">闫亚鑫</td>
+  <td class="xl65">贾懿</td>
+  <td class="xl65">尚俊平</td>
+ </tr>
+ <tr height="36" style="height:27.0pt">
+  <td height="36" class="xl67" width="45" style="height:27.0pt;width:33pt">98</td>
+  <td class="xl67" width="209" style="width:157pt">你没事就吃溜溜梅</td>
+  <td class="xl65">专科</td>
+  <td class="xl67" width="158" style="width:119pt">福州职业技术学院</td>
+  <td class="xl67" width="102" style="width:76pt">亚军(专科)、银奖(专科)</td>
+  <td class="xl65">郭泽楷</td>
+  <td class="xl65">孟羽佳</td>
+  <td class="xl65">王东</td>
+  <td class="xl65">黄河清</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">99</td>
+  <td class="xl67" width="209" style="width:157pt">幻视之夜</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">南开大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">华志远</td>
+  <td class="xl65">林诗润</td>
+  <td class="xl65">侯黄博林</td>
+  <td class="xl65">刘晓光</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">100</td>
+  <td class="xl67" width="209" style="width:157pt">真找不到解</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">中国地质大学（武汉）</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">曹世杰</td>
+  <td class="xl65">刘剑峰</td>
+  <td class="xl65">秦浩然</td>
+  <td class="xl65">张锋</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">101</td>
+  <td class="xl67" width="209" style="width:157pt">这个彬彬交题超勇的</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">浙江农林大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">王健彬</td>
+  <td class="xl65">倪铂涵</td>
+  <td class="xl65">朱蕴仪</td>
+  <td class="xl65">童孟军</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">102</td>
+  <td class="xl67" width="209" style="width:157pt">铜首无妻</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">天津工业大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">杨磊</td>
+  <td class="xl65">姚一鸣</td>
+  <td class="xl65">郭梦贞</td>
+  <td class="xl65">任淑霞</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">103</td>
+  <td class="xl67" width="209" style="width:157pt">我必须参加ICPC西安邀请赛</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">浙江工商大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">汤英杰</td>
+  <td class="xl65">许嘉俊</td>
+  <td class="xl65">陈侠</td>
+  <td class="xl65">胡毓励</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">104</td>
+  <td class="xl67" width="209" style="width:157pt">西南饺子馆</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">福州大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">陈昊旸</td>
+  <td class="xl65">邓宇凡</td>
+  <td class="xl65">庄佳霖</td>
+  <td class="xl65">傅仰耿</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">105</td>
+  <td class="xl67" width="209" style="width:157pt">Random(name)</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">湖北工业大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">徐億祥</td>
+  <td class="xl65">贺鑫宇</td>
+  <td class="xl65">颜潇冉</td>
+  <td class="xl65">徐承志</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">106</td>
+  <td class="xl67" width="209" style="width:157pt">你所热爱的</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">中国计量大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">张迅驰</td>
+  <td class="xl65">汪埕浩</td>
+  <td class="xl65">梁孜祺</td>
+  <td class="xl65">闻育</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">107</td>
+  <td class="xl67" width="209" style="width:157pt">融合巨怪</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">安徽大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">罗欣然</td>
+  <td class="xl65">闵烁</td>
+  <td class="xl65">常昊冉</td>
+  <td class="xl65">周健</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">108</td>
+  <td class="xl67" width="209" style="width:157pt">东北大学_毒</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">东北大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">仝家驹</td>
+  <td class="xl65">陈彦澍</td>
+  <td class="xl65">张帆</td>
+  <td class="xl65">刘小锋</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">109</td>
+  <td class="xl67" width="209" style="width:157pt">LMAO</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">北京师范大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">陈志锐</td>
+  <td class="xl65">徐若翔</td>
+  <td class="xl65">何佳文</td>
+  <td class="xl65">徐鹏飞</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">110</td>
+  <td class="xl67" width="209" style="width:157pt">好似喵</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">中国矿业大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">宋明潇</td>
+  <td class="xl65">杨斌涵</td>
+  <td class="xl65">唐腾宇</td>
+  <td class="xl65">毕方明</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">111</td>
+  <td class="xl67" width="209" style="width:157pt">第一替补</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">青岛大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">姜恒玉</td>
+  <td class="xl65">刘乐鹏</td>
+  <td class="xl65">韩明睿</td>
+  <td class="xl65">张志梅</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">112</td>
+  <td class="xl67" width="209" style="width:157pt">典一份恒好喝的胡na汤</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">武汉科技大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">贾金</td>
+  <td class="xl65">孙煜恒</td>
+  <td class="xl65">胡可欣</td>
+  <td class="xl65">李顺新</td>
+ </tr>
+ <tr height="36" style="height:27.0pt">
+  <td height="36" class="xl67" width="45" style="height:27.0pt;width:33pt">113</td>
+  <td class="xl67" width="209" style="width:157pt">青春NovelAI不会梦到AlphaCode</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">贵州大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">肖焕</td>
+  <td class="xl65">邓惠敏</td>
+  <td class="xl65">李东阳</td>
+  <td class="xl65">徐晶</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">114</td>
+  <td class="xl67" width="209" style="width:157pt">一带三</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">大连理工大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">李雁志</td>
+  <td class="xl65">葛俊辰</td>
+  <td class="xl65">侯硕伟</td>
+  <td class="xl65">陆坤</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">115</td>
+  <td class="xl67" width="209" style="width:157pt">NEUQ-SCJ</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">东北大学秦皇岛分校</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">胡鸿捷</td>
+  <td class="xl65">刘琛</td>
+  <td class="xl65">袁茂恒</td>
+  <td class="xl65">王和兴</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">116</td>
+  <td class="xl67" width="209" style="width:157pt">集美大学3队</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">集美大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">陈煜晗</td>
+  <td class="xl65">陈伟盛</td>
+  <td class="xl65">姚远</td>
+  <td class="xl65">贺冰琰</td>
+ </tr>
+ <tr height="36" style="height:27.0pt">
+  <td height="36" class="xl67" width="45" style="height:27.0pt;width:33pt">117</td>
+  <td class="xl67" width="209" style="width:157pt">浙江机电职业技术学院二队</td>
+  <td class="xl65">专科</td>
+  <td class="xl67" width="158" style="width:119pt">金华职业技术学院</td>
+  <td class="xl67" width="102" style="width:76pt">季军(专科)、银奖(专科)</td>
+  <td class="xl65">褚茂誉</td>
+  <td class="xl65">兰强强</td>
+  <td class="xl65">温自成</td>
+  <td class="xl65">梅旭时</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">118</td>
+  <td class="xl67" width="209" style="width:157pt">章鱼小WA子</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">山东理工大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">潘清源</td>
+  <td class="xl65">张森</td>
+  <td class="xl65">孙美源</td>
+  <td class="xl65">张艳华</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">119</td>
+  <td class="xl67" width="209" style="width:157pt">最后的WA掘机</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">太原理工大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">郭宇霄</td>
+  <td class="xl65">王文波</td>
+  <td class="xl65">桑坤</td>
+  <td class="xl65">阎鹏飞</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">120</td>
+  <td class="xl67" width="209" style="width:157pt">几何分布</td>
+  <td class="xl65">专科</td>
+  <td class="xl67" width="158" style="width:119pt">南昌理工学院</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖(专科)</td>
+  <td class="xl65">余涛</td>
+  <td class="xl65">杨欢欢</td>
+  <td class="xl65">郑依婷</td>
+  <td class="xl65">谢杰伟</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">121</td>
+  <td class="xl67" width="209" style="width:157pt">一切都是命运石之门的选择</td>
+  <td class="xl65">专科</td>
+  <td class="xl67" width="158" style="width:119pt">浙江金融职业学院</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖(专科)</td>
+  <td class="xl65">邓瑞琦</td>
+  <td class="xl65">孔志杰</td>
+  <td class="xl65">金汝霖</td>
+  <td class="xl65">黄振业</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">122</td>
+  <td class="xl67" width="209" style="width:157pt">北科老人团</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">北京科技大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">苏锦波</td>
+  <td class="xl65">王诺贤</td>
+  <td class="xl65">刘彦铭</td>
+  <td class="xl65">刘志杰</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">123</td>
+  <td class="xl67" width="209" style="width:157pt">杨枝甘露没我甜</td>
+  <td class="xl65">专科</td>
+  <td class="xl67" width="158" style="width:119pt">浙江育英职业技术学院</td>
+  <td class="xl67" width="102" style="width:76pt">铜奖(专科)</td>
+  <td class="xl65">张翔杰</td>
+  <td class="xl65">蒋婉斐</td>
+  <td class="xl65">谢榕</td>
+  <td class="xl65">张驰</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">124</td>
+  <td class="xl67" width="209" style="width:157pt">Emanatry</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">深圳大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">杨熙全</td>
+  <td class="xl65">郭泽森</td>
+  <td class="xl65">张艺轩</td>
+  <td class="xl65">秦建斌</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">125</td>
+  <td class="xl67" width="209" style="width:157pt">中山大学能不能给个录取通知书</td>
+  <td class="xl65">专科</td>
+  <td class="xl67" width="158" style="width:119pt">四川信息职业技术学院</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">何平</td>
+  <td class="xl65">刘睿超</td>
+  <td class="xl65">谢天佑</td>
+  <td class="xl65">张俊晖</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">126</td>
+  <td class="xl67" width="209" style="width:157pt">潇洒走一回</td>
+  <td class="xl65">专科</td>
+  <td class="xl67" width="158" style="width:119pt">嘉兴职业技术学院</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">王徐超</td>
+  <td class="xl65">吴铭威</td>
+  <td class="xl65">毛绮敏</td>
+  <td class="xl65">赵强</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">127</td>
+  <td class="xl67" width="209" style="width:157pt">受不了一点</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">华北电力大学</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">石睿</td>
+  <td class="xl65">王嘉滢</td>
+  <td class="xl65">袁语欣</td>
+  <td class="xl65">曾宪琨</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">128</td>
+  <td class="xl67" width="209" style="width:157pt">皇极经世</td>
+  <td class="xl65">专科</td>
+  <td class="xl67" width="158" style="width:119pt">浙江安防职业技术学院</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">陈忠富</td>
+  <td class="xl65">顾光辉</td>
+  <td class="xl65">张路昀</td>
+  <td class="xl65">徐自力</td>
+ </tr>
+ <tr height="18" style="height:13.5pt">
+  <td height="18" class="xl67" width="45" style="height:13.5pt;width:33pt">128</td>
+  <td class="xl67" width="209" style="width:157pt">三只菜狗</td>
+  <td class="xl65">本科</td>
+  <td class="xl67" width="158" style="width:119pt">重庆对外经贸学院</td>
+  <td class="xl67" width="102" style="width:76pt"></td>
+  <td class="xl65">吴爱民</td>
+  <td class="xl65">周先华</td>
+  <td class="xl65">易发平</td>
+  <td class="xl65">周杰</td>
+ </tr></tbody></table></div></div></div></div><div class="footerWrap___2ilBv"><div class="footerContentWrap___10AU2"><div class="leftContent___2JAi3"><div class="middleContent___ZTqLp"><p class="linkTitle___3T_y-">赞助商：</p><div><div></div><p class="link___1Rehl">白金赞助商：<a href="https://www.tencent.com/zh-cn/index.html" target="_blank">腾讯</a>、<a href="https://seed.bytedance.com/" target="_blank">字节跳动 Seed</a>、<a href="https://job.10jqka.com.cn/" target="_blank">同花顺</a></p><p class="link___1Rehl">黄金赞助商：<a href="https://avenirx.com/" target="_blank">Avenir Group</a></p></div></div></div><div class="rightContent___14zuj"><img class="ccpcLogo___39hwu" alt="ccpc" src="./CCPC-2022 总决赛 获奖名单-中国大学生程序设计竞赛_files/TB1T9YCeVYqK1RjSZLeXXbXppXa-189-189.png"><div class="ccpcText___3-uFQ"><p class="footerTextMain___3fihg">中国大学生程序设计竞赛</p><p class="footerTextSec___2jkDf">China Collegiate Programming Contest</p></div></div></div><div class="copyright___KTEmz"><p class="copyrightText____6wif">©CCPC 2018 - 2026 版权所有</p></div></div></div></div><script src="./CCPC-2022 总决赛 获奖名单-中国大学生程序设计竞赛_files/umi.1a82fa36.js"></script><deepl-input-controller translate="no"><template shadowrootmode="open"><style class="darkreader darkreader--inline" media="screen">[data-darkreader-inline-bgcolor] {
+  background-color: var(--darkreader-inline-bgcolor) !important;
+}
+[data-darkreader-inline-bgimage] {
+  background-image: var(--darkreader-inline-bgimage) !important;
+}
+[data-darkreader-inline-border] {
+  border-color: var(--darkreader-inline-border) !important;
+}
+[data-darkreader-inline-border-bottom] {
+  border-bottom-color: var(--darkreader-inline-border-bottom) !important;
+}
+[data-darkreader-inline-border-left] {
+  border-left-color: var(--darkreader-inline-border-left) !important;
+}
+[data-darkreader-inline-border-right] {
+  border-right-color: var(--darkreader-inline-border-right) !important;
+}
+[data-darkreader-inline-border-top] {
+  border-top-color: var(--darkreader-inline-border-top) !important;
+}
+[data-darkreader-inline-boxshadow] {
+  box-shadow: var(--darkreader-inline-boxshadow) !important;
+}
+[data-darkreader-inline-color] {
+  color: var(--darkreader-inline-color) !important;
+}
+[data-darkreader-inline-fill] {
+  fill: var(--darkreader-inline-fill) !important;
+}
+[data-darkreader-inline-stroke] {
+  stroke: var(--darkreader-inline-stroke) !important;
+}
+[data-darkreader-inline-outline] {
+  outline-color: var(--darkreader-inline-outline) !important;
+}
+[data-darkreader-inline-stopcolor] {
+  stop-color: var(--darkreader-inline-stopcolor) !important;
+}
+[data-darkreader-inline-bg] {
+  background: var(--darkreader-inline-bg) !important;
+}
+[data-darkreader-inline-border-short] {
+  border: var(--darkreader-inline-border-short) !important;
+}
+[data-darkreader-inline-border-bottom-short] {
+  border-bottom: var(--darkreader-inline-border-bottom-short) !important;
+}
+[data-darkreader-inline-border-left-short] {
+  border-left: var(--darkreader-inline-border-left-short) !important;
+}
+[data-darkreader-inline-border-right-short] {
+  border-right: var(--darkreader-inline-border-right-short) !important;
+}
+[data-darkreader-inline-border-top-short] {
+  border-top: var(--darkreader-inline-border-top-short) !important;
+}
+[data-darkreader-inline-invert] {
+    filter: invert(100%) hue-rotate(180deg);
+}</style><style class="darkreader darkreader--override" media="screen">.vimvixen-hint {
+    background-color: var(--darkreader-background-ffd76e, #684b00) !important;
+    border-color: var(--darkreader-background-c59d00, #9e7e00) !important;
+    color: var(--darkreader-text-302505, #d7d4cf) !important;
+}
+#vimvixen-console-frame {
+    color-scheme: light !important;
+}
+::placeholder {
+    opacity: 0.5 !important;
+}
+#edge-translate-panel-body,
+.MuiTypography-body1,
+.nfe-quote-text {
+    color: var(--darkreader-neutral-text) !important;
+}
+gr-main-header {
+    background-color: var(--darkreader-background-add8e6, #1b4958) !important;
+}
+.tou-z65h9k,
+.tou-mignzq,
+.tou-1b6i2ox,
+.tou-lnqlqk {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.tou-75mvi {
+    background-color: var(--darkreader-background-cfecf5, #0f3a47) !important;
+}
+.tou-ta9e87,
+.tou-1w3fhi0,
+.tou-1b8t2us,
+.tou-py7lfi,
+.tou-1lpmd9d,
+.tou-1frrtv8,
+.tou-17ezmgn {
+    background-color: var(--darkreader-background-f5f5f5, #1e2021) !important;
+}
+.tou-uknfeu {
+    background-color: var(--darkreader-background-faedda, #432c09) !important;
+}
+.tou-6i3zyv {
+    background-color: var(--darkreader-background-85c3d8, #245d70) !important;
+}
+div.mermaid-viewer-control-panel .btn {
+    background-color: var(--darkreader-neutral-background);
+    fill: var(--darkreader-neutral-text);
+}
+svg g rect.er {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.entityBox {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.attributeBoxOdd {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.attributeBoxEven {
+    fill: var(--darkreader-selection-background);
+    fill-opacity: 0.8 !important;
+}
+svg rect.er.relationshipLabelBox {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g g.nodes rect,
+svg g g.nodes polygon {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.task {
+    fill: var(--darkreader-selection-background) !important;
+}
+svg line.messageLine0,
+svg line.messageLine1 {
+    stroke: var(--darkreader-neutral-text) !important;
+}
+div.mermaid .actor {
+    fill: var(--darkreader-neutral-background) !important;
+}
+mitid-authenticators-code-app > .code-app-container {
+    background-color: white !important;
+    padding-top: 1rem;
+}
+iframe#unpaywall[src$="unpaywall.html"] {
+    color-scheme: light !important;
+}
+select {
+    --darkreader-bg--form-control-background-color: rgba(22, 22, 22, 0) !important;
+}
+body#tumblr {
+    --darkreader-bg--secondary-accent: 31, 32, 34 !important;
+    --darkreader-bg--white: 23, 23, 23 !important;
+    --darkreader-text--black: 228, 224, 218 !important;
+}
+:host {
+    --d2l-border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+    --d2l-button-icon-background-color-hover: var(--darkreader-bg--d2l-color-gypsum) !important;
+    --d2l-color-ferrite: var(--darkreader-neutral-text) !important;
+    --d2l-color-sylvite: var(--darkreader-bg--d2l-color-sylvite) !important;
+    --d2l-dropdown-background-color: var(--darkreader-neutral-background) !important;
+    --d2l-dropdown-border-color: var(--darkreader-border--d2l-color-mica) !important;
+    --d2l-input-backgroud-color: var(--darkreader-neutral-background) !important;
+    --d2l-menu-border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+    --d2l-tooltip-background-color: var(--darkreader-neutral-background) !important;
+    --d2l-tooltip-border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+:host([_floating]) .d2l-floating-buttons-container {
+    background-color: var(--darkreader-neutral-background) !important;
+    border-top-color: var(--darkreader-border--d2l-color-mica) !important;
+    opacity: 0.88 !important;
+}
+d2l-card {
+    background: var(--darkreader-neutral-background) !important;
+    border-color: var(--darkreader-border--d2l-color-gypsum) !important;
+}
+d2l-dropdown-content > div,
+d2l-menu-item {
+    background-color: var(--darkreader-neutral-background) !important;
+    border-radius: 10px !important;
+}
+d2l-empty-state-simple {
+    border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+.d2l-button-filter > ul > li > a.vui-button {
+    border-color: var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-label-text:has(.d2l-button-subtle-content):hover,
+.d2l-label-text:has(.d2l-button-subtle-content):focus,
+.d2l-label-text:has(.d2l-button-subtle-content):active {
+    background-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+.d2l-navigation-centerer {
+    color: inherit !important;
+}
+.d2l-tabs-layout {
+    border-color: var(--darkreader-border--d2l-color-gypsum) !important;
+}
+.d2l-input,
+.d2l-calendar-date,
+.d2l-htmleditor-container {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.d2l-collapsible-panel {
+    border: 1px solid var(--darkreader-border--d2l-color-mica) !important;
+    border-radius: 0.4rem !important;
+}
+.d2l-collapsible-panel-divider {
+    border-bottom: 1px solid var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-w2d-flex {
+    border-bottom: 2px solid var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-collapsible-panel scrolled,
+.d2l-collapsible-panel-header,
+.d2l-w2d-collection-fixed {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.d2l-loading-spinner-bg {
+    fill: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+.d2l-loading-spinner-bg-stroke {
+    stroke: var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-loading-spinner-wrapper svg path,
+.d2l-loading-spinner-wrapper svg circle {
+    fill: var(--darkreader-neutral-background) !important;
+}
+.d2l-twopanelselector-side.d2l-twopanelselector-side-sep {
+    background: var(--darkreader-bg--d2l-color-mica) !important;
+}
+.d2l-le-TreeAccordionItem-anchor::before {
+    background: var(--darkreader-bg--d2l-color-corundum) !important;
+}
+table[class|="moz-header"] {
+    background: none;
+}
+*[style*="color: rgba(0,0,0,"],
+*[style*="color: rgba(0, 0, 0,"],
+*[style*="color:#000"],
+*[style*="color:black"],
+*[style*="color:#282828"],
+*[style*="color:#444"] {
+    color: var(--darkreader-neutral-text) !important;
+}
+*[style*="background:#fff"],
+*[style*="background-color:#fff"] {
+    background: var(--darkreader-neutral-background) !important;
+}
+*[bgcolor="#F5F5F5"],
+*[style*="background-color: #F5F5F5"] {
+    background: var(--darkreader-background-f5f5f5, #1e2021) !important;
+}
+body[style*="background: rgb(255, 255, 255) !important"] *:not(a),
+.body[style*="background-color: rgb(254, 254, 254) !important"] *:not(a) {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+div[style*="www.gstatic.com/android/"] {
+    background: none !important;
+}
+*[style*="background:#f9f9f9"] {
+    background: var(--darkreader-background-f9f9f9, #1b1e1f) !important;
+}
+body.mediawiki.skin-vector #mw-page-base {
+    background-image: none !important;
+}</style><style class="darkreader darkreader--invert" media="screen">.jfk-bubble.gtx-bubble, .captcheck_answer_label > input + img, span#closed_text > img[src^="https://www.gstatic.com/images/branding/googlelogo"], span[data-href^="https://www.hcaptcha.com/"] > #icon, img.Wirisformula, a[data-testid="headerMediumLogo"]>svg, .d2l-navigation-link-image-container, .d2l-iframe-loading-container, div.mc-ip-hide[style*="background: rgb(255, 255, 255) !important"], [style*="color: rgb(0, 0, 1) !important;"] {
+    filter: invert(100%) hue-rotate(180deg) contrast(90%) !important;
+}</style><link rel="stylesheet" href="chrome-extension://cofdbpoegempjloogbagkncekinflcnj/build/content.css"><style class="darkreader darkreader--sync" media="screen"></style><div dir="ltr" style="visibility: initial !important;"><div class="dl-input-translation-container svelte-95aucy"><div></div></div></div></template></deepl-input-controller></body></html>
