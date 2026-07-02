@@ -1,0 +1,41 @@
+
+<!-- saved from url=(0044)http://ctec.cumt.edu.cn/acm201810/frame.html -->
+<html style="height: 100%"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>2018 ACM Programming Contest in CUMT</title>
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+    <meta http-equiv="PRAGMA" content="NO-CACHE">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script src="./jquery1.11.1.min.js"></script>
+    <script src="./classlib.js"></script>
+    <script src="./frame.js"></script>
+</head>
+<body style="height: 100%; margin: 0">
+<iframe id="mainFrame" style="width: 100%; height: 100%;border: 0" src="./board.html"></iframe>
+
+<script>
+
+    //安排
+    $(function () {
+        //$('#mainFrame').attr('src', 'board.html');
+
+        refreshPage();
+        setInterval(refreshPage, 2000);
+        setInterval(refreshTime,10000);
+        timeRun('2018-10-28 08:59:50',
+            function() {
+                showCountdownNow('board.html');
+            });
+        //setTimeout(() => {
+        //    $.lastPage = "board.html";
+        //    showCountdown('2018-10-27 13:59:50');
+        //    timeRun('2018-10-27 14:00:05', function () {
+        //        setPage('board.html');       
+        //    });            
+        //}, 1000);
+    })
+</script>
+
+
+</body></html>
